@@ -33,22 +33,16 @@
 * 4.具体实施		//TODO
     * 4-1.前期调查	
         * 4-4-0.markdown文件的基本常用编写语法（图文并茂）.
-            * https://www.cnblogs.com/liugang-vip/p/6337580.html
+            * [MD学习](https://www.cnblogs.com/liugang-vip/p/6337580.html)
         * 4-4-1.模板网站查找。	
-            * https://segmentfault.com/u/yuanzm/articles
-	
-	
-	
-   * 4-4-2.原型图制作工具了解。	
-	
-	
-   * 4-4-3.基础工程创建。	
-	
-	
-   * 4-4-4.制定基础要件，明确要做哪些范围。	
-        * 首页。
-	    * logo
-	    * 关于
+        	* [参照网站1](https://segmentfault.com/u/yuanzm/articles)
+   		* 4-4-2.原型图制作工具了解。	
+			* [Axure工具下载](http://www.woshipm.com/it/319902.html)
+   		* 4-4-4.制定基础要件，明确要做哪些范围。	
+        	* 首页。
+	    	* logo
+	    	* 关于
+		* 4-4-3.基础工程创建。	
 	
 * *标记TODO的地方以后会根据实际情况追加。	
 * *一开始用http，最后要改成Https	
