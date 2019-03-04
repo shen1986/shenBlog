@@ -36,6 +36,7 @@
         	* [参照网站1](https://segmentfault.com/u/yuanzm/articles)
 			* [参照网站2](https://yisha0307.github.io/Portfolio-page/chenyisha.html)
 			* [参照网站3](http://www.flqin.com/)
+			* [fangzh](http://fangzh.top/)
    		* 4-4-2.原型图制作工具了解。	
 			* [Axure工具下载](http://www.woshipm.com/it/319902.html)
 			* [墨刀](https://modao.cc/) 它里面有很多都是现成的组件，直接布局拖动就好了
@@ -70,3 +71,4 @@
 * 考虑到SEO,前台页面用html加模板引擎，后台页面用VUE
 * 不做浏览器兼容。最新的IE，Google，FireFox基本能使用就行。
 * 考虑到周期太长，采用敏捷开发的思想，先做一个个人介绍的网站以后逐步追加新的内容
+* 这周发现hexo这个博客简化工具，现阶段先使用[Hexo](https://blog.csdn.net/sinat_37781304/article/details/82729029)
