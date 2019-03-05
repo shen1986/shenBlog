@@ -1,0 +1,65 @@
+/**
+ * @Description: 个人介绍页样式
+ * @Author: shenxf
+ * @Company: 魔笙科技
+ * @Date: 2019-02-28 20:34:31
+ */
+ /* 头部公共样式 */
+.headerImg {
+    position: fixed;
+    z-index: 1001;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    left:50px;
+    top: 5px;
+    border-radius: 50%;
+
+    animation: myheader 2s linear infinite;
+}
+
+.headerImg img{
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes myheader {
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* 媒体查询 1366 */
+@media screen and (max-width: 1366px) {
+    .content {
+        top: 120px;
+    }
+}
+
+/* 媒体查询 600 */
+@media screen and (max-width: 600px) {
+    .content {
+        top: 80px;
+    }
+}
+
+
+
+/* 第一屏式样 */
+.content {
+    background: pink;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: url("/resume/images/header.jpeg") center center no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+    /* transition: box-shadow .5s linear;
+    -webkit-transition: box-shadow .5s linear; */
+}
