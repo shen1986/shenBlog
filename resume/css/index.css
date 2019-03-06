@@ -3,23 +3,88 @@
  * @Author: shenxf
  * @Date: 2019-02-28 20:34:31
  */
- /* 头部公共样式 */
-.headerImg {
-    position: fixed;
-    z-index: 1001;
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    left:50px;
-    top: 5px;
-    border-radius: 50%;
 
-    animation: myheader 2s linear infinite;
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Heiti SC","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
 }
 
-.headerImg img{
+div {
+    display: block;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+@media screen and (max-width: 600px) {
+    #fp-nav {
+        display: none;
+    }
+}
+
+ /* 头部公共样式 */
+.header {
+    top: 0;
+    height: 60px;
+    z-index: 200;
+}
+
+.footer, .header {
+    right: 0;
+    left: 0;
+    position: absolute;
+}
+
+.header .header-head {
     width: 100%;
-    height: 100%;
+    height: 60px;
+    position: absolute;
+    z-index: -1;
+}
+
+@media screen and (max-width: 600px) {
+    .header .header-head .header-c {
+        top: 50px;
+    }    
+}
+
+.header .header-head .header-c {
+    padding: 0 3%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.header .header-head .logo {
+    float: left;
+    height: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.header .header-head .logo-c {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url(../images/header.jpeg) center center no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+    /* 旋转动画 */
+    animation: myheader 2s linear infinite;
 }
 
 @keyframes myheader {
@@ -41,11 +106,9 @@
     }
 }
 
-
-
 /* 第一屏式样 */
 .content {
-    background: pink;
+    /* background: pink; */
     position: absolute;
     left: 0;
     right: 0;
@@ -62,3 +125,57 @@
     /* transition: box-shadow .5s linear;
     -webkit-transition: box-shadow .5s linear; */
 }
+
+.des .quote {
+    font-size: 22px;
+    position: relative;
+    padding: 20px 0;
+}
+
+@media screen and (max-width: 600px) {
+    .des .quote {
+        font-size: 16px;
+    }
+}
+
+.default .des {
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
+    color: #FFF;
+}
+
+.default .des .quote:after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 0;
+    height: 1px;
+    background-color: rgba(255,255,255,.6);
+}
+
+.default .des .des-list {
+    padding-top: 20px;
+    line-height: 20px;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 600px) {
+    .default .des .des-list {
+        padding: 0;
+        line-height: 16px;
+        font-size: 14px;
+    }
+}
+
+.default .des-list p {
+    margin: 24px 0;
+}
+
+@media screen and (max-width: 600px) {
+    .default .des-list p {
+        margin: 20px 0;
+    }
+}
+
