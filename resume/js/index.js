@@ -11,12 +11,18 @@ $(function () {
     /*4.监听进入某一屏的时候 回调*/
     $('.container').fullpage({
         /*配置参数*/
-        sectionsColor: ["#86afa4", "#84a2d4", "#ef674d", "#ffeedd", "#d04759", "#84d9ed"],
+        sectionsColor: ["#86afa4", "#109085", "#ef674d", "#ffeedd", "#d04759", "#84d9ed"],
         verticalCentered: false,
         navigation: true,
         afterLoad:function (link,index) {
             /*index 序号 1开始  当前屏的序号*/
             $('.section').eq(index-1).addClass('now');
+
+            if (index == 6) {
+                $('.arrow').hide();
+            } else {
+                $('.arrow').show();
+            }
         },
         onLeave:function(index, nextIndex, direction) {
 

@@ -26,6 +26,41 @@ p {
     }
 }
 
+.arrow {
+    position: absolute;
+    bottom: 20px;
+    width: 20px;
+    height: 35px;
+    left: 50%;
+    z-index: 100;
+    background: url(../images/arrow.svg) bottom center no-repeat;
+    background-size: contain;
+    pointer-events: none;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-animation: arrowAnimate 1.5s ease-in-out infinite;
+    animation: arrowAnimate 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowAnimate {
+    0% {
+        bottom: 10px;
+        opacity: .8;
+    }
+    50% {
+        bottom: 20px;
+        opacity: 1;
+    }
+    80% {
+        bottom: 22px;
+        opacity: .4;
+    }
+    100% {
+        bottom: 22px;
+        opacity: 0;
+    }
+}
+
  /* 头部公共样式 */
 .header {
     top: 0;
@@ -180,3 +215,39 @@ p {
 }
 
 /* 第二屏式样 */
+.contact, .default, .experience, .info, .skill, .work {
+    height: 100%;
+}
+
+.title {
+    position: absolute;
+    top: 150px;
+    left: 20%;
+    right: 20%;
+    text-align: center;
+    font-size: 24px;
+    color: #FFF;
+}
+
+@media screen and (max-width: 1366px) {
+    .title {
+        top: 70px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .title {
+        display: none;
+    }
+}
+
+.info .info-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    font-size: 18px;
+}
