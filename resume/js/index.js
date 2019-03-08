@@ -11,7 +11,7 @@ $(function () {
     /*4.监听进入某一屏的时候 回调*/
     $('.container').fullpage({
         /*配置参数*/
-        sectionsColor: ["#86afa4", "#109085", "#ef674d", "#ffeedd", "#d04759", "#84d9ed"],
+        sectionsColor: ["#86afa4", "#109085", "#4d5e8f", "#ffeedd", "#d04759", "#84d9ed"],
         verticalCentered: false,
         navigation: true,
         afterLoad:function (link,index) {
