@@ -232,6 +232,55 @@ a {
     }    
 }
 
+.header .header-c .language {
+    float: right;
+    height: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.header .language .language-c {
+    border-radius: 25px;
+    background-color: rgba(0,0,0,.1);
+    position: relative;
+}
+
+.header .language .language-c:after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0,0,0,.75);
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    border-radius: 50%;
+    z-index: -1;
+    -webkit-transition: -webkit-transform .3s ease;
+    transition: -webkit-transform .3s ease;
+    transition: transform .3s ease;
+    transition: transform .3s ease,-webkit-transform .3s ease;
+}
+
+.header .language-c span {
+    color: rgba(0,0,0,.3);
+    width: 30px;
+    display: inline-block;
+    line-height: 30px;
+    text-align: center;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease;
+}
+
+.header .language-c .selected {
+    color: #FFF;
+}
+
 /* 第一屏式样 */
 .content {
     /* background: pink; */
