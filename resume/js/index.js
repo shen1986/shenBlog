@@ -33,4 +33,17 @@ $(function () {
         /*页面切换的时间 默认是700*/
         scrollingSpeed:1000
     });
+
+    // 经历选择
+    $('.cut-list .item').on('click',function(){
+        // 导航按钮变色
+        console.log($(this).index());
+        $(this).addClass('selected').siblings().removeClass('selected');
+    });
+
+    // 经历版 立体效果
+    $('.experience .banner').on('mousemove', function(){
+        // "transform: rotateY(0deg) rotateX(0deg);"
+
+    });
 });
