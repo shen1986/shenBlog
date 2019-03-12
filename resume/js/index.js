@@ -9,9 +9,9 @@ $(function () {
         // 首页
         home: {
             photo: '/resume/images/header.jpeg',
-            quote: '生活是一种绵延不绝的渴望，渴望不断上升，变得更伟大而高贵。',
+            quote: '生活是一种绵延不绝的渴望，渴望不断上升，变得更伟大而高贵。.....',
             desList: [
-                '我叫小沈',
+                '我叫小小沈',
                 '一名前端研发工程师',
                 'shenxf1986@qq.com'
             ]
@@ -19,7 +19,7 @@ $(function () {
         // 关于我
         info: {
             infoList: [
-                {key: '年龄', value: '32岁'},
+                {key: '年龄', value: '33岁'},
                 {key: '学历', value: '本科'},
                 {key: '坐标', value: '上海'},
                 {key: '状态', value: '在职'}
@@ -33,8 +33,58 @@ $(function () {
         },
         // 技能栈
         skill: {
-            outCircle: ['gulp','angular','webpack','less','git','nodejs','cordova','react'],
-            innerCircle: ['es6','vue','ng2','fp'],
+            outCircle: [
+                {
+                    name: 'gulp',
+                    bg: 'background-color:rgba(121,100,102,0.8)'
+                },
+                {
+                    name: 'angular',
+                    bg: 'background-color:rgba(49,65,82,0.8)'
+                },
+                {
+                    name: 'webpack',
+                    bg: 'background-color:rgba(76,157,160,0.8)'
+                },
+                {
+                    name: 'less',
+                    bg: 'background-color:rgba(66,66,66,0.8)'
+                },
+                {
+                    name: 'gitt',
+                    bg: 'background-color:rgba(193,131,106,0.8)'
+                },
+                {
+                    name: 'nodejs',
+                    bg: 'background-color:rgba(117,148,179,0.8)'
+                },
+                {
+                    name: 'cordova',
+                    bg: 'background-color:rgba(71,83,94,0.8)'
+                },
+                {
+                    name: 'react',
+                    bg: 'background-color:rgba(147,147,189,0.8)'
+                }
+            ],
+            innerCircle: [
+                {
+                    name: 'es6',
+                    bg: 'background-color:rgba(179,164,140,0.8)'
+                },
+                {
+                    name: 'vue',
+                    bg: 'background-color:rgba(171,209,220,0.8)'
+                },
+                {
+                    name: 'ng2',
+                    bg: 'background-color:rgba(238,215,163,0.8)'
+                },
+                {
+                    name: 'fp',
+                    bg: 'background-color:rgba(207,184,178,0.8)'
+                }
+            ],
             des: [
                 '熟练使用angular,vue,react及各种类库的指令封装',
                 '常驻PC/APP/微信三平台前端研发',
@@ -43,9 +93,10 @@ $(function () {
             ]
         },
         // 经历
-        experience: [
+        experience: {
+            experienceList:[
             {
-                contentLeft: 'img/e_seo.svg',
+                contentLeft: 'images/e_js.svg',
                 contentRight: {
                     title: '壹零陆文化传播有限责任公司',
                     time: '2014年3月~2014年8月',
@@ -60,7 +111,7 @@ $(function () {
                 }
             },
             {
-                contentLeft: 'img/e_seo.svg',
+                contentLeft: 'images/e_js.svg',
                 contentRight: {
                     title: '壹零陆文化传播有限责任公司',
                     time: '2014年3月~2014年8月',
@@ -75,7 +126,7 @@ $(function () {
                 }
             },
             {
-                contentLeft: 'img/e_seo.svg',
+                contentLeft: 'images/e_js.svg',
                 contentRight: {
                     title: '壹零陆文化传播有限责任公司',
                     time: '2014年3月~2014年8月',
@@ -88,8 +139,9 @@ $(function () {
                         '同期工作之余开始系统性的自学web前端各项技术'
                     ]
                 }
-            }
-        ],
+            }],
+            expDes: '2014年初，放弃网络工程师职位，开始前端自学生涯。'
+        },
         // 作品集
         work: {
             workList: [
@@ -127,18 +179,20 @@ $(function () {
                 '带上我吧，一起看到更大的世界'
             ],
             contactType: [
-                { img: 'img/s_github.svg', link: 'https://github.com/shen1986'},
-                { img: 'img/s_sf.svg', link: ''},
-                { img: 'img/s_blog.svg', link: ''},
-                { img: 'img/s_zh.svg', link: ''},
-                { img: 'img/s_wb.svg', link: ''}
+                { img: 'images/s_github.svg', link: 'https://github.com/shen1986'},
+                { img: 'images/s_sf.svg', link: ''},
+                { img: 'images/s_blog.svg', link: ''},
+                { img: 'images/s_zh.svg', link: ''},
+                { img: 'images/s_wb.svg', link: ''}
             ]
         },
         // 页尾
-        footer: [
+        footer: {
+            footerList: [
             'All Rights Reserved',
-            '蜀ICP备xxxxxx号 Copyright © 2019'
-        ]
+            '沪ICP备17052291号-1 Copyright © 2019'
+            ]
+        }
     }
 
     /*初始化fullpage组件*/
@@ -189,6 +243,30 @@ $(function () {
         /*页面切换的时间 默认是700*/
         scrollingSpeed:1000
     });
+
+    // 初始化
+    var init = function() {
+        // 首页
+        // 头像
+        $('.photo').css('background-image','url(' + resumeDate.home.photo + ')');
+        $('.quote').html(resumeDate.home.quote);
+        $('.des-list').html(template('deslist',resumeDate.home));
+        // 关于我
+        $('.info .content').html(template('info',resumeDate.info));
+        // 技能栈
+        $('.skill .contain').html(template('skill',resumeDate.skill));
+        // 经历
+        $('.experience .content').html(template('experience',resumeDate.experience));
+        // 作品集
+        $('.work .content').html(template('work',resumeDate.work));
+        // 联系我
+        $('.contact .content').html(template('contact',resumeDate.contact));
+        // 页尾
+        $('.footer').html(template('footer', resumeDate.footer));
+    };
+
+    // 初期化
+    init();
 
     // 经历选择
     $('.cut-list .item').on('click',function(){
@@ -247,10 +325,4 @@ $(function () {
         }
     });
 
-    // 初始化
-    var init = function() {
-
-    };
-
-    init();
 });

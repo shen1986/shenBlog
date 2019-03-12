@@ -282,9 +282,129 @@
     </div>
     <div class="arrow" style="display: block;"></div>
 
+
+    <script type="text/template" id="deslist">
+        <% for( var i = 0 ; i < desList.length ; i++ ){ %>
+        <p><%=desList[i]%></p>
+        <% } %>
+    </script>
+    <script type="text/template" id="info">
+        <div>
+            <ul class="info-list">
+                <% for( var i = 0 ; i < infoList.length ; i++ ){ %>
+                <li class="info-item">
+                    <div class="cont">
+                        <div class="img">
+                            <img alt="" src="images/i_age.svg">
+                        </div>
+                        <div class="intro">
+                            <span><%=infoList[i].key%></span>/<span><%=infoList[i].value%></span>
+                        </div>
+                    </div>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="info-des" >
+            <% for( var i = 0 ; i < infoDes.length ; i++ ){ %>
+            <p><%=infoDes[i]%></p>
+            <% } %>
+        </div>
+    </script>
+    <script type="text/template" id="skill">
+        <div class="skill-circle">
+            <ul class="outCircle">
+                <% for( var i = 0 ; i < outCircle.length ; i++ ){ %>
+                <li class="out" style="<%=outCircle[i].bg%>"><%=outCircle[i].name%></li> 
+                <% } %>
+            </ul>
+            <ul class="innerCircle">
+                <% for( var i = 0 ; i < innerCircle.length ; i++ ){ %>
+                <li class="inner" style="<%=innerCircle[i].bg%>"><%=innerCircle[i].name%></li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="des">
+            <% for( var i = 0 ; i < des.length ; i++ ){ %>
+            <p><%=des[i]%></p>
+            <% } %>
+        </div>
+    </script>
+    <script type="text/template" id="experience">
+        <div class="banner">
+            <div class="experience-content">
+                <div class="left">
+                    <div class="img" style="background-image: url(<%=experienceList[0].contentLeft%>)"></div>
+                </div>
+                <div class="right">
+                    <h4><%=experienceList[0].contentRight.title%></h4>
+                    <p class="time"><%=experienceList[0].contentRight.time%></p>
+                    <p class="post">&lt;<span><%=experienceList[0].contentRight.post%></span>&gt;</p>
+                    <p class="tech">"<span><%=experienceList[0].contentRight.tech%></span>"</p>
+                    <ul class="list">
+                        <% for( var i = 0 ; i < experienceList[0].contentRight.list.length ; i++ ){ %>
+                        <li class="item"><%=experienceList[0].contentRight.list[i]%></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="shout-cut">
+            <ul class="cut-list" switch-exp="">
+                <% for( var i = 0 ; i < experienceList.length ; i++ ){ %>
+                    <li class="item <%=i==0?'selected':''%>" data-index="<%=i%>"></li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="exp-des"><%=expDes%></div>
+    </script>
+    <script type="text/template" id="work">
+        <ul class="work-list">
+            <% for( var i = 0 ; i < workList.length ; i++ ){ %>
+            <li class="work-item">
+                <h4 class="work-title"><%=workList[i].workTitle%></h4>
+                <p class="work-des"><%=workList[i].workDes%></p>
+                <a class="work-link" href="<%=workList[i].workLink%>"><img src="images/w_link.svg" alt=""></a>
+            </li>
+            <% } %>
+        </ul>
+        <div class="work-more">
+            <a href="<%=workMoreGit%>" target="_blank">github上面查看更多</a>
+        </div>
+        <div class="work-switch" switch-work="">
+            <i class="left"></i>
+            <i class="right"></i>
+        </div>
+    </script>
+    <script type="text/template" id="contact">
+        <div class="contact-des1">
+            <% for( var i = 0 ; i < contactDes1.length ; i++ ){ %>
+            <span><%=contactDes1[i]%></span>
+            <% } %>
+        </div>
+        <div class="contact-des2">
+            <% for( var i = 0 ; i < contactDes2.length ; i++ ){ %>
+            <p><%=contactDes2[i]%></p>
+            <% } %>
+        </div>
+        <div class="contact-type">
+            <% for( var i = 0 ; i < contactType.length ; i++ ){ %>
+            <a class="item" target="_blank" href="<%=contactType[i].link%>">
+                <img alt="" src="<%=contactType[i].img%>">
+            </a>
+            <% } %>
+        </div>
+    </script>
+    <script type="text/template" id="footer">
+        <% for( var i = 0 ; i < footerList.length ; i++ ){ %>
+        <p><%=footerList[i]%></p>
+        <% } %>
+    </script>
     <!-- js导入 -->
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.fullpage.js"></script>
+    <!-- art-template -->
+    <script src="js/template-native.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
