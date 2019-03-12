@@ -98,8 +98,8 @@ $(function () {
             {
                 contentLeft: 'images/e_js.svg',
                 contentRight: {
-                    title: '壹零陆文化传播有限责任公司',
-                    time: '2014年3月~2014年8月',
+                    title: '上海冈三华大计算机系统有限公司',
+                    time: '2008年9月~2014年8月',
                     post: 'SEO',
                     tech: 'SEO,SEM,百度（360，搜狗）竞价、推广等',
                     list: [
@@ -109,59 +109,61 @@ $(function () {
                         '同期工作之余开始系统性的自学web前端各项技术'
                     ]
                 }
-            },
-            {
-                contentLeft: 'images/e_js.svg',
-                contentRight: {
-                    title: '壹零陆文化传播有限责任公司',
-                    time: '2014年3月~2014年8月',
-                    post: 'SEO',
-                    tech: 'SEO,SEM,百度（360，搜狗）竞价、推广等',
-                    list: [
-                        '负责网站后台维护，微博、微信等新媒体营销和推广',
-                        '负责百度PPC后台调整',
-                        '获得最佳新人奖',
-                        '同期工作之余开始系统性的自学web前端各项技术'
-                    ]
-                }
-            },
-            {
-                contentLeft: 'images/e_js.svg',
-                contentRight: {
-                    title: '壹零陆文化传播有限责任公司',
-                    time: '2014年3月~2014年8月',
-                    post: 'SEO',
-                    tech: 'SEO,SEM,百度（360，搜狗）竞价、推广等',
-                    list: [
-                        '负责网站后台维护，微博、微信等新媒体营销和推广',
-                        '负责百度PPC后台调整',
-                        '获得最佳新人奖',
-                        '同期工作之余开始系统性的自学web前端各项技术'
-                    ]
-                }
-            }],
-            expDes: '2014年初，放弃网络工程师职位，开始前端自学生涯。'
+            }
+            // ,
+            // {
+            //     contentLeft: 'images/e_js.svg',
+            //     contentRight: {
+            //         title: '壹零陆文化传播有限责任公司2',
+            //         time: '2014年3月~2014年8月',
+            //         post: 'SEO',
+            //         tech: 'SEO,SEM,百度（360，搜狗）竞价、推广等',
+            //         list: [
+            //             '负责网站后台维护，微博、微信等新媒体营销和推广',
+            //             '负责百度PPC后台调整',
+            //             '获得最佳新人奖',
+            //             '同期工作之余开始系统性的自学web前端各项技术'
+            //         ]
+            //     }
+            // },
+            // {
+            //     contentLeft: 'images/e_js.svg',
+            //     contentRight: {
+            //         title: '壹零陆文化传播有限责任公司3',
+            //         time: '2014年3月~2014年8月',
+            //         post: 'SEO',
+            //         tech: 'SEO,SEM,百度（360，搜狗）竞价、推广等',
+            //         list: [
+            //             '负责网站后台维护，微博、微信等新媒体营销和推广',
+            //             '负责百度PPC后台调整',
+            //             '获得最佳新人奖',
+            //             '同期工作之余开始系统性的自学web前端各项技术'
+            //         ]
+            //     }
+            // }
+            ],
+            expDes: '2016年底，放弃网络工程师职位，开始前端自学生涯。'
         },
         // 作品集
         work: {
             workList: [
                 {
-                    workTitle: 'web前端工程师简历（2015年版）',
+                    workTitle: 'web前端工程师简历（2015年版）1',
                     workDes:'本简历初版，上线一个月后，百度关键词“web前端工程师简历”排名前三，点击量数百万，深受广大前端初学者的好评及模仿，至今搜该关键词百度前10页都处处能见该简历的仿版。',
                     workLink: 'http://www.baidu.com'
                 },
                 {
-                    workTitle: 'web前端工程师简历（2015年版）',
+                    workTitle: 'web前端工程师简历（2015年版）2',
                     workDes:'本简历初版，上线一个月后，百度关键词“web前端工程师简历”排名前三，点击量数百万，深受广大前端初学者的好评及模仿，至今搜该关键词百度前10页都处处能见该简历的仿版。',
                     workLink: 'http://www.baidu.com'
                 },
                 {
-                    workTitle: 'web前端工程师简历（2015年版）',
+                    workTitle: 'web前端工程师简历（2015年版）3',
                     workDes:'本简历初版，上线一个月后，百度关键词“web前端工程师简历”排名前三，点击量数百万，深受广大前端初学者的好评及模仿，至今搜该关键词百度前10页都处处能见该简历的仿版。',
                     workLink: 'http://www.baidu.com'
                 },
                 {
-                    workTitle: 'web前端工程师简历（2015年版）',
+                    workTitle: 'web前端工程师简历（2015年版）4',
                     workDes:'本简历初版，上线一个月后，百度关键词“web前端工程师简历”排名前三，点击量数百万，深受广大前端初学者的好评及模仿，至今搜该关键词百度前10页都处处能见该简历的仿版。',
                     workLink: 'http://www.baidu.com'
                 },
@@ -271,8 +273,11 @@ $(function () {
     // 经历选择
     $('.cut-list .item').on('click',function(){
         // 导航按钮变色
-        console.log($(this).index());
-        $('.experience .experience-content').fadeOut(200).fadeIn(200);
+        var expContent = $('.experience .experience-content');
+        var that = this;
+        expContent.fadeOut(200,function(){
+            expContent.html(template('experienceContent',resumeDate.experience.experienceList[$(that).index()]));
+        }).fadeIn(200);
         $(this).addClass('selected').siblings().removeClass('selected');
     });
 
