@@ -30,6 +30,7 @@
 .site-logo>h2 {
     font-size: 38px;
     color: #fff;
+    line-height: 1.5;
 }
 
 @media (max-width: 767px) {
