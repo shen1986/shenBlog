@@ -81,6 +81,8 @@
 - 制作前台页面和后台静态页面
 	+ 先做了一个自我介绍的模板html,用了art-template模板引擎。
 		* [resume](https://github.com/shen1986/resume)
+	+ 又做了一个服务端渲染的个人介绍,用了EJS模板引擎。
+		* [resume-nodejs](https://github.com/shen1986/resume-nodejs)
 
 ## 补充说明
 
