@@ -69,6 +69,26 @@ button, input, select, textarea {
     float: left;
 }
 
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after, .clearfix:before {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.clearfix:after {
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+}
+
 /* ant control */
 .ant-input-affix-wrapper {
     position: relative;
