@@ -1,3 +1,8 @@
+/**
+ * @Description: 基本css
+ * @Author: shenxf
+ * @Date: 2019-03-18 20:59:08
+ */
 html {
     line-height: 1.15;
     -ms-text-size-adjust: 100%;
@@ -179,9 +184,9 @@ input[type=text], textarea {
       url('../icoFonts/icomoon.svg?sia086#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
-  }
+}
   
-  [class^="icon-"], [class*=" icon-"] {
+[class^="icon-"], [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'icomoon' !important;
     speak: none;
@@ -190,12 +195,20 @@ input[type=text], textarea {
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-  
+
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
+}
   
-  .icon-github:before {
+.icon-github:before {
     content: "\eab0";
-  }
+}
+
+.col-sm-5 {
+    display: block;
+}
+
+img {
+    vertical-align: baseline;
+}
