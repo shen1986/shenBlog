@@ -1,0 +1,427 @@
+<!--
+ * @Description: 首页
+ * @Author: shenxf
+ * @Date: 2019-03-15 14:31:24
+ -->
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="UTF-8">
+    <title>Shenxf的个人博客</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link href="/favicon.ico" type="image/x-icon" rel="shortcut icon">
+	<meta name="keywords" content="Shenxf的个人博客">
+	<meta name="description" content="Shenxf的个人博客">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Cache-Control" content="no-transform"> 
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+<body>
+	<div id="react-root">
+        <div data-reactroot="">
+            <div class="nav-top-wrap">
+                <div class="container">
+                    <div class="site-logo">
+                        <h2>
+                            <span>Shen</span><span>xf</span>
+                        </h2>
+                        <p>我想去天堂，但我不想死</p>
+                    </div>
+                    <div class="navbar-collapse">
+                        <div class="col-xs-24 hidden-sm">
+                            <div class="navbar-collapse-button navbar-toggle collapsed">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </div>
+                            <div class="navbar-collapse-body" style="height: 0px;">
+                                <div class="hidden-sm"><div>
+                                    <p class="navbar-item"><a data-key="home" href="/home">主页</a></p>
+                                    <p class="navbar-item"><a data-key="article" href="/article">文章</a></p>
+                                    <p class="navbar-item"><a data-key="timeline" href="/timeline">归档</a></p>
+                                    <p class="navbar-item"><a data-key="gather" href="/gather">点滴</a></p>
+                                    <p class="navbar-item"><a data-key="gossip" href="/gossip">慢生活</a></p>
+                                    <div style="padding: 10px;">
+                                        <span class="ant-input-search ant-input-affix-wrapper">
+                                            <input type="text" placeholder="Search" value="" class="ant-input ant-input-lg">
+                                            <span class="ant-input-suffix">
+                                                <i class="anticon anticon-search ant-input-search-icon"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="hidden-xs col-sm-24">
+                    <div class="nav-top">
+                        <div class="container">
+                            <ul>
+                                <li class="nav-top-item">
+                                    <a data-key="home" href="/home">主页</a>
+                                </li>
+                                <li class="nav-top-item">
+                                    <a data-key="article" href="/article">文章</a>
+                                </li>
+                                <li class="nav-top-item">
+                                    <a data-key="timeline" href="/timeline">归档</a>
+                                </li>
+                                <li class="nav-top-item">
+                                    <a data-key="gather" href="/gather">点滴</a>
+                                </li>
+                                <li class="nav-top-item">
+                                    <a data-key="gossip" href="/gossip">慢生活</a>
+                                </li>
+                                <div class="nav-top-search">
+                                    <span class="ant-input-search ant-input-affix-wrapper">
+                                        <input type="text" placeholder="Search" value="" class="ant-input ant-input-lg">
+                                        <span class="ant-input-suffix">
+                                            <i class="ant-input-search-icon glyphicon glyphicon-search"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="bread-crumb">
+                <span class="fl">当前位置 : &nbsp; &nbsp;</span>
+                <div class="fl">
+                    <div class="ant-breadcrumb">
+                        <span>
+                            <span class="ant-breadcrumb-link">
+                                <span>首页</span>
+                            </span>
+                            <span class="ant-breadcrumb-separator">/</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container home-banner">
+            <div class="ant-row" style="margin-left: -6px; margin-right: -6px;">
+                <div class="ant-col-sm-24 ant-col-md-15" style="padding-left: 6px; padding-right: 6px;">
+                    <div class="banner-wrap">
+                        <div class="ant-row" style="margin-left: -2.5px; margin-right: -2.5px;">
+                            <div class="ant-col-xs-19 ant-col-sm-19" style="padding-left: 2.5px; padding-right: 2.5px;">
+                                <div class="banner-list clearfix">
+                                    <div class="banner-item" style="opacity: 0;">
+                                        <img src="" alt=""/>
+                                    </div>
+                                    <div class="banner-item" style="opacity: 0;">
+                                        <img src="" alt=""/>
+                                    </div>
+                                    <div class="banner-item" style="opacity: 0;">
+                                        <img src="" alt=""/>
+                                    </div>
+                                    <div class="banner-item" style="opacity: 0;">
+                                        <img src="" alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ant-col-xs-5 ant-col-sm-5" style="padding-left: 2.5px; padding-right: 2.5px;">
+                                <div class="banner-preview">
+                                    <div class="banner-preview-item">
+                                        <img src="" alt="" data-key="0"/>
+                                    </div>
+                                    <div class="banner-preview-item">
+                                        <img src="" alt="" data-key="1"/>
+                                    </div>
+                                    <div class="banner-preview-item">
+                                        <img src="" alt="" data-key="2"/>
+                                    </div>
+                                    <div class="banner-preview-item">
+                                        <img src="" alt="" data-key="3"/>
+                                    </div>
+                                    <div class="banner-preview-arrow" style="top: 50%;">
+                                        <div class="banner-preview-arraw-inner"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-col-xs-0 ant-col-sm-0 ant-col-md-9" style="padding-left: 6px; padding-right: 6px;">
+                    <div class="day-word">
+                        <img src="/image/bord.jpg" alt="">
+                        <p style="top: 14%; right: 19%; font-size: 23px;">每日一语</p>
+                        <p style="right: 10%; top: 32%; width: 75%; font-size: 18px;">毕竟不是作家，写不出那么好的文章 — 因为没有丰富阅历和经验！闲下来时多看看书，书本里的故事总有我要学的人生。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container content-wrap">
+            <div class="ant-row" style="margin-left: -12px; margin-right: -12px;">
+                <div class="ant-col-xs-24 ant-col-sm-18" style="padding-left: 12px; padding-right: 12px;">
+                    <div>
+                        <div>
+                            <div class="list-head-carousel-wrap">
+                                <div class="list-head-carousel-title">
+                                    最新文章
+                                </div>
+                                <div class="list-head-carousel">
+                                    <p><a href="/article-detail/124">用CSS绘制0.5px的线</a></p>
+                                    <p><a href="/article-detail/123">多行文本溢出显示省略号</a></p>
+                                    <p><a href="/article-detail/122">纯CSS实现瀑布流布局</a></p>
+                                    <p><a href="/article-detail/120">纯CSS设置元素高度等于其动态宽度</a></p>
+                                    <p><a href="/article-detail/121">使用pointer-events为网页添加水印背景</a></p>
+                                    <p><a href="/article-detail/118">CSS3实现饼状图倒计时效果</a></p>
+                                    <p><a href="/article-detail/119">svg实现圆环进度条或倒计时效果</a></p>
+                                    <p><a href="/article-detail/117">为什么我要做5份webpack配置文件</a></p>
+                                    <p><a href="/article-detail/116">使用axios封装一个异步请求api</a></p>
+                                    <p><a href="/article-detail/115">如何搭建一个mock server</a></p>
+                                    <p><a href="/article-detail/114">for...in for...of forEach</a></p>
+                                    <p style="opacity: 1;"><a href="/article-detail/104">一道JavaScript面试题</a></p>
+                                    <p><a href="/article-detail/103">Immutable 详解</a></p>
+                                    <p><a href="/article-detail/102">JS中的浅复制与深复制</a></p>
+                                    <p><a href="/article-detail/101">React 16.0新特性</a></p>
+                                </div>
+                            </div>
+                            <div class="article-list">
+                                <div>
+                                    <div class="article-item wow zoomIn animated">
+                                        <div class="article-body">
+                                            <a href="/article-detail/124">
+                                                <h4>用CSS绘制0.5px的线</h4>
+                                            </a>
+                                            <p>
+                                                <span>
+                                                    <!-- react-text: 731 -->post @ <!-- /react-text -->
+                                                    <!-- react-text: 732 -->2018-06-17<!-- /react-text -->
+                                                </span>
+                                                <!-- react-text: 733 -->&nbsp;&nbsp;&nbsp;<!-- /react-text -->
+                                                <span>
+                                                    <!-- react-text: 735 -->category: <!-- /react-text -->
+                                                    <!-- react-text: 736 -->CSS<!-- /react-text -->
+                                                </span>
+                                                <!-- react-text: 737 -->&nbsp;&nbsp;&nbsp;<!-- /react-text -->
+                                                <span>
+                                                    <!-- react-text: 739 -->浏览: <!-- /react-text -->
+                                                    <!-- react-text: 740 -->251<!-- /react-text -->
+                                                </span>
+                                            </p>
+                                            <div class="article-abstract">
+                                                <!-- react-text: 742 -->### 使用渐变<!-- /react-text -->
+                                                <!-- react-text: 743 --> ...<!-- /react-text -->
+                                            </div>
+                                            <span class="article-link">
+                                                <a href="/article-detail/124">阅读全文 &gt;&gt;</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-link">
+                            <a href="/article">查看全部文章</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-col-xs-24 ant-col-sm-6" style="padding-left: 12px; padding-right: 12px;">
+                    <div class="nav-side">
+                        <div class="panel user-introduction">
+                            <img src="/image/portrait_bg.jpg" alt="">
+                            <div class="panel-body"><div class="user-portrait">
+                                <img src="/image/me.jpg" alt="">
+                                <h3>Shexf</h3>
+                                <p>处女座程序员，轻度选择困难症患者，Web领域的手艺人</p>
+                            </div>
+                            <div class="statistics">
+                                <span class="statistic-item">
+                                    <!-- react-text: 118 -->随笔 - <!-- /react-text -->
+                                    <!-- react-text: 163 -->110<!-- /react-text -->
+                                </span>
+                                <span class="spliter"></span>
+                                <span class="statistic-item">
+                                    <!-- react-text: 121 -->访问 - <!-- /react-text -->
+                                    <!-- react-text: 164 -->64.1k<!-- /react-text -->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">FOLLOW ME</div>
+                        <div class="panel-body text-center">
+                            <p class="follow-link">
+                                <a href="https://github.com/shen1986" target="_blank">
+                                    <!-- react-text: 127 --> <!-- /react-text -->
+                                    <i class="anticon anticon-github"></i>
+                                </a>
+                            </p>
+                            <p class="follow-link" style="transform: rotate(180deg);">
+                                <a href="https://github.com/shen1986" target="_blank">
+                                    <i class="anticon anticon-github"></i>
+                                </a>
+                            </p>
+                            <p class="follow-link" style="transform: rotate(90deg);">
+                                <a href="https://github.com/Marco2333" target="_blank">
+                                    <i class="anticon anticon-github"></i>
+                                </a>
+                            </p>
+                            <p class="follow-link" style="transform: rotate(270deg);">
+                                <a href="https://github.com/Marco2333" target="_blank">
+                                    <i class="anticon anticon-github"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="panel"><div class="panel-heading">文章列表</div>
+                    <div class="panel-body">
+                        <ol>
+                            <li><a href="/article-detail/124">用CSS绘制0.5px的线</a></li>
+                            <li><a href="/article-detail/123">多行文本溢出显示省略号</a></li>
+                            <li><a href="/article-detail/122">纯CSS实现瀑布流布局</a></li>
+                            <li><a href="/article-detail/121">使用pointer-events为网页添加水印背景</a></li>
+                            <li><a href="/article-detail/120">纯CSS设置元素高度等于其动态宽度</a></li>
+                            <li><a href="/article-detail/118">CSS3实现饼状图倒计时效果</a></li>
+                            <li><a href="/article-detail/119">svg实现圆环进度条或倒计时效果</a></li>
+                            <li><a href="/article-detail/117">为什么我要做5份webpack配置文件</a></li>
+                            <li><a href="/article-detail/116">使用axios封装一个异步请求api</a></li>
+                            <li><a href="/article-detail/115">如何搭建一个mock server</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading">文章分类</div>
+                    <div class="panel-body">
+                        <ul>
+                            <li><a href="/category/1">Html</a></li>
+                            <li><a href="/category/2">CSS</a></li>
+                            <li><a href="/category/4">JavaScript</a></li>
+                            <li><a href="/category/7">React</a></li>
+                            <li><a href="/category/8">数据库</a></li>
+                            <li><a href="/category/9">web综合</a></li>
+                            <li><a href="/category/11">web性能优化</a></li>
+                            <li><a href="/category/12">笔试</a></li>
+                            <li><a href="/category/13">面试</a></li>
+                            <li><a href="/category/14">Canvas</a></li>
+                            <li><a href="/category/15">ECMAScript</a></li>
+                            <li><a href="/category/16">nodejs</a></li>
+                            <li><a href="/category/19">设计模式</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading">云标签</div>
+                    <div class="panel-body">
+                        <div class="icloud-wrap">
+                            <a href="/tag/pointer-events">
+                                <span class="icloud-item" style="background-color: rgb(255, 85, 0);">pointer-events</span>
+                            </a>
+                            <a href="/tag/vw">
+                                <span class="icloud-item" style="background-color: rgb(248, 167, 42);">vw</span>
+                            </a>
+                            <a href="/tag/Immutable">
+                                <span class="icloud-item" style="background-color: rgb(135, 208, 104);">Immutable</span>
+                            </a>
+                            <a href="/tag/vh">
+                                <span class="icloud-item" style="background-color: rgb(16, 142, 233);">vh</span>
+                            </a>
+                            <a href="/tag/for...of">
+                                <span class="icloud-item" style="background-color: rgb(107, 97, 240);">for...of</span>
+                            </a>
+                            <a href="/tag/svg">
+                                <span class="icloud-item" style="background-color: rgb(255, 85, 0);">svg</span>
+                            </a>
+                            <a href="/tag/for...in">
+                                <span class="icloud-item" style="background-color: rgb(248, 167, 42);">for...in</span>
+                            </a>
+                            <a href="/tag/溢出">
+                                <span class="icloud-item" style="background-color: rgb(135, 208, 104);">溢出</span>
+                            </a>
+                            <a href="/tag/forEach">
+                                <span class="icloud-item" style="background-color: rgb(16, 142, 233);">forEach</span>
+                            </a>
+                            <a href="/tag/水印">
+                                <span class="icloud-item" style="background-color: rgb(107, 97, 240);">水印</span>
+                            </a>
+                            <a href="/tag/webpack">
+                                <span class="icloud-item" style="background-color: rgb(255, 85, 0);">webpack</span>
+                            </a>
+                            <a href="/tag/mock">
+                                <span class="icloud-item" style="background-color: rgb(248, 167, 42);">mock</span>
+                            </a>
+                            <a href="/tag/padding">
+                                <span class="icloud-item" style="background-color: rgb(135, 208, 104);">padding</span>
+                            </a>
+                            <a href="/tag/面试">
+                                <span class="icloud-item" style="background-color: rgb(16, 142, 233);">面试</span>
+                            </a>
+                            <a href="/tag/深复制">
+                                <span class="icloud-item" style="background-color: rgb(107, 97, 240);">深复制</span>
+                            </a>
+                            <a href="/tag/0.5px">
+                                <span class="icloud-item" style="background-color: rgb(255, 85, 0);">0.5px</span>
+                            </a>
+                            <a href="/tag/浅复制">
+                                <span class="icloud-item" style="background-color: rgb(248, 167, 42);">浅复制</span>
+                            </a>
+                            <a href="/tag/axios">
+                                <span class="icloud-item" style="background-color: rgb(135, 208, 104);">axios</span>
+                            </a>
+                            <a href="/tag/柯里化">
+                                <span class="icloud-item" style="background-color: rgb(16, 142, 233);">柯里化</span>
+                            </a>
+                            <a href="/tag/react">
+                                <span class="icloud-item" style="background-color: rgb(107, 97, 240);">react</span>
+                            </a>
+                            <a href="/tag/饼状图">
+                                <span class="icloud-item" style="background-color: rgb(255, 85, 0);">饼状图</span>
+                            </a>
+                            <a href="/tag/省略号">
+                                <span class="icloud-item" style="background-color: rgb(248, 167, 42);">省略号</span>
+                            </a>
+                            <a href="/tag/瀑布流">
+                                <span class="icloud-item" style="background-color: rgb(135, 208, 104);">瀑布流</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading">友情链接</div>
+                    <div class="panel-body">
+                        <ul>
+                            <li><a href="http://cnzhujie.cn" target="_blank">大肚子朱总的个人博客</a></li>
+                            <li><a href="http://www.suda.edu.cn" target="_blank">苏州大学官网</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>
+                <a href="http://112.74.36.170:8081/index.php">旧主页</a>
+            </p>
+            <p>
+                <span>Marco © 2016-2017 All rights reserved</span>
+            </p>
+        </footer>
+        <div class="ant-back-top">
+            <div class="ant-back-top-content">
+                <i class="anticon anticon-to-top ant-back-top-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
