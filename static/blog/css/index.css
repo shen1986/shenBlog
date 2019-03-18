@@ -276,6 +276,14 @@
     transition: opacity 1s ease-in;
 }
 
+.list-head-carousel-title {
+    display: inline-block;
+    height: 36px;
+    margin: 0 15px 0 25px;
+    line-height: 36px;
+    vertical-align: top;
+}
+
 /* 列表明细 */
 .article-item {
     margin-bottom: 18px;
@@ -284,6 +292,10 @@
     background-color: #fff;
     box-shadow: 0 0 5px #aaa;
     transition: box-shadow .3s ease-in;
+}
+
+.article-item:hover {
+    box-shadow: 0 0 15px #333;
 }
 
 .zoomIn {
@@ -302,6 +314,12 @@
     font-size: 17px;
 }
 
+.article-body>p {
+    margin: 8px 0;
+    color: #999;
+    font-size: 13px;
+}
+
 .article-abstract {
     color: #333;
     font-size: 14px;
@@ -318,3 +336,122 @@
     font-weight: 700;
 }
 
+/* 查看全部文章 */
+.block-link {
+    background-color: #fff;
+    box-shadow: 0 0 5px #a8a8a8;
+    transition: box-shadow .3s ease-in;
+}
+
+.block-link>a {
+    display: inline-block;
+    width: 100%;
+    padding: 8px;
+    font-size: 12px;
+    text-align: center;
+    transition: font-weight .3s ease-in;
+}
+
+.block-link>a:hover {
+    font-weight: 700;
+}
+
+/* 右边边栏 */
+.nav-side {
+    font-size: 12px;
+}
+
+.nav-side>.panel {
+    margin-bottom: 25px;
+    box-shadow: 0 0 6px #aaa;
+}
+
+.user-introduction {
+    text-align: center;
+}
+
+.user-introduction>img {
+    width: 100%;
+    min-width: 90%;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.user-portrait {
+    color: #333;
+    font-size: 14px;
+}
+
+.user-portrait>img {
+    width: 110px;
+    height: 110px;
+    margin-top: -80px;
+    border-radius: 100%;
+    transition: transform .8s ease-in-out;
+}
+
+.user-portrait>h3 {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.user-portrait>p {
+    padding: 5px 15px;
+}
+
+.user-introduction .statistics {
+    color: #333;
+    font-size: 14px;
+}
+
+.user-introduction .statistic-item {
+    display: inline-block;
+    margin: 3px 9px 1px;
+}
+
+.user-introduction .spliter {
+    border-left: 1px solid #aaa;
+}
+
+.user-introduction .statistic-item {
+    display: inline-block;
+    margin: 3px 9px 1px;
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    color: #333;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.follow-link {
+    display: inline-block;
+    width: 41px;
+    height: 41px;
+    margin: 6px;
+    line-height: 39px;
+    text-align: center;
+    font-size: 26px;
+    background-color: #fff;
+    border: 1px solid rgba(60,60,60,.1);
+    transition: background-color .3s ease-in;
+}
+
+.follow-link:hover {
+    background-color: #333;
+}
+
+.follow-link>a {
+    color: #333;
+}
+.follow-link:hover>a {
+    color: #fff;
+}

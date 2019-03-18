@@ -168,3 +168,34 @@ input[type=text], textarea {
 .ant-breadcrumb>span:last-child .ant-breadcrumb-separator {
     display: none;
 }
+
+/* icomoon */
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../icoFonts/icomoon.eot?sia086');
+    src:  url('../icoFonts/icomoon.eot?sia086#iefix') format('embedded-opentype'),
+      url('../icoFonts/icomoon.ttf?sia086') format('truetype'),
+      url('../icoFonts/icomoon.woff?sia086') format('woff'),
+      url('../icoFonts/icomoon.svg?sia086#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-github:before {
+    content: "\eab0";
+  }
