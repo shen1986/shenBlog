@@ -1,3 +1,8 @@
+/**
+ * @Description: 首页样式
+ * @Author: shenxf
+ * @Date: 2019-03-18 20:59:08
+ */
 /* nav-top */
 .nav-top-wrap {
     position: relative;
@@ -25,6 +30,7 @@
 .site-logo>h2 {
     font-size: 38px;
     color: #fff;
+    line-height: 1.5;
 }
 
 @media (max-width: 767px) {
@@ -392,6 +398,10 @@
     transition: transform .8s ease-in-out;
 }
 
+.user-portrait>img:hover {
+    transform: rotate(1turn);
+}
+
 .user-portrait>h3 {
     font-size: 21px;
     font-weight: 700;
@@ -428,10 +438,6 @@
     border-bottom: 1px solid #ddd;
 }
 
-.panel-body {
-    padding: 15px;
-}
-
 .follow-link {
     display: inline-block;
     width: 41px;
@@ -455,4 +461,42 @@
 
 .follow-link:hover>a {
     color: #fff;
+}
+
+.nav-side ol>li {
+    list-style: decimal inside;
+}
+
+.nav-side li {
+    color: #108ee9;
+    line-height: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nav-side ul>li {
+    list-style: square inside;
+}
+
+.icloud-wrap {
+    padding: 5px;
+}
+
+.icloud-item {
+    display: inline-block;
+    padding: 4px 7px;
+    margin: 3px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* 页脚 */
+.footer {
+    margin-top: 26px;
+    padding: 12px 32px;
+    border-top: 1px solid #ddd;
+    color: #888;
+    font-size: 14px;
+    text-align: center;
 }
