@@ -452,6 +452,7 @@
 .follow-link>a {
     color: #333;
 }
+
 .follow-link:hover>a {
     color: #fff;
 }
