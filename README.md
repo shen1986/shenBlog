@@ -77,10 +77,12 @@
 				+ 说说添加
 			- 系统管理
 	+ 前端的模板引擎用EJS，入门门槛较低。
+	+ 代码风格和规约制定[MaintainableJavaScript](https://github.com/shen1986/MaintainableJavaScript)
 	+ 基础工程创建。	（预计5月底6月初开始）
 - 制作前台页面和后台静态页面
 	+ 先做了一个自我介绍的模板html,用了art-template模板引擎。
 		* [resume](https://github.com/shen1986/resume)
+		* 发现一个动态较牛的简历，参照着做了下，稍后会做成公用模板[动态个人介绍](http://www.shenxf.com:3000/vue/)
 	+ 又做了一个服务端渲染的个人介绍,用了EJS模板引擎。
 		* [resume-nodejs](https://github.com/shen1986/resume-nodejs)
 
