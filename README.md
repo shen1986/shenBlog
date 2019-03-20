@@ -18,8 +18,13 @@
 
 - 后端技术：Node.js
 	+ 模板引擎： EJS
+	+ Web 开发框架： express
 - 前端技术：Vue，less, html
-	+ webpack
+	+ 包管理工具: webpack
+	+ 蚂蚁: Ant-Design
+	+ 图标字体库: icomoon 
+	+ 开源工具包：bootstrap
+		* 原来的栅格是12，改了源代码把栅格改成24重新编译
 - 服务：Apache2
 - 部署：Docker
 - 数据持久化：MySql
@@ -47,8 +52,7 @@
 	+ 原型图制作工具了解。	
 		* [Axure工具下载](http://www.woshipm.com/it/319902.html)
 		* [墨刀](https://modao.cc/) 它里面有很多都是现成的组件，直接布局拖动就好了
-		* 由于上述的学习需要一些时间，偏离主题，暂时只用用一些简单的工具来制作草图。不过多浪费时间在这上面。
-			等有时间了再来学习。
+		* 由于上述的学习需要一些时间，偏离主题，暂时只用用一些简单的工具来制作草图。不过多浪费时间在这上面。等有时间了再来学习。
 	+ 制定基础要件，明确要做哪些范围。	
 		* 前台
 			- 首页（logo）
@@ -83,8 +87,9 @@
 	+ 先做了一个自我介绍的模板html,用了art-template模板引擎。
 		* [resume](https://github.com/shen1986/resume)
 		* 发现一个动态较牛的简历，参照着做了下，稍后会做成公用模板[动态个人介绍](http://www.shenxf.com:3000/vue/)
-	+ 又做了一个服务端渲染的个人介绍,用了EJS模板引擎。
+	+ 又做了一个服务端渲染（有利于SEO）的个人介绍,用了EJS模板引擎。(没有使用express，比较简单的实现)
 		* [resume-nodejs](https://github.com/shen1986/resume-nodejs)
+	+ 静态博客画面正在制作中。
 
 ## 补充说明
 

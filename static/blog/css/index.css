@@ -500,3 +500,17 @@
     font-size: 14px;
     text-align: center;
 }
+
+/* 动画 */
+/* 网页打开时的动画 */
+@keyframes I {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3,.3,.3);
+        transform: scale3d(.3,.3,.3);
+    }
+    
+    50% {
+        opacity: 1;
+    }
+}
