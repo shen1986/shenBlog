@@ -1,0 +1,24 @@
+<!--
+ * @Description: main
+ * @Author: shenxf
+ * @Date: 2019-03-25 21:15:51
+ -->
+{{include './head.art'}}
+<body>
+    <div>
+    <!-- 头部标签 -->
+    {{include './header.art'}}
+
+    <!-- 表示内容 -->
+    {{block 'content'}}{{/block}}
+    </div>
+
+    <!-- 底部标签 -->
+    {{include './footer.art'}}
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

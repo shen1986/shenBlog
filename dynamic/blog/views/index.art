@@ -1,0 +1,10 @@
+<!--
+ * @Description: index
+ * @Author: shenxf
+ * @Date: 2019-03-25 21:02:09
+ -->
+<% extend('../common/layout/main.art') %>
+{{block 'title'}}首页{{/block}}
+<% block('content', function(){ %>
+
+<% }) %>
