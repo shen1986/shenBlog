@@ -11,7 +11,7 @@ var app = express();
 app.engine('art', require('express-art-template'));
 
 // 配置静态路由
-app.use('/', express.static('./public/'))
+app.use(express.static('./public/'))
 
 app.get('/', function (req, res) {
     res.render('index.art', {
