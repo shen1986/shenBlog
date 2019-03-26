@@ -1,16 +1,30 @@
 <!--
- * @Description: main
+ * @Description: 主页面样式
  * @Author: shenxf
  * @Date: 2019-03-25 21:15:51
  -->
 {{include './head.art'}}
 <body>
     <div>
-    <!-- 头部标签 -->
-    {{include './header.art'}}
+        <!-- 头部标签 -->
+        {{include './header.art'}}
 
-    <!-- 表示内容 -->
-    {{block 'content'}}{{/block}}
+        <!-- 走马灯标签 -->
+        {{if common.hasBanner}}
+            {{include './banner.art'}}
+        {{/if}}
+
+        <!-- 主体内容 -->
+        <div class="container content-wrap">
+            <div class="ant-row row" style="margin-left: -12px; margin-right: -12px;">
+                <div class="col-xs-24 col-sm-18" style="padding-left: 12px; padding-right: 12px;">
+                    <!-- 表示内容 -->
+                    {{block 'content'}}{{/block}}
+                </div>
+                <!-- 右边栏 -->
+                {{include './rightSider.art'}}
+            </div>
+        </div>
     </div>
 
     <!-- 底部标签 -->

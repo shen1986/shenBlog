@@ -3,9 +3,9 @@
  * @Author: shenxf
  * @Date: 2019-03-25 21:02:09
  -->
-<% extend('../common/layout/main.art') %>
-{{block 'title'}}首页{{/block}}
-<% block('content', function(){ %>
+ <% extend('../common/layout/main.art') %>
+ {{block 'title'}}归档{{/block}}
+ <% block('content', function(){ %>
 <div class="list-head-carousel-wrap">
     <div class="list-head-carousel-title">
         最新文章
@@ -75,4 +75,4 @@
 <div class="block-link">
     <a href="/article">查看全部文章</a>
 </div>
-<% }) %>
+ <% }) %>
