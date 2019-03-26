@@ -46,6 +46,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 */node_modules
+*/node_modules/
 */.vscode
 *.chunk.js
 chunk/
