@@ -17,7 +17,7 @@
 ## 用到的技术：	//TODO
 
 - 后端技术：Node.js
-	+ 模板引擎： EJS
+	+ 模板引擎： art-template
 	+ Web 开发框架： express
 - 前端技术：Vue，less, html
 	+ 包管理工具: webpack
