@@ -514,3 +514,7 @@
         opacity: 1;
     }
 }
+
+.pagination {
+    float: right;
+}

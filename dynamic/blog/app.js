@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
         common: {
             hasBanner: true,
         },
-        user: {
+        index: {
             name: 'aui',
             tags: ['art', 'template', 'nodejs']
         }
@@ -30,7 +30,19 @@ app.get('/article', function (req, res) {
         common: {
             hasBanner: false,
         },
-        user: {
+        article: {
+            name: 'aui',
+            tags: ['art', 'template', 'nodejs']
+        }
+    });
+});
+
+app.get('/timeline', function (req, res) {
+    res.render('timeline.art', {
+        common: {
+            hasBanner: false,
+        },
+        timeline: {
             name: 'aui',
             tags: ['art', 'template', 'nodejs']
         }
