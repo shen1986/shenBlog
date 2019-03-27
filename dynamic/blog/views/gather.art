@@ -8,7 +8,7 @@
 <% block('content', function(){ %>
 <div class="note-list">
     <div class="ant-row" style="margin-left: -12px; margin-right: -12px;">
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">使用srcset实现响应式图片</p>
                 <p>2018-06-18</p>
@@ -17,7 +17,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 926 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">HTTP访问控制（CORS）</p>
                 <p>2018-06-14</p>
@@ -25,7 +25,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 933 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">flex-basis值为auto和0之间的区别</p>
                 <p>2018-06-13</p>
@@ -36,7 +36,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 940 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">移动端高清、多屏适配方案</p>
                 <p>2018-06-13</p>
@@ -44,7 +44,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 947 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">Grid网格布局</p>
                 <p>2018-06-02</p>
@@ -52,7 +52,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 954 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">Request Payload与FormData</p>
                 <p>2018-05-26</p>
@@ -62,7 +62,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 961 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">React组件状态</p>
                 <p>2018-05-21</p>
@@ -72,7 +72,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 968 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">MongoDB转储数据</p>
                 <p>2018-02-08</p>
@@ -80,7 +80,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 975 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">Live2D</p>
                 <p>2017-12-25</p>
@@ -88,7 +88,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 982 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">Runtime、Engine、VM的区别</p>
                 <p>2017-11-30</p>
@@ -97,7 +97,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 989 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">MonoDB设置缓存</p>
                 <p>2017-11-22</p>
@@ -106,7 +106,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 996 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">朴素贝叶斯理论理论推导与三种常见模型</p>
                 <p>2017-11-12</p>
@@ -114,7 +114,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1003 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">安装numpy+scipy+matlotlib+scikit-learn及问题解决</p>
                 <p>2017-09-26</p>
@@ -122,7 +122,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1010 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">Neo4j 教程</p>
                 <p>2017-09-26</p>
@@ -133,7 +133,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1017 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">python import 问题</p>
                 <p>2017-09-26</p>
@@ -141,7 +141,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1024 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">CSS 模块化</p>
                 <p>2017-09-26</p>
@@ -149,7 +149,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1031 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">React服务端渲染</p>
                 <p>2017-09-26</p>
@@ -157,7 +157,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1038 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">React 教程</p>
                 <p>2017-09-26</p>
@@ -165,7 +165,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1045 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">Chrome 控制台不完全指南</p>
                 <p>2017-09-14</p>
@@ -173,7 +173,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1052 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">浏览器内核历史</p>
                 <p>2017-09-10</p>
@@ -181,7 +181,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1059 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">2017校招前端面试合集</p>
                 <p>2017-07-21</p>
@@ -189,7 +189,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1066 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">VSCode拓展插件推荐</p>
                 <p>2017-06-20</p>
@@ -197,7 +197,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1073 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">ES2015 实战</p>
                 <p>2017-06-06</p>
@@ -205,7 +205,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1080 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">浏览器内部工作原理</p>
                 <p>2017-05-16</p>
@@ -213,7 +213,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1087 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">深入浅出Nodejs</p>
                 <p>2017-04-08</p>
@@ -221,7 +221,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1094 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">移动端尺寸基础知识</p>
                 <p>2017-02-16</p>
@@ -229,7 +229,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1101 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">移动端点击事件的延迟</p>
                 <p>2017-02-16</p>
@@ -237,7 +237,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1108 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title"> JavaSript模块规范 - AMD与CMD</p>
                 <p>2017-01-19</p>
@@ -245,7 +245,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1115 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInDownLeft">
                 <p class="note-title">前端面试题详解</p>
                 <p>2016-12-07</p>
@@ -253,7 +253,7 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1122 -->
             </div>
         </div>
-        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+        <div class="col-sm-12" style="padding-left: 12px; padding-right: 12px;">
             <div class="note-wrap wow animated rotateInUpRight">
                 <p class="note-title">CSS 优化提高性能的方法</p>
                 <p>2016-11-02</p>
@@ -261,6 +261,10 @@
                 <p class="note-author">Marco</p><!-- react-empty: 1129 -->
             </div>
         </div>
+    </div>
+    <div class="page">
+        <ul class="pagination">
+        </ul>
     </div>
 </div>
 <% }) %>

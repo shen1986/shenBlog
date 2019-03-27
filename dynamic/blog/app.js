@@ -25,6 +25,18 @@ app.get('/', function (req, res) {
     });
 });
 
+app.get('/home', function (req, res) {
+    res.render('index.art', {
+        common: {
+            banner: true,
+        },
+        index: {
+            name: 'aui',
+            tags: ['art', 'template', 'nodejs']
+        }
+    });
+});
+
 app.get('/article', function (req, res) {
     res.render('article.art', {
         common: {

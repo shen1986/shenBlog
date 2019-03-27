@@ -110,6 +110,6 @@
 }
 
 /* 翻页 */
-.pagination {
-    float: right;
+.page {
+    text-align: right;
 }

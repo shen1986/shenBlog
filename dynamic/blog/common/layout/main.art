@@ -42,6 +42,10 @@
     <script src="js/article.js"></script>
     {{else if timeline}}
     <script src="js/timeline.js"></script>
+    {{else if gather}}
+    <script src="js/gather.js"></script>
+    {{else if gossip}}
+    <script src="js/gossip.js"></script>
     {{/if}}
 </body>
 

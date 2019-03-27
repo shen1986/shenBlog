@@ -38,6 +38,10 @@
     <link rel="stylesheet" href="css/article.css">
     {{else if timeline}}
     <link rel="stylesheet" href="css/timeline.css">
+    {{else if gather}}
+    <link rel="stylesheet" href="css/gather.css">
+    {{else if gossip}}
+    <link rel="stylesheet" href="css/gossip.css">
     {{/if}}
 
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
