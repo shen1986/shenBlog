@@ -6,73 +6,346 @@
  <% extend('../common/layout/main.art') %>
  {{block 'title'}}慢生活{{/block}}
  <% block('content', function(){ %>
-<div class="list-head-carousel-wrap">
-    <div class="list-head-carousel-title">
-        最新文章
-    </div>
-    <div class="list-head-carousel">
-        <p><a href="/article-detail/124">用CSS绘制0.5px的线</a></p>
-        <p><a href="/article-detail/123">多行文本溢出显示省略号</a></p>
-        <p><a href="/article-detail/122">纯CSS实现瀑布流布局</a></p>
-        <p><a href="/article-detail/120">纯CSS设置元素高度等于其动态宽度</a></p>
-        <p><a href="/article-detail/121">使用pointer-events为网页添加水印背景</a></p>
-        <p><a href="/article-detail/118">CSS3实现饼状图倒计时效果</a></p>
-        <p><a href="/article-detail/119">svg实现圆环进度条或倒计时效果</a></p>
-        <p><a href="/article-detail/117">为什么我要做5份webpack配置文件</a></p>
-        <p><a href="/article-detail/116">使用axios封装一个异步请求api</a></p>
-        <p><a href="/article-detail/115">如何搭建一个mock server</a></p>
-        <p><a href="/article-detail/114">for...in for...of forEach</a></p>
-        <p style="opacity: 1;"><a href="/article-detail/104">一道JavaScript面试题</a></p>
-        <p><a href="/article-detail/103">Immutable 详解</a></p>
-        <p><a href="/article-detail/102">JS中的浅复制与深复制</a></p>
-        <p><a href="/article-detail/101">React 16.0新特性</a></p>
-    </div>
-</div>
-<div class="article-list">
-    <div>
-        <div class="article-item wow zoomIn animated">
-            <div class="article-body">
-                <a href="/article-detail/124">
-                    <h4>用CSS绘制0.5px的线</h4>
-                </a>
-                <p>
-                    <span>
-                        <!-- react-text: 731 -->post @ <!-- /react-text -->
-                        <!-- react-text: 732 -->2018-06-17<!-- /react-text -->
-                    </span>
-                    <!-- react-text: 733 -->&nbsp;&nbsp;&nbsp;<!-- /react-text -->
-                    <span>
-                        <!-- react-text: 735 -->category: <!-- /react-text -->
-                        <!-- react-text: 736 -->CSS<!-- /react-text -->
-                    </span>
-                    <!-- react-text: 737 -->&nbsp;&nbsp;&nbsp;<!-- /react-text -->
-                    <span>
-                        <!-- react-text: 739 -->浏览: <!-- /react-text -->
-                        <!-- react-text: 740 -->251<!-- /react-text -->
-                    </span>
-                </p>
-                <div class="article-abstract"><!-- react-text: 310 -->### 使用渐变
-                    ```html
-                    
-                    ```
-                    ```css
-                    div {
-                        width: 400px;
-                        height: 200px;
-                        margin-top: 100px;
-                        margin-left: 100px;
-                    }
-                    .line {
-                        <!-- /react-text --><!-- react-text: 311 --> ...<!-- /react-text -->
+<div class="gossip-wrap">
+    <div class="gossip-body">
+        <ul class="ant-timeline">
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>德军永远无法在莫斯科获得胜利！共产主义的幽灵依然盘踞在红场上空！！！
+
+这是来自前苏联的诅咒…</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1582 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1583 -->2018-06-18 09:32:31
+                            <!-- /react-text -->
+                            <!-- react-text: 1584 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
                 </div>
-                <span class="article-link">
-                    <a href="/article-detail/124">阅读全文 &gt;&gt;</a>
-                </span>
-            </div>
-        </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>亲戚是你一生下来就为你选好的，
+同学是你选择的学校为你选好的，
+室友是你分配的宿舍为你选好的，
+同事是你投奔的公司为你选好的，
+甚至有时候，你的伴侣都是父母为你选好的。
+只有网友，是你自己主动选择的朋友。
+珍惜网友。。。</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1593 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1594 -->2018-02-17 16:56:19
+                            <!-- /react-text -->
+                            <!-- react-text: 1595 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="ant-row" style="margin-left: -6px; margin-right: -6px;">
+                            <div class="ant-col-xs-24 ant-col-sm-9" style="padding-left: 6px; padding-right: 6px;">
+                                <div class="gossip-img"><img src="images/gossip/9c593a3a9a9332006666dea454f2d8f8"
+                                        alt=""></div>
+                            </div>
+                            <div class="ant-col-xs-24 ant-col-sm-15" style="padding-left: 6px; padding-right: 6px;">
+                                <div class="gossip-detail">
+                                    <pre>狗年没有情人节
+今年情人节在鸡年
+明年的情人节在猪年
+
+狗年对单身狗最起码的尊重</pre>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1609 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1610 -->2018-02-17 16:52:23
+                            <!-- /react-text -->
+                            <!-- react-text: 1611 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>今日高光时刻：罗伯森两罚不中抢到篮板造犯规，继续两罚不中...</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1620 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1621 -->2018-01-21 11:05:28
+                            <!-- /react-text -->
+                            <!-- react-text: 1622 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>Code is read far more than it’s written!!!</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1631 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1632 -->2017-12-26 23:14:12
+                            <!-- /react-text -->
+                            <!-- react-text: 1633 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>明天圣诞大战！！！期待。。。</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1642 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1643 -->2017-12-24 16:17:09
+                            <!-- /react-text -->
+                            <!-- react-text: 1644 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>如果没有篮球，我岂不是要无聊死！！！</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1653 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1654 -->2017-12-16 00:35:18
+                            <!-- /react-text -->
+                            <!-- react-text: 1655 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>你刺在等你的伦纳德，我凯在等我的海沃德。。。</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1664 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1665 -->2017-12-10 14:36:08
+                            <!-- /react-text -->
+                            <!-- react-text: 1666 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>常见的web攻击方式有 XSS、DDOS、注入攻击以及恋情公布。。。</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1675 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1676 -->2017-10-10 17:51:29
+                            <!-- /react-text -->
+                            <!-- react-text: 1677 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>2018NBA洛杉矶全明星：
+詹姆斯：浓眉。
+库里：杜兰特。
+詹姆斯：ummm，哈登。
+库里：追梦。
+詹姆斯：考辛斯。
+库里:克莱。
+詹姆斯：what are you 弄啥咧？
+库里：选人呗 。
+詹姆斯：emmmmmm威少。
+库里：好的，尼克杨。
+詹姆斯：。。。</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1686 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1687 -->2017-10-04 17:55:21
+                            <!-- /react-text -->
+                            <!-- react-text: 1688 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>IT部门怒怼法务部门，最终取得胜利，再次证明了开源社区的自净和生态恢复能力。。。  
+Apache、WordPress、百度：日了 狗了。。。</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1697 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1698 -->2017-09-23 18:06:43
+                            <!-- /react-text -->
+                            <!-- react-text: 1699 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>新赛季揭幕战骑士vs凯尔特人：欧文运球过了半场，习惯性把球交给了詹姆斯，小托马斯猫在老詹身后一把把球掏走，炮弹般传给了中锋霍福德，霍福德高举右臂手不停球地把球塞给了顺下的克劳德。。。</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1708 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1709 -->2017-08-23 15:39:20
+                            <!-- /react-text -->
+                            <!-- react-text: 1710 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>当代华文奇幻小说一般有三种开头：
+1.谢邀
+2.坐标北美，颜值8分
+3.我的朋友小A就是一个这样的姑娘
+
+结尾一般是这四种：
+1.以上
+2.侵删
+3.求翻牌
+4.望厚码</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1719 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1720 -->2017-08-16 13:04:02
+                            <!-- /react-text -->
+                            <!-- react-text: 1721 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>舒适的日子过惯了，稍微努力一点，感觉就像拼命似的。。。</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1730 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1731 -->2017-08-10 09:10:49
+                            <!-- /react-text -->
+                            <!-- react-text: 1732 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="ant-timeline-item ant-timeline-item-last">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        <div class="gossip-detail">
+                            <pre>程序员的三大难题：命名、缓存、去哪吃。。。</pre>
+                        </div>
+                        <p class="gossip-author">
+                            <!-- react-text: 1741 -->posted@
+                            <!-- /react-text -->
+                            <!-- react-text: 1742 -->2017-08-08 16:28:01
+                            <!-- /react-text -->
+                            <!-- react-text: 1743 -->
+                            <!-- /react-text -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
-</div>
-<div class="block-link">
-    <a href="/article">查看全部文章</a>
+    <div class="pagination">
+        <ul class="ant-pagination " unselectable="unselectable">
+            <li title="上一页" tabindex="0" class="ant-pagination-disabled ant-pagination-prev" aria-disabled="true"><a
+                    class="ant-pagination-item-link"></a></li>
+            <li title="1" class="ant-pagination-item ant-pagination-item-1 ant-pagination-item-active" tabindex="0">
+                <a>1</a></li>
+            <li title="下一页" tabindex="0" class="ant-pagination-disabled ant-pagination-next" aria-disabled="true"><a
+                    class="ant-pagination-item-link"></a></li><!-- react-empty: 1752 -->
+        </ul>
+    </div>
 </div>
  <% }) %>

@@ -16,7 +16,7 @@ app.use(express.static('./public/'))
 app.get('/', function (req, res) {
     res.render('index.art', {
         common: {
-            hasBanner: true,
+            banner: true,
         },
         index: {
             name: 'aui',
@@ -43,6 +43,30 @@ app.get('/timeline', function (req, res) {
             hasBanner: false,
         },
         timeline: {
+            name: 'aui',
+            tags: ['art', 'template', 'nodejs']
+        }
+    });
+});
+
+app.get('/gather', function (req, res) {
+    res.render('gather.art', {
+        common: {
+            hasBanner: false,
+        },
+        gather: {
+            name: 'aui',
+            tags: ['art', 'template', 'nodejs']
+        }
+    });
+});
+
+app.get('/gossip', function (req, res) {
+    res.render('gossip.art', {
+        common: {
+            hasBanner: false,
+        },
+        gossip: {
             name: 'aui',
             tags: ['art', 'template', 'nodejs']
         }

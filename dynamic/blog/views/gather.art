@@ -6,51 +6,261 @@
 <% extend('../common/layout/main.art') %>
 {{block 'title'}}点滴{{/block}}
 <% block('content', function(){ %>
-<div class="article-list">
-    <div>
-        <div class="article-item wow zoomIn animated">
-            <div class="article-body">
-                <a href="/article-detail/124">
-                    <h4>用CSS绘制0.5px的线</h4>
-                </a>
-                <p>
-                    <span>
-                        <!-- react-text: 731 -->post @ <!-- /react-text -->
-                        <!-- react-text: 732 -->2018-06-17<!-- /react-text -->
-                    </span>
-                    <!-- react-text: 733 -->&nbsp;&nbsp;&nbsp;<!-- /react-text -->
-                    <span>
-                        <!-- react-text: 735 -->category: <!-- /react-text -->
-                        <!-- react-text: 736 -->CSS<!-- /react-text -->
-                    </span>
-                    <!-- react-text: 737 -->&nbsp;&nbsp;&nbsp;<!-- /react-text -->
-                    <span>
-                        <!-- react-text: 739 -->浏览: <!-- /react-text -->
-                        <!-- react-text: 740 -->251<!-- /react-text -->
-                    </span>
-                </p>
-                <div class="article-abstract"><!-- react-text: 310 -->### 使用渐变
-                    ```html
-                    
-                    ```
-                    ```css
-                    div {
-                        width: 400px;
-                        height: 200px;
-                        margin-top: 100px;
-                        margin-left: 100px;
-                    }
-                    .line {
-                        <!-- /react-text --><!-- react-text: 311 --> ...<!-- /react-text -->
+<div class="note-list">
+    <div class="ant-row" style="margin-left: -12px; margin-right: -12px;">
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">使用srcset实现响应式图片</p>
+                <p>2018-06-18</p>
+                <div class="note-abstract">1. 使用srcset实现响应式图片2. 使用srcset + sizes + w标识符实现响应式图片3.
+                    如果没有对应图像大小的图片，则会加载稍大的图片4. srcset属性允许根据不同分辨率或视窗尺寸设置不同分辨率的图像</div>
+                <p class="note-author">Marco</p><!-- react-empty: 926 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">HTTP访问控制（CORS）</p>
+                <p>2018-06-14</p>
+                <div class="note-abstract">HTTP访问控制（CORS）</div>
+                <p class="note-author">Marco</p><!-- react-empty: 933 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">flex-basis值为auto和0之间的区别</p>
+                <p>2018-06-13</p>
+                <div class="note-abstract">"0" and "auto" flex-basis will be different in most if not all situations:
+                    numeric values are interpreted as specific widths, so zero would be the same as specifying "width:
+                    0" (and thus will collapse the element to its smallest possible width given the content, or to zero
+                    itself if its overflow is hidden.)</div>
+                <p class="note-author">Marco</p><!-- react-empty: 940 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">移动端高清、多屏适配方案</p>
+                <p>2018-06-13</p>
+                <div class="note-abstract">移动端高清、多屏适配方案</div>
+                <p class="note-author">Marco</p><!-- react-empty: 947 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">Grid网格布局</p>
+                <p>2018-06-02</p>
+                <div class="note-abstract">Grid网格布局: http://www.css88.com/archives/8506</div>
+                <p class="note-author">Marco</p><!-- react-empty: 954 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">Request Payload与FormData</p>
+                <p>2018-05-26</p>
+                <div class="note-abstract">FormData 和 Payload 是浏览器发送POST请求传输数据的两种格式，浏览器通过 Content-Type
+                    来进行区分这两种格式。如果Content-Type为 application/x-www-form-urlencoded，则以formdata方式传输数据；如果Content-Type为
+                    application/json 或 multipart/form-data，则以 request payload 方式传输数据。</div>
+                <p class="note-author">Marco</p><!-- react-empty: 961 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">React组件状态</p>
+                <p>2018-05-21</p>
+                <div class="note-abstract">
+                    在不使用redux等状态管理工具时，若组件状态受兄弟组件状态影响，则该组件的状态应该提升至父组件维护，自身通过接受父组件的props来确定如何渲染；如果组件状态不受外部组件影响，则状态由组件自身维护。
                 </div>
-                <span class="article-link">
-                    <a href="/article-detail/124">阅读全文 &gt;&gt;</a>
-                </span>
+                <p class="note-author">Marco</p><!-- react-empty: 968 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">MongoDB转储数据</p>
+                <p>2018-02-08</p>
+                <div class="note-abstract">.\mongodump.exe -d twitter -c typical -u user -p passoword</div>
+                <p class="note-author">Marco</p><!-- react-empty: 975 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">Live2D</p>
+                <p>2017-12-25</p>
+                <div class="note-abstract">https://imjad.cnhttps://tucao.moe/https://haremu.com/p/205</div>
+                <p class="note-author">Marco</p><!-- react-empty: 982 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">Runtime、Engine、VM的区别</p>
+                <p>2017-11-30</p>
+                <div class="note-abstract">
+                    Runtime指用于支持程序运行时的组件，它可以是Engine和/或VM；Engine时一种处理抽象，它负责将代码变为底层可执行代码；VM时一种系统抽象，它提供代码执行所需要的API环境；</div>
+                <p class="note-author">Marco</p><!-- react-empty: 989 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">MonoDB设置缓存</p>
+                <p>2017-11-22</p>
+                <div class="note-abstract">mongod.exe --auth --logpath="C:/data/log/log.txt" --wiredTigerCacheSizeGB 1.5
+                </div>
+                <p class="note-author">Marco</p><!-- react-empty: 996 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">朴素贝叶斯理论理论推导与三种常见模型</p>
+                <p>2017-11-12</p>
+                <div class="note-abstract">朴素贝叶斯理论理论推导与三种常见模型</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1003 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">安装numpy+scipy+matlotlib+scikit-learn及问题解决</p>
+                <p>2017-09-26</p>
+                <div class="note-abstract">安装numpy+scipy+matlotlib+scikit-learn及问题解决</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1010 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">Neo4j 教程</p>
+                <p>2017-09-26</p>
+                <div class="note-abstract">py2neo教程:官网: http://py2neo.org/v3/database.html简易教程:
+                    http://www.jianshu.com/p/a2497a33390f源代码:
+                    http://py2neo.org/v3/_modules/py2neo/database.htmlneo4j教程:https://www.w3cschool.cn/neo4j/neo4j_cql_where_clause.htmlCypher教程:http://www.rm5u.com/neo4j/neo-cypher-18.html关系查询:http://www.zhimengzhe.com/shujuku/other/168933.html关系导入:load
+                    csv with headers from "file:///nflMixed.csv" as linecreate(:school{name:line.College})</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1017 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">python import 问题</p>
+                <p>2017-09-26</p>
+                <div class="note-abstract">import问题总结Relative import 相对路径 ValueErrorPython相对、绝对导入浅析</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1024 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">CSS 模块化</p>
+                <p>2017-09-26</p>
+                <div class="note-abstract">CSS Modules 详解CSS模块化（面向对象）和组件化webpack中关于样式的处理</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1031 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">React服务端渲染</p>
+                <p>2017-09-26</p>
+                <div class="note-abstract">从零开始React服务器渲染教你搭建一个完美的服务端渲染开发环境</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1038 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">React 教程</p>
+                <p>2017-09-26</p>
+                <div class="note-abstract">组件的详细说明和生命周期React/JSX 编码规范</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1045 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">Chrome 控制台不完全指南</p>
+                <p>2017-09-14</p>
+                <div class="note-abstract">Chrome 控制台不完全指南</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1052 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">浏览器内核历史</p>
+                <p>2017-09-10</p>
+                <div class="note-abstract">浏览器内核历史</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1059 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">2017校招前端面试合集</p>
+                <p>2017-07-21</p>
+                <div class="note-abstract">2017校招前端面试合集</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1066 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">VSCode拓展插件推荐</p>
+                <p>2017-06-20</p>
+                <div class="note-abstract">VSCode拓展插件推荐</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1073 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">ES2015 实战</p>
+                <p>2017-06-06</p>
+                <div class="note-abstract">ES2015 实战</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1080 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">浏览器内部工作原理</p>
+                <p>2017-05-16</p>
+                <div class="note-abstract">浏览器内部工作原理</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1087 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">深入浅出Nodejs</p>
+                <p>2017-04-08</p>
+                <div class="note-abstract">深入浅出Nodejs</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1094 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">移动端尺寸基础知识</p>
+                <p>2017-02-16</p>
+                <div class="note-abstract">移动端尺寸基础知识</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1101 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">移动端点击事件的延迟</p>
+                <p>2017-02-16</p>
+                <div class="note-abstract">移动端点击事件的延迟</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1108 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title"> JavaSript模块规范 - AMD与CMD</p>
+                <p>2017-01-19</p>
+                <div class="note-abstract">JavaSript模块规范 - AMD与CMD</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1115 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInDownLeft">
+                <p class="note-title">前端面试题详解</p>
+                <p>2016-12-07</p>
+                <div class="note-abstract">前端面试题详解</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1122 -->
+            </div>
+        </div>
+        <div class="ant-col-sm-12" style="padding-left: 12px; padding-right: 12px;">
+            <div class="note-wrap wow animated rotateInUpRight">
+                <p class="note-title">CSS 优化提高性能的方法</p>
+                <p>2016-11-02</p>
+                <div class="note-abstract">CSS 优化提高性能的方法</div>
+                <p class="note-author">Marco</p><!-- react-empty: 1129 -->
             </div>
         </div>
     </div>
-</div>
-<div class="block-link">
-    <a href="/article">查看全部文章</a>
 </div>
 <% }) %>

@@ -7,27 +7,23 @@
 {{block 'title'}}归档{{/block}}
 <% block('content', function(){ %>
 <div class="timeline-wrap">
-    <div class="timeline-select">
-        <div class="ant-select ant-select-enabled" style="width: 200px;">
-            <div class="ant-select-selection
-                        ant-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true"
-                aria-expanded="false" tabindex="0">
-                <div class="ant-select-selection__rendered">
-                    <div class="ant-select-selection-selected-value" title="全部" style="display: block; opacity: 1;">全部
-                    </div>
-                </div>
-                <span class="ant-select-arrow" unselectable="unselectable" style="user-select: none;">
-                    <b></b>
-                </span>
-            </div>
-        </div>
+    <div class="dropdown">
+        <button id="dLabel" type="button" data-toggle="dropdown">
+            Dropdown trigger
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
     </div>
     <div class="timeline-body">
         <ul class="ant-timeline">
             <li class="ant-timeline-item">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue">
-                    <i class="anticon anticon-clock-circle-o" style="font-size: 16px;"></i>
+                    <i class="glyphicon glyphicon-time" style="font-size: 16px;"></i>
                 </div>
                 <div class="ant-timeline-item-content">
                     <p class="timeline-time wow zoomIn animated">2018-06</p>
@@ -63,7 +59,7 @@
             <li class="ant-timeline-item">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue">
-                    <i class="anticon anticon-clock-circle-o" style="font-size: 16px;"></i>
+                    <i class="glyphicon glyphicon-time" style="font-size: 16px;"></i>
                 </div>
                 <div class="ant-timeline-item-content">
                     <p class="timeline-time wow zoomIn animated">2018-05</p>
@@ -127,7 +123,7 @@
             <li class="ant-timeline-item">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue"><i
-                        class="anticon anticon-clock-circle-o" style="font-size: 16px;"></i></div>
+                        class="glyphicon glyphicon-time" style="font-size: 16px;"></i></div>
                 <div class="ant-timeline-item-content">
                     <p class="timeline-time wow zoomIn animated">2018-01</p>
                 </div>
@@ -142,7 +138,7 @@
             <li class="ant-timeline-item">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue"><i
-                        class="anticon anticon-clock-circle-o" style="font-size: 16px;"></i></div>
+                        class="glyphicon glyphicon-time" style="font-size: 16px;"></i></div>
                 <div class="ant-timeline-item-content">
                     <p class="timeline-time wow zoomIn animated">2017-12</p>
                 </div>
@@ -185,7 +181,7 @@
             <li class="ant-timeline-item">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue"><i
-                        class="anticon anticon-clock-circle-o" style="font-size: 16px;"></i></div>
+                        class="glyphicon glyphicon-time" style="font-size: 16px;"></i></div>
                 <div class="ant-timeline-item-content">
                     <p class="timeline-time wow zoomIn animated">2017-11</p>
                 </div>
@@ -200,7 +196,7 @@
             <li class="ant-timeline-item">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue"><i
-                        class="anticon anticon-clock-circle-o" style="font-size: 16px;"></i></div>
+                        class="glyphicon glyphicon-time" style="font-size: 16px;"></i></div>
                 <div class="ant-timeline-item-content">
                     <p class="timeline-time wow zoomIn animated">2017-10</p>
                 </div>
@@ -257,7 +253,7 @@
             <li class="ant-timeline-item">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue"><i
-                        class="anticon anticon-clock-circle-o" style="font-size: 16px;"></i></div>
+                        class="glyphicon glyphicon-time" style="font-size: 16px;"></i></div>
                 <div class="ant-timeline-item-content">
                     <p class="timeline-time wow zoomIn animated">2017-07</p>
                 </div>
@@ -272,7 +268,7 @@
             <li class="ant-timeline-item">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue"><i
-                        class="anticon anticon-clock-circle-o" style="font-size: 16px;"></i></div>
+                        class="glyphicon glyphicon-time" style="font-size: 16px;"></i></div>
                 <div class="ant-timeline-item-content">
                     <p class="timeline-time wow zoomIn animated">2017-03</p>
                 </div>

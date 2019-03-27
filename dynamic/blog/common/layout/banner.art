@@ -11,32 +11,32 @@
                     <div class="col-xs-19 col-sm-19" style="padding-left: 2.5px; padding-right: 2.5px;">
                         <div class="banner-list clearfix">
                             <div class="banner-item" style="opacity: 1;">
-                                <img src="images/banner1.jpg" alt=""/>
+                                <img src="images/banner1.jpg" alt="" />
                             </div>
                             <div class="banner-item" style="opacity: 0;">
-                                <img src="images/banner2.jpg" alt=""/>
+                                <img src="images/banner2.jpg" alt="" />
                             </div>
                             <div class="banner-item" style="opacity: 0;">
-                                <img src="images/banner3.jpg" alt=""/>
+                                <img src="images/banner3.jpg" alt="" />
                             </div>
                             <div class="banner-item" style="opacity: 0;">
-                                <img src="images/banner4.jpg" alt=""/>
+                                <img src="images/banner4.jpg" alt="" />
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-5 col-sm-5" style="padding-left: 2.5px; padding-right: 2.5px;">
                         <div class="banner-preview">
                             <div class="banner-preview-item">
-                                <img src="images/banner1.jpg" alt="" data-key="0"/>
+                                <img src="images/banner1.jpg" alt="" data-key="0" />
                             </div>
                             <div class="banner-preview-item">
-                                <img src="images/banner2.jpg" alt="" data-key="1"/>
+                                <img src="images/banner2.jpg" alt="" data-key="1" />
                             </div>
                             <div class="banner-preview-item">
-                                <img src="images/banner3.jpg" alt="" data-key="2"/>
+                                <img src="images/banner3.jpg" alt="" data-key="2" />
                             </div>
                             <div class="banner-preview-item">
-                                <img src="images/banner4.jpg" alt="" data-key="3"/>
+                                <img src="images/banner4.jpg" alt="" data-key="3" />
                             </div>
                             <div class="banner-preview-arrow" style="top: 50%;">
                                 <div class="banner-preview-arraw-inner"></div>
@@ -50,7 +50,8 @@
             <div class="day-word">
                 <img src="images/bord.jpg" alt="">
                 <p style="top: 14%; right: 19%; font-size: 23px;">每日一语</p>
-                <p style="right: 10%; top: 32%; width: 75%; font-size: 18px;">毕竟不是作家，写不出那么好的文章 — 因为没有丰富阅历和经验！闲下来时多看看书，书本里的故事总有我要学的人生。</p>
+                <p style="right: 10%; top: 32%; width: 75%; font-size: 18px;">毕竟不是作家，写不出那么好的文章 —
+                    因为没有丰富阅历和经验！闲下来时多看看书，书本里的故事总有我要学的人生。</p>
             </div>
         </div>
     </div>
