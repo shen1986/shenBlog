@@ -19,6 +19,7 @@
 - 后端技术：Node.js
 	+ 模板引擎： art-template
 	+ Web 开发框架： express
+        * 以后考虑用koa2
 - 前端技术：Vue，less, html
 	+ 包管理工具: webpack
 	+ 蚂蚁: Ant-Design
@@ -27,7 +28,8 @@
 		* 原来的栅格是12，改了源代码把栅格改成24重新编译
 - 服务：Apache2
 - 部署：Docker
-- 数据持久化：MySql
+- 数据持久化：MongoDB
+    + 以后考虑用mysql
 
 ## 实施计划
 
