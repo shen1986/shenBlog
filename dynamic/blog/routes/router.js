@@ -19,6 +19,9 @@ router.get('/home', index.getHome);
 // 文章页
 router.get('/article', article.getArticle);
 
+// 文章页详细
+router.get('/article-detail/:id', article.getArticleDetail);
+
 // 归档
 router.get('/timeline', timeline.getTimeline);
 

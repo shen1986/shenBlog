@@ -16,3 +16,16 @@ exports.getArticle = function (req, res) {
         }
     });
 };
+
+exports.getArticleDetail = function (req, res) {
+    console.log(req.params.id);
+    res.render('article-detail.art', {
+        common: {
+            hasBanner: false,
+        },
+        articleDetail: {
+            name: 'aui',
+            tags: ['art', 'template', 'nodejs']
+        }
+    });
+}

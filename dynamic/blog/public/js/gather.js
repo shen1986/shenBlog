@@ -56,4 +56,15 @@ $(function () {
             }
         })
     }
+
+    $('.wow').on('click', e => {
+
+        // 模态框内容设定
+        $('.modal-title').html('test');
+        $('.modal-body').html('内容');
+
+        // 模态框表示
+        $('#myModal').modal('show');
+    });
+
 });

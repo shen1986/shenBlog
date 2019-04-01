@@ -3,9 +3,17 @@
  * @Author: shenxf
  * @Date: 2019-03-25 21:02:09
  -->
- <% extend('../common/layout/main.art') %>
- {{block 'title'}}慢生活{{/block}}
- <% block('content', function(){ %>
+{{ extend '../common/layout/main.art' }}
+
+<!-- 样式设置 -->
+{{block 'head'}}
+<link rel="stylesheet" href="/css/gossip.css">
+{{/block}}
+
+<!-- 标题设置 -->
+{{block 'title'}}慢生活{{/block}}
+
+{{block 'content'}}
 <div class="gossip-wrap">
     <div class="gossip-body">
         <ul class="ant-timeline">
@@ -342,4 +350,9 @@ Apache、WordPress、百度：日了 狗了。。。</pre>
         </div>
     </div>
 </div>
- <% }) %>
+{{/block}}
+
+<!-- js设置 -->
+{{block 'scripts'}}
+<script src="/js/gossip.js"></script>
+{{/block}}

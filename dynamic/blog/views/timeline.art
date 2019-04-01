@@ -3,9 +3,18 @@
  * @Author: shenxf
  * @Date: 2019-03-25 21:02:09
  -->
-<% extend('../common/layout/main.art') %>
+{{ extend '../common/layout/main.art' }}
+
+<!-- 样式设定 -->
+{{block 'head'}}
+<link rel="stylesheet" href="/css/timeline.css">
+{{/block}}
+
+<!-- 标题设定 -->
 {{block 'title'}}归档{{/block}}
-<% block('content', function(){ %>
+
+<!-- 主体内容 -->
+{{block 'content'}}
 <div class="timeline-wrap">
     <div class="dropdown">
         <button id="dLabel" type="button" data-toggle="dropdown">
@@ -315,4 +324,9 @@
         </ul>
     </div>
 </div>
-<% }) %>
+{{/block}}
+
+<!-- js设置 -->
+{{block 'scripts'}}
+<script src="/js/timeline.js"></script>
+{{/block}}

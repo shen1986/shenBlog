@@ -20,29 +20,19 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- 共同式样 -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/common.css">
 
     <!-- 轮播图式样 -->
     {{if common.banner}}
-    <link rel="stylesheet" href="css/banner.css">
+    <link rel="stylesheet" href="/css/banner.css">
     {{/if}}
 
     <!-- 各个页面的式样 -->
-    {{if index}}
-    <link rel="stylesheet" href="css/index.css">
-    {{else if article}}
-    <link rel="stylesheet" href="css/article.css">
-    {{else if timeline}}
-    <link rel="stylesheet" href="css/timeline.css">
-    {{else if gather}}
-    <link rel="stylesheet" href="css/gather.css">
-    {{else if gossip}}
-    <link rel="stylesheet" href="css/gossip.css">
-    {{/if}}
+    {{block 'head'}}{{/block}}
 
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->

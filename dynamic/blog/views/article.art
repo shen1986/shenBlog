@@ -3,9 +3,17 @@
  * @Author: shenxf
  * @Date: 2019-03-26 16:54:32
  -->
-<% extend('../common/layout/main.art') %>
+{{ extend '../common/layout/main.art' }}
+
+<!-- 样式设定 -->
+{{block 'head'}}
+<link rel="stylesheet" href="/css/article.css">
+{{/block}}
+
+<!-- 标题设定 -->
 {{block 'title'}}文章{{/block}}
-<% block('content', function(){ %>
+
+{{block 'content'}}
 <div class="article-list">
     <div>
         <div class="article-item wow zoomIn animated">
@@ -54,4 +62,9 @@
     <ul class="pagination">
     </ul>
 </div>
-<% }) %>
+{{/block}}
+
+<!-- js设定 -->
+{{block 'scripts'}}
+<script src="/js/article.js"></script>
+{{/block}}

@@ -32,21 +32,14 @@
     {{include './footer.art'}}
 
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="js/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!--分页插件-->
-    <script src="js/bootstrap-paginator.min.js"></script>
+    <script src="/js/bootstrap-paginator.min.js"></script>
 
-    {{if article}}
-    <script src="js/article.js"></script>
-    {{else if timeline}}
-    <script src="js/timeline.js"></script>
-    {{else if gather}}
-    <script src="js/gather.js"></script>
-    {{else if gossip}}
-    <script src="js/gossip.js"></script>
-    {{/if}}
+    <!-- script占位 -->
+    {{block 'scripts'}}{{/block}}
 </body>
 
 </html>
