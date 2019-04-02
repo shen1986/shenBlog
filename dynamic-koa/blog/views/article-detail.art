@@ -1,0 +1,142 @@
+<!--
+ * @Description: 文章页面
+ * @Author: shenxf
+ * @Date: 2019-03-26 16:54:32
+ -->
+{{ extend '../common/layout/main.art' }}
+
+<!-- 样式设置 -->
+{{block 'head'}}
+<link rel="stylesheet" href="/css/article-detail.css">
+{{/block}}
+
+<!-- 标题设置 -->
+{{block 'title'}}文章详情{{/block}}
+
+{{block 'content'}}
+<div class="article-detail">
+    <h3 class="blog-title">
+        <!-- react-text: 896 -->
+        <!-- /react-text -->
+        <!-- react-text: 910 -->用CSS绘制0.5px的线
+        <!-- /react-text -->
+    </h3>
+    <div class="blog-top"><span>
+            <!-- react-text: 899 -->Last Modified : &nbsp;
+            <!-- /react-text -->
+            <!-- react-text: 911 -->2018-06-17
+            <!-- /react-text --></span><span class="spliter"></span><span>CSS</span><span
+            class="spliter"></span><span><i class="glyphicon glyphicon-tag"></i><!-- react-text: 905 -->&nbsp;
+            <!-- /react-text -->
+            <!-- react-text: 912 -->0.5px
+            <!-- /react-text --></span><span class="spliter"></span><span>
+            <!-- react-text: 908 -->浏览&nbsp;
+            <!-- /react-text -->
+            <!-- react-text: 913 -->263
+            <!-- /react-text --></span></div>
+    <div class="blog-content markdown-wrap">
+        <h3 id="-">使用渐变</h3>
+        <pre><code class="lang-html">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"line"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+        </code></pre>
+        <pre><code class="lang-css"><span class="hljs-selector-tag">div</span> {
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">100px</span>;
+        }
+        <span class="hljs-selector-class">.line</span> {
+            <span class="hljs-attribute">position</span>: relative;
+            <span class="hljs-comment">/* border-bottom: 1px solid #000; */</span>
+        }
+        <span class="hljs-selector-class">.line</span><span class="hljs-selector-pseudo">::after</span> {
+            <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-comment">/* bottom: -30px; */</span>
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
+            <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-webkit-linear-gradient</span>(90deg, #000, #000 50%, transparent 50%);
+            <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-moz-linear-gradient</span>(90deg, #000, #000 50%, transparent 50%);
+            <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-o-linear-gradient</span>(90deg, #000, #000 50%, transparent 50%);
+            <span class="hljs-comment">/* 注意角度 */</span>
+            <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">linear-gradient</span>(0, #000, #000 50%, transparent 50%);
+        }
+        </code></pre>
+        <p><strong>或者这样</strong></p>
+        <pre><code class="lang-css"><span class="hljs-selector-class">.line</span> {
+            <span class="hljs-attribute">border</span>: none;
+            <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100%</span> <span class="hljs-number">1px</span>;
+            <span class="hljs-attribute">background-repeat</span>: no-repeat;
+            <span class="hljs-attribute">background-position</span>: bottom;
+            <span class="hljs-comment">/* bottom */</span>
+            <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-webkit-linear-gradient</span>(90deg, #000, #000 50%, transparent 50%);
+            <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-moz-linear-gradient</span>(90deg, #000, #000 50%, transparent 50%);
+            <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-o-linear-gradient</span>(90deg, #000, #000 50%, transparent 50%);
+            <span class="hljs-comment">/* to top */</span>
+            <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">linear-gradient</span>(0, #000, #000 50%, transparent 50%);
+        }
+        </code></pre>
+        <p><strong>结果如下</strong>
+            <img src="/images/article/1008331393379471360.png" width="100%"></p>
+        <h3 id="-">使用缩放</h3>
+        <pre><code class="lang-css"><span class="hljs-selector-class">.line</span> {
+            <span class="hljs-attribute">position</span>: relative;
+        }
+        <span class="hljs-selector-class">.line</span><span class="hljs-selector-pseudo">::after</span> {
+            <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
+            <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
+            <span class="hljs-comment">/* 或者使用 background-color: #000; */</span>
+            <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">scaleY</span>(.5);
+            <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scaleY</span>(.5);
+        }
+        </code></pre>
+        <p>这种写法在一些手机浏览器中显示效果不好，不推荐使用。</p>
+        <h3 id="-0-5px">四周边框都为0.5px</h3>
+        <p>设置双倍宽高，缩放0.5倍实现。</p>
+        <pre><code class="lang-css"><span class="hljs-selector-class">.line</span> {
+            <span class="hljs-attribute">position</span>: relative;
+        }
+        <span class="hljs-selector-class">.line</span><span class="hljs-selector-pseudo">::after</span> {
+            <span class="hljs-attribute">content</span>: <span class="hljs-string">"  "</span>;
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">200%</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">200%</span>;
+            <span class="hljs-comment">/* z-index: -1; */</span>
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
+            <span class="hljs-attribute">-webkit-transform-origin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">transform-origin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">scale</span>(.5, .5);
+            <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(.5, .5);
+        }
+        </code></pre>
+        <h3 id="-sass-">使用sass封装</h3>
+        <p>在非<strong>retina</strong>屏幕上显示正常的1px。</p>
+        <pre><code class="lang-css">@<span class="hljs-keyword">mixin</span> onePx(<span class="hljs-variable">$color</span>) {
+            <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">$color</span>;
+        
+            @<span class="hljs-keyword">media</span> screen and (-webkit-min-device-pixel-ratio: 2) {
+                <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+                <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100%</span> <span class="hljs-number">1px</span>;
+                <span class="hljs-attribute">background-repeat</span>: no-repeat;
+                <span class="hljs-attribute">background-position</span>: bottom;
+                <span class="hljs-comment">/* bottom */</span>
+                <span class="hljs-attribute">background-image</span>: -webkit-linear-gradient(<span class="hljs-number">90deg</span>, <span class="hljs-variable">$color</span>, <span class="hljs-variable">$color</span> <span class="hljs-number">50%</span>, transparent <span class="hljs-number">50%</span>);
+                <span class="hljs-comment">/* to top */</span>
+                <span class="hljs-attribute">background-image</span>: linear-gradient(<span class="hljs-number">0</span>, <span class="hljs-variable">$color</span>, <span class="hljs-variable">$color</span> <span class="hljs-number">50%</span>, transparent <span class="hljs-number">50%</span>);
+            }
+        }
+        </code></pre>
+    </div>
+</div>
+{{/block}}
+
+{{block 'scripts'}}
+{{/block}}
