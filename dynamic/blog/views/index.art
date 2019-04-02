@@ -87,3 +87,6 @@
 {{/block}}
 
 <!-- js设定 -->
+{{block 'scripts'}}
+
+{{/block}}
