@@ -102,6 +102,6 @@
 - 考虑到SEO,前台页面用html加模板引擎，后台页面用VUE
 - PC端不做浏览器兼容。最新的IE，Google，FireFox基本能使用就行。
 - 考虑到周期太长，采用敏捷开发的思想，先做一个个人介绍的网站以后逐步追加新的内容
-- 这周发现hexo这个博客简化工具，现阶段先使用[Hexo](https://blog.csdn.net/sinat_37781304/article/details/82729029)
+- 这周发现hexo这个博客简化工具，现阶段先使用[Hexo](http://shenxf.top/categories/%E5%8D%9A%E5%AE%A2/)
 - 用docker的话还能使用[jekyll](https://www.jekyll.com.cn/)
 - [.art文件如何后html的变色和提示](补充资料.md)
