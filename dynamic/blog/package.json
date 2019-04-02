@@ -11,6 +11,7 @@
   "dependencies": {
     "art-template": "^4.13.2",
     "express": "^4.16.4",
-    "express-art-template": "^1.0.1"
+    "express-art-template": "^1.0.1",
+    "mongoose": "^5.4.20"
   }
 }

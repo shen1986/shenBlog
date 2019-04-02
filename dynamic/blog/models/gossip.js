@@ -1,0 +1,5 @@
+//   `detail` text,
+//   `created_at` datetime DEFAULT NULL,
+//   `updated_at` datetime DEFAULT NULL,
+//   `save_name` varchar(100) DEFAULT NULL,
+//   `file_name` varchar(100) DEFAULT NULL,
