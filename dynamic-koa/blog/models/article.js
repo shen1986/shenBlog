@@ -32,10 +32,10 @@ var schema = mongoose.Schema({
         default: '',
         max: 50
     },
+    // 外键：链接category用
     category: {
-        type: String,
-        default: '',
-        max: 40
+        type: Schema.Types.objectId,
+        ref: 'Category'
     },
     created_at: {
         type: Date,
