@@ -9,7 +9,7 @@ var article = require('../controller/article');
 var timeline = require('../controller/timeline');
 var gather = require('../controller/gather');
 var gossip = require('../controller/gossip');
-const dbAccess = require('../controller/dbAccess');
+const dbAccess = require('../models/dbAccess');
 
 var router = new Router();
 

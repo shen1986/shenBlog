@@ -1,69 +1,96 @@
 /*
- * @Description: 文章表
+ * @Description: 文章数据检索
  * @Author: shenxf
- * @Date: 2019-04-02 12:28:28
+ * @Date: 2019-04-09 20:53:59
  */
-//   `id` int(11) NOT NULL AUTO_INCREMENT,
-//   `title` varchar(100) DEFAULT NULL,
-//   `body` longtext,
-//   `tag` varchar(50) DEFAULT NULL COMMENT '每条记录的标签',
-//   `category` varchar(40) DEFAULT NULL,
-//   `created_at` date DEFAULT NULL,
-//   `updated_at` date DEFAULT NULL,
-//   `status` tinyint(1) DEFAULT '1' COMMENT '1表示正常  0表示删除 ',
-//   `type` tinyint(3) DEFAULT '1' COMMENT '1：原创； 0：转载',
-//   `views` int(11) DEFAULT '0',
-//   `markdown` tinyint(1) DEFAULT NULL,
-var mongoose = require('mongoose');
+var db = require("./db");
 
-var schema = mongoose.Schema({
-    title: {
-        type: String,
-        default: '',
-        max: 100
-    },
-    body: {
-        type: String,
-        default: ''
-    },
-    // 每条记录的标签
-    tag: {
-        type: String,
-        default: '',
-        max: 50
-    },
-    // 外键：链接category用
-    category: {
-        type: Schema.Types.objectId,
-        ref: 'Category'
-    },
-    created_at: {
-        type: Date,
-        default: Date.now
-    },
-    updated_at: {
-        type: Date,
-        default: Date.now
-    },
-    // TRUE表示正常  FALSE表示删除
-    status: {
-        type: Boolean,
-        default: true
-    },
-    // TRUE：原创； FALSE：转载
-    type: {
-        type: Boolean,
-        default: false
-    },
-    views: {
-        type: Number,
-        default: 0
-    },
-    markdown: {
-        type: Number
+var getArticles = async function (current, count = null, type = null, category = null, keyword = null, tag = null, deviceAgent = null) {
+
+    let field = "article.id, title, body, tag, created_at, views, theme";
+    let sql = `select ${field} from article join category on article.category = category.id`,
+        condition = " where article.status = 1",
+        totalSql = '';
+
+    if (tag != null) {
+        let likeTag1 = mysql.escape(`%${tag + " "}%`),
+            likeTag2 = mysql.escape(`%${" " + tag}%`);
+        tag = mysql.escape(`${tag}`);
+
+        condition += ` and (tag = ${tag} or tag like ${likeTag1} or tag like ${likeTag2})`;
     }
-});
+    if (keyword != null && keyword.trim() !== '') {
+        keyword = mysql.escape(`%${keyword}%`);
+        condition += ` and (body like ${keyword} or title like 
+		${keyword} or tag like ${keyword})`;
+    }
+    if (category != null && +category !== 0) {
+        condition += ` and category = ${+category}`;
+    }
+    if (type != null && +type !== 0) {
+        condition += ` and type = ${+type}`;
+    }
 
-var Aritcle = mongoose.model('Aritcle', schema);
+    sql += condition;
+    sql += " order by created_at desc";
 
-module.exports = Aritcle;
+    if (count != null) {
+        if (current != null) {
+            sql += ` limit ${(+current - 1) * +count}, ${+count}`;
+            totalSql += "select count(*) as total from article" + condition;
+        }
+        else {
+            sql += ` limit ${+count}`;
+        }
+    }
+
+    var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/),
+        absLen = agentID ? 86 : 130;
+
+    var rows = null
+    try {
+        rows = await db.query(sql);
+    } catch (error) {
+        if (error instanceof MysqlError) {
+            return { 'status': 0, 'message': error.sqlMessage };
+        } else {
+            return { 'status': 0, 'message': '系统异常' };
+        }
+    }
+
+    let info = {};
+    let articles = [];
+
+    rows.forEach(item => {
+        articles.push({
+            'id': item.id,
+            'title': item.title,
+            'tag': item.tag,
+            'abstract': Str.escape2Html(item.body.replace(/<\/?[^>]+(>|$)/g, "")).substr(0, absLen),
+            'created_at': item.created_at,
+            'views': item.views,
+            'theme': item.theme
+        })
+    });
+    info['articles'] = articles;
+
+    // 翻页逻辑，有当前页的时候，求的总页数
+    if (current != null) {
+        try {
+            var totalRows = await db.query(totalSql);
+            info['total'] = totalRows[0]['total'];
+            return { 'status': 1, 'info': info };
+        } catch (error) {
+            if (error instanceof MysqlError) {
+                return { 'status': 0, 'message': error.sqlMessage };
+            } else {
+                return { 'status': 0, 'message': '系统异常' };
+            }
+        }
+    }
+    else {
+        return { 'status': 1, 'info': info };
+    }
+}
+
+module.exports.getArticles = getArticles;

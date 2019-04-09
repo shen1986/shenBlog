@@ -3,16 +3,16 @@
  * @Author: shenxf
  * @Date: 2019-04-09 17:20:21
  */
-var db = require("../db");
+var db = require("./db");
 
 var initWindow = async function(ctx, next) {
     var result = await getNavsideInfo();
     // 异常终了
     if (result.status !== 1) {
-        next(result)
+        await next(result)
     } else {
         ctx.res.$initValue = result;
-        next();
+        await next();
     }
 }
 
@@ -23,21 +23,14 @@ var getNavsideInfo = async function() {
     "select id, title from article where status = 1 order by created_at desc limit 10",
     "select id, theme from category where status = 1",
     "select id, text, url from link where status = 1",
-    "select distinct tag from article where status = 1 order by created_at desc limit 15",
+    "select distinct tag,created_at  from article where status = 1 order by created_at desc limit 15",
     "select count(*) as count from article where status = 1"
   ];
 
   let ps = [];
   for (sql of sqls) {
     ps.push(
-      new Promise(function(resolve, reject) {
-        db.query(sql, function(err, rows) {
-          if (err) {
-            reject(err);
-          }
-          resolve(rows);
-        });
-      })
+        db.query(sql)
     );
   }
   const p = await Promise.all(ps);
@@ -46,7 +39,7 @@ var getNavsideInfo = async function() {
   } catch (error) {
     return {
       status: 0,
-      message: error.message
+      message: error.sqlMessage
     };
   }
 };
