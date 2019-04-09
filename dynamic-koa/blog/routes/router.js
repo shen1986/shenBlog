@@ -9,8 +9,12 @@ var article = require('../controller/article');
 var timeline = require('../controller/timeline');
 var gather = require('../controller/gather');
 var gossip = require('../controller/gossip');
+const dbAccess = require('../controller/dbAccess');
 
 var router = new Router();
+
+// 初始窗口给res绑定$initValue
+router.use(dbAccess.initWindow);
 
 // 首页
 router.get('/', index.getHome);
@@ -32,7 +36,7 @@ router.get('/gather', gather.getGather);
 router.get('/gossip', gossip.getGossip);
 
 // 404 页面
-router.use(async function(ctx) {
+router.use(async function (ctx) {
     ctx.render('404.art');
 });
 

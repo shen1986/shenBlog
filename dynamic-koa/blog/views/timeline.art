@@ -16,15 +16,15 @@
 <!-- 主体内容 -->
 {{block 'content'}}
 <div class="timeline-wrap">
-    <div class="dropdown">
-        <button id="dLabel" type="button" data-toggle="dropdown">
-            Dropdown trigger
-            <span class="caret"></span>
+    <div class="dropdown" id="myDropdown">
+        <button class="btn btn-default dropdown-toggle" style="width: 150px" type="button" id="dropdownMenu1" data-toggle="dropdown" >
+            <span id="dropdownText" style="float: left;">全部表示</span> 
+            <span class="glyphicon glyphicon-chevron-up" style="float: right;"></span>
         </button>
         <ul class="dropdown-menu">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            {{each categories}}
+            <li><a href="#">{{$value.theme}}</a></li>
+            {{/each}}
         </ul>
     </div>
     <div class="timeline-body">

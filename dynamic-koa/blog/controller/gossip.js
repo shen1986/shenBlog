@@ -6,13 +6,14 @@
 
 // 慢生活首页
 exports.getGossip = async function (ctx) {
-    await ctx.render('gossip.art', {
+    await ctx.render("gossip.art", {
+        ...ctx.res.$initValue,
         common: {
-            hasBanner: false,
+            hasBanner: false
         },
         gossip: {
-            name: 'aui',
-            tags: ['art', 'template', 'nodejs']
+            name: "aui",
+            tags: ["art", "template", "nodejs"]
         }
     });
 };

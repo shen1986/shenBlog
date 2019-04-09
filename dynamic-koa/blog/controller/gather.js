@@ -6,13 +6,14 @@
 
 // 获得点滴页
 exports.getGather = async function (ctx) {
-    ctx.render('gather.art', {
+    ctx.render("gather.art", {
+        ...ctx.res.$initValue,
         common: {
-            hasBanner: false,
+            hasBanner: false
         },
         gather: {
-            name: 'aui',
-            tags: ['art', 'template', 'nodejs']
+            name: "aui",
+            tags: ["art", "template", "nodejs"]
         }
     });
 };

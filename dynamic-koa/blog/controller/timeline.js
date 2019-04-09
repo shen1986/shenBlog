@@ -6,13 +6,14 @@
 
 // 获得归档页
 exports.getTimeline = async function (ctx) {
-    await ctx.render('timeline.art', {
+    await ctx.render("timeline.art", {
+        ...ctx.res.$initValue,
         common: {
-            hasBanner: false,
+            hasBanner: false
         },
         timeline: {
-            name: 'aui',
-            tags: ['art', 'template', 'nodejs']
+            name: "aui",
+            tags: ["art", "template", "nodejs"]
         }
     });
 };

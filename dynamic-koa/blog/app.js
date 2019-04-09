@@ -3,45 +3,11 @@
  * @Author: shenxf
  * @Date: 2019-03-25 20:59:21
  */
-var router = require('./routes/router');
-var path = require('path');
+const router = require("./routes/router");
+const path = require("path");
 const Koa = require('koa');
-const static = require('koa-static')   //静态资源服务插件
-const mongoose = require('mongoose');
-const fs = require('fs');
-
-const db = 'mongodb://www.shenxf.com/blog';
-
-/* 连接数据库 */
-mongoose.Promise = require('bluebird');
-mongoose.connect(db, { useMongoClient: true });
-
-/**
- * 获取数据库表对应的js对象所在的路径
- * @type {[type]}
- */
-const models_path = path.join(__dirname, 'models');
-
-/**
- * 已递归的形式，读取models文件夹下的js模型文件，并require
- * @param  {[type]} modelPath [description]
- * @return {[type]}           [description]
- */
-let walk = function (modelPath) {
-    fs.readdirSync(modelPath).forEach(function (file) {
-        let filePath = path.join(modelPath, '/' + file)
-        let stat = fs.statSync(filePath)
-
-        if (stat.isFile()) {
-            if (/(.*)\.(js|coffee)/.test(file)) {
-                require(filePath)
-            }
-        } else if (stat.isDirectory()) {
-            walk(filePath)
-        }
-    })
-};
-walk(models_path);
+const static = require('koa-static'); //静态资源服务插件
+const bodyParser = require("koa-bodyparser");
 
 const app = new Koa();
 
@@ -53,12 +19,15 @@ render(app, {
     root: path.join(__dirname, 'views'),
     extname: '.art',
     debug: process.env.NODE_ENV !== 'production'
-  });
+});
 
 // 配置静态资源
 app.use(static(
     path.join( __dirname, './public/')
 ));
+
+// 引入bodyParse
+app.use(bodyParser());
 
 // 导入路由
 app

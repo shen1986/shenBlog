@@ -11,7 +11,7 @@ $(function () {
     setPage(currentPage, Math.ceil(31 / pageSize), render);
 
     function render() {
-        console.log('翻页被点击');
+        console.log("翻页被点击");
     }
 
     /**
@@ -22,7 +22,6 @@ $(function () {
      */
     function setPage(pageCurrent, pageSum, callback) {
         $(".pagination").bootstrapPaginator({
-
             // 设置控件显示的页码数
             numberOfPages: 8,
 
@@ -37,7 +36,6 @@ $(function () {
 
             //当单击操作按钮的时候, 执行该函数, 调用ajax渲染页面
             onPageClicked: function (event, originalEvent, type, page) {
-
                 // 把当前点击的页码赋值给currentPage, 调用ajax,渲染页面
                 currentPage = page;
                 callback && callback();
@@ -50,10 +48,10 @@ $(function () {
                         result = false;
                         break;
                     case "prev":
-                        result = (current !== 1);
+                        result = current !== 1;
                         break;
                     case "next":
-                        result = (current !== this.totalPages);
+                        result = current !== this.totalPages;
                         break;
                     case "page":
                         result = true;
@@ -61,15 +59,25 @@ $(function () {
                 }
                 return result;
             }
-        })
+        });
     }
 
+    $("#myDropdown")
+        .on("show.bs.dropdown", function () {
+            $(".glyphicon")
+                .removeClass("glyphicon-chevron-up")
+                .addClass("glyphicon-chevron-down");
+        })
+        .on("hidden.bs.dropdown", function () {
+            $(".glyphicon")
+                .removeClass("glyphicon-chevron-down")
+                .addClass("glyphicon-chevron-up");
+        });
 
-    $('.dropdown-mul-1').dropdown({
-        limitCount: 40,
-        multipleMode: 'label',
-        choice: function () {
-            console.log(arguments, this);
-        }
+    $(".dropdown-menu>li").on('click', function () {
+        $("#dropdownText").html(
+            $(this).find("a").html()
+        );
+        $("#myDropdown").trigger("hidden.bs.dropdown");
     });
 });

@@ -11,21 +11,15 @@
                 <div class="user-portrait">
                     <img src="/images/me.jpeg" alt="">
                     <h3>Shexf</h3>
-                    <p>处女座程序员，轻度选择困难症患者，Web领域的手艺人</p>
+                    <p>{{portrait.intro}}</p>
                 </div>
                 <div class="statistics">
                     <span class="statistic-item">
-                        <!-- react-text: 118 -->随笔 -
-                        <!-- /react-text -->
-                        <!-- react-text: 163 -->110
-                        <!-- /react-text -->
+                        随笔 - {{portrait.articleCount}}
                     </span>
                     <span class="spliter"></span>
                     <span class="statistic-item">
-                        <!-- react-text: 121 -->访问 -
-                        <!-- /react-text -->
-                        <!-- react-text: 164 -->64.1k
-                        <!-- /react-text -->
+                        访问 - {{portrait.viewCount > 10000 ? (portrait.viewCount / 1000).toFixed(1) + "k" : portrait.viewCount}}
                     </span>
                 </div>
             </div>
@@ -61,16 +55,9 @@
             <div class="panel-heading">文章列表</div>
             <div class="panel-body">
                 <ol>
-                    <li><a href="/article-detail/124">用CSS绘制0.5px的线</a></li>
-                    <li><a href="/article-detail/123">多行文本溢出显示省略号</a></li>
-                    <li><a href="/article-detail/122">纯CSS实现瀑布流布局</a></li>
-                    <li><a href="/article-detail/121">使用pointer-events为网页添加水印背景</a></li>
-                    <li><a href="/article-detail/120">纯CSS设置元素高度等于其动态宽度</a></li>
-                    <li><a href="/article-detail/118">CSS3实现饼状图倒计时效果</a></li>
-                    <li><a href="/article-detail/119">svg实现圆环进度条或倒计时效果</a></li>
-                    <li><a href="/article-detail/117">为什么我要做5份webpack配置文件</a></li>
-                    <li><a href="/article-detail/116">使用axios封装一个异步请求api</a></li>
-                    <li><a href="/article-detail/115">如何搭建一个mock server</a></li>
+                    {{each articles}}
+                    <li><a href="/article-detail/{{$value.id}}">{{$value.title}}</a></li>
+                    {{/each}}
                 </ol>
             </div>
         </div>
@@ -78,19 +65,9 @@
             <div class="panel-heading">文章分类</div>
             <div class="panel-body">
                 <ul>
-                    <li><a href="/category/1">Html</a></li>
-                    <li><a href="/category/2">CSS</a></li>
-                    <li><a href="/category/4">JavaScript</a></li>
-                    <li><a href="/category/7">React</a></li>
-                    <li><a href="/category/8">数据库</a></li>
-                    <li><a href="/category/9">web综合</a></li>
-                    <li><a href="/category/11">web性能优化</a></li>
-                    <li><a href="/category/12">笔试</a></li>
-                    <li><a href="/category/13">面试</a></li>
-                    <li><a href="/category/14">Canvas</a></li>
-                    <li><a href="/category/15">ECMAScript</a></li>
-                    <li><a href="/category/16">nodejs</a></li>
-                    <li><a href="/category/19">设计模式</a></li>
+                    {{each categories}}
+                        <li><a href="/category/{{$value.id}}">{{$value.theme}}</a></li>
+                    {{/each}}
                 </ul>
             </div>
         </div>
@@ -98,84 +75,22 @@
             <div class="panel-heading">云标签</div>
             <div class="panel-body">
                 <div class="icloud-wrap">
-                    <a href="/tag/pointer-events">
-                        <span class="icloud-item" style="background-color: rgb(255, 85, 0);">pointer-events</span>
-                    </a>
-                    <a href="/tag/vw">
-                        <span class="icloud-item" style="background-color: rgb(248, 167, 42);">vw</span>
-                    </a>
-                    <a href="/tag/Immutable">
-                        <span class="icloud-item" style="background-color: rgb(135, 208, 104);">Immutable</span>
-                    </a>
-                    <a href="/tag/vh">
-                        <span class="icloud-item" style="background-color: rgb(16, 142, 233);">vh</span>
-                    </a>
-                    <a href="/tag/for...of">
-                        <span class="icloud-item" style="background-color: rgb(107, 97, 240);">for...of</span>
-                    </a>
-                    <a href="/tag/svg">
-                        <span class="icloud-item" style="background-color: rgb(255, 85, 0);">svg</span>
-                    </a>
-                    <a href="/tag/for...in">
-                        <span class="icloud-item" style="background-color: rgb(248, 167, 42);">for...in</span>
-                    </a>
-                    <a href="/tag/溢出">
-                        <span class="icloud-item" style="background-color: rgb(135, 208, 104);">溢出</span>
-                    </a>
-                    <a href="/tag/forEach">
-                        <span class="icloud-item" style="background-color: rgb(16, 142, 233);">forEach</span>
-                    </a>
-                    <a href="/tag/水印">
-                        <span class="icloud-item" style="background-color: rgb(107, 97, 240);">水印</span>
-                    </a>
-                    <a href="/tag/webpack">
-                        <span class="icloud-item" style="background-color: rgb(255, 85, 0);">webpack</span>
-                    </a>
-                    <a href="/tag/mock">
-                        <span class="icloud-item" style="background-color: rgb(248, 167, 42);">mock</span>
-                    </a>
-                    <a href="/tag/padding">
-                        <span class="icloud-item" style="background-color: rgb(135, 208, 104);">padding</span>
-                    </a>
-                    <a href="/tag/面试">
-                        <span class="icloud-item" style="background-color: rgb(16, 142, 233);">面试</span>
-                    </a>
-                    <a href="/tag/深复制">
-                        <span class="icloud-item" style="background-color: rgb(107, 97, 240);">深复制</span>
-                    </a>
-                    <a href="/tag/0.5px">
-                        <span class="icloud-item" style="background-color: rgb(255, 85, 0);">0.5px</span>
-                    </a>
-                    <a href="/tag/浅复制">
-                        <span class="icloud-item" style="background-color: rgb(248, 167, 42);">浅复制</span>
-                    </a>
-                    <a href="/tag/axios">
-                        <span class="icloud-item" style="background-color: rgb(135, 208, 104);">axios</span>
-                    </a>
-                    <a href="/tag/柯里化">
-                        <span class="icloud-item" style="background-color: rgb(16, 142, 233);">柯里化</span>
-                    </a>
-                    <a href="/tag/react">
-                        <span class="icloud-item" style="background-color: rgb(107, 97, 240);">react</span>
-                    </a>
-                    <a href="/tag/饼状图">
-                        <span class="icloud-item" style="background-color: rgb(255, 85, 0);">饼状图</span>
-                    </a>
-                    <a href="/tag/省略号">
-                        <span class="icloud-item" style="background-color: rgb(248, 167, 42);">省略号</span>
-                    </a>
-                    <a href="/tag/瀑布流">
-                        <span class="icloud-item" style="background-color: rgb(135, 208, 104);">瀑布流</span>
-                    </a>
+                    {{each tags}}
+                        <a href="/tag/{{$value}}">
+                            <span class="icloud-item" style="background-color: {{colors[$index % 5]}}">{{$value}}</span>
+                        </a>
+                    {{/each}}
                 </div>
             </div>
         </div>
         <div class="panel">
             <div class="panel-heading">友情链接</div>
             <div class="panel-body">
+                {{each links}}
                 <ul>
-                    <li><a href="https://www.tongji.edu.cn/" target="_blank">同济大学官网</a></li>
+                    <li><a href="{{$value.url}}" target="_blank">{{$value.text}}</a></li>
                 </ul>
+                {{/each}}
             </div>
         </div>
     </div>

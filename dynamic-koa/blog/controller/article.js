@@ -6,26 +6,28 @@
 
 // 获得文章页
 exports.getArticle = async function (ctx) {
-    await ctx.render('article.art', {
+    await ctx.render("article.art", {
+        ...ctx.res.$initValue,
         common: {
-            hasBanner: false,
+            hasBanner: false
         },
         article: {
-            name: 'aui',
-            tags: ['art', 'template', 'nodejs']
+            name: "aui",
+            tags: ["art", "template", "nodejs"]
         }
     });
 };
 
 exports.getArticleDetail = async function (ctx) {
     console.log(ctx.params.id);
-    await ctx.render('article-detail.art', {
+    await ctx.render("article-detail.art", {
+        ...ctx.res.$initValue,
         common: {
-            hasBanner: false,
+            hasBanner: false
         },
         articleDetail: {
-            name: 'aui',
-            tags: ['art', 'template', 'nodejs']
+            name: "aui",
+            tags: ["art", "template", "nodejs"]
         }
     });
 }

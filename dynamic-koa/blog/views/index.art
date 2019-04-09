@@ -90,5 +90,5 @@
 
 <!-- js设定 -->
 {{block 'scripts'}}
-
+<script src="/js/banner.js"></script>
 {{/block}}

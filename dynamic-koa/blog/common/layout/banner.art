@@ -38,7 +38,7 @@
                             <div class="banner-preview-item">
                                 <img src="/images/banner4.jpg" alt="" data-key="3" />
                             </div>
-                            <div class="banner-preview-arrow" style="top: 50%;">
+                            <div class="banner-preview-arrow" style="top: 0%;">
                                 <div class="banner-preview-arraw-inner"></div>
                             </div>
                         </div>
