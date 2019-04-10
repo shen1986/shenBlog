@@ -22,66 +22,34 @@
         最新文章
     </div>
     <div class="list-head-carousel">
-        <p><a href="/article-detail/124">用CSS绘制0.5px的线</a></p>
-        <p><a href="/article-detail/123">多行文本溢出显示省略号</a></p>
-        <p><a href="/article-detail/122">纯CSS实现瀑布流布局</a></p>
-        <p><a href="/article-detail/120">纯CSS设置元素高度等于其动态宽度</a></p>
-        <p><a href="/article-detail/121">使用pointer-events为网页添加水印背景</a></p>
-        <p><a href="/article-detail/118">CSS3实现饼状图倒计时效果</a></p>
-        <p><a href="/article-detail/119">svg实现圆环进度条或倒计时效果</a></p>
-        <p><a href="/article-detail/117">为什么我要做5份webpack配置文件</a></p>
-        <p><a href="/article-detail/116">使用axios封装一个异步请求api</a></p>
-        <p><a href="/article-detail/115">如何搭建一个mock server</a></p>
-        <p><a href="/article-detail/114">for...in for...of forEach</a></p>
-        <p style="opacity: 1;"><a href="/article-detail/104">一道JavaScript面试题</a></p>
-        <p><a href="/article-detail/103">Immutable 详解</a></p>
-        <p><a href="/article-detail/102">JS中的浅复制与深复制</a></p>
-        <p><a href="/article-detail/101">React 16.0新特性</a></p>
+        {{each articles}}
+        <p><a href="/article-detail/{{$value.id}}">{{$value.title}}</a></p>
+        {{/each}}
     </div>
 </div>
 <div class="article-list">
-    <div>
-        <div class="article-item wow zoomIn animated">
-            <div class="article-body">
-                <a href="/article-detail/124">
-                    <h4>用CSS绘制0.5px的线</h4>
-                </a>
-                <p>
-                    <span>
-                        <!-- react-text: 731 -->post @ <!-- /react-text -->
-                        <!-- react-text: 732 -->2018-06-17<!-- /react-text -->
-                    </span>
-                    <!-- react-text: 733 -->&nbsp;&nbsp;&nbsp;<!-- /react-text -->
-                    <span>
-                        <!-- react-text: 735 -->category: <!-- /react-text -->
-                        <!-- react-text: 736 -->CSS<!-- /react-text -->
-                    </span>
-                    <!-- react-text: 737 -->&nbsp;&nbsp;&nbsp;<!-- /react-text -->
-                    <span>
-                        <!-- react-text: 739 -->浏览: <!-- /react-text -->
-                        <!-- react-text: 740 -->251<!-- /react-text -->
-                    </span>
-                </p>
-                <div class="article-abstract"><!-- react-text: 310 -->### 使用渐变
-                    ```html
-                    
-                    ```
-                    ```css
-                    div {
-                        width: 400px;
-                        height: 200px;
-                        margin-top: 100px;
-                        margin-left: 100px;
-                    }
-                    .line {
-                        <!-- /react-text --><!-- react-text: 311 --> ...<!-- /react-text -->
-                </div>
-                <span class="article-link">
-                    <a href="/article-detail/124">阅读全文 &gt;&gt;</a>
-                </span>
+    {{each articles}}
+    <div class="article-item wow zoomIn animated">
+        <div class="article-body">
+            <a href="/article-detail/{{$value.id}}">
+                <h4>{{$value.title}}</h4>
+            </a>
+            <p>
+                <span>post @ {{$value.created_at}}</span>
+                &nbsp;&nbsp;&nbsp;
+                <span>category: {{$value.theme}}</span>
+                &nbsp;&nbsp;&nbsp;
+                <span>浏览: {{$value.views}}</span>
+            </p>
+            <div class="article-abstract">
+                {{$value.abstract}} ...
             </div>
+            <span class="article-link">
+                <a href="/article-detail/{{$value.id}}">阅读全文 &gt;&gt;</a>
+            </span>
         </div>
     </div>
+    {{/each}}
 </div>
 <div class="block-link">
     <a href="/article">查看全部文章</a>
@@ -91,4 +59,5 @@
 <!-- js设定 -->
 {{block 'scripts'}}
 <script src="/js/banner.js"></script>
+<script src="/js/index.js"></script>
 {{/block}}
