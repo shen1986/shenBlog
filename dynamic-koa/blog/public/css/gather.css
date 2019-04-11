@@ -1,3 +1,8 @@
+/**
+ * @Description: 点滴样式
+ * @Author: shenxf
+ * @Date: 2019-04-02 19:54:21
+ */
 .note-wrap {
     font-size: 12px;
     padding: 10px 17px;
@@ -62,6 +67,17 @@
         transform: none;
         opacity: 1;
     }
+}
+
+/* 模态框样式 */
+.note-modal-tag {
+    margin-top: -8px;
+}
+
+.note-modal-detail {
+    margin: 13px 0 6px;
+    color: #555;
+    font-size: 14px;
 }
 
 /* 翻页 */

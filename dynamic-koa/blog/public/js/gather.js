@@ -59,9 +59,16 @@ $(function () {
 
     $('.wow').on('click', e => {
 
+        var $that = $(this);
+        var nodeTile = $that.find('.note-title').html();
+        var tag = $that.find('.my-tag').val();
+        var created_at = $that.find('.created-at').html();
+        var detail = $that.find('.my-note-abstract').val();
+
         // 模态框内容设定
-        $('.modal-title').html('test');
-        $('.modal-body').html('内容');
+        $('.modal-title').html(nodeTile);
+        $('.note-modal-tag').html(`post@: ${created_at} &nbsp;&nbsp; 标签: ${tag}`);
+        $('.note-modal-detail').html(detail);
 
         // 模态框表示
         $('#myModal').modal('show');

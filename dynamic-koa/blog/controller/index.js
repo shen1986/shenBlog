@@ -14,6 +14,7 @@ exports.getHome = async (ctx, next) => {
 
 var getArt = async function(ctx) {
     var articleData =  await articleModel.getArticles(null, 15, 1, null, null, null, ctx.req.headers["user-agent"].toLowerCase());
+    
     var renderData = {
         ...ctx.res.$initValue,
         ...articleData.info,

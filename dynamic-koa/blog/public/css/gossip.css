@@ -1,3 +1,8 @@
+/**
+ * @Description: 慢生活
+ * @Author: shenxf
+ * @Date: 2019-04-02 19:54:21
+ */
 .gossip-wrap {
     padding: 35px 25px 20px 40px;
     box-shadow: 0 0 5px #555;
@@ -78,6 +83,15 @@
     background-color: #f0f0f0;
     border: none;
     border-radius: none;
+}
+
+.ant-timeline-item-last .ant-timeline-item-content {
+    min-height: 48px;
+}
+
+.ant-timeline-item-last .ant-timeline-item-tail {
+    border-left: 2px dotted #e9e9e9;
+    display: none;
 }
 
 .gossip-author {

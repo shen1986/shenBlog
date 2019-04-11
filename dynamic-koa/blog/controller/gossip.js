@@ -3,17 +3,23 @@
  * @Author: shenxf
  * @Date: 2019-03-28 16:15:13
  */
+const gossipModel = require('../models/gossip');
+
 
 // 慢生活首页
 exports.getGossip = async function (ctx) {
+
+    var gossip = await gossipModel.getGossip();
+
+    console.log('gossip',gossip);
+
+    delete gossip.status;
+
     await ctx.render("gossip.art", {
+        ...gossip,
         ...ctx.res.$initValue,
         common: {
             hasBanner: false
-        },
-        gossip: {
-            name: "aui",
-            tags: ["art", "template", "nodejs"]
         }
     });
 };

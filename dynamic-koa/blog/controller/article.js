@@ -24,10 +24,6 @@ exports.getArticleDetail = async function (ctx) {
         ...ctx.res.$initValue,
         common: {
             hasBanner: false
-        },
-        articleDetail: {
-            name: "aui",
-            tags: ["art", "template", "nodejs"]
         }
     });
 }

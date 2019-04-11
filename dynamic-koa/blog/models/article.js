@@ -4,6 +4,7 @@
  * @Date: 2019-04-09 20:53:59
  */
 var db = require("./db");
+var Str = require('../common/utils/string');
 
 var getArticles = async function (current, count = null, type = null, category = null, keyword = null, tag = null, deviceAgent = null) {
 
@@ -48,6 +49,7 @@ var getArticles = async function (current, count = null, type = null, category =
         absLen = agentID ? 86 : 130;
 
     var rows = null
+
     try {
         rows = await db.query(sql);
     } catch (error) {

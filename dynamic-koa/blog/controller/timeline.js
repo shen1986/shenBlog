@@ -10,10 +10,6 @@ exports.getTimeline = async function (ctx) {
         ...ctx.res.$initValue,
         common: {
             hasBanner: false
-        },
-        timeline: {
-            name: "aui",
-            tags: ["art", "template", "nodejs"]
         }
     });
 };
