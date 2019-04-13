@@ -10,8 +10,6 @@ exports.getTimeline = async function (ctx) {
 
     var timeline = await timelineModel.getTimeline();
 
-    console.log(timeline);
-
     timeline.tlItems = [];
     timeline.items.forEach((item, index, arr) => {
         let colorArr = ['blue', 'red', 'green'];
@@ -42,8 +40,6 @@ exports.getTimeline = async function (ctx) {
             })
         }
     })
-
-    console.log(timeline);
 
     await ctx.render("timeline.art", {
         ...timeline,

@@ -5,7 +5,7 @@
  */
 $(function () {
     let currentPage = 1;
-    let pageSize = 3;
+    let pageSize = 30;
     // 调用分页函数.参数:当前所在页, 总页数(用总条数 除以 每页显示多少条,在向上取整), ajax函数
     setPage(currentPage, Math.ceil(31 / pageSize), render);
 

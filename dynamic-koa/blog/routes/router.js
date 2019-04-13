@@ -22,6 +22,10 @@ router.get('/home', index.getHome);
 
 // 文章页
 router.get('/article', article.getArticle);
+// 分类
+router.get('/category/:id', article.getCategory);
+// 标签
+router.get('/tag/:tag', article.getTag);
 
 // 文章页详细
 router.get('/article-detail/:id', article.getArticleDetail);
