@@ -89,6 +89,7 @@
 	+ 又做了一个服务端渲染（有利于SEO）的个人介绍,用了EJS模板引擎。(没有使用express，比较简单的实现)
 		* [resume-nodejs](https://github.com/shen1986/resume-nodejs)
 	+ 除了翻页，前台页面基本做完了。
+		* [前台博客页面](dynamic-koa/blog)
 
 ## 补充说明
 
