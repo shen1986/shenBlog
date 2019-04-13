@@ -18,18 +18,15 @@
 
 - 后端技术：Node.js
 	+ 模板引擎： art-template
-	+ Web 开发框架： express
-        * 以后考虑用koa2
+	+ Web 开发框架： koa2
 - 前端技术：Vue，less, html
 	+ 包管理工具: webpack
 	+ 蚂蚁: Ant-Design
 	+ 图标字体库: icomoon 
 	+ 开源工具包：bootstrap
 		* 原来的栅格是12，改了源代码把栅格改成24重新编译
-- 服务：Apache2
 - 部署：Docker
 - 数据持久化：mysql
-    + 以后考虑用MongoDB
 
 ## 实施计划
 
@@ -91,7 +88,7 @@
 		* 发现一个动态较牛的简历，参照着做了下，稍后会做成公用模板[动态个人介绍](http://www.shenxf.com:3000/vue/)
 	+ 又做了一个服务端渲染（有利于SEO）的个人介绍,用了EJS模板引擎。(没有使用express，比较简单的实现)
 		* [resume-nodejs](https://github.com/shen1986/resume-nodejs)
-	+ 静态博客画面正在制作中。
+	+ 除了翻页，前台页面基本做完了。
 
 ## 补充说明
 
