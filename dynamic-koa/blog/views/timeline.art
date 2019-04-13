@@ -17,8 +17,9 @@
 {{block 'content'}}
 <div class="timeline-wrap">
     <div class="dropdown" id="myDropdown">
-        <button class="btn btn-default dropdown-toggle" style="width: 150px" type="button" id="dropdownMenu1" data-toggle="dropdown" >
-            <span id="dropdownText" style="float: left;">全部表示</span> 
+        <button class="btn btn-default dropdown-toggle" style="width: 150px" type="button" id="dropdownMenu1"
+            data-toggle="dropdown">
+            <span id="dropdownText" style="float: left;">全部表示</span>
             <span class="glyphicon glyphicon-chevron-up" style="float: right;"></span>
         </button>
         <ul class="dropdown-menu">
@@ -29,25 +30,31 @@
     </div>
     <div class="timeline-body">
         <ul class="ant-timeline">
-            <li class="ant-timeline-item">
+        {{each tlItems}}
+            {{if $value.type === 'time'}}
+            <li class="ant-timeline-item {{$index == tlItems.length - 1 ? 'ant-timeline-item-last' : ''}}">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue">
                     <i class="glyphicon glyphicon-time" style="font-size: 16px;"></i>
                 </div>
                 <div class="ant-timeline-item-content">
-                    <p class="timeline-time wow zoomIn animated">2018-06</p>
+                    <p class="timeline-time wow zoomIn animated">{{$value.key}}</p>
                 </div>
             </li>
-            <li class="ant-timeline-item">
+            {{else}}
+            <li class="ant-timeline-item {{$index == tlItems.length - 1 ? 'ant-timeline-item-last' : ''}}">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
                 <div class="ant-timeline-item-content">
-                    <a href="article-detail/124">
-                        <p class="timeline-item wow zoomIn animated">用CSS绘制0.5px的线</p>
+                    <a href="article-detail/{{$value.id}}">
+                        <p class="timeline-item wow zoomIn animated">{{$value.title}}</p>
                     </a>
                 </div>
             </li>
-            <li class="ant-timeline-item">
+            {{/if}}
+        {{/each}}
+
+            <!-- <li class="ant-timeline-item">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-red"></div>
                 <div class="ant-timeline-item-content">
@@ -309,14 +316,14 @@
                 <div class="ant-timeline-item-content"><a href="article-detail/86">
                         <p class="timeline-item wow zoomIn animated">HTTP状态码</p>
                     </a></div>
-            </li>
-            <li class="ant-timeline-item ant-timeline-item-last">
+            </li> -->
+            <!-- <li class="ant-timeline-item ant-timeline-item-last">
                 <div class="ant-timeline-item-tail"></div>
                 <div class="ant-timeline-item-head ant-timeline-item-head-green"></div>
                 <div class="ant-timeline-item-content"><a href="article-detail/84">
                         <p class="timeline-item wow zoomIn animated">TCP/IP协议栈</p>
                     </a></div>
-            </li>
+            </li> -->
         </ul>
     </div>
     <div class="page">

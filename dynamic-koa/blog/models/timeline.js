@@ -32,21 +32,16 @@ var getTimeline = async function (current = 1, count = 30, category = 0) {
 	}
 
 	let ps = [];
-	for (sql of sqls) {
-		ps.push(new Promise(function(resolve, reject) {
-			db.query(sql, function(err, rows) {
-				if(err) {
-					reject(err);
-				}
-				resolve(rows);
-			})
-		}))
-	}
 
+	for (sql of sqls) {
+		ps.push(
+			db.query(sql)
+		);
+	}
+	
     try {
-        let p = await Promise.all(ps);
-    
-        result(p);
+        const p = await Promise.all(ps);
+        return result(p);
     } catch (error) {
         return {"status": 0, "message": '系统异常'};
     }

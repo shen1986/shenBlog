@@ -5,6 +5,7 @@
  */
 var db = require("./db");
 var Str = require('../common/utils/string');
+var mysql = require('mysql');
 
 var getArticles = async function (current, count = null, type = null, category = null, keyword = null, tag = null, deviceAgent = null) {
 
@@ -96,3 +97,25 @@ var getArticles = async function (current, count = null, type = null, category =
 }
 
 module.exports.getArticles = getArticles;
+
+var getArticleDetail = async function (id) {
+	let sql = `select article.id, title, body, tag, theme, created_at, updated_at, type, 
+		views, markdown from article join category on article.category = category.id where 
+		article.id = ${mysql.escape(id)} and article.status = 1`;
+
+    // 统计文章查看人数。
+	// if (!req.session['article_record_' + id]) {
+	// 	req.session['article_record_' + id] = true;
+	// 	await db.query(`update article set views = views + 1 where id = ${id}`);
+	// }
+    
+    try {
+        var rows = await db.query(sql);
+
+        return {"status": 1, "_info": rows ? rows[0] : {}}
+    } catch (error) {
+        return {"status": 0, "message": error};
+    }
+}
+
+module.exports.getArticleDetail = getArticleDetail;

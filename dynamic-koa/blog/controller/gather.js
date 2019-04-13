@@ -16,7 +16,6 @@ exports.getGather = async function (ctx, next) {
         element.disDetail = Str.escape2Html(element.detail).replace(/<\/?[^>]+(>|$)/g, "");
     });
 
-    console.log(notes);
 
     delete notes.status;
     ctx.render("gather.art", {

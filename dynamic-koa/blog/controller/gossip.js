@@ -11,8 +11,6 @@ exports.getGossip = async function (ctx) {
 
     var gossip = await gossipModel.getGossip();
 
-    console.log('gossip',gossip);
-
     delete gossip.status;
 
     await ctx.render("gossip.art", {
