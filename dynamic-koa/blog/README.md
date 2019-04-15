@@ -8,8 +8,8 @@
 - 使用前提
     + 安装Nodejs
     + 安装mysql
-
 - 安装mysql，创建数据库，执行blog.sql文件创建表。
+    + config表必须有2条数据 name：'intro' 的自我介绍和 name：'view_count' 访问次数
 - 修改dynamic-koa/blog/models/db.js文件中的mysql配置。
 - 进入dynamic-koa/blog 执行下面的操作
 ```shell

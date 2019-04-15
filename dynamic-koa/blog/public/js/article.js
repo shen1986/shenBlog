@@ -14,10 +14,10 @@ $(function () {
     }
 
     /**
-     *
+     * 翻页函数
      * @param pageCurrent 当前所在页
      * @param pageSum 总页数
-     * @param callback 调用ajax
+     * @param callback 回调函数
      */
     function setPage(pageCurrent, pageSum, callback) {
         $(".pagination").bootstrapPaginator({
