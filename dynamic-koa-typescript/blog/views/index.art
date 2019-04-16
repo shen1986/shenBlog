@@ -3,7 +3,7 @@
  * @Author: shenxf
  * @Date: 2019-03-25 21:02:09
  -->
-{{ extend '../layout/main.art' }}
+{{ extend './layout/main.art' }}
 
 {{block 'head'}}
 <!-- 轮播图式样 -->
