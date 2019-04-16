@@ -46,7 +46,7 @@ export let getTag = async function (ctx: any) {
     });
 };
 
-
+// 获得文章详细
 export let getArticleDetail = async function (ctx: any) {
 
     const articleDetail = await articleModel.getArticleDetail(ctx.params.id);

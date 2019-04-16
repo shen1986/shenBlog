@@ -6,8 +6,10 @@
 $(function () {
     let currentPage = 1;
     let pageSize = 15;
+    let totalPage = $("#totalPage").val();
+    totalPage = totalPage || 0;
     // 调用分页函数.参数:当前所在页, 总页数(用总条数 除以 每页显示多少条,在向上取整), ajax函数
-    setPage(currentPage, Math.ceil(31 / pageSize), render);
+    setPage(currentPage, Math.ceil(totalPage / pageSize), render);
 
     function render() {
         console.log('翻页被点击');

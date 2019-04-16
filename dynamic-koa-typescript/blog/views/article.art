@@ -41,6 +41,7 @@
 <div class="page">
     <ul class="pagination">
     </ul>
+    <input type="hidden" id="totalPage" value={{total}}/>
 </div>
 {{/block}}
 

@@ -16,7 +16,6 @@ export let getGather = async function (ctx: any, next: any) {
         element.disDetail = Str.escape2Html(element.detail).replace(/<\/?[^>]+(>|$)/g, '');
     });
 
-
     delete notes.status;
     ctx.render('gather.art', {
         ...ctx.res.$initValue,

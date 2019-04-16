@@ -48,6 +48,7 @@ exports.getTag = function (ctx) {
             } }));
     });
 };
+// 获得文章详细
 exports.getArticleDetail = function (ctx) {
     return __awaiter(this, void 0, void 0, function* () {
         const articleDetail = yield articleModel.getArticleDetail(ctx.params.id);

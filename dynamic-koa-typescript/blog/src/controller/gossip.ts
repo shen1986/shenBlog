@@ -5,7 +5,6 @@
  */
 const gossipModel = require('../models/gossip');
 
-
 // 慢生活首页
 export let getGossip = async function (ctx: any) {
 
