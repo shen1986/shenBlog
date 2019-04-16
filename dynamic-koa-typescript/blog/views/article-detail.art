@@ -1,0 +1,51 @@
+<!--
+ * @Description: 文章页面
+ * @Author: shenxf
+ * @Date: 2019-03-26 16:54:32
+ -->
+{{ extend '../layout/main.art' }}
+
+<!-- 样式设置 -->
+{{block 'head'}}
+<link rel="stylesheet" href="/css/article-detail.css">
+{{/block}}
+
+<!-- 标题设置 -->
+{{block 'title'}}文章详情{{/block}}
+
+{{block 'content'}}
+<div class="article-detail">
+    <h3 class="blog-title">
+        {{
+            type == 2
+            ? "[转]"
+            : type == 3
+            ? "[译]"
+            : ""
+        }}
+        {{title}}
+    </h3>
+    <div class="blog-top">
+        <span>
+            Last Modified : &nbsp;
+            {{
+                updated_at
+                ? updated_at
+                : created_at
+            }}
+        </span>
+        <span class="spliter"></span>
+        <span>{{theme}}</span>
+        <span class="spliter"></span>
+        <span><i class="glyphicon glyphicon-tag"></i>&nbsp; {{tag}}</span>
+        <span class="spliter"></span>
+        <span>浏览&nbsp; {{views}}</span>
+    </div>
+    <div class="blog-content {{markdown == '1' ? 'markdown-wrap' : ''}}">
+        {{@ body}}
+    </div>
+</div>
+{{/block}}
+
+{{block 'scripts'}}
+{{/block}}

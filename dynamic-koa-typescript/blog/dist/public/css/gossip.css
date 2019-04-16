@@ -1,0 +1,121 @@
+/**
+ * @Description: 慢生活
+ * @Author: shenxf
+ * @Date: 2019-04-02 19:54:21
+ */
+.gossip-wrap {
+    padding: 35px 25px 20px 40px;
+    box-shadow: 0 0 5px #555;
+}
+
+@media (max-width: 767px) {
+    .gossip-wrap {
+        padding: 15px 12px;
+        box-shadow: 0 0 5px #555;
+    }
+}
+
+.ant-timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ant-timeline-item {
+    position: relative;
+    padding: 0 0 12px;
+    list-style: none;
+    margin: 0;
+}
+
+.ant-timeline-item-tail {
+    position: absolute;
+    left: 5px;
+    top: 0;
+    height: 100%;
+    border-left: 2px solid #e9e9e9;
+}
+
+.ant-timeline-item-head {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 100px;
+    border: 2px solid transparent;
+}
+
+.ant-timeline-item-head-blue {
+    border-color: #108ee9;
+    color: #108ee9;
+}
+
+.ant-timeline-item-content {
+    padding: 0 0 10px 24px;
+    font-size: 12px;
+    position: relative;
+    top: -3px;
+}
+
+.gossip-item {
+    padding: 16px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    border-radius: 10px;
+    background: #f0f0f0;
+}
+
+.fadeInLeft {
+    -webkit-animation-name: H;
+    animation-name: H;
+}
+
+.gossip-detail pre {
+    white-space: pre-wrap;
+    font-family: Microsoft Yahei;
+
+    /* 覆盖bootstrap式样 */
+    font-size: 1em;
+    line-height: 1.5;
+    word-break: none;
+    word-wrap: none;
+    color: rgba(0, 0, 0, .65);
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: none;
+}
+
+.ant-timeline-item-last .ant-timeline-item-content {
+    min-height: 48px;
+}
+
+.ant-timeline-item-last .ant-timeline-item-tail {
+    border-left: 2px dotted #e9e9e9;
+    display: none;
+}
+
+.gossip-author {
+    margin-top: 5px;
+    color: #888;
+    font-size: 13px;
+    text-align: right;
+}
+
+@keyframes H {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+/* 翻页 */
+.page {
+    text-align: right;
+}
