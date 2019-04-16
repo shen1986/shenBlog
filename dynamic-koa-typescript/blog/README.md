@@ -14,6 +14,7 @@
 - 进入dynamic-koa/blog 执行下面的操作
 ```shell
 npm install
+npm run build
 npm start
 ```
 - 打开游览器，输入`localhost:3000`,就可以查看网页
