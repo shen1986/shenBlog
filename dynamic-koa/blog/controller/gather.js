@@ -6,9 +6,18 @@
 const gatherModel = require('../models/gather');
 var Str = require('../common/utils/string');
 
-// 获得点滴页
+/**
+ * 获得点滴页
+ */
 exports.getGather = async function (ctx, next) {
-    var notes = await gatherModel.getNotes();
+    var notes = null;
+
+    try {
+        notes = await gatherModel.getNotes();
+    } catch (error) {
+        ctx.throw(500, '系统异常', error);
+    }
+    
     if (notes.status === "0") {
         await next(notes);
     }

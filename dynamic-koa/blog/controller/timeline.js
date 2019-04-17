@@ -5,7 +5,9 @@
  */
 const timelineModel = require('../models/timeline');
 
-// 获得归档页
+/**
+ * 获得归档页
+ */
 exports.getTimeline = async function (ctx) {
 
     var timeline = await timelineModel.getTimeline();

@@ -5,19 +5,30 @@
  */
 var db = require("./db");
 
-var initWindow = async function(ctx, next) {
+/**
+ * 右边栏等的初始化
+ * @param {any} ctx - 上下文
+ * @param {any} next - 下一个函数
+ */
+module.exports.initWindow = async function (ctx, next) {
+  try {
+    console.log(1);
     var result = await getNavsideInfo();
-    // 异常终了
-    if (result.status !== 1) {
-        await next(result)
-    } else {
-        ctx.res.$initValue = result;
-        await next();
-    }
+    ctx.res.$initValue = result;
+    console.log(2);
+  } catch (error) {
+    console.log(3);
+    throw error;
+  } finally {
+    console.log(error);
+    await next();
+  }
 }
 
-// 取得右边栏情报
-var getNavsideInfo = async function() {
+/**
+ * 取得右边栏情报
+ */
+var getNavsideInfo = async function () {
   let sqls = [
     "select value from config where (name = 'intro' or name = 'view_count') and status = 1",
     "select id, title from article where status = 1 order by created_at desc limit 10",
@@ -30,21 +41,23 @@ var getNavsideInfo = async function() {
   let ps = [];
   for (sql of sqls) {
     ps.push(
-        db.query(sql)
+      db.query(sql)
     );
   }
-  const p = await Promise.all(ps);
+
   try {
+    const p = await Promise.all(ps);
     return result(p);
   } catch (error) {
-    return {
-      status: 0,
-      message: error.sqlMessage
-    };
+    throw error;
   }
 };
 
-var result = function(out) {
+/**
+ * 画面结果返回钱包装
+ * @param {any} out - sql取得的结果
+ */
+var result = function (out) {
   let tags = [];
   for (item of out[4]) {
     tags.push(
@@ -69,6 +82,3 @@ var result = function(out) {
     colors: ["#f50", "#f8a72a", "#87d068", "#108ee9", "#6b61f0"]
   };
 };
-
-module.exports.getNavsideInfo = getNavsideInfo;
-module.exports.initWindow = initWindow;

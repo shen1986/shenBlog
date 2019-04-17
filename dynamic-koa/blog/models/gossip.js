@@ -5,7 +5,12 @@
  */
 var db = require("./db");
 
-var getGossip = async function (current = 1, count = 30) {
+/**
+ * 取得慢生活情报
+ * @param {number} current - 当前页
+ * @param {number} count - 显示记录数
+ */
+module.exports.getGossip = async function (current = 1, count = 30) {
 
     let sql = `select * from gossip order by created_at desc limit ${(+current - 1) * +count}, ${+count}`;
 
@@ -21,12 +26,7 @@ var getGossip = async function (current = 1, count = 30) {
             "total": t[0]['total']
         };
     } catch (error) {
-        if (error instanceof MysqlError) {
-            return { 'status': 0, 'message': error.sqlMessage };
-        } else {
-            return { "status": 0, "message": '系统异常' }
-        }
+        console.log(error);
+        throw error;
     }
 }
-
-module.exports.getGossip = getGossip;

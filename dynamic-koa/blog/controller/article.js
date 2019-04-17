@@ -6,9 +6,17 @@
 const articleDetailModel = require('../models/article');
 const articleModel = require('../models/article');
 
-// 获得文章页
+/**
+ * 获得文章页
+ */
 exports.getArticle = async function (ctx) {
-    var articleData =  await articleModel.getArticles(null, 15, 1, null, null, null, ctx.req.headers["user-agent"].toLowerCase());
+    var articleData = null;
+
+    try {
+        articleData =  await articleModel.getArticles(null, 15, 1, null, null, null, ctx.req.headers["user-agent"].toLowerCase());
+    } catch (error) {
+        ctx.throw(500, '系统异常', error);
+    }
 
     await ctx.render("article.art", {
         ...articleData,
@@ -19,11 +27,18 @@ exports.getArticle = async function (ctx) {
     });
 };
 
-// 获得分类页
+/**
+ * 获得分类页
+ */
 exports.getCategory = async function(ctx) {
-    
-    var articleData =  await articleModel.getArticles(1, 15, null, ctx.params.id, null, null, ctx.req.headers["user-agent"].toLowerCase());
-    
+    var articleData = null;
+
+    try {
+        articleData =  await articleModel.getArticles(1, 15, null, ctx.params.id, null, null, ctx.req.headers["user-agent"].toLowerCase());
+    } catch (error) {
+        ctx.throw(500, '系统异常', error);
+    }
+
     await ctx.render("article.art", {
         ...articleData,
         ...ctx.res.$initValue,
@@ -33,11 +48,18 @@ exports.getCategory = async function(ctx) {
     });
 }
 
-// 获得标签
+/**
+ * 获得标签
+ */
 exports.getTag = async function(ctx) {
-    
-    var articleData =  await articleModel.getArticles(1, 15, null, null, null, ctx.params.tag, ctx.req.headers["user-agent"].toLowerCase());
-    
+    var articleData = null;
+
+    try {
+        articleData =  await articleModel.getArticles(1, 15, null, null, null, ctx.params.tag, ctx.req.headers["user-agent"].toLowerCase());
+    } catch (error) {
+        ctx.throw(500, '系统异常', error);
+    }
+
     await ctx.render("article.art", {
         ...articleData,
         ...ctx.res.$initValue,
@@ -47,11 +69,18 @@ exports.getTag = async function(ctx) {
     });
 }
 
-
+/**
+ * 文章详细
+ */
 exports.getArticleDetail = async function (ctx) {
+    var articleDetail = null;
 
-    var articleDetail = await articleDetailModel.getArticleDetail(ctx.params.id);
-    
+    try {
+        articleDetail = await articleDetailModel.getArticleDetail(ctx.params.id);
+    } catch (error) {
+        ctx.throw(500, '系统异常', error);
+    }
+
     await ctx.render("article-detail.art", {
         ...ctx.res.$initValue,
         ...articleDetail._info,

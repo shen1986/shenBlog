@@ -7,7 +7,10 @@ var db = require("./db");
 var Str = require('../common/utils/string');
 var mysql = require('mysql');
 
-var getArticles = async function (current, count = null, type = null, category = null, keyword = null, tag = null, deviceAgent = null) {
+/**
+ * 获取文章
+ */
+module.exports.getArticles = async function (current, count = null, type = null, category = null, keyword = null, tag = null, deviceAgent = null) {
 
     let field = "article.id, title, body, tag, created_at, views, theme";
     let sql = `select ${field} from article join category on article.category = category.id`,
@@ -54,11 +57,7 @@ var getArticles = async function (current, count = null, type = null, category =
     try {
         rows = await db.query(sql);
     } catch (error) {
-        if (error instanceof MysqlError) {
-            return { 'status': 0, 'message': error.sqlMessage };
-        } else {
-            return { 'status': 0, 'message': '系统异常' };
-        }
+        throw error;
     }
 
     let info = {};
@@ -84,21 +83,20 @@ var getArticles = async function (current, count = null, type = null, category =
             info['total'] = totalRows[0]['total'];
             return { 'status': 1, 'info': info };
         } catch (error) {
-            if (error instanceof MysqlError) {
-                return { 'status': 0, 'message': error.sqlMessage };
-            } else {
-                return { 'status': 0, 'message': '系统异常' };
-            }
+            console.log(error);
+            throw error;
         }
     }
     else {
         return { 'status': 1, 'info': info };
     }
-}
+};
 
-module.exports.getArticles = getArticles;
-
-var getArticleDetail = async function (id) {
+/**
+ * 获取详细页
+ * @param {number} id - 文章id 
+ */
+module.exports.getArticleDetail  = async function (id) {
 	let sql = `select article.id, title, body, tag, theme, created_at, updated_at, type, 
 		views, markdown from article join category on article.category = category.id where 
 		article.id = ${mysql.escape(id)} and article.status = 1`;
@@ -114,8 +112,7 @@ var getArticleDetail = async function (id) {
 
         return {"status": 1, "_info": rows ? rows[0] : {}}
     } catch (error) {
-        return {"status": 0, "message": error};
+        console.log(error);
+        throw error;
     }
-}
-
-module.exports.getArticleDetail = getArticleDetail;
+};

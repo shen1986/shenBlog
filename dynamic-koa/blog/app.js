@@ -26,6 +26,12 @@ app.use(static(
     path.join( __dirname, './public/')
 ));
 
+// // 异常集中处理
+// app.on('error', (err,ctx) =>  {
+//     //  log.error('server error', err)
+//     console.log(err)
+// });
+
 // 引入bodyParse
 app.use(bodyParser());
 

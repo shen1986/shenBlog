@@ -1,11 +1,17 @@
 /*
- * @Description: 慢生活模型
+ * @Description: 归档模型
  * @Author: shenxf
  * @Date: 2019-04-10 22:08:51
  */
 var db = require("./db");
 
-var getTimeline = async function (current = 1, count = 30, category = 0) {
+/**
+ * 取得归档情报
+ * @param {number} current - 当前页
+ * @param {number} count - 显示记录数
+ * @param {number} category - 类别
+ */
+module.exports.getTimeline = async function (current = 1, count = 30, category = 0) {
 
 	let sqls = [
 		"select id, theme from category where status = 1"
@@ -43,10 +49,15 @@ var getTimeline = async function (current = 1, count = 30, category = 0) {
         const p = await Promise.all(ps);
         return result(p);
     } catch (error) {
-        return {"status": 0, "message": '系统异常'};
+		console.log(error);
+        throw error;
     }
 }
 
+/**
+ * 表示结果包装
+ * @param {any} out - sql结果 
+ */
 var result = function(out) {
     return {
         status: 1,  
@@ -55,5 +66,3 @@ var result = function(out) {
         total: out[2][0]['total']
     };
 }
-
-module.exports.getTimeline = getTimeline;
