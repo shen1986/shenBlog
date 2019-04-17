@@ -42,9 +42,9 @@ router.get('/gather', gather.getGather);
 // 慢生活
 router.get('/gossip', gossip.getGossip);
 
-// 404 页面
-router.use(async function (ctx: any) {
-    ctx.render('404.art');
-});
+// // 404 页面
+// router.use(async function (ctx: any) {
+//     await ctx.render('404.art');
+// });
 
 export default router;

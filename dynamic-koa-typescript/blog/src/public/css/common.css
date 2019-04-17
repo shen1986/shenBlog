@@ -71,6 +71,10 @@
     text-align: right;
 }
 
+.navbar-toggle .icon-bar {
+    background: #fff;
+}
+
 .anticon {
     display: inline-block;
     font-style: normal;

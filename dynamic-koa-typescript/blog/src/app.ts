@@ -29,6 +29,20 @@ app.use(kStatic(
 // 引入bodyParse
 app.use(bodyParser());
 
+// 统一异常处理
+app.on('error', async (err, ctx) => {
+    console.log(err.sqlMessage);
+});
+
+// 配置404页面
+app.use(async (ctx, next) => {
+    await next();
+
+    if (ctx.res.statusCode === 404) {
+        await ctx.render('404.art');
+    }
+});
+
 // 导入路由
 app
     .use(router.routes())
