@@ -1,0 +1,62 @@
+<!--
+ * @Description: 首页
+ * @Author: shenxf
+ * @Date: 2019-03-25 21:02:09
+ -->
+{{ extend './layout/main.art' }}
+
+<!-- 样式设置 -->
+{{block 'head'}}
+<link rel="stylesheet" href="/css/gossip.css">
+{{/block}}
+
+<!-- 标题设置 -->
+{{block 'title'}}慢生活{{/block}}
+
+{{block 'content'}}
+<div class="gossip-wrap">
+    <div class="gossip-body">
+        <ul class="ant-timeline">
+            {{each gossips}}
+            <li class="ant-timeline-item {{$index == gossips.length - 1 ? 'ant-timeline-item-last' : ''}}">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <div class="gossip-item wow fadeInLeft animated">
+                        {{if $value.file_name}}
+                        <div class="ant-row row" style="margin-left: -6px; margin-right: -6px;">
+                            <div class="col-xs-24 col-sm-9" style="padding-left: 6px; padding-right: 6px;">
+                                <div class="gossip-img">
+                                    <img src="images/gossip/{{$value.save_name}}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-xs-24 col-sm-15" style="padding-left: 6px; padding-right: 6px;">
+                                <div class="gossip-detail">
+                                    <pre>{{$value.detail}}</pre>
+                                </div>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="gossip-detail">
+                            <pre>{{$value.detail}}</pre>
+                        </div>
+                        {{/if}}
+                        <p class="gossip-author">posted@ {{$value.created_at}}</p>
+                    </div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+        <div class="page">
+            <ul class="pagination">
+            </ul>
+            <input type="hidden" id="totalPage" value="{{total}}" />
+        </div>
+    </div>
+</div>
+{{/block}}
+
+<!-- js设置 -->
+{{block 'scripts'}}
+<script src="/js/gossip.js"></script>
+{{/block}}

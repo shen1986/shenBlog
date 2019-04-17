@@ -90,6 +90,9 @@
 		* [resume-nodejs](https://github.com/shen1986/resume-nodejs)
 	+ 除了翻页，前台页面基本做完了。
 		* [前台博客页面](dynamic-koa/blog)
+    + 现在typeScript感觉是行业标准了，把自己的项目改造了下，现在可以使用typeScript编程了。并且加入的tslint代码检查。
+        * [前台博客页面TypeScript版](dynamic-koa-typescript/blog);
+        * 翻页准备在后台页面做好之后再做，有数据好做点。
 
 ## 补充说明
 
