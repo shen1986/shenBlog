@@ -26,12 +26,15 @@ router.get('/article', article.getArticle);
 router.get('/category/:id', article.getCategory);
 // 标签
 router.get('/tag/:tag', article.getTag);
+// 检索功能
+router.get('/search/:keyword', article.getSearch);
 
 // 文章页详细
 router.get('/article-detail/:id', article.getArticleDetail);
 
 // 归档
 router.get('/timeline', timeline.getTimeline);
+router.get('/get-timeline', timeline.getTimelinebySel);
 
 // 点滴
 router.get('/gather', gather.getGather);

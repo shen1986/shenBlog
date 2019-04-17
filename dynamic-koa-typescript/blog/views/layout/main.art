@@ -37,6 +37,8 @@
     <script src="/js/bootstrap.min.js"></script>
     <!--分页插件-->
     <script src="/js/bootstrap-paginator.min.js"></script>
+    <!-- 共通js -->
+    <script src="/js/common.js"></script>
 
     <!-- script占位 -->
     {{block 'scripts'}}{{/block}}

@@ -59,3 +59,16 @@ export let getArticleDetail = async function (ctx: any) {
         }
     });
 };
+
+// 检索功能
+export let getSearch = async function( ctx: any ) {
+    const articleData = await articleModel.getArticles(1, 15, null, null, ctx.params.keyword, null, ctx.req.headers['user-agent'].toLowerCase());
+
+    await ctx.render('article.art', {
+        ...articleData,
+        ...ctx.res.$initValue,
+        common: {
+            hasBanner: false
+        }
+    });
+};

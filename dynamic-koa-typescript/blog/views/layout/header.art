@@ -62,7 +62,7 @@
                         </li>
                         <div class="nav-top-search">
                             <span class="ant-input-search ant-input-affix-wrapper">
-                                <input type="text" placeholder="Search" value="" class="ant-input ant-input-lg">
+                                <input type="text" placeholder="Search" value="" id="search-input" class="ant-input ant-input-lg">
                                 <span class="ant-input-suffix">
                                     <i class="ant-input-search-icon glyphicon glyphicon-search"></i>
                                 </span>

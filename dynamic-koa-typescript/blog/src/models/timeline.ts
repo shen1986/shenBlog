@@ -55,5 +55,3 @@ const result = function(out: any) {
         total: out[2][0]['total']
     };
 };
-
-module.exports.getTimeline = getTimeline;

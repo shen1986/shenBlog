@@ -3,12 +3,13 @@
  * @Author: shenxf
  * @Date: 2019-03-28 16:22:17
  */
-const gatherModel = require('../models/gather');
+import * as gatherModel from '../models/gather';
 import * as Str from '../common/utils/string';
 
 // 获得点滴页
 export let getGather = async function (ctx: any, next: any) {
-    const notes = await gatherModel.getNotes();
+    const notes: any = await gatherModel.getNotes();
+
     if (notes.status === '0') {
         await next(notes);
     }
