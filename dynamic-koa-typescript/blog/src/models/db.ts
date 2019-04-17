@@ -9,8 +9,8 @@ import mysql from 'mysql';
 const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    password: 'root',
-    database: 'blog',
+    password: '580114',
+    database: 'blog2',
     dateStrings: true
 });
 

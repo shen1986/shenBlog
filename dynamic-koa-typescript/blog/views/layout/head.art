@@ -20,7 +20,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
 
     <!-- 共同式样 -->
     <link rel="stylesheet" href="/css/base.css">

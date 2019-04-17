@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </div>
-                <div class="navbar-collapse-body collapse navbar-collapse" id="bs-navbar-collapse">
+                <div class="navbar-collapse-body" style="height: 0px" id="bs-navbar-collapse">
                     <div class="hidden-sm">
                         <div>
                             <p class="navbar-item"><a data-key="home" href="/home">主页</a></p>
@@ -28,7 +28,7 @@
                             <p class="navbar-item"><a data-key="gossip" href="/gossip">慢生活</a></p>
                             <div style="padding: 10px;">
                                 <span class="ant-input-search ant-input-affix-wrapper">
-                                    <input type="text" placeholder="Search" value="" class="ant-input ant-input-lg">
+                                    <input type="text" placeholder="Search" value="" id="search-input2" class="ant-input ant-input-lg">
                                     <span class="ant-input-suffix">
                                         <i class="anticon anticon-search ant-input-search-icon"></i>
                                     </span>
