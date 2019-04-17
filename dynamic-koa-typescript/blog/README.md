@@ -18,4 +18,7 @@ npm run build
 npm start
 ```
 - 打开游览器，输入`localhost:3000`,就可以查看网页
-
+- 如果是开发阶段，请使用
+```shell
+npm run watch
+```
