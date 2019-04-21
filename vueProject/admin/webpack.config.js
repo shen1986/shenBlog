@@ -6,6 +6,7 @@
 var path = require('path')
 var webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -48,7 +49,12 @@ module.exports = {
   },
   plugins: [
     // make sure to include the plugin for the magic
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, './index.html'), // 指定模板文件路径
+      filename: 'index.html', // 设置生成的内存页面的名称
+      favicon:'./favicon.ico'
+    })
   ],
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
