@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server --open --port 3000 --hot --host 127.0.0.1",
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server --open --port 3000 --hot --host 127.0.0.1 --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "css-loader": "^0.28.1",
+    "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
     "typescript": "^2.7.2",
     "vue-loader": "^15.7.0",

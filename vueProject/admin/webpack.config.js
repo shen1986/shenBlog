@@ -1,6 +1,6 @@
-
 var path = require('path')
 var webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -33,6 +33,7 @@ module.exports = {
           appendTsSuffixTo: [/\.vue$/],
         }
       },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }, // 处理 CSS 文件的 loader
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
@@ -42,6 +43,10 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin()
+  ],
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
