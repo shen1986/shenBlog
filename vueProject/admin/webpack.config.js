@@ -1,3 +1,8 @@
+/*
+ * @Description: webpack主要配置文件
+ * @Author: shenxf
+ * @Date: 2018-03-24 23:04:44
+ */
 var path = require('path')
 var webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -16,11 +21,8 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
-            // other preprocessors should work out of the box, no loader config like this necessary.
-            'scss': 'vue-style-loader!css-loader!sass-loader',
-            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+            // 用来分析less用的。
+            'less': "vue-style-loader!css-loader!less-loader",
           }
           // other vue-loader options go here
         }
@@ -34,6 +36,7 @@ module.exports = {
         }
       },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] }, // 处理 CSS 文件的 loader
+      { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] }, // 处理 less 文件的 loader
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
@@ -55,7 +58,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: false // 控制要不要显示信息到窗口
   },
   performance: {
     hints: false

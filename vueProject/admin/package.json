@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --open --port 3000 --hot --host 127.0.0.1 --mode development",
+    "dev": "webpack-dev-server --open --port 3000 --hot --host localhost --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "css-loader": "^0.28.1",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
     "typescript": "^2.7.2",

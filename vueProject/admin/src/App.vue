@@ -9,46 +9,43 @@
       collapsible
       v-model="collapsed"
     >
-      <div class="logo" />
+      <div class="logo" >Shenxf个人博客管理端</div>
       <a-menu theme="dark" :defaultSelectedKeys="['1']" mode="inline">
-        <a-menu-item key="1">
-          <a-icon type="pie-chart" />
-          <span>Option 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <a-icon type="desktop" />
-          <span>Option 2</span>
-        </a-menu-item>
         <a-sub-menu
           key="sub1"
         >
-          <span slot="title"><a-icon type="user" /><span>User</span></span>
-          <a-menu-item key="3">Tom</a-menu-item>
-          <a-menu-item key="4">Bill</a-menu-item>
-          <a-menu-item key="5">Alex</a-menu-item>
+          <span slot="title"><a-icon type="file" /><span>文章管理</span></span>
+          <a-menu-item key="1">文章列表</a-menu-item>
+          <a-menu-item key="2">文章添加</a-menu-item>
         </a-sub-menu>
         <a-sub-menu
           key="sub2"
         >
-          <span slot="title"><a-icon type="team" /><span>Team</span></span>
-          <a-menu-item key="6">Team 1</a-menu-item>
-          <a-menu-item key="8">Team 2</a-menu-item>
+          <span slot="title"><a-icon type="inbox" /><span>收藏管理</span></span>
+          <a-menu-item key="3">收藏列表</a-menu-item>
+          <a-menu-item key="4">收藏添加</a-menu-item>
         </a-sub-menu>
-        <a-menu-item key="9">
-          <a-icon type="file" />
-          <span>File</span>
-        </a-menu-item>
+        <a-sub-menu
+          key="sub3"
+        >
+          <span slot="title"><a-icon type="share-alt" /><span>说说管理</span></span>
+          <a-menu-item key="5">说说列表</a-menu-item>
+          <a-menu-item key="6">说说添加</a-menu-item>
+        </a-sub-menu>
       </a-menu>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0" />
+      <a-layout-header style="background: #fff; padding:0 15px;text-align: right;" >
+          欢迎你，shenxf
+          <a href="#">退出</a>
+      </a-layout-header>
       <a-layout-content style="margin: 0 16px">
         <a-breadcrumb style="margin: 16px 0">
           <a-breadcrumb-item>User</a-breadcrumb-item>
           <a-breadcrumb-item>Bill</a-breadcrumb-item>
         </a-breadcrumb>
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-          Bill is a cat.
+          <router-view></router-view>
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -70,10 +67,6 @@ export default Vue.extend({
 });
 </script>
 
-<style>
-#components-layout-demo-side .logo {
-  height: 32px;
-  background: rgba(255,255,255,.2);
-  margin: 16px;
-}
+<style lang="less" scoped>
+@import "styles/base.less";
 </style>
