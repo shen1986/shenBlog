@@ -10,7 +10,10 @@
         "moduleResolution": "node",
         "target": "es5",
         "experimentalDecorators": true,
-        "lib": ["es2015"]
+        "lib": ["es6",
+            "dom",
+            "dom.iterable",
+            "esnext"]
     },
     "include": [
         "./src/**/*"
