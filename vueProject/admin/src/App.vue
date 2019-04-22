@@ -58,7 +58,7 @@
 <script lang="ts">
 import { Layout, Menu, Breadcrumb, Icon } from 'ant-design-vue';
 import { Vue, Component, Prop } from "vue-property-decorator";
-// 这里吐槽一句，vue的antd按需加载真特么丑陋，一点也不优雅，还浪费了我大把的时间。
+// 这里吐槽一句，vue的antd按需加载真特么丑陋，一点也不优雅，还浪费了我大把的时间。感觉全部直接引用更好
 Vue.use(Layout);
 Vue.use(Menu);
 Vue.use(Breadcrumb);

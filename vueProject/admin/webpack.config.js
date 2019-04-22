@@ -7,7 +7,7 @@ var path = require('path')
 var webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-const tsImportPluginFactory = require("ts-import-plugin"); // 按需加载
+const tsImportPluginFactory = require("ts-import-plugin"); // 按需加载antd用
 
 module.exports = {
   entry: "./src/index.ts",
@@ -31,25 +31,15 @@ module.exports = {
       },
       {
         test: /\.(jsx|tsx|js|ts)$/,
-        // use: [
-        //     "babel-loader",
-        //   {
-        //     loader: "ts-loader",
-        //     options: {
-        //       appendTsSuffixTo: [/\.vue$/]
-        //     }
-        //   }
-
-        // ],
         loader: "ts-loader",
         options: {
           transpileOnly: true,
           getCustomTransformers: () => ({
             before: [
               tsImportPluginFactory({
-                libraryName: "ant-design-vue",
-                libraryDirectory: "es",
-                style: "css"
+                libraryName: "ant-design-vue", // module 的路劲
+                libraryDirectory: "es", // 引用那个版本有 lib es
+                style: "css" // 是引用 .css文件呢 还是 （true）.less 这里引less会报错，不知道原因
               })
             ]
           }),
@@ -72,7 +62,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: "file-loader",
         options: {
-          name: "[name].[ext]?[hash]"
+          name: "[name].[ext]?[hash]" // 图片的取名规则 名字后面加hash
         }
       }
     ]
@@ -85,11 +75,6 @@ module.exports = {
       filename: "index.html", // 设置生成的内存页面的名称
       favicon: "./favicon.ico"
     })
-    // 按需加载现在还不会，以后慢慢考虑
-    // [
-    //   "import",
-    //   { libraryName: "ant-design-vue", libraryDirectory: "es", style: true }
-    // ]
   ],
   resolve: {
     extensions: [".ts", ".js", ".vue", ".json"],
