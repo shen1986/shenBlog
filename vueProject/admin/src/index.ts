@@ -7,8 +7,8 @@ import Vue from "vue";
 import app from "./App.vue";
 
 // 导入antd
-import Antd from 'ant-design-vue';
-import 'ant-design-vue/dist/antd.css';
+// import Antd from 'ant-design-vue';
+// import 'ant-design-vue/dist/antd.css';
 
 // 不阻止启动生产消息
 Vue.config.productionTip = false;
@@ -22,7 +22,7 @@ import router from './router/router';
 
 
 // 引入蚂蚁式样
-Vue.use(Antd);
+// Vue.use(Antd);
 
 let v = new Vue({
     el: "#app",

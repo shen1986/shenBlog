@@ -1,14 +1,19 @@
 {
     "compilerOptions": {
+        "importHelpers": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
         "outDir": "./built/",
         "sourceMap": true,
         "strict": true,
-        "module": "es2015",
+        "module": "ESNext",
         "moduleResolution": "node",
         "target": "es5",
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "lib": ["es2015"]
     },
     "include": [
         "./src/**/*"
-    ]
+    ],
+    "allowSyntheticDefaultImports": true
 }

@@ -7,7 +7,10 @@ import VueRouter from 'vue-router'
 
 // 导入对应的路由组件
 // import HomeContainer from './components/tabbar/HomeContainer.vue'
-import hello from '../components/Hello.vue';
+// import hello from '../components/Hello.vue';
+
+// 按需加载
+const hello = () => import('../components/Hello.vue');
 
 
 // 3. 创建路由对象

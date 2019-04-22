@@ -7,6 +7,7 @@ var path = require('path')
 var webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const tsImportPluginFactory = require("ts-import-plugin"); // 按需加载
 
 module.exports = {
   entry: "./src/index.ts",
@@ -29,15 +30,44 @@ module.exports = {
         }
       },
       {
-        test: /\.tsx?$/,
+        test: /\.(jsx|tsx|js|ts)$/,
+        // use: [
+        //     "babel-loader",
+        //   {
+        //     loader: "ts-loader",
+        //     options: {
+        //       appendTsSuffixTo: [/\.vue$/]
+        //     }
+        //   }
+
+        // ],
         loader: "ts-loader",
-        exclude: /node_modules/,
         options: {
+          transpileOnly: true,
+          getCustomTransformers: () => ({
+            before: [
+              tsImportPluginFactory({
+                libraryName: "ant-design-vue",
+                libraryDirectory: "es",
+                style: "css"
+              })
+            ]
+          }),
+          compilerOptions: {
+            module: "es2015"
+          },
           appendTsSuffixTo: [/\.vue$/]
-        }
+        },
+        exclude: /node_modules/
       },
-      { test: /\.css$/, use: ["style-loader", "css-loader"] }, // 处理 CSS 文件的 loader
-      { test: /\.less$/, use: ["style-loader", "css-loader", "less-loader"] }, // 处理 less 文件的 loader
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      }, // 处理 CSS 文件的 loader
+      {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"]
+      }, // 处理 less 文件的 loader
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: "file-loader",
@@ -54,7 +84,7 @@ module.exports = {
       template: path.join(__dirname, "./index.html"), // 指定模板文件路径
       filename: "index.html", // 设置生成的内存页面的名称
       favicon: "./favicon.ico"
-    }),
+    })
     // 按需加载现在还不会，以后慢慢考虑
     // [
     //   "import",
@@ -78,22 +108,22 @@ module.exports = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ])
+    module.exports.devtool = '#source-map'
+    // http://vue-loader.vuejs.org/en/workflow/production.html
+    module.exports.plugins = (module.exports.plugins || []).concat([
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true,
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        })
+    ])
 }
