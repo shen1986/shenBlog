@@ -22,7 +22,7 @@ import router from './router/router';
 
 
 // 引入蚂蚁式样
-Vue.use(Antd)
+Vue.use(Antd);
 
 let v = new Vue({
     el: "#app",

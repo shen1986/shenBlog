@@ -56,17 +56,16 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+// import { Layout, Menu, Breadcrumb, Icon } from 'ant-design-vue';
+import { Vue, Component, Prop } from "vue-property-decorator";
 
-export default Vue.extend({
-  data() {
-    return {
-      collapsed: false,
-    }
-  },
-});
+@Component
+export default class App extends Vue {
+    // data 属性
+    collapsed =  false;
+}
 </script>
 
 <style lang="less" scoped>
-@import "styles/base.less";
+@import "styles/app.less";
 </style>

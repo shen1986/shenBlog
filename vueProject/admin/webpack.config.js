@@ -9,40 +9,40 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: "./src/index.ts",
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    path: path.resolve(__dirname, "./dist"),
+    publicPath: "/dist/",
+    filename: "build.js"
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: "vue-loader",
         options: {
           loaders: {
             // 用来分析less用的。
-            'less': "vue-style-loader!css-loader!less-loader",
+            less: "vue-style-loader!css-loader!less-loader"
           }
           // other vue-loader options go here
         }
       },
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
+        loader: "ts-loader",
         exclude: /node_modules/,
         options: {
-          appendTsSuffixTo: [/\.vue$/],
+          appendTsSuffixTo: [/\.vue$/]
         }
       },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] }, // 处理 CSS 文件的 loader
-      { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] }, // 处理 less 文件的 loader
+      { test: /\.css$/, use: ["style-loader", "css-loader"] }, // 处理 CSS 文件的 loader
+      { test: /\.less$/, use: ["style-loader", "css-loader", "less-loader"] }, // 处理 less 文件的 loader
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
+        loader: "file-loader",
         options: {
-          name: '[name].[ext]?[hash]'
+          name: "[name].[ext]?[hash]"
         }
       }
     ]
@@ -51,15 +51,20 @@ module.exports = {
     // make sure to include the plugin for the magic
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, './index.html'), // 指定模板文件路径
-      filename: 'index.html', // 设置生成的内存页面的名称
-      favicon:'./favicon.ico'
-    })
+      template: path.join(__dirname, "./index.html"), // 指定模板文件路径
+      filename: "index.html", // 设置生成的内存页面的名称
+      favicon: "./favicon.ico"
+    }),
+    // 按需加载现在还不会，以后慢慢考虑
+    // [
+    //   "import",
+    //   { libraryName: "ant-design-vue", libraryDirectory: "es", style: true }
+    // ]
   ],
   resolve: {
-    extensions: ['.ts', '.js', '.vue', '.json'],
+    extensions: [".ts", ".js", ".vue", ".json"],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      vue$: "vue/dist/vue.esm.js"
     }
   },
   devServer: {
@@ -69,8 +74,8 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
-}
+  devtool: "#eval-source-map"
+};
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
