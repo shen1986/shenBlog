@@ -18,7 +18,14 @@ var router = new VueRouter({
   routes: [ // 配置路由规则
     { path: '/', redirect: '/articleList' },
     { path: '/articleList', component: articleList },
-    { path: '/addArticle', component: addArticle },
+    {
+        path: '/addArticle', 
+        component: addArticle,
+        children: [
+            { path: 'ueditor', component: addArticle}, // 富文本
+            { path: 'markdown', component: addArticle} // markdown
+        ]
+    },
     { path: '/addCollection', component: addCollection },
     { path: '/collectionList', component: collectionList },
     { path: '/addTalk', component: addTalk },
