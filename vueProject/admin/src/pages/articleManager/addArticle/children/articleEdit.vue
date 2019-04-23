@@ -4,26 +4,24 @@
  * @Date: 2019-04-22 21:23:56
  -->
 <template>
-    <div>
+    <a-row class="article-edit">
         <!-- bidirectional data binding（双向数据绑定） -->
-        <quill-editor v-model="content"
-                        ref="myQuillEditor"
-                        :options="editorOption"
-                        @blur="onEditorBlur($event)"
-                        @focus="onEditorFocus($event)"
-                        @ready="onEditorReady($event)">
+        <quill-editor 
+            class="editor"
+            v-model="content"
+            ref="myQuillEditor"
+            :options="editorOption"
+            @blur="onEditorBlur($event)"
+            @focus="onEditorFocus($event)"
+            @ready="onEditorReady($event)">
         </quill-editor>
-
-        <!-- Or manually control the data synchronization（或手动控制数据流）
-        <quill-editor :content="content"
-                        :options="editorOption"
-                        @change="onEditorChange($event)">
-        </quill-editor> -->
-    </div>
+    </a-row>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import { Row } from 'ant-design-vue';
+Vue.use(Row);
 import { quillEditor } from 'vue-quill-editor';
 import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
@@ -62,6 +60,3 @@ export default class ArticleEdit extends Vue {
     };
 }
 </script>
-
-<style scoped>
-</style>

@@ -49,7 +49,7 @@
                 :help="passwordError() || ''"
                 label="文章分类"
             >
-                <a-select defaultValue="lucy" style="width: 120px" @change="handleChange">
+                <a-select defaultValue="lucy" style="width: 100px" @change="handleChange">
                     <a-select-option value="jack">Jack</a-select-option>
                     <a-select-option value="lucy">Lucy</a-select-option>
                     <a-select-option value="Yiminghe">yiminghe</a-select-option>
@@ -61,7 +61,7 @@
                 :help="passwordError() || ''"
                 label="文章格式"
             >
-                <a-select defaultValue="lucy" style="width: 120px" @change="handleChange">
+                <a-select defaultValue="lucy" style="width: 100px" @change="handleChange">
                     <a-select-option value="jack">Jack</a-select-option>
                     <a-select-option value="lucy">Lucy</a-select-option>
                     <a-select-option value="Yiminghe">yiminghe</a-select-option>
@@ -122,6 +122,3 @@ export default class ArticleOp extends Vue {
     }
 }
 </script>
-
-<style scoped>
-</style>
