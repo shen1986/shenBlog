@@ -5,26 +5,34 @@
  -->
 <template>
     <div>
-        <a-table bordered :dataSource="dataSource" :columns="columns">
-            <template slot="operation" slot-scope="text, record">
-                <a-popconfirm
-                v-if="dataSource.length"
-                title="Sure to delete?"
-                @confirm="() => onDelete(record.key)">
-                <a href="javascript:;">Delete</a>
-                </a-popconfirm>
-            </template>
-        </a-table>
+        <TaskBar :firstName="'文章管理'" :lastName="'文章列表'" />
+        <div class="blog-content" >
+            <a-table bordered :dataSource="dataSource" :columns="columns">
+                <template slot="operation" slot-scope="text, record">
+                    <a-popconfirm
+                    v-if="dataSource.length"
+                    title="Sure to delete?"
+                    @confirm="() => onDelete(record.key)">
+                    <a href="javascript:;">Delete</a>
+                    </a-popconfirm>
+                </template>
+            </a-table>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { Table, Popconfirm } from "ant-design-vue";
+import TaskBar from '../../../components/taskBar.vue';
 Vue.use(Table);
 Vue.use(Popconfirm);
 
-@Component
+@Component({
+    components: {
+        TaskBar: TaskBar
+    }
+})
 export default class ArticleList extends Vue {
     dataSource = [{
         key: '0',
