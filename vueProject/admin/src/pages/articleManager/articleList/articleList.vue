@@ -11,7 +11,7 @@
                 <template slot="operation" slot-scope="text, record">
                     <a-popconfirm
                     v-if="dataSource.length"
-                    title="Sure to delete?"
+                    title="确定要删除吗?"
                     @confirm="() => onDelete(record.key)">
                     <a href="javascript:;">Delete</a>
                     </a-popconfirm>
@@ -35,30 +35,35 @@ Vue.use(Popconfirm);
 })
 export default class ArticleList extends Vue {
     dataSource = [{
-        key: '0',
-        name: 'Edward King 0',
-        age: '32',
-        address: 'London, Park Lane no. 0',
-      }, {
         key: '1',
-        name: 'Edward King 1',
-        age: '32',
-        address: 'London, Park Lane no. 1',
+        id: '1',
+        title: 'java提高篇-----详解java的四舍五入与保留位1',
+        type: '原创',
+        tag: 'java',
+        created_at: '2019-04-23',
+        views: '1',
       }];
     
     columns = [{
-        title: 'name',
-        dataIndex: 'name',
-        width: '30%',
-        scopedSlots: { customRender: 'name' },
+        title: 'ID',
+        dataIndex: 'id',
       }, {
-        title: 'age',
-        dataIndex: 'age',
+        title: '标题',
+        dataIndex: 'title',
       }, {
-        title: 'address',
-        dataIndex: 'address',
+        title: '类型',
+        dataIndex: 'type',
       }, {
-        title: 'operation',
+        title: '标签',
+        dataIndex: 'tag',
+      }, {
+        title: '创建时间',
+        dataIndex: 'created_at',
+      }, {
+        title: '访问量',
+        dataIndex: 'views',
+      }, {
+        title: '操作',
         dataIndex: 'operation',
         scopedSlots: { customRender: 'operation' },
       }];
