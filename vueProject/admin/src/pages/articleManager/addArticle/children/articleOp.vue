@@ -90,7 +90,7 @@ export default class ArticleOp extends Vue {
             hasErrors: function hasErrors (fieldsError) {
                 return Object.keys(fieldsError).some(field => fieldsError[field]);
             },
-            form: this.$form.createForm(this);
+            form: this.$form.createForm(this)
         }
     }
 

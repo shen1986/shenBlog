@@ -19,7 +19,7 @@
         "semicolon": [
             true,
             "always"
-        ]
+        ],
         // Pending fix for shorthand property names.
         "object-literal-sort-keys": false
     },
