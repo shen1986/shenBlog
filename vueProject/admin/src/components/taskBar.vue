@@ -19,6 +19,7 @@ Vue.use(Breadcrumb);
 export default class TaskBar extends Vue {
     @Prop() firstName!: string;
     @Prop() lastName!: string;
+    
 }
 </script>
 
