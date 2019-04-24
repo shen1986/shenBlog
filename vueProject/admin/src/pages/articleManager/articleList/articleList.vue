@@ -80,9 +80,3 @@ export default class ArticleList extends Vue {
     }
 }
 </script>
-
-<style>
-    .greeting {
-        font-size: 20px;
-    }
-</style>

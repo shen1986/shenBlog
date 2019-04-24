@@ -6,14 +6,6 @@
 import Vue from "vue";
 import app from "./App.vue";
 
-
-// 导入富文本
-// import VueQuillEditor from 'vue-quill-editor';
-// import 'quill/dist/quill.core.css';
-// import 'quill/dist/quill.snow.css';
-// import 'quill/dist/quill.bubble.css';
-// Vue.use(VueQuillEditor, {});
-
 // 不阻止启动生产消息
 Vue.config.productionTip = false;
 
