@@ -32,41 +32,42 @@ Vue.use(Popconfirm);
 })
 export default class ArticleList extends Vue {
     data() {
-        dataSource = [{
-            key: '1',
-            id: '1',
-            title: 'java提高篇-----详解java的四舍五入与保留位1',
-            type: '原创',
-            tag: 'java',
-            created_at: '2019-04-23',
-            views: '1',
-        }];
-
-        columns = [{
-            title: 'ID',
-            dataIndex: 'id',
-        }, {
-            title: '标题',
-            dataIndex: 'title',
-        }, {
-            title: '类型',
-            dataIndex: 'type',
-        }, {
-            title: '标签',
-            dataIndex: 'tag',
-        }, {
-            title: '创建时间',
-            dataIndex: 'created_at',
-        }, {
-            title: '访问量',
-            dataIndex: 'views',
-        }, {
-            title: '操作',
-            dataIndex: 'operation',
-            scopedSlots: {
-                customRender: 'operation'
-            },
-        }];
+        return {
+            dataSource: [{
+                key: '1',
+                id: '1',
+                title: 'java提高篇-----详解java的四舍五入与保留位1',
+                type: '原创',
+                tag: 'java',
+                created_at: '2019-04-23',
+                views: '1',
+            }],
+            columns: [{
+                title: 'ID',
+                dataIndex: 'id',
+            }, {
+                title: '标题',
+                dataIndex: 'title',
+            }, {
+                title: '类型',
+                dataIndex: 'type',
+            }, {
+                title: '标签',
+                dataIndex: 'tag',
+            }, {
+                title: '创建时间',
+                dataIndex: 'created_at',
+            }, {
+                title: '访问量',
+                dataIndex: 'views',
+            }, {
+                title: '操作',
+                dataIndex: 'operation',
+                scopedSlots: {
+                    customRender: 'operation'
+                },
+            }]
+        }
     };
     
 

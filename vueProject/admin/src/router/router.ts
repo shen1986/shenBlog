@@ -18,7 +18,9 @@ const talkList = () => import('../pages/talkManager/talkList/talkList.vue');
 // 3. 创建路由对象
 var router = new VueRouter({
     mode: 'history',
-    routes: [ // 配置路由规则
+
+    // 配置路由规则
+    routes: [
         {
             path: '/login',
             component: login
@@ -43,15 +45,6 @@ var router = new VueRouter({
                 {
                     path: 'addArticle',
                     component: addArticle,
-                    children: [{
-                            path: 'ueditor',
-                            component: addArticle
-                        }, // 富文本
-                        {
-                            path: 'markdown',
-                            component: addArticle
-                        } // markdown
-                    ]
                 },
                 {
                     path: 'addCollection',
