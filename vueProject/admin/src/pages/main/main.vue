@@ -8,7 +8,7 @@
         <a-layout id="components-layout-demo-side" style="min-height: 100vh">
             <a-layout-sider collapsible v-model="collapsed">
                 <div class="logo">Shenxf个人博客管理端</div>
-                <a-menu theme="dark" :defaultSelectedKeys="['/articleList']" :SelectedKeys="Array.of($router.history.current.path)" mode="inline" @click="handleClick">
+                <a-menu theme="dark" :defaultSelectedKeys="['/articleList']" ref="myLayout" mode="inline" @click="handleClick">
                     <a-sub-menu key="articleManager">
                         <span slot="title">
                             <a-icon type="file" />
@@ -52,39 +52,45 @@
 </template>
 
 <script lang="ts">
-    import zhCN from "ant-design-vue/es/locale-provider/zh_CN";
-    import {
-        Layout,
-        Menu,
-        Icon,
-        LocaleProvider
-    } from "ant-design-vue";
-    import {
-        Vue,
-        Component,
-        Prop
-    } from "vue-property-decorator";
-    // 这里吐槽一句，vue的antd按需加载真特么丑陋，一点也不优雅，还浪费了我大把的时间。感觉全部直接引用更好
-    Vue.use(Layout);
-    Vue.use(Menu);
-    Vue.use(Icon);
-    Vue.use(LocaleProvider);
+import zhCN from "ant-design-vue/es/locale-provider/zh_CN";
+import {
+    Layout,
+    Menu,
+    Icon,
+    LocaleProvider
+} from "ant-design-vue";
+import {
+    Vue,
+    Component,
+    Prop
+} from "vue-property-decorator";
+// 这里吐槽一句，vue的antd按需加载真特么丑陋，一点也不优雅，还浪费了我大把的时间。感觉全部直接引用更好
+Vue.use(Layout);
+Vue.use(Menu);
+Vue.use(Icon);
+Vue.use(LocaleProvider);
 
-    @Component
-    export default class App extends Vue {
-        // data 属性
-        collapsed = false;
-        locale = zhCN;
+@Component
+export default class App extends Vue {
 
-        /**
-         * 点击事件
-         */
-        private handleClick(e: any): void {
-            this.$router.push(e.key);
+    data() {
+        return {
+            collapsed: false,
+            locale: zhCN
         }
+    };
+
+    /**
+     * 点击事件
+     */
+    private handleClick(e: any): void {
+        this.$router.push(e.key);
+        console.log('myLayout',this.$refs.myLayout);
+        this.$refs.myLayout.selectedKeys = ['/articleList'];
     }
+}
 </script>
 
 <style lang="less">
-@import "../../styles/main.less";
+@import "../../styles/pages/main.less";
 </style>

@@ -19,12 +19,9 @@ Vue.use(Breadcrumb);
 export default class TaskBar extends Vue {
     @Prop() firstName!: string;
     @Prop() lastName!: string;
-
 }
 </script>
 
-<style lang="less" scoped>
-.bread-top {
-    margin: 16px 0;
-}
+<style lang="less">
+@import "../styles/components/taskBar.less";
 </style>

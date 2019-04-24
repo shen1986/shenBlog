@@ -19,7 +19,4 @@ export default class TalkList extends Vue {
 </script>
 
 <style>
-.greeting {
-    font-size: 20px;
-}
 </style>

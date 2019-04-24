@@ -43,5 +43,5 @@ export default class AddArticle extends Vue {
 </script>
 
 <style lang="less">
-@import "../../../styles/addArticle.less";
+@import "../../../styles/pages/addArticle.less";
 </style>

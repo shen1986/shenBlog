@@ -10,7 +10,7 @@
             <a-table bordered :dataSource="dataSource" :columns="columns">
                 <template slot="operation" slot-scope="text, record">
                     <a-popconfirm v-if="dataSource.length" title="确定要删除吗?" @confirm="() => onDelete(record.key)">
-                        <a href="javascript:;">Delete</a>
+                        <a href="javascript:;">删除</a>
                     </a-popconfirm>
                 </template>
             </a-table>
@@ -19,15 +19,8 @@
 </template>
 
 <script lang="ts">
-import {
-    Vue,
-    Component,
-    Prop
-} from "vue-property-decorator";
-import {
-    Table,
-    Popconfirm
-} from "ant-design-vue";
+import { Vue, Component, Prop } from "vue-property-decorator";
+import { Table, Popconfirm } from "ant-design-vue";
 import TaskBar from '../../../components/taskBar.vue';
 Vue.use(Table);
 Vue.use(Popconfirm);
@@ -38,42 +31,49 @@ Vue.use(Popconfirm);
     }
 })
 export default class ArticleList extends Vue {
-    dataSource = [{
-        key: '1',
-        id: '1',
-        title: 'java提高篇-----详解java的四舍五入与保留位1',
-        type: '原创',
-        tag: 'java',
-        created_at: '2019-04-23',
-        views: '1',
-    }];
+    data() {
+        dataSource = [{
+            key: '1',
+            id: '1',
+            title: 'java提高篇-----详解java的四舍五入与保留位1',
+            type: '原创',
+            tag: 'java',
+            created_at: '2019-04-23',
+            views: '1',
+        }];
 
-    columns = [{
-        title: 'ID',
-        dataIndex: 'id',
-    }, {
-        title: '标题',
-        dataIndex: 'title',
-    }, {
-        title: '类型',
-        dataIndex: 'type',
-    }, {
-        title: '标签',
-        dataIndex: 'tag',
-    }, {
-        title: '创建时间',
-        dataIndex: 'created_at',
-    }, {
-        title: '访问量',
-        dataIndex: 'views',
-    }, {
-        title: '操作',
-        dataIndex: 'operation',
-        scopedSlots: {
-            customRender: 'operation'
-        },
-    }];
+        columns = [{
+            title: 'ID',
+            dataIndex: 'id',
+        }, {
+            title: '标题',
+            dataIndex: 'title',
+        }, {
+            title: '类型',
+            dataIndex: 'type',
+        }, {
+            title: '标签',
+            dataIndex: 'tag',
+        }, {
+            title: '创建时间',
+            dataIndex: 'created_at',
+        }, {
+            title: '访问量',
+            dataIndex: 'views',
+        }, {
+            title: '操作',
+            dataIndex: 'operation',
+            scopedSlots: {
+                customRender: 'operation'
+            },
+        }];
+    };
+    
 
+    /**
+     * @description: 删除记录
+     * @param {String} key - 删除的记录 
+     */
     private onDelete(key: String): void {
         const dataSource = [...this.dataSource]
         this.dataSource = dataSource.filter(item => item.key !== key)

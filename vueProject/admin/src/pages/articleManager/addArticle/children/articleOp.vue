@@ -80,14 +80,19 @@ Vue.use(Icon);
 Vue.use(Input);
 Vue.use(Select);
 
-function hasErrors (fieldsError) {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
+
 
 @Component
 export default class ArticleOp extends Vue {
-    hasErrors = hasErrors;
-    form = this.$form.createForm(this);
+
+    data() {
+        return {
+            hasErrors: function hasErrors (fieldsError) {
+                return Object.keys(fieldsError).some(field => fieldsError[field]);
+            },
+            form: this.$form.createForm(this);
+        }
+    }
 
     mounted () {
         console.log('nextTick',this.$nextTick);
