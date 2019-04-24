@@ -4,7 +4,7 @@
  * @Date: 2019-04-23 09:55:09
  -->
 <template>
-    <a-breadcrumb style="margin: 16px 0">
+    <a-breadcrumb class="bread-top">
         <a-breadcrumb-item>{{firstName}}</a-breadcrumb-item>
         <a-breadcrumb-item>{{lastName}}</a-breadcrumb-item>
     </a-breadcrumb>
@@ -19,10 +19,12 @@ Vue.use(Breadcrumb);
 export default class TaskBar extends Vue {
     @Prop() firstName!: string;
     @Prop() lastName!: string;
-    
+
 }
 </script>
 
 <style lang="less" scoped>
-
+.bread-top {
+    margin: 16px 0;
+}
 </style>
