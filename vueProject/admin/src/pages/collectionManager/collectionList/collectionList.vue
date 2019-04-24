@@ -25,13 +25,13 @@ import TaskBar from '../../../components/taskBar.vue';
 Vue.use(Table);
 Vue.use(Popconfirm);
 
-
 @Component({
     components: {
         TaskBar
     }
 })
 export default class CollectionList extends Vue {
+
     data() {
         return {
             dataSource: [{
@@ -43,7 +43,7 @@ export default class CollectionList extends Vue {
                 created_at: '2019-04-23',
                 views: '1',
             }],
-            columns = [{
+            columns: [{
                 title: 'ID',
                 dataIndex: 'id',
             }, {
