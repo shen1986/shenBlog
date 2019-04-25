@@ -65,6 +65,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { Form, Input, Button, Icon } from 'ant-design-vue';
+import axios from 'axios';
 Vue.use(Form);
 Vue.use(Input);
 Vue.use(Button);
@@ -73,7 +74,7 @@ Vue.use(Icon);
 @Component
 export default class Login extends Vue {
 
-    data () {
+    data() {
         return {
             formLayout: 'horizontal',
             form: this.$form.createForm(this)
@@ -89,6 +90,9 @@ export default class Login extends Vue {
         this.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                axios.get('/users').then(res => {
+                    console.log(res);
+                });
                 this.$router.push('/');
             } else {
                 console.log(err);

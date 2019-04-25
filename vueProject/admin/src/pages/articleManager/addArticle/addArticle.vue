@@ -37,7 +37,7 @@ export default class AddArticle extends Vue {
      */
     private handleClick(e: any): void{
         console.log(e);
-        alert('提交了');
+        alert('提交了');    
     }
 }
 </script>
