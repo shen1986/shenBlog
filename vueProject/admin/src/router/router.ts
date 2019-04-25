@@ -72,14 +72,6 @@ var router = new VueRouter({
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
 
-        // // Lambda写法
-        // Vue.http.post('/someUrl', {}).then((response: any) => {
-        //     // 响应成功回调
-        // }, (response: any) => {
-        //     // 响应错误回调
-        // });
-
-
         // if (!auth.loggedIn()) {
         // 检查是否登录状态， 现在默认是登录状态
         if (false) {
