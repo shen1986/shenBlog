@@ -38,7 +38,7 @@
             <a-layout>
                 <a-layout-header style="background: #fff; padding:0 15px;text-align: right;">
                     欢迎你，shenxf
-                    <a href="javascript:;">退出</a>
+                    <a href="javascript:;" @click="logout">退出</a>
                 </a-layout-header>
                 <a-layout-content style="margin: 0 16px">
                     <router-view></router-view>
@@ -87,6 +87,18 @@ export default class App extends Vue {
         this.$router.push(e.key);
         console.log('myLayout',this.$refs.myLayout);
         this.$refs.myLayout.selectedKeys = ['/articleList'];
+    }
+
+    /**
+     * @description: 注销处理
+     */
+    private logout(): void {
+
+        // 删除session
+        sessionStorage.removeItem('username');
+
+        // 取到登录页面
+        this.$router.push('/login');
     }
 }
 </script>

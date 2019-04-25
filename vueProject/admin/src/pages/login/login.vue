@@ -64,12 +64,13 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { Form, Input, Button, Icon } from 'ant-design-vue';
+import { Form, Input, Button, Icon, Message } from 'ant-design-vue';
 import axios from 'axios';
 Vue.use(Form);
 Vue.use(Input);
 Vue.use(Button);
 Vue.use(Icon);
+Vue.use(Message);
 
 @Component
 export default class Login extends Vue {
@@ -89,11 +90,23 @@ export default class Login extends Vue {
         e.preventDefault();
         this.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
-                axios.get('/users').then(res => {
-                    console.log(res);
+                console.log(this.$route);
+                var redirect = this.$route.query.redirect;
+                axios.post('/toLogin', values).then(res => {
+                    if (res.data.status === 1) {
+                        if (redirect) {
+                           this.$router.push(redirect); 
+                        } else {
+                            this.$router.push('/'); 
+                        }
+
+                        // session缓存
+                        sessionStorage.setItem('username', 'ok')
+                    } else {
+                        Message.error(res.data.msg);
+                    }
                 });
-                this.$router.push('/');
+                
             } else {
                 console.log(err);
             }

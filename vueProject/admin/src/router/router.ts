@@ -72,9 +72,10 @@ var router = new VueRouter({
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
 
+        const username = sessionStorage.getItem('username');
         // if (!auth.loggedIn()) {
         // 检查是否登录状态， 现在默认是登录状态
-        if (false) {
+        if (username !== "ok") {
             next({
                 path: '/login',
                 query: { redirect: to.fullPath }

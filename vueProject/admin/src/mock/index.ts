@@ -21,5 +21,19 @@ export default {
                 }, 500)
             })
         })
+
+        mock.onPost('/toLogin').reply(config => {
+            let { userName, password } = JSON.parse(config.data);
+            return new Promise((resolve, reject) => {
+                let user: any = config.data;
+                setTimeout(() => {
+                    if (userName === "admin" && password === "123456") {
+                        resolve([200, { status: 1}]);
+                    } else {
+                        resolve([200, { status: 0, msg: '账号或密码错误' }]);
+                    }
+                }, 1000);
+            });
+        });
     }
 }
