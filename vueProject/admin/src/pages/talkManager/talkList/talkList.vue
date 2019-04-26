@@ -37,19 +37,15 @@ export default class TalkList extends Vue {
             dataSource: [{
                 key: '1',
                 id: '1',
-                title: 'java提高篇-----详解java的四舍五入与保留位1',
-                tag: 'java',
+                detail: 'java提高篇-----详解java的四舍五入与保留位1',
                 created_at: '2019-04-23',
             }],
             columns: [{
                 title: 'ID',
                 dataIndex: 'id',
             }, {
-                title: '标题',
-                dataIndex: 'title',
-            }, {
-                title: '标签',
-                dataIndex: 'tag',
+                title: '详细',
+                dataIndex: 'detail',
             }, {
                 title: '创建时间',
                 dataIndex: 'created_at',

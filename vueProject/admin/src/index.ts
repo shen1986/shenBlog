@@ -17,7 +17,7 @@ Vue.use(VueRouter);
 import router from './router/router';
 
 // 导入模拟数据
-import Mock from './mock';
+import Mock from '../mock';
 Mock.init()
 
 let v = new Vue({
