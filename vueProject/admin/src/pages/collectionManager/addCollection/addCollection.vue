@@ -35,5 +35,6 @@ export default class AddCollection extends Vue {
 }
 </script>
 
-<style>
+<style lang="less">
+@import '../../../styles/pages/addCollection.less';
 </style>
