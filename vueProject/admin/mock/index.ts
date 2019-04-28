@@ -1,3 +1,8 @@
+/**
+ * @Description: 
+ * @Author: shenxf
+ * @Date: 2019-04-28 21:13:25
+ */
 //导入模块
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';

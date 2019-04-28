@@ -8,7 +8,7 @@
         <TaskBar :firstName="'文章管理'" :lastName="'文章列表'" />
         <div class="blog-content">
             <a-spin :spinning="spinning">
-                <a-table bordered :dataSource="dataSource" :columns="columns">
+                <a-table bordered :dataSource="dataSource" :columns="columns" rowKey="id">
                     <router-link slot="title-dt" slot-scope="text, record" :to="`updateArticle/${record.id}`" >{{ text }}</router-link>
                     <span  slot="type" slot-scope="text">{{ text | typeFormat }}</span>
                     <template slot="operation" slot-scope="text, record">
@@ -26,7 +26,6 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { Table, Popconfirm, Spin, Message } from "ant-design-vue";
 import TaskBar from '../../../components/taskBar.vue';
-import axios from 'axios';
 Vue.use(Table);
 Vue.use(Popconfirm);
 Vue.use(Spin);
@@ -100,12 +99,12 @@ export default class ArticleList extends Vue {
         this.spinning = true;
 
         // 请求表格数据
-        axios.get('get-articles').then(res => {
-            console.log(res);
+        this.$axios.get('get-articles').then(res => {
             if (res.data.status === 1) {
                 this.dataSource = res.data.info;
             }
         }).catch((resion: any) => {
+            console.log(resion);
             Message.error('数据取得异常');
         }).finally(()=>{
             this.spinning = false;
