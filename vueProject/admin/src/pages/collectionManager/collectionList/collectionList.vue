@@ -8,6 +8,7 @@
         <TaskBar :firstName="'收藏管理'" :lastName="'收藏列表'" />
         <div class="blog-content">
             <a-table bordered :dataSource="dataSource" :columns="columns">
+                <router-link slot="title-dt" slot-scope="text, record" :to="`updateCollection/${record.id}`">{{text}}</router-link>
                 <template slot="operation" slot-scope="text, record">
                     <a-popconfirm v-if="dataSource.length" title="确定要删除吗?" @confirm="() => onDelete(record.key)">
                         <a href="javascript:;">删除</a>
@@ -47,6 +48,9 @@ export default class CollectionList extends Vue {
             }, {
                 title: '标题',
                 dataIndex: 'title',
+                scopedSlots: {
+                    customRender: 'title-dt'
+                },
             }, {
                 title: '标签',
                 dataIndex: 'tag',

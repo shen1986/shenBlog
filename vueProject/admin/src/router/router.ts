@@ -47,6 +47,10 @@ var router = new VueRouter({
                     component: addArticle,
                 },
                 {
+                    path: 'updateArticle/:id',
+                    component: addArticle
+                },
+                {
                     path: 'addCollection',
                     component: addCollection
                 },
@@ -55,12 +59,20 @@ var router = new VueRouter({
                     component: collectionList
                 },
                 {
+                    path: 'updateCollection/:id',
+                    component: addCollection
+                },
+                {
                     path: 'addTalk',
                     component: addTalk
                 },
                 {
                     path: 'talkList',
                     component: talkList
+                },
+                {
+                    path: 'updateTalk/:id',
+                    component: addTalk
                 },
             ]
         },

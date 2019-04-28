@@ -35,5 +35,8 @@ export default {
                 }, 1000);
             });
         });
+
+        mock.onGet('/get-articles').reply(200, { "status": 1, "info": [{ "id": 1, "title": "java提高篇-----详解java的四舍五入与保留位1", "type": 1, "tag": "aa", "created_at": "2019-04-23", "views": 0 }] }
+        );
     }
 }

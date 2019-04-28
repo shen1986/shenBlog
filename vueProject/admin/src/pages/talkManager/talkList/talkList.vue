@@ -8,6 +8,7 @@
         <TaskBar :firstName="'说说管理'" :lastName="'说说列表'" />
         <div class="blog-content">
             <a-table bordered :dataSource="dataSource" :columns="columns">
+                <router-link slot="detail" slot-scope="text, record" :to="`updateTalk/${record.id}`">{{ text }}</router-link>
                 <template slot="operation" slot-scope="text, record">
                     <a-popconfirm v-if="dataSource.length" title="确定要删除吗?" @confirm="() => onDelete(record.key)">
                         <a href="javascript:;">删除</a>
@@ -46,6 +47,9 @@ export default class TalkList extends Vue {
             }, {
                 title: '详细',
                 dataIndex: 'detail',
+                scopedSlots: {
+                    customRender: 'detail'
+                },
             }, {
                 title: '创建时间',
                 dataIndex: 'created_at',
