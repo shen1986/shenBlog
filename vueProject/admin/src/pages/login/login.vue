@@ -65,7 +65,6 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { Form, Input, Button, Icon, Message } from 'ant-design-vue';
-import axios from 'axios';
 Vue.use(Form);
 Vue.use(Input);
 Vue.use(Button);
@@ -92,7 +91,7 @@ export default class Login extends Vue {
             if (!err) {
                 console.log(this.$route);
                 var redirect = this.$route.query.redirect;
-                axios.post('/toLogin', values).then(res => {
+                this.$axios.post('/toLogin', values).then(res => {
                     if (res.data.status === 1) {
                         if (redirect) {
                            this.$router.push(redirect); 
