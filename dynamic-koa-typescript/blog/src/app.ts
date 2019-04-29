@@ -31,7 +31,7 @@ app.use(bodyParser());
 
 // 统一异常处理
 app.on('error', async (err, ctx) => {
-    console.log(err.sqlMessage);
+    console.log(err.message);
 });
 
 // 配置404页面
