@@ -20,7 +20,7 @@ import router from './router/router';
 import Axios from 'axios';
 // 设置Axios基础配置
 Axios.defaults.baseURL = 'http://127.0.0.1';
-Axios.defaults.timeout = 20000;
+Axios.defaults.timeout = 20000; // 20表超时
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
 // 请求拦截

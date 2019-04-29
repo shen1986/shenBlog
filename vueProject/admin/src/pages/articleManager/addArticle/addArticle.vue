@@ -8,7 +8,7 @@
         <TaskBar :firstName="'文章管理'" :lastName="'文章追加'" />
         <div class="blog-content" >
             <ArticleOp ref="op" />
-            <ArticleEdit ref="edit" />
+            <Editor ref="edit" />
             <a-button type="primary" @click="handleClick">提交</a-button>
         </div>
     </div>
@@ -17,7 +17,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import TaskBar from '../../../components/taskBar.vue';
-import ArticleEdit from './children/articleEdit';
+import Editor from '../../../components/editor.vue';
 import ArticleOp from './children/articleOp';
 import { Button, Message } from 'ant-design-vue';
 Vue.use(Button);
@@ -27,7 +27,7 @@ Vue.use(Message);
     components: {
         TaskBar,
         ArticleOp,
-        ArticleEdit
+        Editor
     }
 })
 export default class AddArticle extends Vue {

@@ -6,9 +6,9 @@
 import VueRouter from 'vue-router'
 
 // 导入对应的路由组件
-const login = () => import('../pages/login/login.vue');
+const login = () => import('../pages/login/login.vue'); // 按需加载组件，懒加载，官方推荐
 const Main = () => import('../pages/main/main.vue');
-const articleList = () => import('../pages/articleManager/articleList/articleList.vue'); // 按需加载组件，懒加载，官方推荐
+const articleList = () => import('../pages/articleManager/articleList/articleList.vue');
 const addArticle = () => import('../pages/articleManager/addArticle/addArticle.vue');
 const addCollection = () => import('../pages/collectionManager/addCollection/addCollection.vue');
 const collectionList = () => import('../pages/collectionManager/collectionList/collectionList.vue');
@@ -91,7 +91,7 @@ router.beforeEach((to, from, next) => {
             next({
                 path: '/login',
                 query: { redirect: to.fullPath }
-            })
+            });
         } else {
             next();
         }

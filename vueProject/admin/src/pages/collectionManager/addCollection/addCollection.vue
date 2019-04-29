@@ -8,7 +8,7 @@
         <TaskBar :firstName="'收藏管理'" :lastName="'收藏追加'" />
         <div class="blog-content" >
             <CollectionOp ref="op" />
-            <CollectionEdit ref="edit" />
+            <Editor ref="edit" />
             <a-button type="primary" @click="handleClick">提交</a-button>
         </div>
     </div>
@@ -16,16 +16,16 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import CollectionEdit from './children/collectionEdit';
 import CollectionOp from './children/collectionOp';
 import TaskBar from '../../../components/taskBar.vue';
+import Editor from '../../../components/editor.vue';
 import { Button, Message } from 'ant-design-vue';
 Vue.use(Button);
 Vue.use(Message);
 
 @Component({
     components: {
-        CollectionEdit,
+        Editor,
         CollectionOp,
         TaskBar
     }
@@ -37,7 +37,7 @@ export default class AddCollection extends Vue {
      * @param {any} e - event 
      */
     private handleClick(e: any): void {
-if ( this.$refs.edit.content.trim().length === 0 ) {
+        if ( this.$refs.edit.content.trim().length === 0 ) {
             Message.error('请输入文章内容');
             return;
         }

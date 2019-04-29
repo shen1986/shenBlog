@@ -4,7 +4,7 @@
  * @Date: 2019-04-22 21:23:56
  -->
 <template>
-    <a-row class="article-edit">
+    <a-row class="quill-editor">
         <!-- bidirectional data binding（双向数据绑定） -->
         <quill-editor 
             class="editor"
@@ -29,17 +29,21 @@ import 'quill/dist/quill.bubble.css';
         quillEditor
     }
 })
-export default class ArticleEdit extends Vue {
+export default class Editor extends Vue {
+
     data() {
         return {
             content: '',
             editorOption:{ placeholder: '请输入内容' }
         }
-    }
-
+    };
     
     get editor() {
         return this.$refs.myQuillEditor.quill;
-    }
+    };
 }
 </script>
+
+<style lang="less">
+@import "../styles/components/editor.less";
+</style>
