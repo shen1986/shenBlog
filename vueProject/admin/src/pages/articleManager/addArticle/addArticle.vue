@@ -1,5 +1,5 @@
 <!--
- * @Description: 
+ * @Description: 文章添加
  * @Author: shenxf
  * @Date: 2019-04-22 21:23:56
  -->
@@ -7,8 +7,9 @@
     <div class="add-article">
         <TaskBar :firstName="'文章管理'" :lastName="'文章追加'" />
         <div class="blog-content" >
-            <ArticleOp ref="op" />
-            <Editor ref="edit" />
+            <ArticleOp ref="op" @typeChange="typeChange"/>
+            <Editor v-if="!markdown" ref="edit" />
+            <Markdown v-if="markdown" />
             <a-button type="primary" @click="handleClick">提交</a-button>
         </div>
     </div>
@@ -18,6 +19,7 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import TaskBar from '../../../components/taskBar.vue';
 import Editor from '../../../components/editor.vue';
+import Markdown from '../../../components/markdown.vue';
 import ArticleOp from './children/articleOp';
 import { Button, Message } from 'ant-design-vue';
 Vue.use(Button);
@@ -27,10 +29,30 @@ Vue.use(Message);
     components: {
         TaskBar,
         ArticleOp,
-        Editor
+        Editor,
+        Markdown
     }
 })
 export default class AddArticle extends Vue {
+
+    data() {
+        return {
+            markdown: false
+        }
+    }
+
+    /**
+     * @description: 文章格式变更时更新输入内容部分
+     * @param {String} type - 现在选择的文章格式 
+     */
+    private typeChange(type: String = "0"): void {
+        console.log('type',type === "1");
+        if (type === "0") {
+            this.markdown = false;
+        } else if (type === "1") {
+            this.markdown = true;
+        }
+    }
 
     /**
      * @description: 提交按钮

@@ -41,7 +41,7 @@
                 <a-input
                     v-decorator="[
                         'tag',
-                        {rules: [{ required: true, message: '请输入文章标签，以逗号分隔' }]}
+                        { rules: [{ required: true, message: '请输入文章标签，以逗号分隔' }] }
                     ]"
                     placeholder="文章标签"
                 >
@@ -54,7 +54,7 @@
                     style="width: 100px"
                     v-decorator="[
                         'category',
-                        {rules: [{ required: true, message: '请选择分类！' }]}
+                        { rules: [{ required: true, message: '请选择分类！' }] }
                     ]"
                 >
                     <a-select-option v-for="item in categories" :key="item.id" :value="item.id">
@@ -70,8 +70,10 @@
                     style="width: 120px"
                     v-decorator="[
                         'MarkdownType',
-                        {rules: [{ required: true, message: '请选择分类！' }]}
+                        { initialValue: '0' },
+                        { rules: [{ required: true, message: '请选择分类！' }] }
                     ]"
+                    @change="handleChange"
                 >
                     <a-select-option value="0">富文本</a-select-option>
                     <a-select-option value="1">Markdown</a-select-option>
@@ -113,28 +115,15 @@ export default class ArticleOp extends Vue {
         this.$axios.get('get-categories').then(res => {
             if (res.data.status === 1) {
                 this.categories = res.data.info;
+                this.form.setFieldsValue({
+                    category: this.categories.length === 0? '': this.categories[0].id,
+                });
             }
         }).catch((resion: any) => {
             Message.error('数据取得异常');
-        }).finally(()=>{
+        }).finally(() => {
             this.spinning = false;
         });
-    }
-
-    /**
-     * @description: 当触碰title输入框后，如果输入内容不对，则报错
-     */
-    private titleError(): void {
-        const { getFieldError, isFieldTouched } = this.form;
-        return isFieldTouched('title') && getFieldError('title');
-    }
-
-    /**
-     * @description: 当触碰tag输入框后，如果输入内容不对，则报错
-     */
-    private tagError(): void {
-        const { getFieldError, isFieldTouched } = this.form;
-        return isFieldTouched('tag') && getFieldError('tag');
     }
 
     /**
@@ -151,6 +140,14 @@ export default class ArticleOp extends Vue {
                 }
             });
         });
+    }
+
+    /**
+     * @description: markdown下拉菜单
+     * @param {any} value - 选择值 
+     */
+    private handleChange(value: any): void {
+        this.$emit('typeChange', value);
     }
 }
 </script>
