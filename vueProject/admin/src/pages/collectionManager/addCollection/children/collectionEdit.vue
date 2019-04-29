@@ -10,10 +10,7 @@
             class="editor"
             v-model="content"
             ref="myQuillEditor"
-            :options="editorOption"
-            @blur="onEditorBlur($event)"
-            @focus="onEditorFocus($event)"
-            @ready="onEditorReady($event)">
+            :options="editorOption">
         </quill-editor>
     </a-row>
 </template>
@@ -33,30 +30,16 @@ import 'quill/dist/quill.bubble.css';
     }
 })
 export default class CollectionEdit extends Vue {
-    content = '<p>example content</p>';
-    editorOption = {  };
 
-    onEditorBlur(quill) {
-        console.log('editor blur!', quill)
-    };
-    onEditorFocus(quill) {
-        console.log('editor focus!', quill)
-    };
-    onEditorReady(quill) {
-        console.log('editor ready!', quill)
-    };
-    onEditorChange({ quill, html, text }) {
-        console.log('editor change!', quill, html, text)
-        this.content = html;
-    };
+    data() {
+        return {
+            content: '',
+            editorOption:{ placeholder: '请输入内容' }
+        }
+    }
 
-    
     get editor() {
         return this.$refs.myQuillEditor.quill;
     }
-
-    mounted() {
-      console.log('this is current quill instance object', this.editor)
-    };
 }
 </script>

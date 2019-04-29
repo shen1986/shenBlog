@@ -12,7 +12,7 @@
                     <router-link slot="title-dt" slot-scope="text, record" :to="`updateArticle/${record.id}`" >{{ text }}</router-link>
                     <span  slot="type" slot-scope="text">{{ text | typeFormat }}</span>
                     <template slot="operation" slot-scope="text, record">
-                        <a-popconfirm v-if="dataSource.length" title="确定要删除吗?" @confirm="() => onDelete(record.key)">
+                        <a-popconfirm v-if="dataSource.length" title="确定要删除吗?" @confirm="() => onDelete(record.id)">
                             <a href="javascript:;">删除</a>
                         </a-popconfirm>
                     </template>
@@ -95,8 +95,14 @@ export default class ArticleList extends Vue {
     };
 
     created() {
+        this.getArtilces();
+    };
+
+    private getArtilces(isload :boolean = true): void {
         // 设置加载
-        this.spinning = true;
+        if (isload) {
+            this.spinning = true;
+        }
 
         // 请求表格数据
         this.$axios.get('get-articles').then(res => {
@@ -104,20 +110,34 @@ export default class ArticleList extends Vue {
                 this.dataSource = res.data.info;
             }
         }).catch((resion: any) => {
-            console.log(resion);
             Message.error('数据取得异常');
         }).finally(()=>{
-            this.spinning = false;
+            if (isload) {
+                this.spinning = false;
+            }
         });
-    };
+    }
 
     /**
      * @description: 删除记录
-     * @param {String} key - 删除的记录 
+     * @param {String} id - 删除的记录的id
      */
-    private onDelete(key: String): void {
-        const dataSource = [...this.dataSource]
-        this.dataSource = dataSource.filter(item => item.key !== key)
+    private onDelete(id: String): void {
+        this.spinning = true;
+        this.$axios.get(`article-delete/${id}`).then(res => {
+
+                if (res.data.status === 1) {
+                    const dataSource = [...this.dataSource];
+                    this.dataSource = dataSource.filter(item => item.key !== key);
+                    // 数据再取得
+                    // this.getArtilces(false);
+                }
+
+            }).catch((resion: any) => {
+                Message.error('数据删除异常');
+            }).finally(() => {
+                this.spinning = false;
+            });
     }
 }
 </script>

@@ -43,5 +43,25 @@ export default {
 
         mock.onGet('/get-articles').reply(200, { "status": 1, "info": [{ "id": 1, "title": "java提高篇-----详解java的四舍五入与保留位1", "type": 1, "tag": "aa", "created_at": "2019-04-23", "views": 0 }] }
         );
+        mock.onGet('/get-gather').reply(200, { "status": 1, "info": [{ "id": 1, "title": "java提高篇----asdfasdf", "tag": "aa,bbb", "created_at": "2019-04-25" }] }
+        );
+        mock.onGet('/get-gossip').reply(200, { "status": 1, "info": [{ "id": 1, "detail": "测试一下", "created_at": "2019-04-28 14:30:10" }] }
+        );
+        mock.onGet('/get-categories').reply(200, { "status": 1, "info": [{ "id": 1, "theme": "HTML" }, { "id": 2, "theme": "JavaScript" }] });
+
+        const artDelUri = '/article-delete';
+        const delurl = new RegExp(`${artDelUri}/*`);
+
+        mock.onGet(delurl).reply(200, { "status": 1 });
+
+        const gatDelUri = '/gather-delete';
+        const gaturl = new RegExp(`${gatDelUri}/*`);
+
+        mock.onGet(gaturl).reply(200, { "status": 1 });
+
+        const gosDelUri = '/gossip-delete';
+        const gosurl = new RegExp(`${gosDelUri}/*`);
+
+        mock.onGet(gosurl).reply(200, { "status": 1 });
     }
 }
