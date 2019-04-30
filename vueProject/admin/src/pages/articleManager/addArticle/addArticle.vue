@@ -9,7 +9,8 @@
         <div class="blog-content" >
             <ArticleOp ref="op" @typeChange="typeChange"/>
             <Editor v-if="!markdown" ref="edit" />
-            <Markdown v-if="markdown" />
+            <Markdown v-if="markdown" :content="content" @change="handleChange" />
+            <!-- <Markdown content={content} onChange={this.handleChange} preview={preview} /> -->
             <a-button type="primary" @click="handleClick">提交</a-button>
         </div>
     </div>
@@ -73,6 +74,10 @@ export default class AddArticle extends Vue {
             console.log(typeof err);
             alert('错误了'); 
         });
+    }
+
+    private handleChange():void {
+        
     }
 }
 </script>

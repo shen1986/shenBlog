@@ -8,7 +8,10 @@
         onBlur={this.emitChange}
         contentEditable = "true" -->
     <div class="content-editable"
-        v-html="content" >
+        contentEditable = "true"
+        @input="emitChange"
+        @blur="emitChange"
+        v-html="localConent" >
     </div>
 </template>
 
@@ -17,8 +20,39 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component
 export default class ContentEditable extends Vue {
-    // @Prop(Number) readonly content!: String
-    content = "";
+    @Prop() parentContent!: string;
+
+    data() {
+        return {
+            lastContent: '',
+            localConent: ''
+        }
+    }
+
+    created() {
+        this.localConent = this.content ? this.content : '';
+
+		this.localConent = this.localConent.replace(/[<>&"]/g, function(c) {
+			return {
+				'<': '&lt;',
+				'>': '&gt;',
+				'&': '&amp;',
+				'"': '&quot;'
+			}[c];
+		});
+    }
+
+    /**
+     * @description: 触发父组件事件
+     */
+    private emitChange(e): void {
+        let content = e.target.innerText;
+
+        if (content !== this.lastContent) {
+            this.$emit('handleChange', content);
+            this.lastContent = content;
+        }
+	}
 }
 </script>
 
