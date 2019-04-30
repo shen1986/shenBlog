@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-import { Table, Popconfirm,Spin } from "ant-design-vue";
+import { Component, Prop, Vue  } from 'vue-property-decorator';
+import { Table, Popconfirm, Spin } from 'ant-design-vue';
 import TaskBar from '../../../components/taskBar.vue';
 Vue.use(Table);
 Vue.use(Popconfirm);
@@ -31,12 +31,12 @@ Vue.use(Spin);
 
 @Component({
     components: {
-        TaskBar
-    }
+        TaskBar,
+    },
 })
 export default class TalkList extends Vue {
 
-    data() {
+    private data(): object {
         return {
             spinning: false,
             dataSource: [],
@@ -47,7 +47,7 @@ export default class TalkList extends Vue {
                 title: '详细',
                 dataIndex: 'detail',
                 scopedSlots: {
-                    customRender: 'detail'
+                    customRender: 'detail',
                 },
             }, {
                 title: '创建时间',
@@ -56,15 +56,15 @@ export default class TalkList extends Vue {
                 title: '操作',
                 dataIndex: 'operation',
                 scopedSlots: {
-                    customRender: 'operation'
+                    customRender: 'operation',
                 },
-            }]
-        }
+            }],
+        };
     }
 
-    created() {
-        
-       this.getTalks();
+    private created(): void {
+
+        this.getTalks();
     }
 
     /**
@@ -84,18 +84,18 @@ export default class TalkList extends Vue {
             }
         }).catch((resion: any) => {
             Message.error('数据取得异常');
-        }).finally(()=>{
+        }).finally(() => {
             if (isLoad) {
                 this.spinning = false;
-            } 
+            }
         });
     }
 
     /**
      * @description: 删除
-     * @param {String} key - 删除行key
+     * @param {string} key - 删除行key
      */
-    private onDelete (key: String): void {
+    private onDelete(key: string): void {
         this.spinning = true;
         this.$axios.get(`gossip-delete/${id}`)
             .then(res => {

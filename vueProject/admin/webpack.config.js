@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./dist"),
     publicPath: "/dist/",
-    filename: "build.js"
+    filename: "build.js" // .[hash:8] 指定后 webpack-dev-server 就跑不起来了
   },
   module: {
     rules: [
@@ -73,7 +73,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "./index.html"), // 指定模板文件路径
       filename: "index.html", // 设置生成的内存页面的名称
-      favicon: "./favicon.ico"
+      favicon: "./favicon.ico",
+      minify: {
+        // 配置Html压缩
+        removeAttributeQuotes: true, // 删除html中的双引号
+        collapseWhitespace: true // 变成一行去除space
+      },
+      hash: true //引用时加上hash挫
     })
   ],
   resolve: {
@@ -84,7 +90,11 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: false // 控制要不要显示信息到窗口
+    noInfo: false, // 控制要不要显示信息到控制台
+    port: 3000, // 指定服务运行的端口号
+    progress: true, // 打开进度条
+    contentBase: "./dist", // 指定启动时参照的目录
+    compress: true // 指定进行压缩
   },
   performance: {
     hints: false

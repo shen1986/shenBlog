@@ -63,7 +63,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Form, Input, Button, Icon, Message } from 'ant-design-vue';
 Vue.use(Form);
 Vue.use(Input);
@@ -74,43 +74,42 @@ Vue.use(Message);
 @Component
 export default class Login extends Vue {
 
-    data() {
+    private data(): object {
         return {
             formLayout: 'horizontal',
-            form: this.$form.createForm(this)
+            form: this.$form.createForm(this),
         };
-    };
+    }
 
     /**
      * @description: 登录
-     * @param {any} e - Event 
+     * @param {any} e - Event
      */
-    private handleSubmit (e: any): void {
+    private handleSubmit(e: any): void {
         e.preventDefault();
         this.form.validateFields((err, values) => {
             if (!err) {
-                console.log(this.$route);
-                var redirect = this.$route.query.redirect;
+                // console.log(this.$route);
+                const redirect = this.$route.query.redirect;
                 this.$axios.post('/toLogin', values).then(res => {
                     if (res.data.status === 1) {
                         if (redirect) {
-                           this.$router.push(redirect); 
+                           this.$router.push(redirect);
                         } else {
-                            this.$router.push('/'); 
+                            this.$router.push('/');
                         }
 
                         // session缓存
-                        sessionStorage.setItem('username', 'ok')
+                        sessionStorage.setItem('username', 'ok');
                     } else {
                         Message.error(res.data.msg);
                     }
                 });
-                
             } else {
-                console.log(err);
+                // console.log(err);
             }
         });
-    };
+    }
 }
 </script>
 

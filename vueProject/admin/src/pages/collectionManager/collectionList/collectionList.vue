@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-import { Table, Popconfirm, Spin, Message } from "ant-design-vue";
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Table, Popconfirm, Spin, Message } from 'ant-design-vue';
 import TaskBar from '../../../components/taskBar.vue';
 Vue.use(Table);
 Vue.use(Popconfirm);
@@ -32,12 +32,12 @@ Vue.use(Message);
 
 @Component({
     components: {
-        TaskBar
-    }
+        TaskBar,
+    },
 })
 export default class CollectionList extends Vue {
 
-    data () {
+    private data(): object {
         return {
 
             // 加载标识
@@ -54,7 +54,7 @@ export default class CollectionList extends Vue {
                 title: '标题',
                 dataIndex: 'title',
                 scopedSlots: {
-                    customRender: 'title-dt'
+                    customRender: 'title-dt',
                 },
             }, {
                 title: '标签',
@@ -66,15 +66,15 @@ export default class CollectionList extends Vue {
                 title: '操作',
                 dataIndex: 'operation',
                 scopedSlots: {
-                    customRender: 'operation'
+                    customRender: 'operation',
                 },
-            }]
-        }
-    };
+            }],
+        };
+    }
 
-    created () {
+    private created(): void {
         this.getCollection();
-    };
+    }
 
     /**
      * @description: 取得收藏列表
@@ -93,18 +93,18 @@ export default class CollectionList extends Vue {
             }
         }).catch((resion: any) => {
             Message.error('数据取得异常');
-        }).finally(()=>{
+        }).finally(() => {
             if (isLoad) {
                 this.spinning = false;
             }
         });
-    };
+    }
 
     /**
      * @description: 删除
      * @param {String} key - 删除行key
      */
-    private onDelete(key: String): void {
+    private onDelete(key: string): void {
         this.spinning = true;
         this.$axios.get(`gather-delete/${id}`)
             .then(res => {
@@ -121,7 +121,7 @@ export default class CollectionList extends Vue {
             }).finally(() => {
                 this.spinning = false;
             });
-    };
+    }
 }
 </script>
 

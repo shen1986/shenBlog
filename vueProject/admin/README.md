@@ -14,3 +14,6 @@ npm run dev
 ```shell
 npm run build
 ```
+
+## 备忘
+- 之前忘记安装tslint 导致 tslint.json文件失效。

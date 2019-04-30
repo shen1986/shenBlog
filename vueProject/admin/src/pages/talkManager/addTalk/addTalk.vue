@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Button } from 'ant-design-vue';
 import TaskBar from '../../../components/taskBar.vue';
 import AddTalkEdit from './children/addTalkEdit';
@@ -23,11 +23,11 @@ Vue.use(Button);
 @Component({
     components: {
         TaskBar,
-        AddTalkEdit
-    }
+        AddTalkEdit,
+    },
 })
 export default class AddTalk extends Vue {
-  
+
 }
 </script>
 

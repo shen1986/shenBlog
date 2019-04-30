@@ -39,8 +39,8 @@
 </template>
 
 <script lang="ts">
-import { Form, Button, Icon, Upload,Input } from 'ant-design-vue';
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Form, Button, Icon, Upload, Input } from 'ant-design-vue';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 Vue.use(Form);
 Vue.use(Button);
 Vue.use(Icon);
@@ -50,13 +50,13 @@ Vue.use(Input);
 @Component
 export default class AddTalkEdit extends Vue {
 
-    data() {
+    private data(): object {
         return {
-            hasErrors: function hasErrors (fieldsError) {
+            hasErrors: function hasErrors(fieldsError) {
                 return Object.keys(fieldsError).some(field => fieldsError[field]);
             },
-            form: this.$form.createForm(this)
-        }
+            form: this.$form.createForm(this),
+        };
     }
 
     mounted () {
