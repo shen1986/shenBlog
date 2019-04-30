@@ -38,7 +38,7 @@
 
 <script lang="ts">
 import { Form, Button, Icon, Input } from 'ant-design-vue';
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 Vue.use(Form);
 Vue.use(Button);
 Vue.use(Icon);
@@ -46,15 +46,6 @@ Vue.use(Input);
 
 @Component
 export default class CollectionOp extends Vue {
-
-    data() {
-        return {
-            hasErrors: function hasErrors (fieldsError) {
-                return Object.keys(fieldsError).some(field => fieldsError[field]);
-            },
-            form: this.$form.createForm(this)
-        }
-    }
 
     /**
      * @description: 父提交按钮触发事件
@@ -70,6 +61,15 @@ export default class CollectionOp extends Vue {
                 }
             });
         });
+    }
+
+    private data() {
+        return {
+            hasErrors: function hasErrors(fieldsError) {
+                return Object.keys(fieldsError).some(field => fieldsError[field]);
+            },
+            form: this.$form.createForm(this),
+        };
     }
 }
 </script>

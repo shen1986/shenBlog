@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Row, Col, Checkbox } from 'ant-design-vue';
 import ContentEditable from './contentEditable.vue';
 import marked from 'marked';
@@ -32,24 +32,24 @@ Vue.use(Checkbox);
 
 @Component({
     components: {
-        ContentEditable
-    }
+        ContentEditable,
+    },
 })
 export default class Markdown extends Vue {
-    data() {
+    private data(): void {
         return {
             preview: false,
             ele: '',
-            content: ''
-        }
+            content: '',
+        };
     }
 
-    mounted() {
+    private mounted(): void {
         // 给Markdown的代码区域设置颜色
         marked.setOptions({
-			highlight: function (code) {
+			highlight: (code) => {
 				return require('highlight.js').highlightAuto(code).value;
-			}
+			},
 		});
     }
 
@@ -59,20 +59,20 @@ export default class Markdown extends Vue {
      */
     private onChange(e: any): void {
         this.preview = e.target.checked;
-    };
+    }
 
     /**
      * @description: 当发生变化的时候转换成markdown模式
-     * @param {String} content - markdown内容 
+     * @param {String} content - markdown内容
      */
-    private handleChange(content: String) :void {
+    private handleChange(content: string): void {
 		// this.props.onChange(content);
 
 		// if(window.localStorage) {
 		// 	localStorage.markdown_content = content;
 		// }
 
-        console.log(content);
+        // console.log(content);
 
         if (this.preview) {
             this.ele = marked(content);

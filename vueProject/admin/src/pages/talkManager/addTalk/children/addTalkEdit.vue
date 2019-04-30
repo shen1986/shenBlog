@@ -59,36 +59,36 @@ export default class AddTalkEdit extends Vue {
         };
     }
 
-    mounted () {
-        console.log('nextTick',this.$nextTick);
+    private mounted() {
+        // console.log('nextTick',this.$nextTick);
         // this.$nextTick(() => {
         // // To disabled submit button at the beginning.
         // this.form.validateFields();
         // });
     }
 
-    userNameError () {
+    private userNameError() {
       const { getFieldError, isFieldTouched } = this.form;
       return isFieldTouched('userName') && getFieldError('userName');
     }
-    
+
     // Only show error after a field is touched.
-    passwordError () {
+    private passwordError() {
       const { getFieldError, isFieldTouched } = this.form;
       return isFieldTouched('password') && getFieldError('password');
     }
 
-    handleSubmit  (e) {
+    private handleSubmit(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log('Received values of form: ', values);
+        //   console.log('Received values of form: ', values);
         }
       });
     }
 
-    handleChange (e) {
-
+    private handleChange(e) {
+        // asdfasdf
     }
 }
 </script>

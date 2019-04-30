@@ -16,37 +16,38 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class ContentEditable extends Vue {
-    @Prop() parentContent!: string;
+    @Prop() private parentContent!: string;
 
-    data() {
+    private data(): void {
         return {
             lastContent: '',
-            localConent: ''
-        }
+            localConent: '',
+        };
     }
 
-    created() {
+    private created(): void {
         this.localConent = this.content ? this.content : '';
 
-		this.localConent = this.localConent.replace(/[<>&"]/g, function(c) {
-			return {
-				'<': '&lt;',
-				'>': '&gt;',
-				'&': '&amp;',
-				'"': '&quot;'
-			}[c];
-		});
+        this.localConent =
+            this.localConent.replace(/[<>&"]/g, (c) => {
+                return {
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '&': '&amp;',
+                    '"': '&quot;',
+                }[c];
+            });
     }
 
     /**
      * @description: 触发父组件事件
      */
     private emitChange(e): void {
-        let content = e.target.innerText;
+        const content = e.target.innerText;
 
         if (content !== this.lastContent) {
             this.$emit('handleChange', content);

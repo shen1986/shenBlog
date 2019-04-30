@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import CollectionOp from './children/collectionOp';
 import TaskBar from '../../../components/taskBar.vue';
 import Editor from '../../../components/editor.vue';
@@ -27,14 +27,14 @@ Vue.use(Message);
     components: {
         Editor,
         CollectionOp,
-        TaskBar
-    }
+        TaskBar,
+    },
 })
 export default class AddCollection extends Vue {
-    
+
     /**
      * @description: 提交按钮
-     * @param {any} e - event 
+     * @param {any} e - event
      */
     private handleClick(e: any): void {
         if ( this.$refs.edit.content.trim().length === 0 ) {
@@ -45,11 +45,11 @@ export default class AddCollection extends Vue {
         alert(this.$refs.edit.content);
 
         this.$refs.op.handleSubmit().then(res => {
-            console.log(typeof res);
-            alert('提交了'); 
+            // console.log(typeof res);
+            alert('提交了');
         }).catch( err => {
-            console.log(typeof err);
-            alert('错误了'); 
+            // console.log(typeof err);
+            alert('错误了');
         });
     }
 }

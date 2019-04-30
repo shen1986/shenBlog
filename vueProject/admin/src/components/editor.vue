@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Row } from 'ant-design-vue';
 Vue.use(Row);
 import { quillEditor } from 'vue-quill-editor';
@@ -26,21 +26,21 @@ import 'quill/dist/quill.bubble.css';
 
 @Component({
     components: {
-        quillEditor
-    }
+        quillEditor,
+    },
 })
 export default class Editor extends Vue {
 
-    data() {
+    private data(): void {
         return {
             content: '',
-            editorOption:{ placeholder: '请输入内容' }
-        }
-    };
-    
+            editorOption: { placeholder: '请输入内容' },
+        };
+    }
+
     get editor() {
         return this.$refs.myQuillEditor.quill;
-    };
+    }
 }
 </script>
 

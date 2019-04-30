@@ -12,13 +12,13 @@
 
 <script lang="ts">
 import { Breadcrumb } from 'ant-design-vue';
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 Vue.use(Breadcrumb);
 
 @Component
 export default class TaskBar extends Vue {
-    @Prop() firstName!: string;
-    @Prop() lastName!: string;
+    @Prop() private firstName!: string;
+    @Prop() private lastName!: string;
 }
 </script>
 

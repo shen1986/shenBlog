@@ -23,8 +23,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-import { Table, Popconfirm, Spin, Message } from "ant-design-vue";
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Table, Popconfirm, Spin, Message } from 'ant-design-vue';
 import TaskBar from '../../../components/taskBar.vue';
 Vue.use(Table);
 Vue.use(Popconfirm);
@@ -33,30 +33,30 @@ Vue.use(Message);
 
 @Component({
     components: {
-        TaskBar
+        TaskBar,
     },
     filters: {
-        typeFormat: function(data) {
+        typeFormat: (data) => {
             switch (data) {
                 case 1:
-                    return '原创'
+                    return '原创';
                     break;
                 case 2:
-                    return '转载'
+                    return '转载';
                     break;
                 case 3:
-                    return '翻译'
+                    return '翻译';
                     break;
                 default:
                     // 没有处理
-                    return ''
+                    return '';
             }
-        }
-    }
+        },
+    },
 })
 export default class ArticleList extends Vue {
 
-    data() {
+    private data() {
         return {
             spinning: false,
             dataSource: [],
@@ -67,13 +67,13 @@ export default class ArticleList extends Vue {
                 title: '标题',
                 dataIndex: 'title',
                 scopedSlots: {
-                    customRender: 'title-dt'
+                    customRender: 'title-dt',
                 },
             }, {
                 title: '类型',
                 dataIndex: 'type',
                 scopedSlots: {
-                    customRender: 'type'
+                    customRender: 'type',
                 },
             }, {
                 title: '标签',
@@ -88,17 +88,17 @@ export default class ArticleList extends Vue {
                 title: '操作',
                 dataIndex: 'operation',
                 scopedSlots: {
-                    customRender: 'operation'
+                    customRender: 'operation',
                 },
-            }]
-        }
-    };
+            }],
+        };
+    }
 
-    created() {
+    private created(): void {
         this.getArtilces();
-    };
+    }
 
-    private getArtilces(isload :boolean = true): void {
+    private getArtilces(isload: boolean = true): void {
         // 设置加载
         if (isload) {
             this.spinning = true;
@@ -111,7 +111,7 @@ export default class ArticleList extends Vue {
             }
         }).catch((resion: any) => {
             Message.error('数据取得异常');
-        }).finally(()=>{
+        }).finally(() => {
             if (isload) {
                 this.spinning = false;
             }
@@ -122,7 +122,7 @@ export default class ArticleList extends Vue {
      * @description: 删除记录
      * @param {String} id - 删除的记录的id
      */
-    private onDelete(id: String): void {
+    private onDelete(id: string): void {
         this.spinning = true;
         this.$axios.get(`article-delete/${id}`).then(res => {
 

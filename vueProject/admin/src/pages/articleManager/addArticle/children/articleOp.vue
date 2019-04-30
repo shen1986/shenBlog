@@ -85,7 +85,7 @@
 
 <script lang="ts">
 import { Form, Button, Icon, Input, Select, Spin } from 'ant-design-vue';
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 Vue.use(Form);
 Vue.use(Button);
 Vue.use(Icon);
@@ -96,41 +96,11 @@ Vue.use(Spin);
 @Component
 export default class ArticleOp extends Vue {
 
-    data() {
-        return {
-            spinning: false,
-            categories: [],
-            hasErrors: function hasErrors (fieldsError) {
-                return Object.keys(fieldsError).some(field => fieldsError[field]);
-            },
-            form: this.$form.createForm(this)
-        }
-    }
-
-    created() {
-        // 画面loading
-        this.spinning = true;
-
-        // 取得文章分类
-        this.$axios.get('get-categories').then(res => {
-            if (res.data.status === 1) {
-                this.categories = res.data.info;
-                this.form.setFieldsValue({
-                    category: this.categories.length === 0? '': this.categories[0].id,
-                });
-            }
-        }).catch((resion: any) => {
-            Message.error('数据取得异常');
-        }).finally(() => {
-            this.spinning = false;
-        });
-    }
-
     /**
      * @description: 父提交按钮触发事件
      * @return: 表单值，或则表单验证错误的信息
      */
-    public handleSubmit (): any {
+    public handleSubmit(): any {
         return new Promise((resolved, reject) => {
             this.form.validateFields((err, values) => {
                 if (!err) {
@@ -142,9 +112,39 @@ export default class ArticleOp extends Vue {
         });
     }
 
+    private data(): void {
+        return {
+            spinning: false,
+            categories: [],
+            hasErrors: function hasErrors(fieldsError) {
+                return Object.keys(fieldsError).some(field => fieldsError[field]);
+            },
+            form: this.$form.createForm(this),
+        };
+    }
+
+    private created(): void {
+        // 画面loading
+        this.spinning = true;
+
+        // 取得文章分类
+        this.$axios.get('get-categories').then(res => {
+            if (res.data.status === 1) {
+                this.categories = res.data.info;
+                this.form.setFieldsValue({
+                    category: this.categories.length === 0 ? '' : this.categories[0].id,
+                });
+            }
+        }).catch((resion: any) => {
+            Message.error('数据取得异常');
+        }).finally(() => {
+            this.spinning = false;
+        });
+    }
+
     /**
      * @description: markdown下拉菜单
-     * @param {any} value - 选择值 
+     * @param {any} value - 选择值
      */
     private handleChange(value: any): void {
         this.$emit('typeChange', value);
