@@ -70,7 +70,8 @@ export default class Login extends Vue {
                     this.pregress = false;
                 });
             } else {
-                // console.log(err);
+                console.log(err);
+                this.pregress = false;
             }
         });
     }

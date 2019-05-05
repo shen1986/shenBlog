@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@types/mockjs": "^1.0.2",
+    "@types/node": "^12.0.0",
     "axios-mock-adapter": "^1.16.0",
     "css-loader": "^0.28.1",
     "html-webpack-plugin": "^3.2.0",

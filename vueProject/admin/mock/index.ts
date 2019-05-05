@@ -45,8 +45,8 @@ export default {
         );
         mock.onGet('/get-gather').reply(200, { status: 1, info: [{ id: 1, title: 'java提高篇----asdfasdf', tag: 'aa,bbb', created_at: '2019-04-25' }] },
         );
-        // mock.onGet('/get-gossip').reply(200, { status: 1, info: [{ id: 1, detail: '测试一下', created_at: '2019-04-28 14:30:10' }] },
-        // );
+        mock.onGet('/get-gossip').reply(200, { status: 1, info: [{ id: 1, detail: '测试一下', created_at: '2019-04-28 14:30:10' }] },
+        );
         mock.onGet('/get-categories').reply(200, { status: 1, info: [{ id: 1, theme: 'HTML' }, { id: 2, theme: 'JavaScript' }] });
 
         const artDelUri = '/article-delete';
@@ -63,5 +63,14 @@ export default {
         const gosurl = new RegExp(`${gosDelUri}/*`);
 
         mock.onGet(gosurl).reply(200, { status: 1 });
+
+        const artUri = '/article';
+        const arturl = new RegExp(`${artUri}/*`);
+
+        mock.onGet(arturl).reply(200, {"status":1,"info":{"id":1,"title":"某某装饰设计有限公司","body":"<p>123123</p>","type":1,"category":"1","tag":"123","markdown":0}});
+
+        const gatUri = '/gather';
+        const gaturl2 = new RegExp(`${gatUri}/*`);
+        mock.onGet(gaturl2).reply(200, {"status":1,"info":{"id":1,"title":"java提高篇-----详解java的四舍五入与保留位1","detail":"<p>12312</p>","tag":"aa"}});
     },
 };

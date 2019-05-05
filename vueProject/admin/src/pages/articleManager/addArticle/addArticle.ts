@@ -1,3 +1,8 @@
+/**
+ * @Description: 
+ * @Author: shenxf
+ * @Date: 2019-05-05 20:02:52
+ */
 import { Vue, Component } from 'vue-property-decorator';
 import TaskBar from '../../../components/taskBar/taskBar.vue';
 import Editor from '../../../components/editor/editor.vue';
@@ -20,15 +25,34 @@ export default class AddArticle extends Vue {
     private markdown = false;
     private content = '';
     private spinning = false;
+    private articleInfo = {};
 
     private created(): void {
         // 更新画面
         if (this.$route.params.id) {
             this.spinning = true;
-            // 取得文章情报
-
-            this.spinning = false;
+            this.getArticle(this.$route.params.id);
         }
+    }
+
+    /**
+     * @description: 取得文章情报
+     * @param {boolean} isLoad - 是否要停止loading 
+     */
+    private getArticle(id: string,isLoad: boolean = true): void {
+        // 取得文章情报
+        this.$axios.get(`article/${id}`).then((res: any) => {
+            if (res.data.status === 1) {
+                this.articleInfo = res.data.info;
+            }
+        }).catch((resion: any) => {
+            console.log(resion);
+            message.error('数据取得异常');
+        }).finally(() => {
+            if (isLoad) {
+                this.spinning = false;
+            }
+        });
     }
 
     /**
