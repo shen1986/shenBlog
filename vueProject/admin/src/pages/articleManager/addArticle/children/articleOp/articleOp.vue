@@ -83,5 +83,5 @@
     </a-spin>
 </template>
 
-<script lang="ts">
+<script lang="ts" src="./articleOp.ts">
 </script>

@@ -14,10 +14,7 @@ Vue.use(Input);
 export default class CollectionOp extends Vue {
 
     private form: any = null;
-    private hasErrors = function hasErrors(fieldsError: any) {
-        return Object.keys(fieldsError).some(field => fieldsError[field]);
-    };
-
+    
     private created(): void {
         this.form = this.$form.createForm(this);
     }
