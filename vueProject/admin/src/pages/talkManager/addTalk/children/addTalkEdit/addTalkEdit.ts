@@ -15,14 +15,6 @@ export default class AddTalkEdit extends Vue {
         this.form = this.$form.createForm(this);
     }
 
-    private mounted() {
-        // console.log('nextTick',this.$nextTick);
-        // this.$nextTick(() => {
-        // // To disabled submit button at the beginning.
-        // this.form.validateFields();
-        // });
-    }
-
     private handleSubmit(e: any) {
         e.preventDefault();
         this.form.validateFields((err: any, values: any) => {

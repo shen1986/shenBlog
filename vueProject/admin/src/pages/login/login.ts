@@ -43,7 +43,6 @@ export default class Login extends Vue {
         this.form.validateFields((err: any, values: any) => {
             this.percent = 50;
             if (!err) {
-                // console.log(this.$route);
                 const redirect: any = this.$route.query.redirect;
                 this.percent = 70;
                 this.$axios.post('/toLogin', values).then((res: any) => {
