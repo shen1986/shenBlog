@@ -10,18 +10,17 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import { LocaleProvider } from 'ant-design-vue';
-import zhCN from "ant-design-vue/es/locale-provider/zh_CN";
+import zhCN from 'ant-design-vue/es/locale-provider/zh_CN';
 Vue.use(LocaleProvider);
-
 
 @Component
 export default class App extends Vue {
-    data(){
+    private data() {
         return {
-            locale: zhCN
-        }
+            locale: zhCN,
+        };
     }
 }
 </script>
