@@ -1,3 +1,8 @@
+/**
+ * @Description: 登陆画面js
+ * @Author: shenxf
+ * @Date: 2019-05-05 20:02:52
+ */
 import { Vue, Component } from 'vue-property-decorator';
 import { Form, Input, Button, Icon, message, Progress } from 'ant-design-vue';
 Vue.use(Form);
@@ -47,18 +52,20 @@ export default class Login extends Vue {
                 this.percent = 70;
                 this.$axios.post('/toLogin', values).then((res: any) => {
                     if (res.data.status === 1) {
+                        // 必须先设置session缓存， 不然会被路由守卫弹回来
+                        sessionStorage.setItem('username', 'ok');
+
                         if (redirect) {
                             this.percent = 100;
                             this.$router.push(redirect);
                         } else {
                             this.$router.push('/');
                         }
-
-                        // session缓存
-                        sessionStorage.setItem('username', 'ok');
                     } else {
                         message.error(res.data.msg);
                     }
+                }).catch((err: any) => {
+                    console.log(err);
                 }).finally(() => {
                     this.pregress = false;
                 });
