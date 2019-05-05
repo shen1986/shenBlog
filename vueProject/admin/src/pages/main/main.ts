@@ -15,7 +15,6 @@ export default class App extends Vue {
 
     private created(): void {
         this.username = 'shenxf';
-        console.log(this.$route.path);
         this.current = this.$route.path;
     }
 
@@ -24,10 +23,6 @@ export default class App extends Vue {
      */
     private handleClick(e: any): void {
         this.$router.push(e.key);
-        this.current = e.key;
-        console.log(this.$router);
-        // console.log('myLayout',this.$refs.myLayout);
-        // this.$refs.myLayout.selectedKeys = ['/articleList'];
     }
 
     /**
@@ -42,8 +37,13 @@ export default class App extends Vue {
         this.$router.push('/login');
     }
 
+    /**
+     * @description: 监视路由变化，如果有变化就把当前的选择tab改成对应的tab
+     * @param {any} val - 变化后路由
+     * @param {any} oldVal - 变化前路由
+     */
     @Watch('$route')
-    private onChildChanged(val: any, oldVal: any) { 
+    private onChildChanged(val: any, oldVal: any): void { 
         this.current = val.path;
     }
 }
