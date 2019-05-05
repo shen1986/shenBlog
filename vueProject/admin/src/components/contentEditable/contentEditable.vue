@@ -4,9 +4,6 @@
  * @Date: 2019-04-29 17:33:10
  -->
 <template>
-        <!-- onInput={this.emitChange}
-        onBlur={this.emitChange}
-        contentEditable = "true" -->
     <div class="content-editable"
         contentEditable = "true"
         @input="emitChange"

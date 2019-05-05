@@ -17,6 +17,7 @@ Vue.use(Button);
 export default class AddArticle extends Vue {
 
     private markdown = false;
+    private content = '';
 
     /**
      * @description: 文章格式变更时更新输入内容部分

@@ -8,7 +8,7 @@
         <a-row>
             <a-checkbox @change="onChange">预览</a-checkbox>
         </a-row>
-        <a-row gutter="16">
+        <a-row :gutter="16">
             <a-col :xs="preview ? 13 : 24">
                 <!-- <ContentEditable handleChange={this.handleChange} content={this.props.content} /> -->
                 <ContentEditable  @handleChange="handleChange" :parentContent="content" />

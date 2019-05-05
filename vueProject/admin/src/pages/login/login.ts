@@ -1,14 +1,17 @@
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Form, Input, Button, Icon, message } from 'ant-design-vue';
+import { Vue, Component } from 'vue-property-decorator';
+import { Form, Input, Button, Icon, message, Progress } from 'ant-design-vue';
 Vue.use(Form);
 Vue.use(Input);
 Vue.use(Button);
 Vue.use(Icon);
+Vue.use(Progress);
 
 @Component
 export default class Login extends Vue {
 
     private form: any = {};
+    private percent: number = 0;
+    private pregress: boolean = false;
 
     private created(): void {
         this.form = this.$form.createForm(this);
@@ -35,13 +38,18 @@ export default class Login extends Vue {
     }
 
     private checkForm(): void {
+        this.pregress = true;
+        this.percent = 0;
         this.form.validateFields((err: any, values: any) => {
+            this.percent = 50;
             if (!err) {
                 // console.log(this.$route);
                 const redirect: any = this.$route.query.redirect;
+                this.percent = 70;
                 this.$axios.post('/toLogin', values).then((res: any) => {
                     if (res.data.status === 1) {
                         if (redirect) {
+                            this.percent = 100;
                             this.$router.push(redirect);
                         } else {
                             this.$router.push('/');
@@ -52,6 +60,8 @@ export default class Login extends Vue {
                     } else {
                         message.error(res.data.msg);
                     }
+                }).finally(() => {
+                    this.pregress = false;
                 });
             } else {
                 // console.log(err);

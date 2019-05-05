@@ -1,4 +1,4 @@
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 
 @Component
 export default class ContentEditable extends Vue {
@@ -31,8 +31,18 @@ export default class ContentEditable extends Vue {
         const content = e.target.innerText;
 
         if (content !== this.lastContent) {
-            this.$emit('handleChange', content);
-            this.lastContent = content;
+            // 返回给父组件
+            this.parentHandleChange(content);
         }
+    }
+
+    /**
+     * @description: 调用父组件handleChange方法
+     * @param {string} content - 输入的内容 
+     * @return: 输入的内容
+     */
+    @Emit('handleChange')
+    private parentHandleChange(content: string): void {
+        this.lastContent = content;
     }
 }
