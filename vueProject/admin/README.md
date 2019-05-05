@@ -55,6 +55,7 @@ npm run build
     formLayout = 'horizontal';
     form = this.$form.createForm(this); // <- 问题出在这句话，这个东西可能在一开始的时候返回的是undefined
     ```
+    - 这里为什么会有`undefined`,这可能是`vue-class-component`的另一个坑，就是`this`指向的问题，请参照官方文档。
     - 改造它之后就没有这个问题了
     ```typescript
     private form: any = null; // 参照官方的例子，这个设置成null就能响应了
@@ -64,9 +65,10 @@ npm run build
     }
     ```
     - 这个为什么不使用data的钩子来写呢，官方例子里面data钩子不是能够具有响应能力了么？
-        + 在.vue文件里面写是可以的，为了实现代码分离把.ts单独分离出一个文件。这个时候如果你还用data钩子，那么下面所有用到这个变量的地方IDE都提示没有这个变量，应为IDE在.ts文件里面不懂什么是data钩子，以及一些只有vue具有的特性。所以.ts要借助`vue-class-component`来写才行。如果你不想实现ts与template的代码分离，把变量直接写在data钩子里面是最安全的做法。
+        + 在.vue文件里面写是可以的，为了实现代码分离把.ts单独分离出一个文件。这个时候如果你还用data钩子，那么下面所有用到这个变量的地方IDE都提示没有这个变量，应为IDE在.ts文件里面不懂什么是data钩子，以及一些只有vue具有的特性。所以.ts要借助`vue-class-component`来写才行。如果你不想实现ts与template的代码分离，把变量直接写在data钩子里面是最安全的做法。（IDE虽然提示报错，但是程序能正常运行，如果心里没有疙瘩，也可以使用data的写法）
     - 为什么要实现ts与template的代码分离？
-        + 请去看《编写可维护的JavaScript》这本书，我的github对它有一点介绍。
+        + 主要是感觉如果某个组件特别复杂，代码量特别多的时候，要在`template`和`script`之间来回滚动，会影响开发效率，如果分开，可以设置2个窗口并列，这样互相参照很方便。
+        + 看《编写可维护的JavaScript》这本书，我的github对它有一点介绍，这本书的作者也认为，把分离做好能有利于维护
             * [MaintainableJavaScript](https://github.com/shen1986/MaintainableJavaScript)
 
 2. this.$axios报错
@@ -74,5 +76,3 @@ npm run build
 
 3. 在.vue文件中引入 Message 不报错，在.ts 引入 Message 则报错。
     - 这个坑不容易被发现
-
-4. 

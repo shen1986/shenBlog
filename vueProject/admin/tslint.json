@@ -23,7 +23,8 @@
         // Pending fix for shorthand property names.
         "object-literal-sort-keys": false,
         "ordered-imports": false,
-        "member-ordering": false
+        "member-ordering": false,
+        "no-var-requires": true,
     },
     "rulesDirectory": []
 }

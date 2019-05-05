@@ -4,7 +4,7 @@
  * @Date: 2019-04-22 21:23:56
  -->
 <template>
-    <div class="login">
+    <div class="login" @keyup="handleKeyup">
         <h2 class="title">小沈的个人博客管理系统</h2>
         <a-form
             class="login-form"
@@ -62,57 +62,9 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Form, Input, Button, Icon, Message } from 'ant-design-vue';
-Vue.use(Form);
-Vue.use(Input);
-Vue.use(Button);
-Vue.use(Icon);
-Vue.use(Message);
-
-@Component
-export default class Login extends Vue {
-
-    private data(): object {
-        return {
-            formLayout: 'horizontal',
-            form: this.$form.createForm(this),
-        };
-    }
-
-    /**
-     * @description: 登录
-     * @param {any} e - Event
-     */
-    private handleSubmit(e: any): void {
-        e.preventDefault();
-        this.form.validateFields((err, values) => {
-            if (!err) {
-                // console.log(this.$route);
-                const redirect = this.$route.query.redirect;
-                this.$axios.post('/toLogin', values).then(res => {
-                    if (res.data.status === 1) {
-                        if (redirect) {
-                           this.$router.push(redirect);
-                        } else {
-                            this.$router.push('/');
-                        }
-
-                        // session缓存
-                        sessionStorage.setItem('username', 'ok');
-                    } else {
-                        Message.error(res.data.msg);
-                    }
-                });
-            } else {
-                // console.log(err);
-            }
-        });
-    }
-}
+<script lang="ts" src="./login.ts">
 </script>
 
 <style lang="less">
-@import "../../styles/pages/login.less";
+@import "./login.less";
 </style>

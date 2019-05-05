@@ -1,9 +1,4 @@
-/**
- * @Description: 说说管理主处理
- * @Author: shenxf
- * @Date: 2019-04-30 19:03:06
- */
-import { Component, Vue  } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 import { Table, Popconfirm, Spin, message } from 'ant-design-vue';
 import TaskBar from '../../../components/taskBar/taskBar.vue';
 Vue.use(Table);
@@ -15,19 +10,27 @@ Vue.use(Spin);
         TaskBar,
     },
 })
-export default class TalkList extends Vue {
+export default class CollectionList extends Vue {
 
-    private spinning: boolean = false;
-    private dataSource: any[] = [];
-    private columns: any[] = [{
+    // 加载标识
+    private spinning = false;
+
+    // 表格数据
+    private dataSource = [];
+
+    // 表格结构
+    private columns = [{
         title: 'ID',
         dataIndex: 'id',
     }, {
-        title: '详细',
-        dataIndex: 'detail',
+        title: '标题',
+        dataIndex: 'title',
         scopedSlots: {
-            customRender: 'detail',
+            customRender: 'title-dt',
         },
+    }, {
+        title: '标签',
+        dataIndex: 'tag',
     }, {
         title: '创建时间',
         dataIndex: 'created_at',
@@ -40,21 +43,21 @@ export default class TalkList extends Vue {
     }];
 
     private created(): void {
-        this.getTalks();
+        this.getCollection();
     }
 
     /**
-     * @description: 取得说说列表
-     * @param {boolean} isLoad - 是否要加载
+     * @description: 取得收藏列表
      */
-    private getTalks(isLoad: boolean = true): void {
+    private getCollection(isLoad: boolean = true): void {
+
         // 设置加载
         if (isLoad) {
             this.spinning = true;
         }
 
         // 请求表格数据
-        this.$axios.get('get-gossip').then((res: any) => {
+        this.$axios.get('get-gather').then((res: any) => {
             if (res.data.status === 1) {
                 this.dataSource = res.data.info;
             }
@@ -69,16 +72,16 @@ export default class TalkList extends Vue {
 
     /**
      * @description: 删除
-     * @param {string} key - 删除行key
+     * @param {String} id - 删除行key
      */
     private onDelete(id: string): void {
         this.spinning = true;
-        this.$axios.get(`gossip-delete/${id}`)
+        this.$axios.get(`gather-delete/${id}`)
             .then((res: any) => {
 
                 if (res.data.status === 1) {
                     const dataSource = [...this.dataSource];
-                    this.dataSource = dataSource.filter(item => item.key !== id);
+                    this.dataSource = dataSource.filter((item: any) => item.id !== id);
                     // 数据再取得
                     // this.getCollection(false);
                 }
