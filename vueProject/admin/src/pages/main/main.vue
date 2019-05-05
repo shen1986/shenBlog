@@ -7,7 +7,7 @@
     <a-layout id="components-layout-demo-side" style="min-height: 100vh">
         <a-layout-sider collapsible v-model="collapsed">
             <div class="logo">Shenxf个人博客管理端</div>
-            <a-menu theme="dark" :defaultSelectedKeys="['/articleList']" ref="myLayout" mode="inline" @click="handleClick">
+            <a-menu theme="dark" :selectedKeys="[current]" ref="myLayout" mode="inline" @click="handleClick">
                 <a-sub-menu key="articleManager">
                     <span slot="title">
                         <a-icon type="file" />
@@ -46,7 +46,7 @@
                 © 2019 小沈
             </a-layout-footer>
         </a-layout>
-    </a-layout>
+    </a-layout>    
 </template>
 
 <script lang="ts" src="./main.ts">

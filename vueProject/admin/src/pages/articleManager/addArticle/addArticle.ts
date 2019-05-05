@@ -3,8 +3,9 @@ import TaskBar from '../../../components/taskBar/taskBar.vue';
 import Editor from '../../../components/editor/editor.vue';
 import Markdown from '../../../components/markdown/markdown.vue';
 import ArticleOp from './children/articleOp/articleOp.vue';
-import { Button, message } from 'ant-design-vue';
+import { Button, message, Spin } from 'ant-design-vue';
 Vue.use(Button);
+Vue.use(Spin);
 
 @Component({
     components: {
@@ -18,6 +19,17 @@ export default class AddArticle extends Vue {
 
     private markdown = false;
     private content = '';
+    private spinning = false;
+
+    private created(): void {
+        // 更新画面
+        if (this.$route.params.id) {
+            this.spinning = true;
+            // 取得文章情报
+
+            this.spinning = false;
+        }
+    }
 
     /**
      * @description: 文章格式变更时更新输入内容部分
