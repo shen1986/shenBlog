@@ -8,8 +8,8 @@
         <TaskBar :firstName="'文章管理'" :lastName="'文章追加'" />
         <div class="blog-content" >
             <ArticleOp ref="op" @typeChange="typeChange"/>
-            <Editor v-if="!markdown" ref="edit" />
             <Markdown v-if="markdown" :content="content" @change="handleChange" />
+            <Editor v-else="markdown" ref="edit" />
             <!-- <Markdown content={content} onChange={this.handleChange} preview={preview} /> -->
             <a-button type="primary" @click="handleClick">提交</a-button>
         </div>
