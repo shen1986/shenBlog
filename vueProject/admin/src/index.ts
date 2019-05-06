@@ -49,8 +49,22 @@ if (process.env.NODE_ENV === 'development') {
     Mock.init();
 }
 
+// 导入vuex全局仓储
+import Vuex from 'Vuex';
+Vue.use(Vuex);
+
+var store = new Vuex.Store({
+    state: { // 全局变量
+        count: 1
+    },
+    mutations: { // 全局方法
+
+    }
+});
+
 const v: any = new Vue({
     el: '#app',
     router, // 1.4 挂载路由对象到 VM 实例上
     render: c => c(app),
+    store, // 把store挂载到全局
 });
