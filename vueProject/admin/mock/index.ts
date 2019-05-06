@@ -28,12 +28,13 @@ export default {
         // });
 
         mock.onPost('/toLogin').reply(config => {
-            const { userName, password } = JSON.parse(config.data);
+            const { userid, password } = JSON.parse(config.data);
             return new Promise((resolve, reject) => {
                 const user: any = config.data;
                 setTimeout(() => {
-                    if (userName === 'admin' && password === '123456') {
-                        resolve([200, { status: 1}]);
+
+                    if (userid === 'admin' && password === '123456') {
+                        resolve([200, { status: 1, token: '123123'}]);
                     } else {
                         resolve([200, { status: 0, msg: '账号或密码错误' }]);
                     }
