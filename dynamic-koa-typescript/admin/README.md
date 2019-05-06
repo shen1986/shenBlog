@@ -10,3 +10,4 @@
 
 ## 参照
 - [vue+koa2+token登陆验证](https://www.jianshu.com/p/406301bead0c)
+- [各种验证方式说明](http://www.cnblogs.com/hongdiandian/p/9294970.html)
