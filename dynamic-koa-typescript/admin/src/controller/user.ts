@@ -50,7 +50,7 @@ export let checkToken = async (ctx: any, next: any) => {
         } else {
             // 解析成功,验证信息
             const passwordFromDb: any = await userModel.getPassword(res.userid);
-            if (passwordFromDb.length !== 0 && res.password === passwordFromDb[0]['password']) {
+            if (passwordFromDb.length !== 0 && crypto.sha256(crypto.sha256(res.password)) === passwordFromDb[0]['password']) {
                 await next();
             } else {
                 ctx.body = {
