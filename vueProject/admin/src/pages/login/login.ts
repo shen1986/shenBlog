@@ -55,7 +55,7 @@ export default class Login extends Vue {
                     if (res.data.status === 1) {
                         // 必须先设置session缓存， 不然会被路由守卫弹回来
                         localStorage.setItem('token', res.data.token) //存储token
-
+                        this.$store.state.token = res.data.token;
                         if (redirect) {
                             this.percent = 100;
                             this.$router.push(redirect);

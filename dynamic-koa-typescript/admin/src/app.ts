@@ -1,10 +1,22 @@
+/**
+ * @Description: 程序主入口
+ * @Author: shenxf
+ * @Date: 2019-05-06 20:21:16
+ */
 import Koa from 'koa';
 import router from './routes/router';
 import session from 'koa-session';
 import bodyParser from 'koa-bodyparser';
 import cors from 'koa2-cors';
+import kStatic from 'koa-static';
+import path from 'path';
 
 const app = new Koa();
+
+// 配置静态资源
+app.use(kStatic(
+    path.join(__dirname, './public/')
+));
 
 // 这是处理前端跨域的配置
 app.use(cors({
