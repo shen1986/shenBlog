@@ -69,8 +69,8 @@ export default {
 
         mock.onGet(arturl).reply(200, {"status":1,"info":{"id":1,"title":"某某装饰设计有限公司","body":"<p>123123</p>","type":1,"category":"1","tag":"123","markdown":0}});
 
-        const gatUri = '/gather';
-        const gaturl2 = new RegExp(`${gatUri}/*`);
-        mock.onGet(gaturl2).reply(200, {"status":1,"info":{"id":1,"title":"java提高篇-----详解java的四舍五入与保留位1","detail":"<p>12312</p>","tag":"aa"}});
+        const gosUri = '/gossip';
+        const gosurl2 = new RegExp(`${gosUri}/*`);
+        mock.onGet(gosurl2).reply(200, { "status": 1, "info": { "id": 1, "detail": "测试一下", "file_name": "qb_comm_logo.png", "save_name": "e79d6ca349a4e13d22aa229136af814e" } });
     },
 };
