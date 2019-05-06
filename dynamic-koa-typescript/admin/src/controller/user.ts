@@ -1,6 +1,6 @@
 import * as userModel from '../models/userModel';
-import * as Token from '../models/token';
-import * as crypto from '../commons/utils/crypto';
+import * as Token from '../common/utils/token';
+import * as crypto from '../common/utils/crypto';
 
 export let toLogin = async function (ctx: any) {
     const {
@@ -9,9 +9,7 @@ export let toLogin = async function (ctx: any) {
     } = ctx.request.body;
     try {
         const passwordFromDb: any = await userModel.getPassword(userid);
-
         if (passwordFromDb.length !== 0 && crypto.sha256(crypto.sha256(password)) === passwordFromDb[0]['password']) {
-            ctx.session.userid = userid;
             const token = Token.addToken(ctx.request.body);
             ctx.body = {
                 'status': 1,
@@ -44,7 +42,7 @@ export let checkToken = async (ctx: any, next: any) => {
         const data: any = new Date();
         if (res && res.exp <= data / 1000) {
             ctx.body = {
-                message: 'token过期',
+                msg: 'token过期',
                 code: 3
             };
         } else {
@@ -54,7 +52,7 @@ export let checkToken = async (ctx: any, next: any) => {
                 await next();
             } else {
                 ctx.body = {
-                    message: 'token不对',
+                    msg: 'token不对',
                     code: 2
                 };
             }
