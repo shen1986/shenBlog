@@ -4,6 +4,7 @@
  * @Date: 2019-04-20 21:10:19
  */
 import VueRouter from 'vue-router'
+import Vue from 'vue';
 
 // 导入对应的路由组件
 const login = () => import('../pages/login/login.vue'); // 按需加载组件，懒加载，官方推荐
@@ -84,10 +85,7 @@ var router = new VueRouter({
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
 
-        const username = sessionStorage.getItem('username');
-        // if (!auth.loggedIn()) {
-        // 检查是否登录状态， 现在默认是登录状态
-        if (username !== "ok") {
+        if (localStorage.getItem('token')) {
             next({
                 path: '/login',
                 query: { redirect: to.fullPath }

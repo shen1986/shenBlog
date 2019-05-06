@@ -53,7 +53,7 @@ export default class Login extends Vue {
                 this.$axios.post('/toLogin', values).then((res: any) => {
                     if (res.data.status === 1) {
                         // 必须先设置session缓存， 不然会被路由守卫弹回来
-                        sessionStorage.setItem('username', 'ok');
+                        localStorage.setItem('token', res.data.token) //存储token
 
                         if (redirect) {
                             this.percent = 100;
