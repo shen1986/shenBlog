@@ -16,6 +16,19 @@ Vue.use(VueRouter);
 // 1.3 导入自己的 router.js 路由模块
 import router from './router/router';
 
+// 导入vuex全局仓储
+import Vuex from 'Vuex';
+Vue.use(Vuex);
+
+var store = new Vuex.Store({
+    state: { // 全局变量
+        token: '' // 用户验证
+    },
+    mutations: { // 全局方法
+
+    }
+});
+
 // 导入Axios
 import Axios from 'axios';
 // 设置Axios基础配置
@@ -36,8 +49,7 @@ Axios.interceptors.request.use(
         return config;
     },
     error => {
-        // return Promise.error(error);
-        console.log(error.message);
+        return Promise.reject(error);
     }
 );
 
@@ -49,19 +61,6 @@ import Mock from '../mock';
 if (process.env.NODE_ENV === 'development') {
     Mock.init();
 }
-
-// 导入vuex全局仓储
-import Vuex from 'Vuex';
-Vue.use(Vuex);
-
-var store = new Vuex.Store({
-    state: { // 全局变量
-        token: '' // 用户验证
-    },
-    mutations: { // 全局方法
-
-    }
-});
 
 const v: any = new Vue({
     el: '#app',

@@ -7,3 +7,6 @@
 
 - 构建中
 - 主要是用来返回json数据，后台管理的所有后端操作在这里完成。
+
+## 参照
+- [vue+koa2+token登陆验证](https://www.jianshu.com/p/406301bead0c)
