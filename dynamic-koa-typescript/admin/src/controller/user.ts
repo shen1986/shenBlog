@@ -1,5 +1,6 @@
 import * as userModel from '../models/userModel';
 import * as Token from '../models/token';
+import * as crypto from '../commons/utils/crypto';
 
 export let toLogin = async function (ctx: any) {
     const {
@@ -9,7 +10,7 @@ export let toLogin = async function (ctx: any) {
     try {
         const passwordFromDb: any = await userModel.getPassword(userid);
 
-        if (passwordFromDb.length !== 0 && password === passwordFromDb[0]['password']) {
+        if (passwordFromDb.length !== 0 && crypto.sha256(crypto.sha256(password)) === passwordFromDb[0]['password']) {
             ctx.session.userid = userid;
             const token = Token.addToken(ctx.request.body);
             ctx.body = {
