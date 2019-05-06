@@ -20,7 +20,7 @@
                 >
                     <a-input
                         v-decorator="[
-                            'userName',
+                            'userid',
                             {rules: [{ required: true, message: '请输入用户名' }]}
                         ]"
                     >

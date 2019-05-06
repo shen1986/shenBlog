@@ -11,4 +11,11 @@ router.use(user.checkToken);
 
 router.post('/test', user.test);
 
+router.get('/get-articles', async (ctx: any) => {
+    console.log(111);
+    ctx.body = {
+        message: 'very good'
+    };
+});
+
 export default router;

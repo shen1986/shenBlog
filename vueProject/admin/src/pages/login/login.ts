@@ -51,6 +51,7 @@ export default class Login extends Vue {
                 const redirect: any = this.$route.query.redirect;
                 this.percent = 70;
                 this.$axios.post('/toLogin', values).then((res: any) => {
+                    console.log(res);
                     if (res.data.status === 1) {
                         // 必须先设置session缓存， 不然会被路由守卫弹回来
                         localStorage.setItem('token', res.data.token) //存储token

@@ -56,9 +56,9 @@ Axios.interceptors.request.use(
 
 Axios.interceptors.response.use(function (response) {
     // 对响应数据做点什么
-    // 好像token不对
-    if (response.data.code) {
-        console.log(response.data.code);
+    // 好像token不对,那就先去登录页面看看
+    if (typeof response.data.code !== 'undefined') {
+        v.$router.push('/login');
     }
     return response;
 }, function (error) {

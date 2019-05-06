@@ -6,7 +6,6 @@ export let toLogin = async function (ctx: any) {
         userid,
         password
     } = ctx.request.body;
-
     try {
         const passwordFromDb: any = await userModel.getPassword(userid);
 
@@ -20,13 +19,13 @@ export let toLogin = async function (ctx: any) {
         } else {
             ctx.body = {
                 'status': 0,
-                'message': '用户名或则密码错误'
+                'msg': '用户名或则密码错误'
             };
         }
     } catch (error) {
         ctx.body = {
             'status': 0,
-            'message': error.message
+            'msg': error.message
         };
     }
 };
@@ -41,7 +40,6 @@ export let checkToken = async (ctx: any, next: any) => {
     if (token) {
         //  获取到token
         const res: any = Token.decoded(token);
-        console.log(res);
         const data: any = new Date();
         if (res && res.exp <= data / 1000) {
             ctx.body = {

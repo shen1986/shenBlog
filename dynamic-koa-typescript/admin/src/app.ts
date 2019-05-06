@@ -2,8 +2,24 @@ import Koa from 'koa';
 import router from './routes/router';
 import session from 'koa-session';
 import bodyParser from 'koa-bodyparser';
+import cors from 'koa2-cors';
 
 const app = new Koa();
+
+// 这是处理前端跨域的配置
+app.use(cors({
+    origin: function (ctx: any) {
+        if (ctx.url === '/login') {
+            return '*'; // 允许来自所有域名请求
+        }
+        return '*';
+    },
+    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+    maxAge: 5,
+    credentials: true,
+    allowMethods: ['GET', 'POST', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}));
 
 // session配置
 app.keys = ['shenxf1986@qq.com'];
