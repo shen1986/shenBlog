@@ -19,16 +19,8 @@ import router from './router/router';
 // 导入vuex全局仓储
 import Vuex from 'Vuex';
 Vue.use(Vuex);
-
-var store = new Vuex.Store({
-    state: { // 全局变量
-        // 用户验证
-        token: localStorage.getItem('token') || null
-    },
-    mutations: { // 全局方法
-
-    }
-});
+// 导入本地的store
+import { store } from './store/store';
 
 // 导入Axios
 import Axios from 'axios';
@@ -46,22 +38,24 @@ Axios.interceptors.request.use(
          * 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
          */
         const token = store.state.token;
-        token && (config.headers.Authorization = 'Bearer ' + token);
+        if (token) {
+            config.headers.Authorization = 'Bearer ' + token;
+        }
         return config;
     },
     error => {
         return Promise.reject(error);
-    }
+    },
 );
 
-Axios.interceptors.response.use(function (response) {
+Axios.interceptors.response.use((response) => {
     // 对响应数据做点什么
     // 好像token不对,那就先去登录页面看看
     if (typeof response.data.code !== 'undefined') {
         v.$router.push('/login');
     }
     return response;
-}, function (error) {
+},  (error: any) => {
     // 对响应错误做点什么
     return Promise.reject(error);
 });

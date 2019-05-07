@@ -45,7 +45,7 @@ export default class Login extends Vue {
     private checkForm(): void {
         this.pregress = true;
         this.percent = 0;
-        this.form.validateFields((err: any, values: any) => {
+        this.form.validateFields((err: Error, values: any) => {
             this.percent = 50;
             if (!err) {
                 const redirect: any = this.$route.query.redirect;
@@ -53,8 +53,7 @@ export default class Login extends Vue {
                 this.$axios.post('/toLogin', values).then((res: any) => {
                     if (res.data.status === 1) {
                         // 必须先设置session缓存， 不然会被路由守卫弹回来
-                        localStorage.setItem('token', res.data.token) 
-                        this.$store.state.token = res.data.token;
+                        this.$store.commit('saveToken', res.data.token);
                         if (redirect) {
                             this.percent = 100;
                             this.$router.push(redirect);
@@ -64,13 +63,13 @@ export default class Login extends Vue {
                     } else {
                         message.error(res.data.msg);
                     }
-                }).catch((err: any) => {
-                    console.log(err);
+                }).catch((error: any) => {
+                    message.error(error.message);
                 }).finally(() => {
                     this.pregress = false;
                 });
             } else {
-                console.log(err);
+                message.error(err.message);
                 this.pregress = false;
             }
         });

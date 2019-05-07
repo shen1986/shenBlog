@@ -3,7 +3,7 @@
  * @Author: shenxf
  * @Date: 2019-04-20 21:10:19
  */
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 import Vue from 'vue';
 
 // 导入对应的路由组件
@@ -17,14 +17,14 @@ const addTalk = () => import('../pages/talkManager/addTalk/addTalk.vue');
 const talkList = () => import('../pages/talkManager/talkList/talkList.vue');
 
 // 3. 创建路由对象
-var router = new VueRouter({
+const router = new VueRouter({
     // mode: 'history',
 
     // 配置路由规则
     routes: [
         {
             path: '/login',
-            component: login
+            component: login,
         },
         {
             path: '/',
@@ -33,15 +33,15 @@ var router = new VueRouter({
             children: [
                 {
                     path: '',
-                    redirect: 'home'
+                    redirect: 'home',
                 },
                 {
                     path: 'home',
-                    component: articleList
+                    component: articleList,
                 },
                 {
                     path: 'articleList',
-                    component: articleList
+                    component: articleList,
                 },
                 {
                     path: 'addArticle',
@@ -49,33 +49,33 @@ var router = new VueRouter({
                 },
                 {
                     path: 'updateArticle/:id',
-                    component: addArticle
+                    component: addArticle,
                 },
                 {
                     path: 'addCollection',
-                    component: addCollection
+                    component: addCollection,
                 },
                 {
                     path: 'collectionList',
-                    component: collectionList
+                    component: collectionList,
                 },
                 {
                     path: 'updateCollection/:id',
-                    component: addCollection
+                    component: addCollection,
                 },
                 {
                     path: 'addTalk',
-                    component: addTalk
+                    component: addTalk,
                 },
                 {
                     path: 'talkList',
-                    component: talkList
+                    component: talkList,
                 },
                 {
                     path: 'updateTalk/:id',
-                    component: addTalk
+                    component: addTalk,
                 },
-            ]
+            ],
         },
     ],
     // linkActiveClass: 'mui-active' // 覆盖默认的路由高亮的类，默认的类叫做 router-link-active
@@ -88,7 +88,7 @@ router.beforeEach((to, from, next) => {
         if (!localStorage.getItem('token')) {
             next({
                 path: '/login',
-                query: { redirect: to.fullPath }
+                query: { redirect: to.fullPath },
             });
         } else {
             next();
@@ -99,4 +99,4 @@ router.beforeEach((to, from, next) => {
 });
 
 // 把路由对象暴露出去
-export default router
+export default router;

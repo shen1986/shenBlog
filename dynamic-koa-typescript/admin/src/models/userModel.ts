@@ -6,20 +6,25 @@
 import Db from './db';
 import mysql from 'mysql';
 
-/**
- * @description: 通过用户名取得密码
- * @param {string} userid - 用户id
- * @return: 用户的password 或则 error
- */
-export let getPassword = async function (userid: string) {
+class UserModel {
 
-    const sql = `select password from user where userid = ${mysql.escape(userid)}`;
-    const db = Db.getInstence();
+    /**
+     * @description: 通过用户名取得密码
+     * @param {string} userid - 用户id
+     * @return: 用户的password 或则 error
+     */
+    public async getPassword (userid: string) {
 
-    try {
-        const result: any = db.query(sql);
-        return result;
-    } catch (error) {
-        throw error;
+        const sql = `select password from user where userid = ${mysql.escape(userid)}`;
+        const db = Db.getInstence();
+
+        try {
+            const result: any = db.query(sql);
+            return result;
+        } catch (error) {
+            throw error;
+        }
     }
-};
+}
+
+export default UserModel;

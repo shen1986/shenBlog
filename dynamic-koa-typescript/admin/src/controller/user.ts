@@ -1,4 +1,4 @@
-import * as userModel from '../models/userModel';
+import UserModel from '../models/userModel';
 import * as Token from '../common/utils/token';
 import * as crypto from '../common/utils/crypto';
 
@@ -8,6 +8,7 @@ export let toLogin = async function (ctx: any) {
         password
     } = ctx.request.body;
     try {
+        const userModel = new UserModel();
         const passwordFromDb: any = await userModel.getPassword(userid);
         if (passwordFromDb.length !== 0 && crypto.sha256(crypto.sha256(password)) === passwordFromDb[0]['password']) {
             const token = Token.addToken(ctx.request.body);
@@ -47,6 +48,7 @@ export let checkToken = async (ctx: any, next: any) => {
             };
         } else {
             // 解析成功,验证信息
+            const userModel = new UserModel();
             const passwordFromDb: any = await userModel.getPassword(res.userid);
             if (passwordFromDb.length !== 0 && crypto.sha256(crypto.sha256(res.password)) === passwordFromDb[0]['password']) {
                 await next();

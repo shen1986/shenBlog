@@ -65,7 +65,7 @@ class Db {
                 } else {
                     resolved(rows);
                 }
-                connection.release(); // 释放链接
+                // connection.release(); // 释放链接 单例模式就不释放连接了。
             });
         });
     }
