@@ -1,6 +1,7 @@
 import { Layout, Menu, Icon, LocaleProvider } from 'ant-design-vue';
 import { Vue, Component, Watch } from 'vue-property-decorator';
-// 这里吐槽一句，vue的antd按需加载真特么丑陋，一点也不优雅，还浪费了我大把的时间。感觉全部直接引用更好
+// 这里吐槽一句，vue的antd按需加载真特么丑陋，
+// 一点也不优雅，还浪费了我大把的时间。感觉全部直接引用更好
 Vue.use(Layout);
 Vue.use(Menu);
 Vue.use(Icon);
@@ -30,8 +31,8 @@ export default class App extends Vue {
      */
     private logout(): void {
 
-        // 删除session
-        sessionStorage.removeItem('username');
+        // 删除token
+        this.$store.commit('removeToken');
 
         // 取到登录页面
         this.$router.push('/login');
@@ -43,7 +44,7 @@ export default class App extends Vue {
      * @param {any} oldVal - 变化前路由
      */
     @Watch('$route')
-    private onChildChanged(val: any, oldVal: any): void { 
+    private onChildChanged(val: any, oldVal: any): void {
         this.current = val.path;
     }
 }

@@ -8,9 +8,9 @@
         <TaskBar :firstName="'文章管理'" :lastName="'文章追加'" />
         <div class="blog-content" >
             <a-spin :spinning="spinning">
-                <ArticleOp ref="op" @typeChange="typeChange"/>
-                <Markdown v-if="markdown" :content="content" @change="handleChange" />
-                <Editor v-else ref="edit" />
+                <ArticleOp ref="op" :articleInfo="articleInfo" @typeChange="typeChange"/>
+                <Markdown v-if="markdown" :content="articleInfo.body" @change="handleChange" />
+                <Editor v-else ref="edit" :content="articleInfo.body" />
                 <!-- <Markdown content={content} onChange={this.handleChange} preview={preview} /> -->
                 <a-button type="primary" @click="handleClick">提交</a-button>
             </a-spin>

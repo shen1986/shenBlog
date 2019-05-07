@@ -68,7 +68,7 @@ export default {
         const artUri = '/article';
         const arturl = new RegExp(`${artUri}/*`);
 
-        mock.onGet(arturl).reply(200, {"status":1,"info":{"id":1,"title":"某某装饰设计有限公司","body":"<p>123123</p>","type":1,"category":"1","tag":"123","markdown":0}});
+        mock.onGet(arturl).reply(200, {"status":1,"info":{"id":1,"title":"某某装饰设计有限公司","body":"<p>123123</p>","type":1,"category":1,"tag":"123","markdown":0}});
 
         const gosUri = '/gossip';
         const gosurl2 = new RegExp(`${gosUri}/*`);

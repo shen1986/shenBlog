@@ -65,6 +65,10 @@ export default class ArticleList extends Vue {
         this.getArtilces();
     }
 
+    /**
+     * @description: 取得文章信息
+     * @param {boolean} isLoad - 是否需要取消加载
+     */
     private getArtilces(isload: boolean = true): void {
         // 设置加载
         if (isload) {
@@ -94,10 +98,8 @@ export default class ArticleList extends Vue {
         this.$axios.get(`article-delete/${id}`).then((res: any) => {
 
             if (res.data.status === 1) {
-                const dataSource = [...this.dataSource];
-                this.dataSource = dataSource.filter((item: any) => item.key !== id);
                 // 数据再取得
-                // this.getArtilces(false);
+                this.getArtilces(false);
             }
 
         }).catch((resion: any) => {

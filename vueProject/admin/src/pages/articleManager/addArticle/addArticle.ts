@@ -1,5 +1,5 @@
 /**
- * @Description: 
+ * @Description: 添加或则更新文章
  * @Author: shenxf
  * @Date: 2019-05-05 20:02:52
  */
@@ -37,16 +37,15 @@ export default class AddArticle extends Vue {
 
     /**
      * @description: 取得文章情报
-     * @param {boolean} isLoad - 是否要停止loading 
+     * @param {boolean} isLoad - 是否要停止loading
      */
-    private getArticle(id: string,isLoad: boolean = true): void {
+    private getArticle(id: string, isLoad: boolean = true): void {
         // 取得文章情报
         this.$axios.get(`article/${id}`).then((res: any) => {
             if (res.data.status === 1) {
                 this.articleInfo = res.data.info;
             }
         }).catch((resion: any) => {
-            console.log(resion);
             message.error('数据取得异常');
         }).finally(() => {
             if (isLoad) {
@@ -85,10 +84,8 @@ export default class AddArticle extends Vue {
         alert(edit.content);
 
         op.handleSubmit().then((res: any) => {
-            // console.log(typeof res);
             alert('提交了');
         }).catch((err: any) => {
-            // console.log(typeof err);
             alert('错误了');
         });
     }

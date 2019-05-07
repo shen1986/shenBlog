@@ -38,24 +38,25 @@ export default class Login extends Vue {
      */
     private handleKeyup(e: any): void {
         if (e.keyCode === 13) {
+            this.percent = 0;
             this.checkForm();
         }
     }
 
     private checkForm(): void {
         this.pregress = true;
-        this.percent = 0;
+        this.percent = 30;
         this.form.validateFields((err: Error, values: any) => {
             this.percent = 50;
             if (!err) {
                 const redirect: any = this.$route.query.redirect;
                 this.percent = 70;
                 this.$axios.post('/toLogin', values).then((res: any) => {
+                    this.percent = 100;
                     if (res.data.status === 1) {
                         // 必须先设置session缓存， 不然会被路由守卫弹回来
                         this.$store.commit('saveToken', res.data.token);
                         if (redirect) {
-                            this.percent = 100;
                             this.$router.push(redirect);
                         } else {
                             this.$router.push('/');
@@ -67,10 +68,12 @@ export default class Login extends Vue {
                     message.error(error.message);
                 }).finally(() => {
                     this.pregress = false;
+                    this.percent = 0;
                 });
             } else {
                 message.error(err.message);
                 this.pregress = false;
+                this.percent = 0;
             }
         });
     }

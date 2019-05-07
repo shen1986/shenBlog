@@ -14,7 +14,7 @@ Vue.use(Input);
 export default class CollectionOp extends Vue {
 
     private form: any = null;
-    
+
     private created(): void {
         this.form = this.$form.createForm(this);
     }

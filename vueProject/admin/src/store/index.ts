@@ -1,5 +1,10 @@
-// 现在业务比较简单所有store放在一个文件里面，以后业务负载的时候
+// 现在业务比较简单所有store放在一个文件里面，以后业务复杂的时候
 import Vuex from 'Vuex';
+import Vue from 'vue';
+
+// 导入vuex全局仓储
+Vue.use(Vuex);
+
 export let store = new Vuex.Store({
     state: { // 全局变量
         // 用户验证
@@ -10,6 +15,10 @@ export let store = new Vuex.Store({
         saveToken: (state, token) => {
             localStorage.setItem('token', token);
             state.token = token;
+        },
+        removeToken: (state) => {
+            localStorage.removeItem('token');
+            state.token = null;
         },
     },
 });

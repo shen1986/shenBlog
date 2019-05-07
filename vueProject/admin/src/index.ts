@@ -16,11 +16,8 @@ Vue.use(VueRouter);
 // 1.3 导入自己的 router.js 路由模块
 import router from './router/router';
 
-// 导入vuex全局仓储
-import Vuex from 'Vuex';
-Vue.use(Vuex);
 // 导入本地的store
-import { store } from './store/store';
+import { store } from './store';
 
 // 导入Axios
 import Axios from 'axios';

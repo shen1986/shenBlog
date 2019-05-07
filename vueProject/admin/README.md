@@ -76,3 +76,6 @@ npm run build
 
 3. 在.vue文件中引入 Message 不报错，在.ts 引入 Message 则报错。
     - 这个坑不容易被发现
+
+4. 数字类型无法与 antd 的 form 进行绑定。
+    - 用了:value="0",里面的值就变成数字类型了。不知道原因。

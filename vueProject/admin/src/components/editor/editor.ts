@@ -15,7 +15,7 @@ import 'quill/dist/quill.bubble.css';
 export default class Editor extends Vue {
 
     // 富文本内容 - 调用者会使用
-    public content = '';
+    @Prop() private content!: string;
     private editorOption = { placeholder: '请输入内容' };
 
     get editor() {

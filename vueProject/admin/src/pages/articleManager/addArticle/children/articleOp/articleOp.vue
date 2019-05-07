@@ -29,9 +29,9 @@
                         ]"
                         style="width: 70px"
                     >
-                        <a-select-option value="0">原创</a-select-option>
-                        <a-select-option value="1">转载</a-select-option>
-                        <a-select-option value="2">翻译</a-select-option>
+                        <a-select-option :value="0">原创</a-select-option>
+                        <a-select-option :value="1">转载</a-select-option>
+                        <a-select-option :value="2">翻译</a-select-option>
                     </a-select>
                 </a-input>
             </a-form-item>
@@ -69,14 +69,14 @@
                 <a-select 
                     style="width: 120px"
                     v-decorator="[
-                        'MarkdownType',
+                        'markdown',
                         { initialValue: '0' },
                         { rules: [{ required: true, message: '请选择分类！' }] }
                     ]"
                     @change="handleChange"
                 >
-                    <a-select-option value="0">富文本</a-select-option>
-                    <a-select-option value="1">Markdown</a-select-option>
+                    <a-select-option :value="0">富文本</a-select-option>
+                    <a-select-option :value="1">Markdown</a-select-option>
                 </a-select>
             </a-form-item>
         </a-form>
