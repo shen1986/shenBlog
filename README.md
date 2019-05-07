@@ -89,9 +89,9 @@
 	+ 又做了一个服务端渲染（有利于SEO）的个人介绍,用了EJS模板引擎。(没有使用express，比较简单的实现)
 		* [resume-nodejs](https://github.com/shen1986/resume-nodejs)
 	+ 除了翻页，前台页面基本做完了。
-        * [前台博客页面TypeScript版](dynamic-koa-typescript/blog)
+        * [前台博客页面TypeScript版](background/blog)
             - 翻页准备在后台页面做好之后再做，有数据好做点。
-        * [Vue后台前端模板页面](vueProject/admin)
+        * [Vue后台前端模板页面](front-vueProject/admin)
 
 ## 补充说明
 
