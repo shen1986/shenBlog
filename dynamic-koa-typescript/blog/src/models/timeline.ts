@@ -3,7 +3,7 @@
  * @Author: shenxf
  * @Date: 2019-04-10 22:08:51
  */
-import * as db from './db';
+import Db from './db';
 
 export let getTimeline = async function (current: number = 1, count: number = 30, category: number = 0) {
 
@@ -32,6 +32,7 @@ export let getTimeline = async function (current: number = 1, count: number = 30
     }
 
     const ps = [];
+    const db = Db.getInstence();
 
     for (sql of sqls) {
         ps.push(

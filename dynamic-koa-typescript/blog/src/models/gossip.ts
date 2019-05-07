@@ -3,11 +3,12 @@
  * @Author: shenxf
  * @Date: 2019-04-10 22:08:51
  */
-import * as db from './db';
+import Db from './db';
 
 export let getGossip = async function (current: number = 1, count: number = 30) {
 
     const sql = `select * from gossip order by created_at desc limit ${(+current - 1) * +count}, ${+count}`;
+    const db = Db.getInstence();
 
     try {
 

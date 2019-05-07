@@ -3,7 +3,7 @@
  * @Author: shenxf
  * @Date: 2019-04-10 22:08:51
  */
-import * as db from './db';
+import Db from './db';
 import mysql from 'mysql';
 
 /**
@@ -14,6 +14,7 @@ import mysql from 'mysql';
 export let getPassword = async function (userid: string) {
 
     const sql = `select password from user where userid = ${mysql.escape(userid)}`;
+    const db = Db.getInstence();
 
     try {
         const result: any = db.query(sql);

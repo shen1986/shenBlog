@@ -3,7 +3,7 @@
  * @Author: shenxf
  * @Date: 2019-04-09 20:53:59
  */
-import * as db from './db';
+import Db from './db';
 import * as Str from '../common/utils/string';
 import mysql from 'mysql';
 
@@ -15,6 +15,7 @@ export let getArticles = async function (current: number,
     let sql = `select ${field} from article join category on article.category = category.id`,
         condition = ' where article.status = 1',
         totalSql = '';
+    const db = Db.getInstence();
 
     if (tag != null) {
         const likeTag1 = mysql.escape(`%${tag + ' '}%`),
@@ -100,6 +101,8 @@ export let getArticleDetail = async function (id: number) {
     // 	req.session['article_record_' + id] = true;
     // 	await db.query(`update article set views = views + 1 where id = ${id}`);
     // }
+
+    const db = Db.getInstence();
 
     try {
         const rows: any = await db.query(sql);

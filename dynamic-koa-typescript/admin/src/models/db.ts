@@ -6,43 +6,69 @@
 // 连接MySQL
 import mysql from 'mysql';
 
-const pool = mysql.createPool({
-    host: '47.106.155.211',
-    user: 'blog1',
-    password: '123456',
-    database: 'blog',
-    dateStrings: true
-});
-
-export let query = async function query(sql: String) {
-
-    const conn = await getConnection();
-    const result =  await q(conn, sql);
-
-    return result;
-};
-
-const getConnection = function () {
-    return new Promise((resolved, rejected ) => {
-        pool.getConnection((err, connection) => {
-            if (err instanceof Error) {
-                rejected(err);
-            } else {
-                resolved(connection);
-            }
-        });
+class Db {
+    static pool = mysql.createPool({
+        host: '47.106.155.211',
+        user: 'blog1',
+        password: '123456',
+        database: 'blog',
+        dateStrings: true
     });
-};
 
-const q = function(connection: any, sql: String) {
-    return new Promise((resolved, rejected) => {
-        connection.query(sql, function (err: any, rows: any) {
-            if (err instanceof Error) {
-                rejected(err);
-            } else {
-                resolved(rows);
+    static instence: any = null;
+
+    conn: any = null;
+
+    constructor() {
+        this.getConnection().then(
+            res => {
+                this.conn = res;
             }
-            connection.release(); // 释放链接
+        );
+    }
+
+    /**
+     * @description: 获得单例的mysql
+     * @return: Db类的实例
+     */
+    public static getInstence(): any {
+        if (Db.instence === null) {
+            Db.instence = new Db();
+        }
+        return Db.instence;
+    }
+
+    public async query(sql: String) {
+
+        const result = await this.q(this.conn, sql);
+
+        return result;
+    }
+
+    private getConnection() {
+        return new Promise((resolved, rejected) => {
+            Db.pool.getConnection((err, connection) => {
+                if (err instanceof Error) {
+                    rejected(err);
+                } else {
+                    resolved(connection);
+                }
+            });
         });
-    });
-};
+    }
+
+    private q(connection: any, sql: String) {
+        return new Promise((resolved, rejected) => {
+            connection.query(sql, function (err: any, rows: any) {
+                if (err instanceof Error) {
+                    rejected(err);
+                } else {
+                    resolved(rows);
+                }
+                connection.release(); // 释放链接
+            });
+        });
+    }
+}
+
+export default Db;

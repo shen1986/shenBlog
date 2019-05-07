@@ -3,13 +3,13 @@
  * @Author: shenxf
  * @Date: 2019-04-10 22:08:51
  */
-import * as db from './db';
+import Db from './db';
 
 export let getNotes = async function (current: number = 1, count: number = 30) {
 
     const field = 'id, title, detail, tag, created_at';
     const sql = `select ${field} from gather where status = 1 order by created_at desc limit ${(+current - 1) * +count}, ${+count}`;
-
+    const db = Db.getInstence();
     try {
         const rows = await db.query(sql);
 

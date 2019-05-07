@@ -3,7 +3,7 @@
  * @Author: shenxf
  * @Date: 2019-04-09 17:20:21
  */
-import * as db from './db';
+import Db from './db';
 
 export let initWindow = async function(ctx: any, next: any) {
     const result = await getNavsideInfo();
@@ -18,14 +18,15 @@ export let initWindow = async function(ctx: any, next: any) {
 
 // 取得右边栏情报
 const getNavsideInfo = async function() {
-  const sqls = [
-    'select value from config where (name = "intro" or name = "view_count") and status = 1',
-    'select id, title from article where status = 1 order by created_at desc limit 10',
-    'select id, theme from category where status = 1',
-    'select id, text, url from link where status = 1',
-    'select distinct tag,created_at  from article where status = 1 order by created_at desc limit 15',
-    'select count(*) as count from article where status = 1'
-  ];
+    const db = Db.getInstence();
+    const sqls = [
+        'select value from config where (name = "intro" or name = "view_count") and status = 1',
+        'select id, title from article where status = 1 order by created_at desc limit 10',
+        'select id, theme from category where status = 1',
+        'select id, text, url from link where status = 1',
+        'select distinct tag,created_at  from article where status = 1 order by created_at desc limit 15',
+        'select count(*) as count from article where status = 1'
+    ];
 
   const ps = [];
   for (const sql of sqls) {
