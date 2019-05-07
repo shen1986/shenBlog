@@ -105,5 +105,3 @@
 - 这周发现hexo这个博客简化工具，现阶段先使用[Hexo](http://shenxf.top/categories/%E5%8D%9A%E5%AE%A2/)
 - 用docker的话还能使用[jekyll](https://www.jekyll.com.cn/)
 - [.art文件如何后html的变色和提示](http://shenxf.top/2019/04/22/20190422-vscode/)
-- 今后的改善点
-    + 后端数据库每次请求，都会去请求连接，以后最好做成连接池等方法来优化。
