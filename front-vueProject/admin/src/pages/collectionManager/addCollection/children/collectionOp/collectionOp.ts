@@ -4,7 +4,7 @@
  * @Date: 2019-04-30 21:09:17
  */
 import { Form, Button, Icon, Input } from 'ant-design-vue';
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 Vue.use(Form);
 Vue.use(Button);
 Vue.use(Icon);
@@ -13,10 +13,22 @@ Vue.use(Input);
 @Component
 export default class CollectionOp extends Vue {
 
+    @Prop() private gatherInfo!: object;
+
     private form: any = null;
 
     private created(): void {
         this.form = this.$form.createForm(this);
+    }
+
+    /**
+     * @description: 监视gatherInfo变化
+     * @param {any} val - 变化后gatherInfo
+     * @param {any} oldVal - 变化前gatherInfo
+     */
+    @Watch('gatherInfo')
+    private onChildChanged(val: any, oldVal: any): void {
+        this.form.setFieldsValue(Object.assign(val));
     }
 
     /**

@@ -11,7 +11,6 @@
                 <ArticleOp ref="op" :articleInfo="articleInfo" @typeChange="typeChange"/>
                 <Markdown v-if="markdown" />
                 <Editor v-else />
-                <!-- <Markdown content={content} onChange={this.handleChange} preview={preview} /> -->
                 <a-button type="primary" @click="handleClick">提交</a-button>
             </a-spin>
         </div>

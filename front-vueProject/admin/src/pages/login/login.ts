@@ -43,6 +43,9 @@ export default class Login extends Vue {
         }
     }
 
+    /**
+     * @description: 验证登陆用户
+     */
     private checkForm(): void {
         this.pregress = true;
         this.percent = 30;

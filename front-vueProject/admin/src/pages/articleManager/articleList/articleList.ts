@@ -1,3 +1,8 @@
+/**
+ * @Description: 文章列表
+ * @Author: shenxf
+ * @Date: 2019-05-07 19:49:12
+ */
 import { Vue, Component } from 'vue-property-decorator';
 import { Table, Popconfirm, Spin, message } from 'ant-design-vue';
 import TaskBar from '../../../components/taskBar/taskBar.vue';
@@ -70,23 +75,29 @@ export default class ArticleList extends Vue {
      * @param {boolean} isLoad - 是否需要取消加载
      */
     private getArtilces(isload: boolean = true): void {
+
         // 设置加载
         if (isload) {
             this.spinning = true;
         }
 
         // 请求表格数据
-        this.$axios.get('get-articles').then((res: any) => {
-            if (res.data.status === 1) {
-                this.dataSource = res.data.info;
-            }
-        }).catch((resion: any) => {
-            message.error('数据取得异常');
-        }).finally(() => {
-            if (isload) {
-                this.spinning = false;
-            }
-        });
+        this.$axios.get('get-articles')
+            .then((res: any) => {
+
+                if (res.data.status === 1) {
+                    this.dataSource = res.data.info;
+                }
+
+            }).catch((resion: any) => {
+                message.error('数据取得异常');
+            }).finally(() => {
+
+                if (isload) {
+                    this.spinning = false;
+                }
+
+            });
     }
 
     /**
@@ -95,17 +106,18 @@ export default class ArticleList extends Vue {
      */
     private onDelete(id: string): void {
         this.spinning = true;
-        this.$axios.get(`article-delete/${id}`).then((res: any) => {
+        this.$axios.get(`article-delete/${id}`)
+            .then((res: any) => {
 
-            if (res.data.status === 1) {
-                // 数据再取得
-                this.getArtilces(false);
-            }
+                if (res.data.status === 1) {
+                    // 数据再取得
+                    this.getArtilces(false);
+                }
 
-        }).catch((resion: any) => {
-            message.error('数据删除异常');
-        }).finally(() => {
-            this.spinning = false;
-        });
+            }).catch((resion: any) => {
+                message.error('数据删除异常');
+            }).finally(() => {
+                this.spinning = false;
+            });
     }
 }

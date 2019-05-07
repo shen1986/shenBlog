@@ -1,3 +1,8 @@
+/**
+ * @Description: 主框架
+ * @Author: shenxf
+ * @Date: 2019-05-07 19:49:12
+ */
 import { Layout, Menu, Icon, LocaleProvider } from 'ant-design-vue';
 import { Vue, Component, Watch } from 'vue-property-decorator';
 // 这里吐槽一句，vue的antd按需加载真特么丑陋，
@@ -46,5 +51,8 @@ export default class App extends Vue {
     @Watch('$route')
     private onChildChanged(val: any, oldVal: any): void {
         this.current = val.path;
+        if (this.current.includes('add')) {
+            this.$store.commit('saveContent', '');
+        }
     }
 }

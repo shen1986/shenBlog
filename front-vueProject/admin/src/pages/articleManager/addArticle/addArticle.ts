@@ -24,7 +24,7 @@ export default class AddArticle extends Vue {
 
     private markdown = false;
     private spinning = false;
-    private articleInfo = {};
+    private articleInfo: any = {};
 
     private created(): void {
         // 更新画面
@@ -40,21 +40,26 @@ export default class AddArticle extends Vue {
      */
     private getArticle(id: string, isLoad: boolean = true): void {
         // 取得文章情报
-        this.$axios.get(`article/${id}`).then((res: any) => {
-            if (res.data.status === 1) {
-                this.articleInfo = res.data.info;
+        this.$axios.get(`article/${id}`)
+            .then((res: any) => {
 
-                this.changeMarkdown(res.data.info.type);
+                if (res.data.status === 1) {
+                    this.articleInfo = res.data.info;
 
-                this.$store.commit('saveContent', res.data.info.body);
-            }
-        }).catch((resion: any) => {
-            message.error('数据取得异常');
-        }).finally(() => {
-            if (isLoad) {
-                this.spinning = false;
-            }
-        });
+                    this.changeMarkdown(res.data.info.type);
+
+                    this.$store.commit('saveContent', res.data.info.body);
+                }
+
+            }).catch((resion: any) => {
+                message.error('数据取得异常');
+            }).finally(() => {
+
+                if (isLoad) {
+                    this.spinning = false;
+                }
+
+            });
     }
 
     /**
@@ -62,10 +67,14 @@ export default class AddArticle extends Vue {
      * @param {number} type - 现在选择的文章格式
      */
     private typeChange(type: number = 0): void {
-        // console.log('type',type === "1");
         this.changeMarkdown(type);
+        this.$store.commit('saveContent', '');
     }
 
+    /**
+     * @description: 根据文章格式显示markdown或富文本
+     * @param {number} type - 文章格式
+     */
     private changeMarkdown(type: number) {
         if (type === 0) {
             this.markdown = false;
@@ -80,24 +89,40 @@ export default class AddArticle extends Vue {
      */
     private handleClick(e: any): void {
 
-        // const edit: any = this.$refs.edit;
         const op: any = this.$refs.op;
 
-        // if (edit.content.trim().length === 0) {
-        //     message.error('请输入文章内容');
-        //     return;
-        // }
+        if (this.$store.state.mdContent.trim().length === 0) {
+            message.error('请输入文章内容');
+            return;
+        }
 
-        // alert(edit.content);
+        this.spinning = true;
 
-        op.handleSubmit().then((res: any) => {
-            alert('提交了');
-        }).catch((err: any) => {
-            alert('错误了');
-        });
-    }
+        // 验证并提交
+        op.handleSubmit()
+            .then((res: any) => {
+                const info = {
+                    ...res,
+                    content: this.$store.state.mdContent,
+                    id: this.articleInfo.id ? this.articleInfo.id : '',
+                };
 
-    private handleChange(): void {
-        // asdf
+                // 更新请求
+                return this.$axios.post('/article-submit', info);
+
+            }).then((result: any) => {
+
+                if (result.data.status === 1) {
+                    this.$router.push('/articleList');
+                    message.success('提交成功！');
+                } else {
+                    message.error(result.data.msg);
+                }
+
+            }).catch((error: any) => {
+                message.error(error.message);
+            }).finally(() => {
+                this.spinning = false;
+            });
     }
 }

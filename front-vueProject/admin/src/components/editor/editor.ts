@@ -1,3 +1,8 @@
+/**
+ * @Description:
+ * @Author: shenxf
+ * @Date: 2019-05-07 19:49:12
+ */
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import { Row } from 'ant-design-vue';
 Vue.use(Row);
@@ -17,14 +22,8 @@ export default class Editor extends Vue {
     private content: string = '';
     private editorOption = { placeholder: '请输入内容' };
 
-    /**
-     * @description: 监视mdContent
-     * @param {any} val - 变化后路由
-     * @param {any} oldVal - 变化前路由
-     */
-    @Watch('$store.state.mdContent')
-    private onStateChanged(val: string, oldVal: string): void {
-        this.content = val;
+    private created(): void {
+        this.content = this.$store.state.mdContent;
     }
 
     /**

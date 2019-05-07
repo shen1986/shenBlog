@@ -1,3 +1,8 @@
+/**
+ * @Description: 收藏列表
+ * @Author: shenxf
+ * @Date: 2019-05-07 19:49:12
+ */
 import { Vue, Component } from 'vue-property-decorator';
 import { Table, Popconfirm, Spin, message } from 'ant-design-vue';
 import TaskBar from '../../../components/taskBar/taskBar.vue';
@@ -80,10 +85,8 @@ export default class CollectionList extends Vue {
             .then((res: any) => {
 
                 if (res.data.status === 1) {
-                    const dataSource = [...this.dataSource];
-                    this.dataSource = dataSource.filter((item: any) => item.id !== id);
                     // 数据再取得
-                    // this.getCollection(false);
+                    this.getCollection(false);
                 }
 
             }).catch((resion: any) => {

@@ -21,7 +21,7 @@ Vue.use(Spin);
 export default class AddCollection extends Vue {
 
     private spinning = false;
-    private gatherInfo = {};
+    private gatherInfo: any = {};
 
     private created(): void {
         // 更新画面
@@ -34,21 +34,22 @@ export default class AddCollection extends Vue {
     /**
      * @description: 取得收藏情报
      * @param {string} id - 收藏id
-     * @param {boolean} isLoad - 是否要取消load 
+     * @param {boolean} isLoad - 是否要取消load
      */
     private getGather(id: string, isLoad: boolean = true): void {
-        this.$axios.get(`gather/${id}`).then((res: any) => {
-            if (res.data.status === 1) {
-                this.gatherInfo = res.data.info;
-            }
-        }).catch((resion: any) => {
-            console.log(resion);
-            message.error('数据取得异常');
-        }).finally(() => {
-            if (isLoad) {
-                this.spinning = false;
-            }
-        });
+        this.$axios.get(`gather/${id}`)
+            .then((res: any) => {
+                if (res.data.status === 1) {
+                    this.gatherInfo = res.data.info;
+                    this.$store.commit('saveContent', res.data.info.detail);
+                }
+            }).catch((resion: any) => {
+                message.error('数据取得异常');
+            }).finally(() => {
+                if (isLoad) {
+                    this.spinning = false;
+                }
+            });
     }
 
     /**
@@ -56,22 +57,30 @@ export default class AddCollection extends Vue {
      * @param {any} e - event
      */
     private handleClick(e: any): void {
-        const edit: any = this.$refs.edit;
         const op: any = this.$refs.op;
 
-        if (edit.content.trim().length === 0) {
+        if (this.$store.state.mdContent.trim().length === 0) {
             message.error('请输入文章内容');
             return;
         }
 
-        alert(edit.content);
+        op.handleSubmit()
+            .then((res: any) => {
+                const info = {
+                    ...res,
+                    id: this.gatherInfo.id ? this.gatherInfo.id : '',
+                    content: this.$store.state.mdContent,
+                };
 
-        op.handleSubmit().then((res: any) => {
-            // console.log(typeof res);
-            alert('提交了');
-        }).catch((err: any) => {
-            // console.log(typeof err);
-            alert('错误了');
-        });
+                return this.$axios.post('gather-submit', info);
+            }).then((res: any) => {
+                if (res.data.status === 1) {
+                    message.success('提交成功');
+                } else {
+                    message.error(res.data.msg);
+                }
+            }).catch((err: any) => {
+                message.error(err.message);
+            });
     }
 }
