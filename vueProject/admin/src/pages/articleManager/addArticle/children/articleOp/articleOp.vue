@@ -25,7 +25,7 @@
                         slot="addonBefore"
                         v-decorator="[
                             'type',
-                            { initialValue: '0' }
+                            { initialValue: 0 }
                         ]"
                         style="width: 70px"
                     >
@@ -70,7 +70,7 @@
                     style="width: 120px"
                     v-decorator="[
                         'markdown',
-                        { initialValue: '0' },
+                        { initialValue: 0 },
                         { rules: [{ required: true, message: '请选择分类！' }] }
                     ]"
                     @change="handleChange"

@@ -16,17 +16,6 @@ export default class ArticleOp extends Vue {
     private categories: any[] = [];
     private form: any = {};
 
-    // private mounted(): void {
-    //     this.form.setFieldsValue(this.articleInfo);
-    // }
-
-    // @Watch('articleInfo')
-    // private onChildChanged(val: object, oldVal: object) {
-    //     const info: any = val;
-    //     // info.markdown = info.markdown.toString();
-    //     this.form.setFieldsValue(info);
-    // }
-
     private created(): void {
         // 画面loading
         this.spinning = true;
@@ -36,13 +25,11 @@ export default class ArticleOp extends Vue {
         this.$axios.get('get-categories').then((res: any) => {
             if (res.data.status === 1) {
                 this.categories = res.data.info;
-                if (this.articleInfo) {
-                    this.form.setFieldsValue(this.articleInfo);
-                } else {
-                    this.form.setFieldsValue({
-                        category: this.categories.length === 0 ? '' : this.categories[0].id,
-                    });
-                }
+                const info: any = this.articleInfo;
+
+                this.form.setFieldsValue({
+                    category: this.categories.length === 0 ? '' : this.categories[0].id,
+                });
             }
         }).catch((resion: any) => {
             message.error('数据取得异常');
