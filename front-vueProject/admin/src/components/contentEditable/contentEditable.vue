@@ -8,7 +8,7 @@
         contentEditable = "true"
         @input="emitChange"
         @blur="emitChange"
-        v-html="localConent" >
+        v-html="localContent" >
     </div>
 </template>
 

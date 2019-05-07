@@ -10,11 +10,9 @@
         </a-row>
         <a-row :gutter="16">
             <a-col :xs="preview ? 13 : 24">
-                <!-- <ContentEditable handleChange={this.handleChange} content={this.props.content} /> -->
-                <ContentEditable  @handleChange="handleChange" :parentContent="content" />
+                <ContentEditable />
             </a-col>
             <a-col :xs="preview ? 11 : 0">
-                <!-- <div className="markdown-preview" ref={(ele) => {this.ele = ele}}></div> -->
                 <div class="markdown-preview" v-html="ele"></div>
             </a-col>
         </a-row>

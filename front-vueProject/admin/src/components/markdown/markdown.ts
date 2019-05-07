@@ -13,21 +13,8 @@ Vue.use(Checkbox);
     },
 })
 export default class Markdown extends Vue {
-    @Prop() private pContent!: string;
     private preview = false;
     private ele = '';
-    // 这是个共通属性 - 调用者会使用
-    public content = '## 1';
-
-    /**
-     * @description: 监视pContent
-     * @param {any} val - 变化后路由
-     * @param {any} oldVal - 变化前路由
-     */
-    @Watch('pContent')
-    private onChildChanged(val: string, oldVal: string): void {
-        this.content = val;
-    }
 
     private mounted(): void {
         // 给Markdown的代码区域设置颜色
@@ -44,23 +31,18 @@ export default class Markdown extends Vue {
      */
     private onChange(e: any): void {
         this.preview = e.target.checked;
+        this.ele = marked(this.$store.state.mdContent);
     }
 
     /**
-     * @description: 当发生变化的时候转换成markdown模式
-     * @param {String} content - markdown内容
+     * @description: 监视仓库里mdContent变化
+     * @param {any} val - 变化后mdContent
+     * @param {any} oldVal - 变化前mdContent
      */
-    private handleChange(content: string): void {
-        // this.props.onChange(content);
-
-        // if(window.localStorage) {
-        // 	localStorage.markdown_content = content;
-        // }
-
-        // console.log(content);
-
+    @Watch('$store.state.mdContent')
+    private onChildChanged(val: string, oldVal: string): void {
         if (this.preview) {
-            this.ele = marked(content);
+            this.ele = marked(val);
         }
     }
 }

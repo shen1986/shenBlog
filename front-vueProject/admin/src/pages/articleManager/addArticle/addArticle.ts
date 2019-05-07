@@ -23,7 +23,6 @@ Vue.use(Spin);
 export default class AddArticle extends Vue {
 
     private markdown = false;
-    private content = '';
     private spinning = false;
     private articleInfo = {};
 
@@ -45,9 +44,9 @@ export default class AddArticle extends Vue {
             if (res.data.status === 1) {
                 this.articleInfo = res.data.info;
 
-                if (res.data.info.type) {
-                    this.changeMarkdown(res.data.info.type);
-                }
+                this.changeMarkdown(res.data.info.type);
+
+                this.$store.commit('saveContent', res.data.info.body);
             }
         }).catch((resion: any) => {
             message.error('数据取得异常');
@@ -81,15 +80,15 @@ export default class AddArticle extends Vue {
      */
     private handleClick(e: any): void {
 
-        const edit: any = this.$refs.edit;
+        // const edit: any = this.$refs.edit;
         const op: any = this.$refs.op;
 
-        if (edit.content.trim().length === 0) {
-            message.error('请输入文章内容');
-            return;
-        }
+        // if (edit.content.trim().length === 0) {
+        //     message.error('请输入文章内容');
+        //     return;
+        // }
 
-        alert(edit.content);
+        // alert(edit.content);
 
         op.handleSubmit().then((res: any) => {
             alert('提交了');
