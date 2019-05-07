@@ -1,4 +1,4 @@
-import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
+import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator';
 
 @Component
 export default class ContentEditable extends Vue {
@@ -7,9 +7,19 @@ export default class ContentEditable extends Vue {
     private lastContent = '';
     private localConent = '';
 
+    /**
+     * @description: 监视pContent
+     * @param {any} val - 变化后路由
+     * @param {any} oldVal - 变化前路由
+     */
+    @Watch('parentContent')
+    private onChildChanged(val: string, oldVal: string): void {
+        // console.log('var', val);
+        this.localConent = val;
+    }
+
     private created(): void {
         // this.localConent = this.content ? this.content : '';
-
         this.localConent =
             this.localConent.replace(/[<>&"]/g, (c: string) => {
                 const condition: { [key: string]: string } = {
@@ -38,7 +48,7 @@ export default class ContentEditable extends Vue {
 
     /**
      * @description: 调用父组件handleChange方法
-     * @param {string} content - 输入的内容 
+     * @param {string} content - 输入的内容
      * @return: 输入的内容
      */
     @Emit('handleChange')

@@ -1,4 +1,4 @@
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { Row, Col, Checkbox } from 'ant-design-vue';
 import ContentEditable from '../contentEditable/contentEditable.vue';
 // import marked from 'marked';
@@ -13,10 +13,21 @@ Vue.use(Checkbox);
     },
 })
 export default class Markdown extends Vue {
+    @Prop() private pContent!: string;
     private preview = false;
     private ele = '';
     // 这是个共通属性 - 调用者会使用
-    public content = '';
+    public content = '## 1';
+
+    /**
+     * @description: 监视pContent
+     * @param {any} val - 变化后路由
+     * @param {any} oldVal - 变化前路由
+     */
+    @Watch('pContent')
+    private onChildChanged(val: string, oldVal: string): void {
+        this.content = val;
+    }
 
     private mounted(): void {
         // 给Markdown的代码区域设置颜色

@@ -44,6 +44,10 @@ export default class AddArticle extends Vue {
         this.$axios.get(`article/${id}`).then((res: any) => {
             if (res.data.status === 1) {
                 this.articleInfo = res.data.info;
+
+                if (res.data.info.type) {
+                    this.changeMarkdown(res.data.info.type);
+                }
             }
         }).catch((resion: any) => {
             message.error('数据取得异常');
@@ -56,13 +60,17 @@ export default class AddArticle extends Vue {
 
     /**
      * @description: 文章格式变更时更新输入内容部分
-     * @param {String} type - 现在选择的文章格式
+     * @param {number} type - 现在选择的文章格式
      */
-    private typeChange(type: string = '0'): void {
+    private typeChange(type: number = 0): void {
         // console.log('type',type === "1");
-        if (type === '0') {
+        this.changeMarkdown(type);
+    }
+
+    private changeMarkdown(type: number) {
+        if (type === 0) {
             this.markdown = false;
-        } else if (type === '1') {
+        } else if (type === 1) {
             this.markdown = true;
         }
     }

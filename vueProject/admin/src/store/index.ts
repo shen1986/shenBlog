@@ -9,6 +9,8 @@ export let store = new Vuex.Store({
     state: { // 全局变量
         // 用户验证
         token: localStorage.getItem('token') || null,
+        // markdown内容
+        mdContent: '',
     },
     mutations: { // 全局方法
         // 保存token
@@ -16,9 +18,14 @@ export let store = new Vuex.Store({
             localStorage.setItem('token', token);
             state.token = token;
         },
+        // 移除token
         removeToken: (state) => {
             localStorage.removeItem('token');
             state.token = null;
+        },
+        // 保存markdown文本
+        saveContent: (state, content) => {
+            state.mdContent = content;
         },
     },
 });

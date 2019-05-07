@@ -25,7 +25,6 @@ export default class ArticleOp extends Vue {
         this.$axios.get('get-categories').then((res: any) => {
             if (res.data.status === 1) {
                 this.categories = res.data.info;
-                const info: any = this.articleInfo;
 
                 this.form.setFieldsValue({
                     category: this.categories.length === 0 ? '' : this.categories[0].id,
@@ -35,7 +34,7 @@ export default class ArticleOp extends Vue {
             message.error('数据取得异常');
         }).finally(() => {
             this.spinning = false;
-            this.form.setFieldsValue(this.articleInfo);
+            this.form.setFieldsValue(Object.assign(this.articleInfo));
         });
     }
 
