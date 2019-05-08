@@ -4,7 +4,6 @@
  * @Date: 2019-04-20 21:10:19
  */
 import VueRouter from 'vue-router';
-import Vue from 'vue';
 
 // 导入对应的路由组件
 const login = () => import('../pages/login/login.vue'); // 按需加载组件，懒加载，官方推荐

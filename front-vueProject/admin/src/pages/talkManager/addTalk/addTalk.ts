@@ -1,4 +1,4 @@
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 import { Button, Spin, message } from 'ant-design-vue';
 import TaskBar from '../../../components/taskBar/taskBar.vue';
 import AddTalkEdit from './children/addTalkEdit/addTalkEdit.vue';
@@ -52,13 +52,15 @@ export default class AddTalk extends Vue {
                 };
 
                 return this.$axios.post('gossip-submit', info);
-            }).then((res: any) => {
+            })
+            .then((res: any) => {
                 if (res.data.status === 1) {
                     message.success('提交成功');
                 } else {
                     message.error(res.data.msg);
                 }
-            }).catch((err: any) => {
+            })
+            .catch((err: any) => {
                 // console.log(typeof err);
                 if (err instanceof Error) {
                     message.error(err.message);

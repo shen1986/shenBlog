@@ -34,14 +34,25 @@ Axios.interceptors.request.use(
 
 // 对响应数据做点什么
 Axios.interceptors.response.use((response) => {
+
     // 好像token不对,那就先去登录页面看看
     if (typeof response.data.code !== 'undefined') {
         router.push('/login');
     }
-    // 结束画面loading
-    store.commit('changeLoading', false);
+
+    if (store.state.requestCount === 0) {
+        // 结束画面loading
+        store.commit('changeLoading', false);
+    }
+
     return response;
 },  (error: any) => {
+
+    if (store.state.requestCount === 0) {
+        // 结束画面loading
+        store.commit('changeLoading', false);
+    }
+
     // 对响应错误做点什么
     return Promise.reject(error);
 });

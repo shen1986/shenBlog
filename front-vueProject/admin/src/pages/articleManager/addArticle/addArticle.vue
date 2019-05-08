@@ -8,7 +8,7 @@
         <TaskBar :firstName="'文章管理'" :lastName="'文章追加'" />
         <div class="blog-content" >
             <a-spin :spinning="$store.state.spinning">
-                <ArticleOp ref="op" :articleInfo="articleInfo" @typeChange="typeChange"/>
+                <ArticleOp ref="op" @typeChange="typeChange"/>
                 <Markdown v-if="markdown" />
                 <Editor v-else />
                 <a-button type="primary" @click="handleClick">提交</a-button>

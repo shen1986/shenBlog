@@ -3,7 +3,7 @@
  * @Author: shenxf
  * @Date: 2019-05-07 19:49:12
  */
-import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 
 @Component
 export default class ContentEditable extends Vue {

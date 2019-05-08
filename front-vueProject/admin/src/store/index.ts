@@ -13,6 +13,8 @@ const store = new Vuex.Store({
         mdContent: '',
         // 全局的loading
         spinning: false,
+        // 请求数量
+        requestCount: 0,
     },
     mutations: { // 全局方法
         // 保存token
@@ -32,6 +34,14 @@ const store = new Vuex.Store({
         // 转换 loading 状态
         changeLoading: (state, spinning) => {
             state.spinning = spinning;
+        },
+        // 请求数量加一
+        addRequest: (state) => {
+            state.requestCount++;
+        },
+        // 请求数量加一
+        removeRequest: (state) => {
+            state.requestCount--;
         },
     },
 });

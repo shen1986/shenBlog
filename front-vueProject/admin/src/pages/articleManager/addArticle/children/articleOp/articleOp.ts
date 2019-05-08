@@ -1,5 +1,5 @@
 import { Form, Button, Icon, Input, Select, Spin, message } from 'ant-design-vue';
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 Vue.use(Form);
 Vue.use(Button);
 Vue.use(Icon);
@@ -10,8 +10,6 @@ Vue.use(Spin);
 @Component
 export default class ArticleOp extends Vue {
 
-    @Prop() private articleInfo!: object;
-
     private categories: any[] = [];
     private form: any = {};
 
@@ -19,19 +17,19 @@ export default class ArticleOp extends Vue {
         this.form = this.$form.createForm(this);
 
         // 取得文章分类
-        this.$axios.get('get-categories').then((res: any) => {
-            if (res.data.status === 1) {
-                this.categories = res.data.info;
+        this.$axios.get('get-categories')
+            .then((res: any) => {
+                if (res.data.status === 1) {
+                    this.categories = res.data.info;
 
-                this.form.setFieldsValue({
-                    category: this.categories.length === 0 ? '' : this.categories[0].id,
-                });
-            }
-        }).catch((resion: any) => {
-            message.error('数据取得异常');
-        }).finally(() => {
-            this.form.setFieldsValue(Object.assign(this.articleInfo));
-        });
+                    this.form.setFieldsValue({
+                        category: this.categories.length === 0 ? '' : this.categories[0].id,
+                    });
+                }
+            })
+            .catch((resion: any) => {
+                message.error('数据取得异常');
+            });
     }
 
     /**

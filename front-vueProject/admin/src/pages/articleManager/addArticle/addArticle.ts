@@ -47,6 +47,8 @@ export default class AddArticle extends Vue {
                     this.changeMarkdown(res.data.info.type);
 
                     this.$store.commit('saveContent', res.data.info.body);
+                    const op: any = this.$refs.op;
+                    op.form.setFieldsValue(Object.assign(this.articleInfo));
                 }
 
             })

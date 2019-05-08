@@ -22,6 +22,12 @@ export default class Editor extends Vue {
     private content: string = '';
     private editorOption = { placeholder: '请输入内容' };
 
+    private created(): void {
+        if (this.content !== this.$store.state.mdContent) {
+            this.content = this.$store.state.mdContent;
+        }
+    }
+
     /**
      * @description: 监视$store.state.mdContent
      * @param {any} val - 变化后$store.state.mdContent

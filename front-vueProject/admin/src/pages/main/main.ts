@@ -25,7 +25,8 @@ export default class App extends Vue {
     }
 
     /**
-     * 点击事件
+     * @description: 点击左侧tab事件
+     * @param {any} e - event
      */
     private handleClick(e: any): void {
         this.$router.push(e.key);
@@ -51,6 +52,8 @@ export default class App extends Vue {
     @Watch('$route')
     private onChildChanged(val: any, oldVal: any): void {
         this.current = val.path;
+
+        // 如果是添加画面，就把content的值清空
         if (this.current.includes('add')) {
             this.$store.commit('saveContent', '');
         }

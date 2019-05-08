@@ -1,4 +1,4 @@
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Watch } from 'vue-property-decorator';
 import { Row, Col, Checkbox } from 'ant-design-vue';
 import ContentEditable from '../contentEditable/contentEditable.vue';
 // import marked from 'marked';

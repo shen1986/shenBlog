@@ -1,11 +1,11 @@
 <!--
- * @Description: 
+ * @Description: 说说添加
  * @Author: shenxf
  * @Date: 2019-04-22 21:23:56
  -->
 <template>
     <div>
-        <TaskBar :firstName="'说说管理'" :lastName="'说说列表'" />
+        <TaskBar :firstName="'说说管理'" :lastName="'说说添加'" />
         <div class="blog-content">
             <a-spin :spinning="$store.state.spinning">
                 <AddTalkEdit ref="edit" />
