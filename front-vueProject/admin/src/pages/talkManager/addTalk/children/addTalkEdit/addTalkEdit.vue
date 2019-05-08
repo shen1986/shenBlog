@@ -20,6 +20,8 @@
                         getValueFromEvent: normFile,
                     }]"
                     :beforeUpload="beforeUpload"
+                    :remove="remove"
+                    listType="picture"
                 >
                     <a-button>
                         <a-icon type="upload" />

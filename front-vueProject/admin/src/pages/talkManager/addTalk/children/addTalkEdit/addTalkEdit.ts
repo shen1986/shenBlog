@@ -1,4 +1,4 @@
-import { Form, Button, Icon, Upload, Input } from 'ant-design-vue';
+import { Form, Button, Icon, Upload, Input, message } from 'ant-design-vue';
 import { Vue, Component } from 'vue-property-decorator';
 import commonTools from '../../../../../tools/commonTools';
 Vue.use(Form);
@@ -14,6 +14,19 @@ export default class AddTalkEdit extends Vue {
 
     private created(): void {
         this.form = this.$form.createForm(this);
+    }
+
+    private mounted(): void {
+        this.form.setFieldsValue({
+            upload: [
+                {
+                    uid: '-1',
+                    name: 'xxx.png',
+                    status: 'done',
+                    thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                },
+            ],
+        });
     }
 
     /**
@@ -32,10 +45,17 @@ export default class AddTalkEdit extends Vue {
         });
     }
 
-    private normFile(e: any) {
-        // console.log('Upload event:', e);
+    /**
+     * @description: 文件列表最多能表示一个文件
+     * @param {any} e - 当前选择文件信息
+     * @return: 文件列表
+     */
+    private normFile(e: any): any {
         if (Array.isArray(e)) {
             return e;
+        }
+        if (e) {
+            e.fileList = [e.file];
         }
         return e && e.fileList;
     }
@@ -48,11 +68,49 @@ export default class AddTalkEdit extends Vue {
      */
     private beforeUpload(file: any, fileList: any): boolean {
         commonTools.getBase64(file, (img: any, imageBase64: any) => {
-            // console.log(img);
-            // console.log(imageBase64);
 
-            // console.log(fileList);
+            // 大于200k就报错
+            if (file.size / 1024 <= 200) {
+                const suffix = this.getSuffix(file.name);
+                const tmpFile = {
+                    uid: file.uid,
+                    name: file.name,
+                    status: 'done',
+                    // url: 'data:image/png;base64,' + imageBase64,
+                    thumbUrl: `data:image/${suffix};base64,` + imageBase64,
+                };
+                this.form.setFieldsValue({ upload: [tmpFile] });
+            } else {
+                message.error('上传的图片不能大于200k');
+                this.form.setFieldsValue({ upload: [] });
+            }
+
         });
         return false;
+    }
+
+    /**
+     * @description: 截取文件名后缀
+     * @param {string} fileName - 文件名
+     * @return: 后缀
+     */
+    private getSuffix(fileName: string): string {
+        // 后缀获取
+        let suffix = '';
+        try {
+            const flieArr = fileName.split('.');
+            suffix = flieArr[flieArr.length - 1];
+        } catch (err) {
+            suffix = '';
+        }
+        return suffix;
+    }
+
+    /**
+     * @description: 移除
+     * @param {any} file - 文件信息
+     */
+    private remove(file: any): void {
+        this.form.setFieldsValue({upload: []});
     }
 }

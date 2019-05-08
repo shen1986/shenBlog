@@ -13,8 +13,6 @@ Vue.use(Spin);
 })
 export default class AddTalk extends Vue {
 
-    private talkInfo = {};
-
     private created(): void {
         // 更新画面
         if (this.$route.params.id) {
@@ -31,7 +29,6 @@ export default class AddTalk extends Vue {
         this.$axios.get(`gossip/${id}`)
             .then((res: any) => {
                 if (res.data.status === 1) {
-                    this.talkInfo = res.data.info;
                     const edit: any = this.$refs.edit;
                     edit.form.setFieldsValue({ detail: res.data.info.detail});
                 }
@@ -50,7 +47,6 @@ export default class AddTalk extends Vue {
 
         edit.handleSubmit()
             .then((res: any) => {
-                // console.log(res);
                 const info = {
                     ...res,
                 };
