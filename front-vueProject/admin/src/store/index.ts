@@ -5,7 +5,7 @@ import Vue from 'vue';
 // 导入vuex全局仓储
 Vue.use(Vuex);
 
-export let store = new Vuex.Store({
+const store = new Vuex.Store({
     state: { // 全局变量
         // 用户验证
         token: localStorage.getItem('token') || null,
@@ -35,3 +35,5 @@ export let store = new Vuex.Store({
         },
     },
 });
+
+export default store;

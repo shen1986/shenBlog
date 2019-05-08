@@ -1,7 +1,7 @@
 // 导入Axios
 import Axios from 'axios';
 // 导入本地的store
-import { store } from '../store';
+import store from '../store';
 // 导入路由
 import router from '../router/router';
 

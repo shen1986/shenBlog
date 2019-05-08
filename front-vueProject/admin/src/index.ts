@@ -17,7 +17,7 @@ Vue.use(VueRouter);
 import router from './router/router';
 
 // 导入本地的store
-import { store } from './store';
+import store from './store';
 
 // 导入Axios
 import Axios from './tools/axios';
