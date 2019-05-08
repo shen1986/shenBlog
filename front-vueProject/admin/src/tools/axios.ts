@@ -32,8 +32,8 @@ Axios.interceptors.request.use(
     },
 );
 
+// 对响应数据做点什么
 Axios.interceptors.response.use((response) => {
-    // 对响应数据做点什么
     // 好像token不对,那就先去登录页面看看
     if (typeof response.data.code !== 'undefined') {
         router.push('/login');
