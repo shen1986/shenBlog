@@ -4,7 +4,7 @@
  * @Date: 2019-04-22 21:23:56
  -->
 <template>
-    <a-spin :spinning="spinning">
+    <a-spin :spinning="$store.state.spinning">
         <a-form
             layout="inline"
             :form="form"

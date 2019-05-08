@@ -7,7 +7,7 @@
     <div class="add-collection">
         <TaskBar :firstName="'收藏管理'" :lastName="'收藏追加'" />
         <div class="blog-content" >
-            <a-spin :spinning="spinning">
+            <a-spin :spinning="$store.state.spinning">
                 <CollectionOp ref="op" :gatherInfo="gatherInfo" />
                 <Editor />
                 <a-button type="primary" @click="handleClick">提交</a-button>

@@ -12,13 +12,10 @@ export default class ArticleOp extends Vue {
 
     @Prop() private articleInfo!: object;
 
-    private spinning = false;
     private categories: any[] = [];
     private form: any = {};
 
     private created(): void {
-        // 画面loading
-        this.spinning = true;
         this.form = this.$form.createForm(this);
 
         // 取得文章分类
@@ -33,7 +30,6 @@ export default class ArticleOp extends Vue {
         }).catch((resion: any) => {
             message.error('数据取得异常');
         }).finally(() => {
-            this.spinning = false;
             this.form.setFieldsValue(Object.assign(this.articleInfo));
         });
     }

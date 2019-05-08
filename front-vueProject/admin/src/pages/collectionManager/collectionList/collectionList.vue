@@ -7,7 +7,7 @@
     <div>
         <TaskBar :firstName="'收藏管理'" :lastName="'收藏列表'" />
         <div class="blog-content">
-            <a-spin :spinning="spinning">
+            <a-spin :spinning="$store.state.spinning">
                 <a-table bordered :dataSource="dataSource" :columns="columns" rowKey="id">
                     <router-link slot="title-dt" slot-scope="text, record" :to="`updateCollection/${record.id}`">{{text}}</router-link>
                     <template slot="operation" slot-scope="text, record">

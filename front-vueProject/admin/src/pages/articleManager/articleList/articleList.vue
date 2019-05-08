@@ -7,7 +7,7 @@
     <div>
         <TaskBar :firstName="'文章管理'" :lastName="'文章列表'" />
         <div class="blog-content">
-            <a-spin :spinning="spinning">
+            <a-spin :spinning="$store.state.spinning">
                 <a-table bordered :dataSource="dataSource" :columns="columns" rowKey="id">
                     <router-link slot="title-dt" slot-scope="text, record" :to="`updateArticle/${record.id}`" >{{ text }}</router-link>
                     <span  slot="type" slot-scope="text">{{ text | typeFormat }}</span>

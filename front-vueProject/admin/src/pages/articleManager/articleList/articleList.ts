@@ -32,7 +32,6 @@ Vue.use(Spin);
 })
 export default class ArticleList extends Vue {
 
-    private spinning = false;
     private dataSource = [];
     private columns = [{
         title: 'ID',
@@ -74,12 +73,7 @@ export default class ArticleList extends Vue {
      * @description: 取得文章信息
      * @param {boolean} isLoad - 是否需要取消加载
      */
-    private getArtilces(isload: boolean = true): void {
-
-        // 设置加载
-        if (isload) {
-            this.spinning = true;
-        }
+    private getArtilces(): void {
 
         // 请求表格数据
         this.$axios.get('get-articles')
@@ -89,14 +83,9 @@ export default class ArticleList extends Vue {
                     this.dataSource = res.data.info;
                 }
 
-            }).catch((resion: any) => {
+            })
+            .catch((resion: any) => {
                 message.error('数据取得异常');
-            }).finally(() => {
-
-                if (isload) {
-                    this.spinning = false;
-                }
-
             });
     }
 
@@ -105,19 +94,17 @@ export default class ArticleList extends Vue {
      * @param {String} id - 删除的记录的id
      */
     private onDelete(id: string): void {
-        this.spinning = true;
         this.$axios.get(`article-delete/${id}`)
             .then((res: any) => {
 
                 if (res.data.status === 1) {
                     // 数据再取得
-                    this.getArtilces(false);
+                    this.getArtilces();
                 }
 
-            }).catch((resion: any) => {
+            })
+            .catch((resion: any) => {
                 message.error('数据删除异常');
-            }).finally(() => {
-                this.spinning = false;
             });
     }
 }

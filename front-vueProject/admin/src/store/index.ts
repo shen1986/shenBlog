@@ -11,6 +11,8 @@ export let store = new Vuex.Store({
         token: localStorage.getItem('token') || null,
         // markdown内容
         mdContent: '',
+        // 全局的loading
+        spinning: false,
     },
     mutations: { // 全局方法
         // 保存token
@@ -26,6 +28,10 @@ export let store = new Vuex.Store({
         // 保存markdown文本
         saveContent: (state, content) => {
             state.mdContent = content;
+        },
+        // 转换 loading 状态
+        changeLoading: (state, spinning) => {
+            state.spinning = spinning;
         },
     },
 });

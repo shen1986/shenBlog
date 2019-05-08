@@ -17,9 +17,6 @@ Vue.use(Spin);
 })
 export default class CollectionList extends Vue {
 
-    // 加载标识
-    private spinning = false;
-
     // 表格数据
     private dataSource = [];
 
@@ -54,25 +51,18 @@ export default class CollectionList extends Vue {
     /**
      * @description: 取得收藏列表
      */
-    private getCollection(isLoad: boolean = true): void {
-
-        // 设置加载
-        if (isLoad) {
-            this.spinning = true;
-        }
+    private getCollection(): void {
 
         // 请求表格数据
-        this.$axios.get('get-gather').then((res: any) => {
-            if (res.data.status === 1) {
-                this.dataSource = res.data.info;
-            }
-        }).catch((resion: any) => {
-            message.error('数据取得异常');
-        }).finally(() => {
-            if (isLoad) {
-                this.spinning = false;
-            }
-        });
+        this.$axios.get('get-gather')
+            .then((res: any) => {
+                if (res.data.status === 1) {
+                    this.dataSource = res.data.info;
+                }
+            })
+            .catch((resion: any) => {
+                message.error('数据取得异常');
+            });
     }
 
     /**
@@ -80,19 +70,17 @@ export default class CollectionList extends Vue {
      * @param {String} id - 删除行key
      */
     private onDelete(id: string): void {
-        this.spinning = true;
         this.$axios.get(`gather-delete/${id}`)
             .then((res: any) => {
 
                 if (res.data.status === 1) {
                     // 数据再取得
-                    this.getCollection(false);
+                    this.getCollection();
                 }
 
-            }).catch((resion: any) => {
+            })
+            .catch((resion: any) => {
                 message.error('数据删除异常');
-            }).finally(() => {
-                this.spinning = false;
             });
     }
 }

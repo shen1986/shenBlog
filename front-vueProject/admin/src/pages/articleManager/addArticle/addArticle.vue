@@ -7,7 +7,7 @@
     <div class="add-article">
         <TaskBar :firstName="'文章管理'" :lastName="'文章追加'" />
         <div class="blog-content" >
-            <a-spin :spinning="spinning">
+            <a-spin :spinning="$store.state.spinning">
                 <ArticleOp ref="op" :articleInfo="articleInfo" @typeChange="typeChange"/>
                 <Markdown v-if="markdown" />
                 <Editor v-else />

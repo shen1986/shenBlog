@@ -7,7 +7,7 @@
     <div>
         <TaskBar :firstName="'说说管理'" :lastName="'说说列表'" />
         <div class="blog-content">
-            <a-spin :spinning="spinning">
+            <a-spin :spinning="$store.state.spinning">
                 <a-table bordered :dataSource="dataSource" :columns="columns" rowKey="id">
                     <router-link slot="detail" slot-scope="text, record" :to="`updateTalk/${record.id}`">{{ text }}</router-link>
                     <template slot="operation" slot-scope="text, record">

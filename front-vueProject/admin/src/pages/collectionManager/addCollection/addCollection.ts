@@ -20,13 +20,11 @@ Vue.use(Spin);
 })
 export default class AddCollection extends Vue {
 
-    private spinning = false;
     private gatherInfo: any = {};
 
     private created(): void {
         // 更新画面
         if (this.$route.params.id) {
-            this.spinning = true;
             this.getGather(this.$route.params.id);
         }
     }
@@ -36,19 +34,16 @@ export default class AddCollection extends Vue {
      * @param {string} id - 收藏id
      * @param {boolean} isLoad - 是否要取消load
      */
-    private getGather(id: string, isLoad: boolean = true): void {
+    private getGather(id: string): void {
         this.$axios.get(`gather/${id}`)
             .then((res: any) => {
                 if (res.data.status === 1) {
                     this.gatherInfo = res.data.info;
                     this.$store.commit('saveContent', res.data.info.detail);
                 }
-            }).catch((resion: any) => {
+            })
+            .catch((resion: any) => {
                 message.error('数据取得异常');
-            }).finally(() => {
-                if (isLoad) {
-                    this.spinning = false;
-                }
             });
     }
 

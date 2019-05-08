@@ -7,7 +7,7 @@
     <div>
         <TaskBar :firstName="'说说管理'" :lastName="'说说列表'" />
         <div class="blog-content">
-            <a-spin :spinning="spinning">
+            <a-spin :spinning="$store.state.spinning">
                 <AddTalkEdit ref="edit" />
                 <a-button type="primary" @click="handleClick">提交</a-button>
             </a-spin>

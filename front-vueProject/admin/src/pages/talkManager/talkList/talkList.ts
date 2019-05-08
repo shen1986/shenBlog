@@ -17,7 +17,6 @@ Vue.use(Spin);
 })
 export default class TalkList extends Vue {
 
-    private spinning: boolean = false;
     private dataSource: any[] = [];
     private columns: any[] = [{
         title: 'ID',
@@ -47,24 +46,18 @@ export default class TalkList extends Vue {
      * @description: 取得说说列表
      * @param {boolean} isLoad - 是否要加载
      */
-    private getTalks(isLoad: boolean = true): void {
-        // 设置加载
-        if (isLoad) {
-            this.spinning = true;
-        }
+    private getTalks(): void {
 
         // 请求表格数据
-        this.$axios.get('get-gossip').then((res: any) => {
-            if (res.data.status === 1) {
-                this.dataSource = res.data.info;
-            }
-        }).catch((resion: any) => {
-            message.error('数据取得异常');
-        }).finally(() => {
-            if (isLoad) {
-                this.spinning = false;
-            }
-        });
+        this.$axios.get('get-gossip')
+            .then((res: any) => {
+                if (res.data.status === 1) {
+                    this.dataSource = res.data.info;
+                }
+            })
+            .catch((resion: any) => {
+                message.error('数据取得异常');
+            });
     }
 
     /**
@@ -72,18 +65,15 @@ export default class TalkList extends Vue {
      * @param {string} key - 删除行key
      */
     private onDelete(id: string): void {
-        this.spinning = true;
         this.$axios.get(`gossip-delete/${id}`)
             .then((res: any) => {
 
                 if (res.data.status === 1) {
-                    this.getTalks(false);
+                    this.getTalks();
                 }
 
             }).catch((resion: any) => {
                 message.error('数据删除异常');
-            }).finally(() => {
-                this.spinning = false;
             });
     }
 }

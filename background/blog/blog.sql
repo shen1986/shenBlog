@@ -109,3 +109,15 @@ CREATE TABLE `user` (
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Table structure for pictrue
+-- ----------------------------
+DROP TABLE IF EXISTS `pictrue`;
+CREATE TABLE `pictrue` (
+  `picid` varchar(30) NOT NULL,
+  `base64` MEDIUMTEXT DEFAULT NULL,
+  `file_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`picid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+

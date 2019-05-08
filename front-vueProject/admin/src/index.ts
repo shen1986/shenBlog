@@ -38,6 +38,9 @@ Axios.interceptors.request.use(
         if (token) {
             config.headers.Authorization = 'Bearer ' + token;
         }
+
+        // 设置画面loading
+        store.commit('changeLoading', true);
         return config;
     },
     error => {
@@ -51,6 +54,8 @@ Axios.interceptors.response.use((response) => {
     if (typeof response.data.code !== 'undefined') {
         v.$router.push('/login');
     }
+    // 结束画面loading
+    store.commit('changeLoading', false);
     return response;
 },  (error: any) => {
     // 对响应错误做点什么

@@ -23,13 +23,11 @@ Vue.use(Spin);
 export default class AddArticle extends Vue {
 
     private markdown = false;
-    private spinning = false;
     private articleInfo: any = {};
 
     private created(): void {
         // 更新画面
         if (this.$route.params.id) {
-            this.spinning = true;
             this.getArticle(this.$route.params.id);
         }
     }
@@ -38,7 +36,7 @@ export default class AddArticle extends Vue {
      * @description: 取得文章情报
      * @param {boolean} isLoad - 是否要停止loading
      */
-    private getArticle(id: string, isLoad: boolean = true): void {
+    private getArticle(id: string): void {
         // 取得文章情报
         this.$axios.get(`article/${id}`)
             .then((res: any) => {
@@ -51,14 +49,9 @@ export default class AddArticle extends Vue {
                     this.$store.commit('saveContent', res.data.info.body);
                 }
 
-            }).catch((resion: any) => {
+            })
+            .catch((resion: any) => {
                 message.error('数据取得异常');
-            }).finally(() => {
-
-                if (isLoad) {
-                    this.spinning = false;
-                }
-
             });
     }
 
@@ -96,8 +89,6 @@ export default class AddArticle extends Vue {
             return;
         }
 
-        this.spinning = true;
-
         // 验证并提交
         op.handleSubmit()
             .then((res: any) => {
@@ -110,7 +101,8 @@ export default class AddArticle extends Vue {
                 // 更新请求
                 return this.$axios.post('/article-submit', info);
 
-            }).then((result: any) => {
+            })
+            .then((result: any) => {
 
                 if (result.data.status === 1) {
                     this.$router.push('/articleList');
@@ -119,10 +111,9 @@ export default class AddArticle extends Vue {
                     message.error(result.data.msg);
                 }
 
-            }).catch((error: any) => {
+            })
+            .catch((error: any) => {
                 message.error(error.message);
-            }).finally(() => {
-                this.spinning = false;
             });
     }
 }
