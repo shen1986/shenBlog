@@ -1,3 +1,8 @@
+/**
+ * @Description: 说说添加表单
+ * @Author: shenxf
+ * @Date: 2019-05-08 20:25:27
+ */
 import { Form, Button, Icon, Upload, Input, message } from 'ant-design-vue';
 import { Vue, Component } from 'vue-property-decorator';
 import commonTools from '../../../../../tools/commonTools';
@@ -14,19 +19,6 @@ export default class AddTalkEdit extends Vue {
 
     private created(): void {
         this.form = this.$form.createForm(this);
-    }
-
-    private mounted(): void {
-        this.form.setFieldsValue({
-            upload: [
-                {
-                    uid: '-1',
-                    name: 'xxx.png',
-                    status: 'done',
-                    thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-                },
-            ],
-        });
     }
 
     /**
@@ -62,9 +54,9 @@ export default class AddTalkEdit extends Vue {
 
     /**
      * @description: 阻止图片上传,改用base64先存在本地。
-     * @param {any} file
-     * @param {any} fileList
-     * @return: 固定 false
+     * @param {any} file - 当前文件
+     * @param {any} fileList - 文件的集合（未使用）
+     * @return: 固定 false 阻止图片上传
      */
     private beforeUpload(file: any, fileList: any): boolean {
         commonTools.getBase64(file, (img: any, imageBase64: any) => {

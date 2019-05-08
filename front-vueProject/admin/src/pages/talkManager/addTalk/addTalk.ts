@@ -1,3 +1,8 @@
+/**
+ * @Description: 说说添加
+ * @Author: shenxf
+ * @Date: 2019-05-08 20:25:27
+ */
 import { Vue, Component } from 'vue-property-decorator';
 import { Button, Spin, message } from 'ant-design-vue';
 import TaskBar from '../../../components/taskBar/taskBar.vue';
@@ -30,7 +35,7 @@ export default class AddTalk extends Vue {
             .then((res: any) => {
                 if (res.data.status === 1) {
                     const edit: any = this.$refs.edit;
-                    edit.form.setFieldsValue({ detail: res.data.info.detail});
+                    edit.form.setFieldsValue(res.data.info);
                 }
             })
             .catch((resion: any) => {

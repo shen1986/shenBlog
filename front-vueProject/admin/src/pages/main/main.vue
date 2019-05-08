@@ -4,7 +4,7 @@
  * @Date: 2019-04-20 21:05:11
  -->
 <template>
-    <a-layout id="components-layout-demo-side" style="min-height: 100vh">
+    <a-layout id="components-layout-demo-side">
         <a-layout-sider collapsible v-model="collapsed">
             <div class="logo">Shenxf个人博客管理端</div>
             <a-menu theme="dark" :selectedKeys="[current]" ref="myLayout" mode="inline" @click="handleClick">
@@ -35,14 +35,14 @@
             </a-menu>
         </a-layout-sider>
         <a-layout>
-            <a-layout-header style="background: #fff; padding:0 15px;text-align: right;">
+            <a-layout-header class="layout-header">
                 欢迎你，{{ username }}
                 <a href="javascript:;" @click="logout">退出</a>
             </a-layout-header>
-            <a-layout-content style="margin: 0 16px">
+            <a-layout-content class="layout-content">
                 <router-view></router-view>
             </a-layout-content>
-            <a-layout-footer style="text-align: center">
+            <a-layout-footer class="layout-footer">
                 © 2019 小沈
             </a-layout-footer>
         </a-layout>

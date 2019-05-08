@@ -47,7 +47,7 @@ export default {
                 const user: any = config.data;
                 setTimeout(() => {
                     resolve([200, { status: 1, info: [{ id: 1, title: 'java提高篇-----详解java的四舍五入与保留位1', type: 1, tag: 'aa', created_at: '2019-04-23', views: 0 }] }]);
-                }, 5000);
+                }, 2000);
             });
         });
 
@@ -83,7 +83,30 @@ export default {
 
         const gosUri = '/gossip';
         const gosurl2 = new RegExp(`${gosUri}/*`);
-        mock.onGet(gosurl2).reply(200, { status: 1, info: { id: 1, detail: '测试一下', file_name: 'qb_comm_logo.png', save_name: 'e79d6ca349a4e13d22aa229136af814e' } });
+        mock.onGet(gosurl2).reply(config => {
+            return new Promise((resolve, reject) => {
+                const user: any = config.data;
+                setTimeout(() => {
+                    resolve([
+                        200,
+                        {
+                            status: 1,
+                            info: {
+                                id: 1,
+                                detail: '测试一下',
+                                upload: [
+                                    {
+                                        uid: '-1',
+                                        name: 'test.png',
+                                        status: 'done',
+                                        thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                                    },
+                                ],
+                            },
+                        }]);
+                }, 2000);
+            });
+        });
 
         mock.onPost('/article-submit').reply(config => {
             return new Promise((resolve, reject) => {
@@ -98,5 +121,14 @@ export default {
         const gatuurl2 = new RegExp(`${gatupUrl}/*`);
         mock.onGet(gatuurl2).reply(200, {status: 1, info: {id: 1, title: 'java提高篇-----详解java的四舍五入与保留位1', detail: '<p>12312</p>', tag: 'aa'}});
         // {"status":1,"info":{"id":1,"title":"java提高篇-----详解java的四舍五入与保留位1","detail":"<p>12312</p>","tag":"aa"}}
+
+        mock.onPost('/gossip-submit').reply(config => {
+            return new Promise((resolve, reject) => {
+                const user: any = config.data;
+                setTimeout(() => {
+                    resolve([200, { status: 1}]);
+                }, 2000);
+            });
+        });
     },
 };

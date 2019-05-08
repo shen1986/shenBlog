@@ -4,7 +4,7 @@
  * @Date: 2019-04-22 21:23:56
  -->
 <template>
-    <a-spin :spinning="$store.state.spinning">
+    <a-spin :spinning="$store.state.spinning" class="article-op">
         <a-form
             layout="inline"
             :form="form"
@@ -19,7 +19,7 @@
                             rules: [{ required: true, message: '请输入标题！' }],
                         }
                     ]"
-                    style="width: 100%"
+                    class="wp100"
                 >
                     <a-select
                         slot="addonBefore"
@@ -27,7 +27,7 @@
                             'type',
                             { initialValue: 0 }
                         ]"
-                        style="width: 70px"
+                        class="type-width"
                     >
                         <a-select-option :value="0">原创</a-select-option>
                         <a-select-option :value="1">转载</a-select-option>
@@ -51,7 +51,7 @@
                 label="文章分类"
             >
                 <a-select 
-                    style="width: 100px"
+                    class="category-width"
                     v-decorator="[
                         'category',
                         { rules: [{ required: true, message: '请选择分类！' }] }
@@ -67,7 +67,7 @@
                 label="文章格式"
             >
                 <a-select 
-                    style="width: 120px"
+                    class="markdown-width"
                     v-decorator="[
                         'markdown',
                         { initialValue: 0 },
