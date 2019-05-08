@@ -8,7 +8,7 @@
         <TaskBar :firstName="'说说管理'" :lastName="'说说列表'" />
         <div class="blog-content">
             <a-spin :spinning="spinning">
-                <AddTalkEdit />
+                <AddTalkEdit ref="edit" />
                 <a-button type="primary" @click="handleClick">提交</a-button>
             </a-spin>
         </div>
@@ -18,5 +18,7 @@
 <script lang="ts" src="./addTalk.ts">
 </script>
 
-<style>
+<style lang="less">
+@import './addTalk.less';
 </style>
+

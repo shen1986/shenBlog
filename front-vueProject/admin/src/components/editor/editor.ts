@@ -1,5 +1,5 @@
 /**
- * @Description:
+ * @Description: 富文本主处理
  * @Author: shenxf
  * @Date: 2019-05-07 19:49:12
  */
@@ -22,18 +22,28 @@ export default class Editor extends Vue {
     private content: string = '';
     private editorOption = { placeholder: '请输入内容' };
 
-    private created(): void {
-        this.content = this.$store.state.mdContent;
+    /**
+     * @description: 监视$store.state.mdContent
+     * @param {any} val - 变化后$store.state.mdContent
+     * @param {any} oldVal - 变化前$store.state.mdContent
+     */
+    @Watch('$store.state.mdContent')
+    private onMdContentChanged(val: string, oldVal: string): void {
+        if (this.content !== val) {
+            this.content = this.$store.state.mdContent;
+        }
     }
 
     /**
-     * @description: 监视pContent
-     * @param {any} val - 变化后路由
-     * @param {any} oldVal - 变化前路由
+     * @description: 监视content
+     * @param {any} val - 变化后content
+     * @param {any} oldVal - 变化前content
      */
     @Watch('content')
     private onContentChanged(val: string, oldVal: string): void {
-        this.$store.commit('saveContent', val);
+        if (this.$store.state.mdContent !== val) {
+            this.$store.commit('saveContent', val);
+        }
     }
 
     get editor() {

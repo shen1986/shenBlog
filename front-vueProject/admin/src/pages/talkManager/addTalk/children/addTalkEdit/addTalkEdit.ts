@@ -1,5 +1,6 @@
 import { Form, Button, Icon, Upload, Input } from 'ant-design-vue';
 import { Vue, Component } from 'vue-property-decorator';
+import commonTools from '../../../../../tools/commonTools';
 Vue.use(Form);
 Vue.use(Button);
 Vue.use(Icon);
@@ -10,34 +11,48 @@ Vue.use(Input);
 export default class AddTalkEdit extends Vue {
 
     private form: any = {};
-    private defaultFileList = [{
-        uid: '-1',
-        name: 'xxx.png',
-        status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    }, {
-        uid: '-2',
-        name: 'yyy.png',
-        status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    }]
 
     private created(): void {
         this.form = this.$form.createForm(this);
     }
 
-    private handleSubmit(e: any) {
-        e.preventDefault();
-        this.form.validateFields((err: any, values: any) => {
-            if (!err) {
-                //   console.log('Received values of form: ', values);
-            }
+    /**
+     * @description: 父提交按钮触发事件
+     * @return: 表单值，或则表单验证错误的信息
+     */
+    public handleSubmit(): any {
+        return new Promise((resolved, reject) => {
+            this.form.validateFields((err: any, values: any) => {
+                if (!err) {
+                    resolved(values);
+                } else {
+                    reject(err);
+                }
+            });
         });
     }
 
-    private handleChange(e: any) {
-        // asdfasdf
+    private normFile(e: any) {
+        // console.log('Upload event:', e);
+        if (Array.isArray(e)) {
+            return e;
+        }
+        return e && e.fileList;
+    }
+
+    /**
+     * @description: 阻止图片上传,改用base64先存在本地。
+     * @param {any} file
+     * @param {any} fileList
+     * @return: 固定 false
+     */
+    private beforeUpload(file: any, fileList: any): boolean {
+        commonTools.getBase64(file, (img: any, imageBase64: any) => {
+            // console.log(img);
+            // console.log(imageBase64);
+
+            // console.log(fileList);
+        });
+        return false;
     }
 }

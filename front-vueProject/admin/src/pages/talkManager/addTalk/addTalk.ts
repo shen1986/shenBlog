@@ -33,9 +33,10 @@ export default class AddTalk extends Vue {
         this.$axios.get(`gossip/${id}`).then((res: any) => {
             if (res.data.status === 1) {
                 this.talkInfo = res.data.info;
+                const edit: any = this.$refs.edit;
+                edit.form.setFieldsValue({ detail: res.data.info.detail});
             }
         }).catch((resion: any) => {
-            console.log(resion);
             message.error('数据取得异常');
         }).finally(() => {
             if (isLoad) {
@@ -46,9 +47,32 @@ export default class AddTalk extends Vue {
 
     /**
      * @description: 提交按钮
-     * @param {any} e - event 
+     * @param {any} e - event
      */
     private handleClick(e: any): void {
+        const edit: any = this.$refs.edit;
 
+        edit.handleSubmit()
+            .then((res: any) => {
+                // console.log(res);
+                const info = {
+                    ...res,
+                };
+
+                return this.$axios.post('gossip-submit', info);
+            }).then((res: any) => {
+                if (res.data.status === 1) {
+                    message.success('提交成功');
+                } else {
+                    message.error(res.data.msg);
+                }
+            }).catch((err: any) => {
+                // console.log(typeof err);
+                if (err instanceof Error) {
+                    message.error(err.message);
+                } else {
+                    message.error('表单输入有误');
+                }
+            });
     }
 }

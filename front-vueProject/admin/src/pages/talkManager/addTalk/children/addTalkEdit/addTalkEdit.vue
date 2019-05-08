@@ -11,12 +11,15 @@
         >
             <a-form-item
                 label="图片上传"
-                :label-col="{ span: 2 }"
+                :label-col="{ span: 4 }"
                 :wrapper-col="{ span: 24 }"
             >
                 <a-upload 
-                    action="//jsonplaceholder.typicode.com/posts/" 
-                    :defaultFileList="defaultFileList"
+                    v-decorator="['upload', {
+                        valuePropName: 'fileList',
+                        getValueFromEvent: normFile,
+                    }]"
+                    :beforeUpload="beforeUpload"
                 >
                     <a-button>
                         <a-icon type="upload" />
@@ -27,11 +30,16 @@
 
             <a-form-item
                 label="说说内容"
-                :label-col="{ span: 2 }"
+                :label-col="{ span: 4 }"
                 :wrapper-col="{ span: 24 }"
             >
                 <a-textarea 
-                    placeholder="Autosize height based on content lines" autosize 
+                    placeholder="请输入说说内容"
+                    v-decorator="[
+                        'detail',
+                        {rules: [{ required: true, message: '请输入说说内容！' }]}
+                    ]"
+                    :autosize="{ minRows: 3 }"
                 />
             </a-form-item>
         </a-form>

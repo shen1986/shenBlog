@@ -77,10 +77,7 @@ export default class TalkList extends Vue {
             .then((res: any) => {
 
                 if (res.data.status === 1) {
-                    const dataSource = [...this.dataSource];
-                    this.dataSource = dataSource.filter(item => item.key !== id);
-                    // 数据再取得
-                    // this.getCollection(false);
+                    this.getTalks(false);
                 }
 
             }).catch((resion: any) => {
