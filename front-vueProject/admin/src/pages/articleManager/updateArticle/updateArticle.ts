@@ -23,7 +23,7 @@ Vue.use(Spin);
 export default class UpdateArticle extends Vue {
 
     private markdown = false;
-    private articleInfo: any = {};
+    private id: string = '';
 
     private created(): void {
         // 更新画面
@@ -43,6 +43,7 @@ export default class UpdateArticle extends Vue {
 
                 if (res.data.status === 1) {
                     const info = res.data.info;
+                    this.id = info.id;
 
                     this.changeMarkdown(res.data.info.type);
 
@@ -103,7 +104,7 @@ export default class UpdateArticle extends Vue {
                 const info = {
                     ...res,
                     content: this.$store.state.mdContent,
-                    id: this.articleInfo.id,
+                    id: this.id,
                 };
 
                 // 更新请求
