@@ -13,12 +13,12 @@ class UserModel {
      * @param {string} userid - 用户id
      * @return: 用户的password 或则 error
      */
-    public async getPassword (userid: string) {
+    public getPassword = async  (userid: string) => {
 
         const sql = `select password from user where userid = ${mysql.escape(userid)}`;
 
         try {
-            const result: any = db.query(sql);
+            const result: any = await db.query(sql);
             return result;
         } catch (error) {
             throw error;

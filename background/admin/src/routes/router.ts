@@ -4,26 +4,35 @@
  * @Date: 2019-05-06 20:21:16
  */
 import Router from 'koa-router';
-import * as user from '../controller/user';
-import * as index from '../controller/index';
+import user from '../controller/user';
+import index from '../controller/index';
+import article from '../controller/article';
+import category from '../controller/category';
 
 const router = new Router();
 
 // 进入主界面
 router.get('/', index.goIndex);
+
 // 登录处理
 router.post('/toLogin', user.toLogin);
 
-// 验证token
+// 验证token 在这个中间件以下的路由，必须验证token通过才能访问。
 router.use(user.checkToken);
 
+// 获取文章列表
+router.get('/get-articles', article.getArticles);
 
-router.post('/test', user.test);
+// 删除文章
+router.get('/article-delete/:id', article.delArticle);
 
-router.get('/get-articles', async (ctx: any) => {
-    ctx.body = {
-        message: 'very good'
-    };
-});
+// 根据id过去某个文章
+router.get('/article/:id', article.findArticle);
+
+// 更新或则追加文章
+router.post('/article-submit', article.submitArticle);
+
+// 取得分类
+router.get('/get-categories', category.getCategories);
 
 export default router;

@@ -8,6 +8,7 @@ import mysql from 'mysql';
 import config from '../common/config/config';
 
 class Db {
+    // mysql 连接池 默认最大连接数10,
     static pool = mysql.createPool({
         host: config.host,
         user: config.user,
@@ -16,16 +17,25 @@ class Db {
         dateStrings: true
     });
 
-    public async query(sql: String) {
+    /**
+     * @description: 数据库操作
+     * @param {string} sql - sql文
+     * @return: 数据库操作结果
+     */
+    public query = async (sql: string): Promise<any> => {
 
-        const conn = this.getConnection();
+        const conn = await this.getConnection();
 
         const result = await this.q(conn, sql);
 
         return result;
     }
 
-    private getConnection() {
+    /**
+     * @description: 从连接池里面取出连接
+     * @return: 数据库连接
+     */
+    private getConnection = (): Promise<any> => {
         return new Promise((resolved, rejected) => {
             Db.pool.getConnection((err, connection) => {
                 if (err instanceof Error) {
@@ -37,7 +47,13 @@ class Db {
         });
     }
 
-    private q(connection: any, sql: String) {
+    /**
+     * @description: 通过连接操作数据库
+     * @param {any} connection - 数据库连接
+     * @param {string} sql - sql文
+     * @return: 操作结果
+     */
+    private q = (connection: any, sql: string): Promise<any> => {
         return new Promise((resolved, rejected) => {
             connection.query(sql, function (err: any, rows: any) {
                 if (err instanceof Error) {

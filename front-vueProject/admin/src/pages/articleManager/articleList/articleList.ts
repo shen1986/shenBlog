@@ -17,11 +17,11 @@ Vue.use(Spin);
     filters: {
         typeFormat: (data: number) => {
             switch (data) {
-                case 1:
+                case 0:
                     return '原创';
-                case 2:
+                case 1:
                     return '转载';
-                case 3:
+                case 2:
                     return '翻译';
                 default:
                     // 没有处理

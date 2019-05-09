@@ -97,7 +97,7 @@ export default class UpdateArticle extends Vue {
                 const info = {
                     ...res,
                     content: this.$store.state.mdContent,
-                    id: '',
+                    id: this.articleInfo.id,
                 };
 
                 // 更新请求
