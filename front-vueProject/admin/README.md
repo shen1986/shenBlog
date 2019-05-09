@@ -86,7 +86,16 @@ npm run build
     - 直接value="0",这里面设置的东西都是string类型的。但是如果用:value感觉是不是会影响效率。因为牵涉到绑定了。先不管了以解决问题为优先。
 
 5. Warning: You cannot set a form field before rendering a field associated with the value.
-    - 暂时没有解决方法，原因不明。可能是页面还没渲染好就给form赋值了？
+    - 通过google查了下，赋值的对象不能多于原来绑定的对象。我原来用的http返回多了一个content对象,使用 delete 又影响到了Vue的依赖收集的东西。vue里面又报错了。只好像下面一个一个赋值。
+    ```javascript
+    op.form.setFieldsValue({
+        title: info.title,
+        type: info.type,
+        tag: info.tag,
+        category: info.category,
+        markdown: info.markdown,
+    });
+    ```
 
 6. 同一个组件 updateXXX/:id -> addXXX 跳转的时候，画面没有重新加载。
     但是，不是同一个组件 文章列表 -> 文章添加 的时候， 画面会重新加载。
