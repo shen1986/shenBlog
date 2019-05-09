@@ -16,7 +16,35 @@ Vue.use(Spin);
         AddTalkEdit,
     },
 })
-export default class AddTalk extends Vue {
+export default class UpdateTalk extends Vue {
+
+    private id: string = '';
+
+    private created(): void {
+        // 更新画面
+        if (this.$route.params.id) {
+            this.getGossip(this.$route.params.id);
+        }
+    }
+
+    /**
+     * @description: 取得说说情报
+     * @param {string} id - 说说的id
+     * @param {boolean} isLoad - 是否需要取消loading
+     */
+    private getGossip(id: string): void {
+        this.$axios.get(`gossip/${id}`)
+            .then((res: any) => {
+                if (res.data.status === 1) {
+                    const edit: any = this.$refs.edit;
+                    id = res.data.info;
+                    edit.form.setFieldsValue(res.data.info);
+                }
+            })
+            .catch((resion: any) => {
+                message.error('数据取得异常');
+            });
+    }
 
     /**
      * @description: 提交按钮
@@ -29,6 +57,7 @@ export default class AddTalk extends Vue {
             .then((res: any) => {
                 const info = {
                     ...res,
+                    id: this.id,
                 };
 
                 return this.$axios.post('gossip-submit', info);

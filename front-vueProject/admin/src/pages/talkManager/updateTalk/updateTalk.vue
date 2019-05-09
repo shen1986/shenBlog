@@ -1,23 +1,24 @@
 <!--
- * @Description: 
+ * @Description: 说说添加
  * @Author: shenxf
  * @Date: 2019-04-22 21:23:56
  -->
 <template>
-    <div class="add-collection">
-        <TaskBar :firstName="'收藏管理'" :lastName="'收藏追加'" />
-        <div class="blog-content" >
+    <div>
+        <TaskBar :firstName="'说说管理'" :lastName="'说说更新'" />
+        <div class="blog-content">
             <a-spin :spinning="$store.state.spinning">
-                <CollectionOp ref="op" />
-                <Editor />
+                <AddTalkEdit ref="edit" />
                 <a-button type="primary" @click="handleClick">提交</a-button>
             </a-spin>
         </div>
     </div>
 </template>
 
-<script lang="ts" src="./addCollection.ts">
+<script lang="ts" src="./updateTalk.ts">
 </script>
 
 <style lang="less">
+@import './updateTalk.less';
 </style>
+

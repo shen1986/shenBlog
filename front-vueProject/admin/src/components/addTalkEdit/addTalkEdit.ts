@@ -5,7 +5,7 @@
  */
 import { Form, Button, Icon, Upload, Input, message } from 'ant-design-vue';
 import { Vue, Component } from 'vue-property-decorator';
-import commonTools from '../../../../../tools/commonTools';
+import commonTools from '../../tools/commonTools';
 Vue.use(Form);
 Vue.use(Button);
 Vue.use(Icon);
@@ -69,7 +69,7 @@ export default class AddTalkEdit extends Vue {
                     name: file.name,
                     status: 'done',
                     // url: 'data:image/png;base64,' + imageBase64,
-                    thumbUrl: `data:image/${suffix};base64,` + imageBase64,
+                    base64: `data:image/${suffix};base64,` + imageBase64,
                 };
                 this.form.setFieldsValue({ upload: [tmpFile] });
             } else {

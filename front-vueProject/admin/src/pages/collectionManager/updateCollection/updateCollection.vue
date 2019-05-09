@@ -5,10 +5,10 @@
  -->
 <template>
     <div class="add-collection">
-        <TaskBar :firstName="'收藏管理'" :lastName="'收藏追加'" />
+        <TaskBar :firstName="'收藏管理'" :lastName="'收藏更新'" />
         <div class="blog-content" >
             <a-spin :spinning="$store.state.spinning">
-                <CollectionOp ref="op" />
+                <CollectionOp ref="op" :gatherInfo="gatherInfo" />
                 <Editor />
                 <a-button type="primary" @click="handleClick">提交</a-button>
             </a-spin>
@@ -16,7 +16,7 @@
     </div>
 </template>
 
-<script lang="ts" src="./addCollection.ts">
+<script lang="ts" src="./updateCollection.ts">
 </script>
 
 <style lang="less">

@@ -1,4 +1,4 @@
-// 现在业务比较简单所有store放在一个文件里面，以后业务复杂的时候
+// 现在业务比较简单所有store放在一个文件里面，业务复杂的时候分模块
 import Vuex from 'Vuex';
 import Vue from 'vue';
 

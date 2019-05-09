@@ -10,9 +10,12 @@ const login = () => import('../pages/login/login.vue'); // 按需加载组件，
 const Main = () => import('../pages/main/main.vue');
 const articleList = () => import('../pages/articleManager/articleList/articleList.vue');
 const addArticle = () => import('../pages/articleManager/addArticle/addArticle.vue');
+const updateArticle = () => import('../pages/articleManager/updateArticle/updateArticle.vue');
 const addCollection = () => import('../pages/collectionManager/addCollection/addCollection.vue');
+const updateCollection = () => import ('../pages/collectionManager/updateCollection/updateCollection.vue');
 const collectionList = () => import('../pages/collectionManager/collectionList/collectionList.vue');
 const addTalk = () => import('../pages/talkManager/addTalk/addTalk.vue');
+const updateTalk = () => import('../pages/talkManager/updateTalk/updateTalk.vue');
 const talkList = () => import('../pages/talkManager/talkList/talkList.vue');
 
 // 3. 创建路由对象
@@ -48,7 +51,7 @@ const router = new VueRouter({
                 },
                 {
                     path: 'updateArticle/:id',
-                    component: addArticle,
+                    component: updateArticle,
                 },
                 {
                     path: 'addCollection',
@@ -60,7 +63,7 @@ const router = new VueRouter({
                 },
                 {
                     path: 'updateCollection/:id',
-                    component: addCollection,
+                    component: updateCollection,
                 },
                 {
                     path: 'addTalk',
@@ -72,7 +75,7 @@ const router = new VueRouter({
                 },
                 {
                     path: 'updateTalk/:id',
-                    component: addTalk,
+                    component: updateTalk,
                 },
             ],
         },

@@ -20,9 +20,42 @@ Vue.use(Spin);
         Markdown,
     },
 })
-export default class AddArticle extends Vue {
+export default class UpdateArticle extends Vue {
 
     private markdown = false;
+    private articleInfo: any = {};
+
+    private created(): void {
+        // 更新画面
+        if (this.$route.params.id) {
+            this.getArticle(this.$route.params.id);
+        }
+    }
+
+    /**
+     * @description: 取得文章情报
+     * @param {boolean} isLoad - 是否要停止loading
+     */
+    private getArticle(id: string): void {
+        // 取得文章情报
+        this.$axios.get(`article/${id}`)
+            .then((res: any) => {
+
+                if (res.data.status === 1) {
+                    this.articleInfo = res.data.info;
+
+                    this.changeMarkdown(res.data.info.type);
+
+                    this.$store.commit('saveContent', res.data.info.body);
+                    const op: any = this.$refs.op;
+                    op.form.setFieldsValue(Object.assign(this.articleInfo));
+                }
+
+            })
+            .catch((resion: any) => {
+                message.error('数据取得异常');
+            });
+    }
 
     /**
      * @description: 文章格式变更时更新输入内容部分

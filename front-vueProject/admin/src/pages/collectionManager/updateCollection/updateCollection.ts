@@ -18,7 +18,34 @@ Vue.use(Spin);
         TaskBar,
     },
 })
-export default class AddCollection extends Vue {
+export default class UpdateCollection extends Vue {
+
+    private gatherInfo: any = {};
+
+    private created(): void {
+        // 更新画面
+        if (this.$route.params.id) {
+            this.getGather(this.$route.params.id);
+        }
+    }
+
+    /**
+     * @description: 取得收藏情报
+     * @param {string} id - 收藏id
+     * @param {boolean} isLoad - 是否要取消load
+     */
+    private getGather(id: string): void {
+        this.$axios.get(`gather/${id}`)
+            .then((res: any) => {
+                if (res.data.status === 1) {
+                    this.gatherInfo = res.data.info;
+                    this.$store.commit('saveContent', res.data.info.detail);
+                }
+            })
+            .catch((resion: any) => {
+                message.error('数据取得异常');
+            });
+    }
 
     /**
      * @description: 提交按钮
@@ -36,7 +63,7 @@ export default class AddCollection extends Vue {
             .then((res: any) => {
                 const info = {
                     ...res,
-                    id: '',
+                    id: this.gatherInfo.id,
                     content: this.$store.state.mdContent,
                 };
 
