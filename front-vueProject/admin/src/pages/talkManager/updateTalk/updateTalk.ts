@@ -38,7 +38,10 @@ export default class UpdateTalk extends Vue {
                 if (res.data.status === 1) {
                     const edit: any = this.$refs.edit;
                     id = res.data.info;
-                    edit.form.setFieldsValue(res.data.info);
+                    edit.form.setFieldsValue({
+                        upload: res.data.info.upload,
+                        detail: res.data.info.detail,
+                    });
                 }
             })
             .catch((resion: any) => {

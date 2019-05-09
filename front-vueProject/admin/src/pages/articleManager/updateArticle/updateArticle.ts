@@ -42,13 +42,19 @@ export default class UpdateArticle extends Vue {
             .then((res: any) => {
 
                 if (res.data.status === 1) {
-                    this.articleInfo = res.data.info;
+                    const info = res.data.info;
 
                     this.changeMarkdown(res.data.info.type);
 
                     this.$store.commit('saveContent', res.data.info.body);
                     const op: any = this.$refs.op;
-                    op.form.setFieldsValue(Object.assign(this.articleInfo));
+                    op.form.setFieldsValue({
+                        title: info.title,
+                        type: info.type,
+                        tag: info.tag,
+                        category: info.category,
+                        markdown: info.markdown,
+                    });
                 }
 
             })

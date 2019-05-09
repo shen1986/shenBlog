@@ -28,7 +28,10 @@ export default class CollectionOp extends Vue {
      */
     @Watch('gatherInfo')
     private onChildChanged(val: any, oldVal: any): void {
-        this.form.setFieldsValue(Object.assign(val));
+        this.form.setFieldsValue({
+            title: val.title,
+            tag: val.tag,
+        });
     }
 
     /**
