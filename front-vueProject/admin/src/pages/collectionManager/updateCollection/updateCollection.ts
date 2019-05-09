@@ -70,6 +70,7 @@ export default class UpdateCollection extends Vue {
                 return this.$axios.post('gather-submit', info);
             }).then((res: any) => {
                 if (res.data.status === 1) {
+                    this.$router.push('/collectionList');
                     message.success('提交成功');
                 } else {
                     message.error(res.data.msg);

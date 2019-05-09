@@ -42,7 +42,7 @@ class ArticleModel {
     public update = async (article: any): Promise<void> => {
         const { id, content, title, tag, category, type, markdown } = article;
         const sql = `update article set body = ${mysql.escape(content)}, title = ${mysql.escape(title)}, tag = ${mysql.escape(tag)},
-                    category = ${category}, type = ${type}, markdown = ${markdown} updated_at = "${new Date().toLocaleDateString()}" where id = ${+id}`;
+                    category = ${category}, type = ${type}, markdown = ${markdown}, updated_at = "${new Date().toLocaleDateString()}" where id = ${+id}`;
 
         try {
             await db.query(sql);

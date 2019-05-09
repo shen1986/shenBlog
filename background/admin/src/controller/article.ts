@@ -68,7 +68,6 @@ class Article {
 
     public submitArticle = async (ctx: any): Promise<void> => {
         const articleModel = new ArticleModel();
-        console.log(ctx.request.body);
         try {
             if (ctx.request.body.id !== '') {
                 articleModel.update(ctx.request.body);
