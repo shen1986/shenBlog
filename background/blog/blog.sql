@@ -115,7 +115,7 @@ CREATE TABLE `user` (
 DROP TABLE IF EXISTS `pictrue`;
 CREATE TABLE `pictrue` (
   `picid` varchar(30) NOT NULL,
-  `thumb_url` MEDIUMTEXT DEFAULT NULL,
+  `base64` MEDIUMTEXT DEFAULT NULL,
   `file_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`picid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

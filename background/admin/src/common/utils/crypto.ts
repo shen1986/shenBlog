@@ -1,10 +1,8 @@
 import crypto from 'crypto';
-
-const md5 = crypto.createHash('md5');
+import config from '../../common/config/config';
 
 export let sha256 = function(input: string): string {
-    const secret = 'shenxf';
-    const hash = crypto.createHmac('sha256', secret)
+    const hash = crypto.createHmac('sha256', config.sha256Serect)
         .update(input)
         .digest('hex');
     return hash;

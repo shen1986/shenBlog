@@ -3,7 +3,7 @@
  * @Author: shenxf
  * @Date: 2019-04-10 22:08:51
  */
-import Db from './db';
+import db from './db';
 import mysql from 'mysql';
 
 class UserModel {
@@ -16,7 +16,6 @@ class UserModel {
     public async getPassword (userid: string) {
 
         const sql = `select password from user where userid = ${mysql.escape(userid)}`;
-        const db = Db.getInstence();
 
         try {
             const result: any = db.query(sql);

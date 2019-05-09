@@ -3,7 +3,7 @@
  * @Author: shenxf
  * @Date: 2019-04-10 22:08:51
  */
-import Db from './db';
+import db from './db';
 
 export let getTimeline = async function (current: number = 1, count: number = 30, category: number = 0) {
 
@@ -32,7 +32,6 @@ export let getTimeline = async function (current: number = 1, count: number = 30
     }
 
     const ps = [];
-    const db = Db.getInstence();
 
     for (sql of sqls) {
         ps.push(
@@ -44,7 +43,7 @@ export let getTimeline = async function (current: number = 1, count: number = 30
         const p = await Promise.all(ps);
         return result(p);
     } catch (error) {
-        return {'status': 0, 'message': '系统异常'};
+        return {'status': 0, 'msg': '系统异常'};
     }
 };
 

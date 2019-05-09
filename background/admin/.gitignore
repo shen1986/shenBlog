@@ -37,3 +37,6 @@ Thumbs.db
 # Ignore built ts files
 dist/**/*
 dist
+
+# 自定义忽略
+src/common/config/config.ts

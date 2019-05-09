@@ -3,7 +3,7 @@
  * @Author: shenxf
  * @Date: 2019-04-09 17:20:21
  */
-import Db from './db';
+import db from './db';
 
 export let initWindow = async function(ctx: any, next: any) {
     const result = await getNavsideInfo();
@@ -18,7 +18,6 @@ export let initWindow = async function(ctx: any, next: any) {
 
 // 取得右边栏情报
 const getNavsideInfo = async function() {
-    const db = Db.getInstence();
     const sqls = [
         'select value from config where (name = "intro" or name = "view_count") and status = 1',
         'select id, title from article where status = 1 order by created_at desc limit 10',

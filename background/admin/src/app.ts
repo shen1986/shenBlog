@@ -10,6 +10,7 @@ import bodyParser from 'koa-bodyparser';
 import cors from 'koa2-cors';
 import kStatic from 'koa-static';
 import path from 'path';
+import config from './common/config/config';
 
 const app = new Koa();
 
@@ -34,7 +35,7 @@ app.use(cors({
 }));
 
 // session配置
-app.keys = ['shenxf1986@qq.com'];
+app.keys = [config.sessionKey];
 
 // 详细配置
 const CONFIG = {
@@ -64,6 +65,6 @@ app
     .use(router.routes())
     .use(router.allowedMethods());
 
-app.listen(8080, () => {
-    console.log('服务已经启动！监听端口：8080');
+app.listen(config.port, () => {
+    console.log(`服务已经启动！监听端口：${config.port}`);
 });

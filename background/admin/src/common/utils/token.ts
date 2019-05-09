@@ -1,10 +1,11 @@
 import jwt from 'jsonwebtoken';
-const serect = 'shenxf1986@qq.com';  // 密钥，不能丢
+import config from '../config/config';
+
 export let addToken = (userinfo: any) => { // 创建token并导出
     const token = jwt.sign({
         userid: userinfo.userid,
         password: userinfo.password
-    }, serect, { expiresIn: '1h' });
+    }, config.tokenSerect, { expiresIn: '1h' });
     return token;
 };
 

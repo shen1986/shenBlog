@@ -5,42 +5,21 @@
  */
 // 连接MySQL
 import mysql from 'mysql';
+import config from '../common/config/config';
 
 class Db {
     static pool = mysql.createPool({
-        host: '47.106.155.211',
-        user: 'blog1',
-        password: '123456',
-        database: 'blog',
+        host: config.host,
+        user: config.user,
+        password: config.password,
+        database: config.database,
         dateStrings: true
     });
 
-    static instence: any = null;
-
-    conn: any = null;
-
-    constructor() {
-        this.getConnection().then(
-            res => {
-                this.conn = res;
-            }
-        );
-    }
-
-    /**
-     * @description: 获得单例的mysql
-     * @return: Db类的实例
-     */
-    public static getInstence(): any {
-        if (Db.instence === null) {
-            Db.instence = new Db();
-        }
-        return Db.instence;
-    }
-
     public async query(sql: String) {
 
-        const result = await this.q(this.conn, sql);
+        const conn = await this.getConnection();
+        const result = await this.q(conn, sql);
 
         return result;
     }
@@ -71,4 +50,4 @@ class Db {
     }
 }
 
-export default Db;
+export default new Db();

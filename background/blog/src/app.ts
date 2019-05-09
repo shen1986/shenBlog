@@ -8,6 +8,7 @@ import path from 'path';
 import Koa from 'koa';
 import kStatic from 'koa-static';
 import bodyParser from 'koa-bodyparser';
+import config from './common/config/config';
 
 const app = new Koa();
 
@@ -48,6 +49,6 @@ app
     .use(router.routes())
     .use(router.allowedMethods());
 
-app.listen(3000, () => {
-    console.log('服务已经启动！监听端口：3000');
+app.listen(config.port, () => {
+    console.log(`服务已经启动！监听端口：${config.port}`);
 });
