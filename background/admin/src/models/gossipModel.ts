@@ -10,7 +10,11 @@ import moment from 'moment';
 class GossipModel {
 
     public findAll = async (): Promise<any> => {
-        const sql = 'select id, detail, created_at from gossip order by id desc';
+        const sql = `select id,
+                            detail,
+                            created_at
+                        from gossip
+                        order by id desc`;
 
         try {
             const result = await db.query(sql);
@@ -31,7 +35,16 @@ class GossipModel {
     }
 
     public findById = async (id: string): Promise<any> => {
-        const sql = `select id, detail, file_name, save_name from gossip where id = ${+id}`;
+        const sql = `select gos.id,
+                            gos.detail,
+                            gos.created_at,
+                            gos.picid as uid,
+                            pic.base64,
+                            pic.file_name
+                        from gossip gos
+                        left join pictrue pic
+                        on gos.picid = pic.picid
+                        where id = ${+id}`;
 
         try {
             const result = await db.query(sql);
@@ -43,30 +56,123 @@ class GossipModel {
 
     public saveGosAndFile = async (gossipInfo: any): Promise<void> => {
         const detail = gossipInfo.detail;
-        const { base64, file_name } = gossipInfo.upload;
-        const sqls: string[] = [];
-        let sql: string = '';
+        let base64: string = '', file_name: string = '';
+        if (typeof gossipInfo.upload !== 'undefined' &&
+            gossipInfo.upload.length !== 0) {
+            base64 = gossipInfo.upload[0].base64;
+            file_name = gossipInfo.upload[0].name;
+        }
+        console.log(gossipInfo);
         const create_at = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
-        console.log(create_at);
+        if (base64 !== '') {
+            try {
+                const conn = await db.getConnection();
+                console.log(conn);
+                let lastId: any = null;
+                db.t(conn).then(() => {
+                    return db.qWithP(
+                        conn,
+                        null,
+                        `INSERT INTO pictrue (base64, file_name)
+                        VALUES (${mysql.escape(base64)}, ${mysql.escape(file_name)})`);
+                })
+                .then((rows: any) => {
+                    lastId = rows.insertId;
+                    console.log(lastId);
+                    return db.qWithP(
+                        conn,
+                        lastId,
+                        `INSERT INTO gossip(detail, created_at, picid)
+                        VALUES (${mysql.escape(detail)},
+                        ${mysql.escape(create_at)}, ? )`);
+                })
+                .then((rows: any) => {
+                    db.commit(conn);
+                });
+            } catch (error) {
+                throw error;
+            }
+        } else {
+            const sql = `INSERT INTO gossip(detail, created_at); VALUES (${mysql.escape(detail)},
+                  '${create_at}' )`;
 
-        sql = `INSERT INTO picture (base64, file_name) VALUES (${mysql.escape(base64)}, ${mysql.escape(file_name)})`;
-        sqls.push(sql);
-        sql = 'SELECT LAST_INSERT_ID()';
-        sqls.push(sql);
-        sql = `INSERT INTO gossip(detail, created_at, picid) VALUES (${mysql.escape(detail)},
-              '${create_at}', ? )`;
-        sqls.push(sql);
-
-        try {
-            db.transaction(sqls);
-        } catch (error) {
-            throw error;
+            try {
+                await db.query(sql);
+            } catch (error) {
+                throw error;
+            }
         }
     }
 
     public updateGosAndFile = async (gossipInfo: any): Promise<void> => {
+        const {detail, id} = gossipInfo;
+        let base64: string = '', file_name: string = '';
+        if (typeof gossipInfo.upload !== 'undefined' &&
+            gossipInfo.upload.length !== 0) {
+            base64 = gossipInfo.upload.base64;
+            file_name = gossipInfo.upload.file_name;
+        }
+        const create_at = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
+        try {
+            if (base64 !== '') {
+                const info: any = await this.findById(id);
+                if (info && info.length > 0) {
+                    // gossip里面有picid 执行更新
+                    if (typeof info[0].picid !== 'undefined') {
+                        let sql = `UPDATE FROM pictrue SET base64=${mysql.escape(base64)} WHERE picid=${mysql.escape(info[0].picid)}`;
+                        await db.query(sql);
+
+                        sql = `UPDATE FROM gossip
+                            SET detail=${mysql.escape(detail)}
+                            WHERE id=${mysql.escape(id)}`;
+                        await db.query(sql);
+                    // gossip里面没有pic 执行插入
+                    } else {
+                        const sql = `INSERT INTO pictrue (base64, file_name) VALUES(${mysql.escape(base64)}, ${mysql.escape(file_name)})`;
+
+                        const rows = await db.query(sql);
+
+                        // gossip表的picid更新
+                        if (rows && typeof rows.insertId !== 'undefined') {
+                            if (rows.insertId !== 0) {
+                                const sql = `UPDATE FROM gossip
+                                            SET picid = ${mysql.escape(rows.insertId)},
+                                            detail=${mysql.escape(detail)}
+                                            WHERE id=${mysql.escape(id)}`;
+                                await db.query(sql);
+                            }
+                        }
+                    }
+                } else {
+                    throw new Error('没有对应的数据');
+                }
+            } else {
+                const info: any = await this.findById(id);
+                if (info && info.length > 0) {
+                    // gossip里面有picid 更新成null
+                    if (typeof info[0].picid !== 'undefined') {
+                        let sql = `UPDATE FROM gossip
+                                    SET picid=null
+                                    WHERE id=${mysql.escape(id)}`;
+                        await db.query(sql);
+
+                                        // 删除picture表
+                        sql = `DELETE FROM gossip where picid=${mysql.escape(info[0].picid)}`;
+                        await db.query(sql);
+                    }
+                    const sql = `UPDATE FROM gossip
+                                SET detail=${mysql.escape(detail)}
+                                WHERE id=${mysql.escape(id)}`;
+                    await db.query(sql);
+                } else {
+                    throw new Error('没有对应的数据');
+                }
+            }
+        } catch (error) {
+            throw error;
+        }
     }
 }
 

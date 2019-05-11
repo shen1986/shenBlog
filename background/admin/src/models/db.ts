@@ -1,3 +1,8 @@
+/**
+ * @Description:
+ * @Author: shenxf
+ * @Date: 2019-05-09 20:24:10
+ */
 /*
  * @Description: 连接mysql
  * @Author: shenxf
@@ -24,7 +29,7 @@ class Db {
      */
     public query = async (sql: string): Promise<any> => {
 
-        console.log(sql);
+        // console.log(sql);
         const conn = await this.getConnection();
 
         const result = await this.q(conn, sql);
@@ -32,16 +37,11 @@ class Db {
         return result;
     }
 
-    public transaction = async (sqls: string[]): Promise<void> => {
-        const conn = await this.getConnection();
-        await this.t(conn, sqls);
-    }
-
     /**
      * @description: 从连接池里面取出连接
      * @return: 数据库连接
      */
-    private getConnection = (): Promise<any> => {
+    public getConnection = (): Promise<any> => {
         return new Promise((resolved, rejected) => {
             Db.pool.getConnection((err, connection) => {
                 if (err instanceof Error) {
@@ -78,29 +78,33 @@ class Db {
      * @param {string[]} sqls - 复数sql文
      * @return: 是否成功
      */
-    private t = (connection: any, sqls: string[]): Promise<any> => {
-        const lastId = '';
+    public t = (connection: any): Promise<any> => {
         return new Promise((resoloved, rejected) => {
-            for (const sql in sqls) {
-                connection.beginTransaction(function(err: any) {
-                    if (err) { throw err; }
-                    connection.query(sql, lastId, function (error: any, results: any, fields: any) {
-                        if (error) {
-                          return connection.rollback(function() {
-                            throw error;
-                          });
-                        }
-                    });
-                });
-            }
+            connection.beginTransaction((err: any) => {
+                if (err) { throw err; }
+                resoloved();
+            });
+        });
+    }
 
-            connection.commit(function(err: any) {
-                if (err) {
-                  return connection.rollback(function() {
-                    throw err;
-                  });
+    public commit = (connection: any) => {
+        connection.commit(function(err: any) {
+            if (err) {
+              return connection.rollback(function() {
+                throw err;
+              });
+            }
+        });
+    }
+
+    public qWithP = (connection: any, params: any, sql: string): Promise<any> => {
+        return new Promise((resolved, rejected) => {
+            connection.query(sql, params, (err: any, rows: any, fields: any) => {
+                if (err instanceof Error) {
+                    rejected(err);
+                } else {
+                    resolved(rows);
                 }
-                resoloved('success');
             });
         });
     }

@@ -68,8 +68,7 @@ export default class AddTalkEdit extends Vue {
                     uid: file.uid,
                     name: file.name,
                     status: 'done',
-                    // url: 'data:image/png;base64,' + imageBase64,
-                    base64: `data:image/${suffix};base64,` + imageBase64,
+                    base64: imageBase64,
                 };
                 this.form.setFieldsValue({ upload: [tmpFile] });
             } else {

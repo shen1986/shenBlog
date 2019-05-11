@@ -5,6 +5,7 @@
  */
 import GossipModel from '../models/gossipModel';
 import moment from 'moment';
+import path from 'path';
 
 class Gossip {
 
@@ -13,7 +14,6 @@ class Gossip {
 
         try {
             const rows = await gossipModel.findAll();
-
             ctx.body = {
                 status: 1, info: rows
             };
@@ -48,11 +48,30 @@ class Gossip {
 
         try {
             const rows = await gossipModel.findById(id);
+            const result: any = {};
+            if (rows.length == 1) {
+                result.detail = rows[0].detail;
+                result.id = rows[0].id;
+                if (!rows[0].uid || rows[0].uid === '') {
+                    result.upload = [];
+                } else {
+                    result.upload = [
+                        {
+                            uid: rows[0].uid,
+                            name: rows[0].file_name,
+                            status: 'done',
+                            thumbUrl: `data:image/${path.extname(rows[0].file_name)};base64,${rows[0].base64}`,
+                            base64: rows[0].base64
+                        } ,
+                    ];
+                }
+            }
             ctx.body = {
-                status: 0,
-                info: rows.length == 1 ? rows[0] : {}
+                status: 1,
+                info: result
             };
         } catch (error) {
+            console.log(error);
             ctx.body = {
                 status: 0,
                 msg: '查询失败'
@@ -62,10 +81,9 @@ class Gossip {
 
     public submitGossip = async (ctx: any): Promise<void> => {
         const { id } = ctx.request.body;
+        console.log(ctx.request.body);
         const gossipModel = new GossipModel();
         const create_at = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
-
-        console.log(create_at);
 
         try {
             if (id !== '') {

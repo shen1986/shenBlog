@@ -81,7 +81,7 @@ CREATE TABLE `gossip` (
   `detail` text,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `picid` varchar(30) NOT NULL,
+  `picid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
@@ -114,7 +114,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 DROP TABLE IF EXISTS `pictrue`;
 CREATE TABLE `pictrue` (
-  `picid` varchar(30) NOT NULL,
+  `picid` int(11) NOT NULL AUTO_INCREMENT,
   `base64` MEDIUMTEXT DEFAULT NULL,
   `file_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`picid`)

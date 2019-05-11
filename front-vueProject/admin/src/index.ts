@@ -28,7 +28,7 @@ Vue.prototype.$axios = Axios;
 // 导入模拟数据
 import Mock from '../mock';
 if (process.env.NODE_ENV === 'development') {
-    Mock.init();
+    // Mock.init();
 }
 
 const v: any = new Vue({

@@ -29,6 +29,7 @@ export default class AddTalk extends Vue {
             .then((res: any) => {
                 const info = {
                     ...res,
+                    id: '',
                 };
 
                 return this.$axios.post('gossip-submit', info);
