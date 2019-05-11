@@ -32,6 +32,11 @@ class Db {
         return result;
     }
 
+    public transaction = async (sqls: string[]): Promise<void> => {
+        const conn = await this.getConnection();
+        await this.t(conn, sqls);
+    }
+
     /**
      * @description: 从连接池里面取出连接
      * @return: 数据库连接
@@ -63,6 +68,39 @@ class Db {
                     resolved(rows);
                 }
                 connection.release(); // 释放链接
+            });
+        });
+    }
+
+    /**
+     * @description: 事务处理
+     * @param {any} connection - 数据库连接
+     * @param {string[]} sqls - 复数sql文
+     * @return: 是否成功
+     */
+    private t = (connection: any, sqls: string[]): Promise<any> => {
+        const lastId = '';
+        return new Promise((resoloved, rejected) => {
+            for (const sql in sqls) {
+                connection.beginTransaction(function(err: any) {
+                    if (err) { throw err; }
+                    connection.query(sql, lastId, function (error: any, results: any, fields: any) {
+                        if (error) {
+                          return connection.rollback(function() {
+                            throw error;
+                          });
+                        }
+                    });
+                });
+            }
+
+            connection.commit(function(err: any) {
+                if (err) {
+                  return connection.rollback(function() {
+                    throw err;
+                  });
+                }
+                resoloved('success');
             });
         });
     }
