@@ -101,32 +101,6 @@ class Gossip {
                 msg: '操作失败'
             };
         }
-
-    // let sql = "", fileName = null, saveName = null;
-    // let { id, detail } = req.body;
-
-    // if (req.file) {
-    //     fileName = req.file.originalname;
-    //     saveName = req.file.filename;
-    // }
-    // if (id != null) {
-    //     sql = `update gossip set detail = ${mysql.escape(detail)}, file_name = ${mysql.escape(fileName)},
-// 		save_name = ${mysql.escape(saveName)}, updated_at = "${new Date()._format("yyyy-MM-dd hh:mm:ss")}" where id = ${+id}`;
-    // }
-    // else {
-    //     sql = `insert into gossip(detail, created_at, file_name, save_name) values (${mysql.escape(detail)},
-// 		"${new Date()._format("yyyy-MM-dd hh:mm:ss")}", ${mysql.escape(fileName)}, ${mysql.escape(saveName)})`;
-    // }
-
-    // db.query(sql, function (err, rows) {
-    //     if (err) {
-    //         console.log(err);
-    //         res.json({ status: 0, message: '操作失败' })
-    //     }
-    //     else {
-    //         res.json({ status: 1 });
-    //     }
-    // })
     }
 }
 
