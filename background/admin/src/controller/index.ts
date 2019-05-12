@@ -13,18 +13,24 @@ class Index {
      * @param {any} ctx - koa环境上下文
      */
     public goIndex = async (ctx: any): Promise<void> => {
-        const result = await this.getIndex();
-        ctx.body = result;
+        try {
+            const result = await this.getIndex('vue');
+            ctx.body = result;
+        } catch (error) {
+            // 不存在的时候看看react是否存在
+            const result = await this.getIndex('react');
+            ctx.body = result;
+        }
     }
 
     /**
      * @description: 取得index画面
      * @return: index的html
      */
-    private getIndex = (): Promise<any> => {
+    private getIndex = (type: string): Promise<any> => {
         return new Promise((resolve, reject) => {
             fs.readFile(
-                path.join(__dirname, '../public/dist/index.html'),
+                path.join(__dirname, `../public/${type}/index.html`),
                 (err, data) => {
                     if (err) {
                         reject(err);

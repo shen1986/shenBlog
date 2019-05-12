@@ -37,8 +37,8 @@ export default class UpdateTalk extends Vue {
             .then((res: any) => {
                 if (res.data.status === 1) {
                     const edit: any = this.$refs.edit;
-                    id = res.data.info;
-                    console.log('info', res.data.info);
+                    this.id = res.data.info.id;
+                    console.log(res.data.info);
                     edit.form.setFieldsValue({
                         upload: res.data.info.upload,
                         detail: res.data.info.detail,
@@ -63,6 +63,7 @@ export default class UpdateTalk extends Vue {
                     ...res,
                     id: this.id,
                 };
+                console.log(info);
 
                 return this.$axios.post('gossip-submit', info);
             })

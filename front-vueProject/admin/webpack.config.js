@@ -13,7 +13,7 @@ module.exports = {
   entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    publicPath: "/dist/",
+    publicPath: "/vue/",
     filename: "build.js" // .[hash:8] 指定后 webpack-dev-server 就跑不起来了
   },
   module: {

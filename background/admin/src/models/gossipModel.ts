@@ -110,22 +110,24 @@ class GossipModel {
         let base64: string = '', file_name: string = '';
         if (typeof gossipInfo.upload !== 'undefined' &&
             gossipInfo.upload.length !== 0) {
-            base64 = gossipInfo.upload.base64;
-            file_name = gossipInfo.upload.file_name;
+            base64 = gossipInfo.upload[0].base64;
+            file_name = gossipInfo.upload[0].name;
         }
-        const create_at = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+        const update_at = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
         try {
             if (base64 !== '') {
                 const info: any = await this.findById(id);
                 if (info && info.length > 0) {
+                    console.log(info);
                     // gossip里面有picid 执行更新
-                    if (typeof info[0].picid !== 'undefined') {
-                        let sql = `UPDATE FROM pictrue SET base64=${mysql.escape(base64)} WHERE picid=${mysql.escape(info[0].picid)}`;
+                    if (typeof info[0].uid !== 'undefined' && info[0].uid !== null) {
+                        let sql = `UPDATE pictrue SET base64=${mysql.escape(base64)} WHERE picid=${mysql.escape(info[0].uid)}`;
                         await db.query(sql);
 
-                        sql = `UPDATE FROM gossip
-                            SET detail=${mysql.escape(detail)}
+                        sql = `UPDATE gossip
+                            SET detail=${mysql.escape(detail)},
+                                updated_at=${mysql.escape(update_at)}
                             WHERE id=${mysql.escape(id)}`;
                         await db.query(sql);
                     // gossip里面没有pic 执行插入
@@ -137,9 +139,10 @@ class GossipModel {
                         // gossip表的picid更新
                         if (rows && typeof rows.insertId !== 'undefined') {
                             if (rows.insertId !== 0) {
-                                const sql = `UPDATE FROM gossip
+                                const sql = `UPDATE gossip
                                             SET picid = ${mysql.escape(rows.insertId)},
-                                            detail=${mysql.escape(detail)}
+                                                detail=${mysql.escape(detail)},
+                                                updated_at=${mysql.escape(update_at)}
                                             WHERE id=${mysql.escape(id)}`;
                                 await db.query(sql);
                             }
@@ -150,20 +153,22 @@ class GossipModel {
                 }
             } else {
                 const info: any = await this.findById(id);
+                console.log(info);
                 if (info && info.length > 0) {
                     // gossip里面有picid 更新成null
-                    if (typeof info[0].picid !== 'undefined') {
-                        let sql = `UPDATE FROM gossip
+                    if (typeof info[0].uid !== 'undefined') {
+                        let sql = `UPDATE gossip
                                     SET picid=null
                                     WHERE id=${mysql.escape(id)}`;
                         await db.query(sql);
 
-                                        // 删除picture表
-                        sql = `DELETE FROM gossip where picid=${mysql.escape(info[0].picid)}`;
+                        // 删除picture表
+                        sql = `DELETE FROM gossip where picid=${mysql.escape(info[0].uid)}`;
                         await db.query(sql);
                     }
-                    const sql = `UPDATE FROM gossip
-                                SET detail=${mysql.escape(detail)}
+                    const sql = `UPDATE gossip
+                                SET detail=${mysql.escape(detail)},
+                                    updated_at=${mysql.escape(update_at)}
                                 WHERE id=${mysql.escape(id)}`;
                     await db.query(sql);
                 } else {
