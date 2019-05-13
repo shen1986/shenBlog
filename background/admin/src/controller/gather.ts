@@ -49,7 +49,6 @@ class Gather {
                 status: 1,
                 info: rows.length == 1 ? rows[0] : {}
             };
-            console.log(ctx.body);
         } catch (error) {
             ctx.body = {
                 status: 0,

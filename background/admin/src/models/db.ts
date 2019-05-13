@@ -29,7 +29,6 @@ class Db {
      */
     public query = async (sql: string): Promise<any> => {
 
-        // console.log(sql);
         const conn = await this.getConnection();
 
         const result = await this.q(conn, sql);

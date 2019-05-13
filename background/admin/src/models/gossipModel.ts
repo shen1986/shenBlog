@@ -62,13 +62,12 @@ class GossipModel {
             base64 = gossipInfo.upload[0].base64;
             file_name = gossipInfo.upload[0].name;
         }
-        console.log(gossipInfo);
+
         const create_at = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
         if (base64 !== '') {
             try {
                 const conn = await db.getConnection();
-                console.log(conn);
                 let lastId: any = null;
                 db.t(conn).then(() => {
                     return db.qWithP(
@@ -79,7 +78,6 @@ class GossipModel {
                 })
                 .then((rows: any) => {
                     lastId = rows.insertId;
-                    console.log(lastId);
                     return db.qWithP(
                         conn,
                         lastId,
@@ -119,7 +117,6 @@ class GossipModel {
             if (base64 !== '') {
                 const info: any = await this.findById(id);
                 if (info && info.length > 0) {
-                    console.log(info);
                     // gossip里面有picid 执行更新
                     if (typeof info[0].uid !== 'undefined' && info[0].uid !== null) {
                         let sql = `UPDATE pictrue SET base64=${mysql.escape(base64)} WHERE picid=${mysql.escape(info[0].uid)}`;
@@ -153,7 +150,6 @@ class GossipModel {
                 }
             } else {
                 const info: any = await this.findById(id);
-                console.log(info);
                 if (info && info.length > 0) {
                     // gossip里面有picid 更新成null
                     if (typeof info[0].uid !== 'undefined') {

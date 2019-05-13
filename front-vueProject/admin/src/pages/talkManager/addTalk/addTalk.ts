@@ -42,7 +42,6 @@ export default class AddTalk extends Vue {
                 }
             })
             .catch((err: any) => {
-                // console.log(typeof err);
                 if (err instanceof Error) {
                     message.error(err.message);
                 } else {

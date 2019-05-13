@@ -81,7 +81,6 @@ class Gossip {
 
     public submitGossip = async (ctx: any): Promise<void> => {
         const { id } = ctx.request.body;
-        console.log(ctx.request.body);
         const gossipModel = new GossipModel();
         const create_at = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 

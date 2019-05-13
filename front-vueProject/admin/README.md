@@ -14,8 +14,6 @@ npm run dev
 ```shell
 npm run build
 ```
-
 ## 备忘
-- 之前忘记安装tslint 导致 tslint.json文件失效。
-
-## 踩过的坑
+- 解决 mac 系统 npm install 各种权限问题。
+    + https://www.jianshu.com/p/6c67a456654b
