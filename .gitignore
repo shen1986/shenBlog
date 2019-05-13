@@ -50,3 +50,6 @@ Temporary Items
 */.vscode
 *.chunk.js
 chunk/
+
+# 自定义忽略
+.vscode
