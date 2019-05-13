@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/**
+ * @Description: 点滴样式
+ * @Author: shenxf
+ * @Date: 2019-04-02 19:54:21
+ */
+.note-wrap {
+  font-size: 12px;
+  padding: 10px 17px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 4px #555;
+  transition: box-shadow .3s ease-in; }
+
+.note-wrap:hover {
+  box-shadow: 0 0 15px #222; }
+
+.note-abstract,
+.note-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.rotateInUpRight {
+  animation-name: J; }
+
+.rotateInDownLeft {
+  animation-name: K; }
+
+.note-title {
+  color: #555;
+  font-size: 14px;
+  font-weight: 700; }
+
+.note-author {
+  text-align: right; }
+
+@keyframes J {
+  0% {
+    transform-origin: right bottom;
+    transform: rotate(-90deg);
+    opacity: 0; }
+  100% {
+    transform-origin: right bottom;
+    transform: none;
+    opacity: 1; } }
+
+@keyframes K {
+  0% {
+    transform-origin: left bottom;
+    transform: rotate(-45deg);
+    opacity: 0; }
+  100% {
+    transform-origin: left bottom;
+    transform: none;
+    opacity: 1; } }
+
+/* 模态框样式 */
+.note-modal-tag {
+  margin-top: -8px; }
+
+.note-modal-detail {
+  margin: 13px 0 6px;
+  color: #555;
+  font-size: 14px; }
+
+/* 翻页 */
+.pagination {
+  float: right; }

@@ -1,0 +1,96 @@
+<!--
+ * @Description: 右边栏
+ * @Author: shenxf
+ * @Date: 2019-03-26 09:55:16
+ -->
+<div class="col-xs-24 col-sm-6" style="padding-left: 12px; padding-right: 12px;">
+    <div class="nav-side">
+        <div class="panel user-introduction">
+            <img src="/images/portrait_bg.jpg" alt="">
+            <div class="panel-body">
+                <div class="user-portrait">
+                    <img src="/images/me.jpeg" alt="">
+                    <h3>Shexf</h3>
+                    <p>{{portrait.intro}}</p>
+                </div>
+                <div class="statistics">
+                    <span class="statistic-item">
+                        随笔 - {{portrait.articleCount}}
+                    </span>
+                    <span class="spliter"></span>
+                    <span class="statistic-item">
+                        访问 - {{portrait.viewCount > 10000 ? (portrait.viewCount / 1000).toFixed(1) + "k" : portrait.viewCount}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">FOLLOW ME</div>
+            <div class="panel-body text-center">
+                <p class="follow-link">
+                    <a href="https://github.com/shen1986" target="_blank">
+                        <!-- react-text: 127 -->
+                        <!-- /react-text -->
+                        <i class="icon-github"></i>
+                    </a>
+                </p>
+                <p class="follow-link" style="transform: rotate(180deg);">
+                    <a href="https://github.com/shen1986" target="_blank">
+                        <i class="icon-github"></i>
+                    </a>
+                </p>
+                <p class="follow-link" style="transform: rotate(90deg);">
+                    <a href="https://github.com/shen1986" target="_blank">
+                        <i class="icon-github"></i>
+                    </a>
+                </p>
+                <p class="follow-link" style="transform: rotate(270deg);">
+                    <a href="https://github.com/shen1986" target="_blank">
+                        <i class="icon-github"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">文章列表</div>
+            <div class="panel-body">
+                <ol>
+                    {{each articles}}
+                    <li><a href="/article-detail/{{$value.id}}">{{$value.title}}</a></li>
+                    {{/each}}
+                </ol>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">文章分类</div>
+            <div class="panel-body">
+                <ul>
+                    {{each categories}}
+                        <li><a href="/category/{{$value.id}}">{{$value.theme}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">云标签</div>
+            <div class="panel-body">
+                <div class="icloud-wrap">
+                    {{each tags}}
+                        <a href="/tag/{{$value}}">
+                            <span class="icloud-item" style="background-color: {{colors[$index % 5]}}">{{$value}}</span>
+                        </a>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">友情链接</div>
+            <div class="panel-body">
+                {{each links}}
+                <ul>
+                    <li><a href="{{$value.url}}" target="_blank">{{$value.text}}</a></li>
+                </ul>
+                {{/each}}
+            </div>
+        </div>
+    </div>

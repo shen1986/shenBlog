@@ -1,0 +1,91 @@
+<!--
+ * @Description: header
+ * @Author: shenxf
+ * @Date: 2019-03-25 21:51:20
+ -->
+<div class="nav-top-wrap">
+    <div class="container">
+        <div class="site-logo">
+            <h2>
+                <span>Shen</span><span>xf</span>
+            </h2>
+            <p>我想去天堂，但我不想死</p>
+        </div>
+        <div class="navbar-collapse">
+            <div class="col-xs-24 hidden-sm">
+                <div class="navbar-collapse-button navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </div>
+                <div class="navbar-collapse-body" style="height: 0px" id="bs-navbar-collapse">
+                    <div class="hidden-sm">
+                        <div>
+                            <p class="navbar-item"><a data-key="home" href="/home">主页</a></p>
+                            <p class="navbar-item"><a data-key="article" href="/article">文章</a></p>
+                            <p class="navbar-item"><a data-key="timeline" href="/timeline">归档</a></p>
+                            <p class="navbar-item"><a data-key="gather" href="/gather">点滴</a></p>
+                            <p class="navbar-item"><a data-key="gossip" href="/gossip">慢生活</a></p>
+                            <div style="padding: 10px;">
+                                <span class="ant-input-search ant-input-affix-wrapper">
+                                    <input type="text" placeholder="Search" value="" id="search-input2" class="ant-input ant-input-lg">
+                                    <span class="ant-input-suffix">
+                                        <i class="anticon anticon-search ant-input-search-icon"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ant-row row">
+        <div class="hidden-xs col-sm-24">
+            <div class="nav-top row">
+                <div class="container">
+                    <ul>
+                        <li class="nav-top-item">
+                            <a data-key="home" href="/home">主页</a>
+                        </li>
+                        <li class="nav-top-item">
+                            <a data-key="article" href="/article">文章</a>
+                        </li>
+                        <li class="nav-top-item">
+                            <a data-key="timeline" href="/timeline">归档</a>
+                        </li>
+                        <li class="nav-top-item">
+                            <a data-key="gather" href="/gather">点滴</a>
+                        </li>
+                        <li class="nav-top-item">
+                            <a data-key="gossip" href="/gossip">慢生活</a>
+                        </li>
+                        <div class="nav-top-search">
+                            <span class="ant-input-search ant-input-affix-wrapper">
+                                <input type="text" placeholder="Search" value="" id="search-input" class="ant-input ant-input-lg">
+                                <span class="ant-input-suffix">
+                                    <i class="ant-input-search-icon glyphicon glyphicon-search"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="bread-crumb">
+        <span class="fl">当前位置 : &nbsp; &nbsp;</span>
+        <div class="fl">
+            <div class="ant-breadcrumb">
+                <span>
+                    <span class="ant-breadcrumb-link">
+                        <span>{{block 'title'}}My Site{{/block}}</span>
+                    </span>
+                    <span class="ant-breadcrumb-separator">/</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

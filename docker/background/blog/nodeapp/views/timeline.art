@@ -1,0 +1,69 @@
+<!--
+ * @Description: 归档
+ * @Author: shenxf
+ * @Date: 2019-03-25 21:02:09
+ -->
+{{ extend './layout/main.art' }}
+
+<!-- 样式设定 -->
+{{block 'head'}}
+<link rel="stylesheet" href="/css/timeline.css">
+{{/block}}
+
+<!-- 标题设定 -->
+{{block 'title'}}归档{{/block}}
+
+<!-- 主体内容 -->
+{{block 'content'}}
+<div class="timeline-wrap">
+    <div class="dropdown" id="myDropdown">
+        <button class="btn btn-default dropdown-toggle" style="width: 150px" type="button" id="dropdownMenu1"
+            data-toggle="dropdown">
+            <span id="dropdownText" style="float: left;">全部表示</span>
+            <span class="glyphicon glyphicon-chevron-up" style="float: right;"></span>
+        </button>
+        <ul class="dropdown-menu">
+            {{each categories}}
+            <li><a href="javascript:void(0);" data-id="{{$value.id}}">{{$value.theme}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="timeline-body">
+        <ul class="ant-timeline">
+        {{each tlItems}}
+            {{if $value.type === 'time'}}
+            <li class="ant-timeline-item {{$index == tlItems.length - 1 ? 'ant-timeline-item-last' : ''}}">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue">
+                    <i class="glyphicon glyphicon-time" style="font-size: 16px;"></i>
+                </div>
+                <div class="ant-timeline-item-content">
+                    <p class="timeline-time wow zoomIn animated">{{$value.key}}</p>
+                </div>
+            </li>
+            {{else}}
+            <li class="ant-timeline-item {{$index == tlItems.length - 1 ? 'ant-timeline-item-last' : ''}}">
+                <div class="ant-timeline-item-tail"></div>
+                <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                <div class="ant-timeline-item-content">
+                    <a href="article-detail/{{$value.id}}">
+                        <p class="timeline-item wow zoomIn animated">{{$value.title}}</p>
+                    </a>
+                </div>
+            </li>
+            {{/if}}
+        {{/each}}
+        </ul>
+    </div>
+    <div class="page">
+        <ul class="pagination">
+        </ul>
+        <input type="hidden" id="totalPage" value={{total}} />
+    </div>
+</div>
+{{/block}}
+
+<!-- js设置 -->
+{{block 'scripts'}}
+<script src="/js/timeline.js"></script>
+{{/block}}
