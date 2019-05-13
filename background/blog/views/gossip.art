@@ -27,7 +27,7 @@
                         <div class="ant-row row" style="margin-left: -6px; margin-right: -6px;">
                             <div class="col-xs-24 col-sm-9" style="padding-left: 6px; padding-right: 6px;">
                                 <div class="gossip-img">
-                                    <img src="images/gossip/{{$value.save_name}}" alt="">
+                                    <img src="{{$value.url}}" alt="">
                                 </div>
                             </div>
                             <div class="col-xs-24 col-sm-15" style="padding-left: 6px; padding-right: 6px;">

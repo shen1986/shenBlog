@@ -6,7 +6,7 @@
 import * as timelineModel from '../models/timeline';
 
 // 获得归档页
-export let getTimeline = async function (ctx: any) {
+export let getTimeline = async (ctx: any) => {
 
     let timeline: any = await timelineModel.getTimeline();
 
@@ -21,7 +21,7 @@ export let getTimeline = async function (ctx: any) {
     });
 };
 
-export let getTimelinebySel = async function (ctx: any) {
+export let getTimelinebySel = async (ctx: any) => {
     let timeline: any = await timelineModel.getTimeline( ctx.query.current, ctx.query.count, ctx.query.category );
 
     timeline = PreperTimeline(timeline);
@@ -31,7 +31,7 @@ export let getTimelinebySel = async function (ctx: any) {
     });
 };
 
-const PreperTimeline = function( timeline: any) {
+const PreperTimeline = ( timeline: any) => {
     timeline.tlItems = [];
     timeline.items.forEach((item: any, index: number, arr: any) => {
         const colorArr = ['blue', 'red', 'green'];

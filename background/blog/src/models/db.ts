@@ -16,7 +16,7 @@ class Db {
         dateStrings: true
     });
 
-    public async query(sql: String) {
+    public query = async (sql: String) => {
 
         const conn = await this.getConnection();
         const result = await this.q(conn, sql);
@@ -24,7 +24,7 @@ class Db {
         return result;
     }
 
-    private getConnection() {
+    private getConnection = () => {
         return new Promise((resolved, rejected) => {
             Db.pool.getConnection((err, connection) => {
                 if (err instanceof Error) {
@@ -36,7 +36,7 @@ class Db {
         });
     }
 
-    private q(connection: any, sql: String) {
+    private q = (connection: any, sql: String) => {
         return new Promise((resolved, rejected) => {
             connection.query(sql, function (err: any, rows: any) {
                 if (err instanceof Error) {
@@ -44,7 +44,7 @@ class Db {
                 } else {
                     resolved(rows);
                 }
-                // connection.release(); // 释放链接， 单例模式就不释放连接了。
+                connection.release(); // 释放链接。
             });
         });
     }

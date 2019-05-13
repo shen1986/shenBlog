@@ -10,7 +10,21 @@
     + 安装mysql
 - 安装mysql，创建数据库，执行blog.sql文件创建表。
     + config表必须有2条数据 name：'intro' 的自我介绍和 name：'view_count' 访问次数
-- 修改blog/models/db.js文件中的mysql配置。
+- 添加本地配置文件 在文件加`src/common/config/config.ts`,内容如下。
+```javascript
+const config = {
+
+    // 数据库相关
+    host: 数据库连接地址,
+    user: 用户名,
+    password: 密码,
+    database: 数据库名,
+
+    // 服务器启动端口
+    port: 3000,
+};
+
+```
 - 进入blog 执行下面的操作
 ```shell
 npm install

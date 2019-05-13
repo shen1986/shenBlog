@@ -5,7 +5,7 @@
  */
 import db from './db';
 
-export let initWindow = async function(ctx: any, next: any) {
+export let initWindow = async (ctx: any, next: any) => {
     const result = await getNavsideInfo();
     // 异常终了
     if (result.status !== 1) {
@@ -17,7 +17,7 @@ export let initWindow = async function(ctx: any, next: any) {
 };
 
 // 取得右边栏情报
-const getNavsideInfo = async function() {
+const getNavsideInfo = async () => {
     const sqls = [
         'select value from config where (name = "intro" or name = "view_count") and status = 1',
         'select id, title from article where status = 1 order by created_at desc limit 10',
@@ -44,7 +44,7 @@ const getNavsideInfo = async function() {
   }
 };
 
-const result = function(out: any) {
+const result = (out: any) => {
   let tags = [];
   let item: any = {};
   for (item of out[4]) {

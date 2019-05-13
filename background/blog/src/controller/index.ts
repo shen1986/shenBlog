@@ -11,8 +11,8 @@ export let getHome = async (ctx: any, next: any) => {
     await ctx.render('index.art', renderData);
 };
 
-const getArt = async function (ctx: any) {
-    const articleData = await articleModel.getArticles(null, 15, 1, null, null, null, ctx.req.headers['user-agent'].toLowerCase());
+const getArt = async (ctx: any) => {
+    const articleData = await articleModel.getArticles(1, 15, null, null, null, null, ctx.req.headers['user-agent'].toLowerCase());
 
     const renderData = {
         ...ctx.res.$initValue,

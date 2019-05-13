@@ -6,7 +6,7 @@
 import * as gossipModel from '../models/gossip';
 
 // 慢生活首页
-export let getGossip = async function (ctx: any) {
+export let getGossip = async (ctx: any) => {
 
     const gossip = await gossipModel.getGossip();
 

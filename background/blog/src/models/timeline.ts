@@ -5,7 +5,7 @@
  */
 import db from './db';
 
-export let getTimeline = async function (current: number = 1, count: number = 30, category: number = 0) {
+export let getTimeline = async (current: number = 1, count: number = 30, category: number = 0) => {
 
     const sqls = [
         'select id, theme from category where status = 1'
@@ -47,7 +47,7 @@ export let getTimeline = async function (current: number = 1, count: number = 30
     }
 };
 
-const result = function(out: any) {
+const result = (out: any) => {
     return {
         status: 1,
         categories: out[0],

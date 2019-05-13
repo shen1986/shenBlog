@@ -7,7 +7,7 @@ import * as gatherModel from '../models/gather';
 import * as Str from '../common/utils/string';
 
 // 获得点滴页
-export let getGather = async function (ctx: any, next: any) {
+export let getGather = async (ctx: any, next: any) => {
     const notes: any = await gatherModel.getNotes();
 
     if (notes.status === '0') {

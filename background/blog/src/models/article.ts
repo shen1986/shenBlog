@@ -7,9 +7,9 @@ import db from './db';
 import * as Str from '../common/utils/string';
 import mysql from 'mysql';
 
-export let getArticles = async function (current: number,
+export let getArticles = async (current: number,
     count: number = null, type: number = null, category: number = null,
-    keyword: String = null, tag: String = null, deviceAgent: any = null) {
+    keyword: String = null, tag: String = null, deviceAgent: any = null) => {
 
     const field = 'article.id, title, body, tag, created_at, views, theme';
     let sql = `select ${field} from article join category on article.category = category.id`,
@@ -90,7 +90,7 @@ export let getArticles = async function (current: number,
     }
 };
 
-export let getArticleDetail = async function (id: number) {
+export let getArticleDetail = async (id: number) => {
     const sql = `select article.id, title, body, tag, theme, created_at, updated_at, type,
 		views, markdown from article join category on article.category = category.id where
 		article.id = ${mysql.escape(id)} and article.status = 1`;
