@@ -27,7 +27,7 @@ const app = new koa_1.default();
 const render = require('koa-art-template');
 // 这是默认设置,需要设置其他的路径可以在这设置
 render(app, {
-    root: path_1.default.join(__dirname, '../views'),
+    root: path_1.default.join(__dirname, 'views'),
     extname: '.art',
     debug: process.env.NODE_ENV !== 'production'
 });
