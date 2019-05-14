@@ -13,18 +13,29 @@ $(function () {
     setPage(currentPage, Math.ceil(totalPage / pageSize), pageClicked);
 
     function pageClicked(current) {
-        console.log('翻页被点击',current);
-        $.ajax({
-            url: 'article',
-            data: {
-                current: current,
-                count: 15,
-            },
-            type: 'get',
-            success: function(data) {
-                $('.article-list').html(data);
-            },
+
+        // 取得最新文章情报
+        getArticle(location.pathname, current, function(err, data) {
+            $('.article-list').html(data);
         });
+    }
+
+    function getArticle(geturl, current, callback) {
+        try {
+            $.ajax({
+                url: geturl,
+                data: {
+                    current: current,
+                    count: 15,
+                },
+                type: 'get',
+                success: function(data) {
+                    callback && callback(null, data);
+                },
+            });
+        } catch (error) {
+            callback && callback(error);
+        }
     }
 
     /**
