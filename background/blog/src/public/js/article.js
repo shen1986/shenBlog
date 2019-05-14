@@ -14,6 +14,17 @@ $(function () {
 
     function pageClicked(current) {
         console.log('翻页被点击',current);
+        $.ajax({
+            url: 'article',
+            data: {
+                current: current,
+                count: 15,
+            },
+            type: 'get',
+            success: function(data) {
+                $('.article-list').html(data);
+            },
+        });
     }
 
     /**

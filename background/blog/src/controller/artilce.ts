@@ -7,15 +7,27 @@ import * as articleModel from '../models/article';
 
 // 获得文章页
 export let getArticle = async (ctx: any) => {
-    const articleData = await articleModel.getArticles(1, 15, null, null, null, null, ctx.req.headers['user-agent'].toLowerCase());
+    const current = ctx.query.current ? ctx.query.current : 1;
+    let isPage = false;
+    if (ctx.query.current) {
+        isPage = true;
+    }
+    const articleData = await articleModel.getArticles(current, 15, null, null, null, null, ctx.req.headers['user-agent'].toLowerCase());
 
-    await ctx.render('article.art', {
-        ...articleData.info,
-        ...ctx.res.$initValue,
-        common: {
-            hasBanner: false
-        }
-    });
+    if (isPage) {
+        await ctx.render('article-page.art', {
+            ...articleData.info,
+        });
+    } else {
+        await ctx.render('article.art', {
+            ...articleData.info,
+            ...ctx.res.$initValue,
+            common: {
+                hasBanner: false
+            }
+        });
+    }
+
 };
 
 // 获得分类页

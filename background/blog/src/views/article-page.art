@@ -1,0 +1,22 @@
+    {{each articles}}
+    <div class="article-item wow zoomIn animated">
+        <div class="article-body">
+            <a href="/article-detail/{{$value.id}}">
+                <h4>{{$value.title}}</h4>
+            </a>
+            <p>
+                <span>post @ {{$value.created_at}}</span>
+                &nbsp;&nbsp;&nbsp;
+                <span>category: {{$value.theme}}</span>
+                &nbsp;&nbsp;&nbsp;
+                <span>浏览: {{$value.views}}</span>
+            </p>
+            <div class="article-abstract">
+                {{$value.abstract}} ...
+            </div>
+            <span class="article-link">
+                <a href="/article-detail/{{$value.id}}">阅读全文 &gt;&gt;</a>
+            </span>
+        </div>
+    </div>
+    {{/each}}
