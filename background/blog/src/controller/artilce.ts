@@ -7,10 +7,10 @@ import * as articleModel from '../models/article';
 
 // 获得文章页
 export let getArticle = async (ctx: any) => {
-    const articleData = await articleModel.getArticles(null, 15, 1, null, null, null, ctx.req.headers['user-agent'].toLowerCase());
+    const articleData = await articleModel.getArticles(1, 15, null, null, null, null, ctx.req.headers['user-agent'].toLowerCase());
 
     await ctx.render('article.art', {
-        ...articleData,
+        ...articleData.info,
         ...ctx.res.$initValue,
         common: {
             hasBanner: false
@@ -24,7 +24,7 @@ export let getCategory = async (ctx: any) => {
     const articleData = await articleModel.getArticles(1, 15, null, ctx.params.id, null, null, ctx.req.headers['user-agent'].toLowerCase());
 
     await ctx.render('article.art', {
-        ...articleData,
+        ...articleData.info,
         ...ctx.res.$initValue,
         common: {
             hasBanner: false
@@ -38,7 +38,7 @@ export let getTag = async (ctx: any) => {
     const articleData = await articleModel.getArticles(1, 15, null, null, null, ctx.params.tag, ctx.req.headers['user-agent'].toLowerCase());
 
     await ctx.render('article.art', {
-        ...articleData,
+        ...articleData.info,
         ...ctx.res.$initValue,
         common: {
             hasBanner: false
@@ -65,7 +65,7 @@ export let getSearch = async ( ctx: any ) => {
     const articleData = await articleModel.getArticles(1, 15, null, null, ctx.params.keyword, null, ctx.req.headers['user-agent'].toLowerCase());
 
     await ctx.render('article.art', {
-        ...articleData,
+        ...articleData.info,
         ...ctx.res.$initValue,
         common: {
             hasBanner: false
