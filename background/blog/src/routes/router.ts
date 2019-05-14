@@ -38,6 +38,7 @@ router.get('/get-timeline', timeline.getTimelinebySel);
 
 // 点滴
 router.get('/gather', gather.getGather);
+router.get('/get-note', gather.getNote);
 
 // 慢生活
 router.get('/gossip', gossip.getGossip);

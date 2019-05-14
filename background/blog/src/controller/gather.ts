@@ -18,11 +18,26 @@ export let getGather = async (ctx: any, next: any) => {
     });
 
     delete notes.status;
-    ctx.render('gather.art', {
+    await ctx.render('gather.art', {
         ...ctx.res.$initValue,
         ...notes,
         common: {
             hasBanner: false
         }
+    });
+};
+
+export let getNote = async (ctx: any, next: any) => {
+    const { current = 1, count = 15 } = ctx.query;
+
+    const notes: any = await gatherModel.getNotes(current, count);
+
+    notes.notes.forEach((element: any) => {
+        element.disDetail = Str.escape2Html(element.detail).replace(/<\/?[^>]+(>|$)/g, '');
+    });
+
+    delete notes.status;
+    await ctx.render('gather-page.art', {
+        ...notes,
     });
 };

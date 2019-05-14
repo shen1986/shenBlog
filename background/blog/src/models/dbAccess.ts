@@ -7,6 +7,7 @@ import db from './db';
 
 export let initWindow = async (ctx: any, next: any) => {
     const result = await getNavsideInfo();
+
     // 异常终了
     if (result.status !== 1) {
         await next(result);

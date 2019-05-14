@@ -9,8 +9,11 @@ $(function () {
     let totalPage = $("#totalPage").val();
     totalPage = totalPage || 0;
 
-    // 调用分页函数.参数:当前所在页, 总页数(用总条数 除以 每页显示多少条,在向上取整), ajax函数
-    setPage(currentPage, Math.ceil(totalPage / pageSize), pageClicked);
+    // 如果数据存在
+    if (totalPage !== 0) {
+        // 调用分页函数.参数:当前所在页, 总页数(用总条数 除以 每页显示多少条,在向上取整), ajax函数
+        setPage(currentPage, Math.ceil(totalPage / pageSize), pageClicked);
+    }
 
     function pageClicked(current) {
 
