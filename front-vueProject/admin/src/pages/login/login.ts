@@ -20,6 +20,7 @@ export default class Login extends Vue {
 
     private created(): void {
         this.form = this.$form.createForm(this);
+        this.pregress = false;
     }
 
     /**
@@ -70,7 +71,6 @@ export default class Login extends Vue {
                 }).catch((error: any) => {
                     message.error(error.message);
                 }).finally(() => {
-                    this.pregress = false;
                     this.percent = 0;
                 });
             } else {
