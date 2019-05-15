@@ -14,6 +14,8 @@ let MiniCssExtractPlugin = require('mini-css-extract-plugin');
 let OptimizeCss =  require('optimize-css-assets-webpack-plugin');
 // 用来压缩js
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// 依赖关系可视化
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
     optimization: {
@@ -26,12 +28,40 @@ module.exports = {
                 sourceMap: false, // es6 -> es5 转换时会用到
             }),
         ],
+        //打包 公共文件
+        splitChunks: {
+            cacheGroups: {
+                vendor:{//node_modules内的依赖库
+                    chunks:"all",
+                    test: /[\\/]node_modules[\\/]/,
+                    name:"vendor",
+                    minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
+                    maxInitialRequests: 5,
+                    minSize: 0,
+                    priority:100,
+                    // enforce: true?
+                },
+                common: {// ‘src/js’ 下的js文件
+                    chunks:"all",
+                    test:/[\\/]src[\\/]js[\\/]/,//也可以值文件/[\\/]src[\\/]js[\\/].*\.js/,  
+                    name: "common", //生成文件名，依据output规则
+                    minChunks: 2,
+                    maxInitialRequests: 5,
+                    minSize: 0,
+                    priority:1
+                }
+            }
+        },
+        runtimeChunk: {
+            name: 'manifest'
+        }
     },
     entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/vue2/',
         filename: 'js/[name].js', // .[hash:8] 指定后 webpack-dev-server 就跑不起来了
+        chunkFilename: "js/[name].chunk.js"
     },
     module: {
         rules: [
@@ -122,6 +152,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/[name].css', // 抽离出来样式的名字
         }),
+        new BundleAnalyzerPlugin({ analyzerPort: 8919 }),
     ],
     resolve: {
         extensions: ['.ts', '.js', '.vue', '.json'],
@@ -162,6 +193,6 @@ if (process.env.NODE_ENV === 'production') {
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
-        })
+        }),
     ])
 }

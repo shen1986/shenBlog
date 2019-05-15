@@ -17,3 +17,5 @@ npm run build
 ## 备忘
 - 解决 mac 系统 npm install 各种权限问题。
     + https://www.jianshu.com/p/6c67a456654b
+- webpack 打包优化
+    + http://www.cnblogs.com/vvjiang/p/9327903.html
