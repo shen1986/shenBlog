@@ -23,24 +23,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const articleModel = __importStar(require("../models/article"));
 // 获得文章页
 exports.getArticle = (ctx) => __awaiter(this, void 0, void 0, function* () {
-    const articleData = yield articleModel.getArticles(null, 15, 1, null, null, null, ctx.req.headers['user-agent'].toLowerCase());
-    yield ctx.render('article.art', Object.assign({}, articleData, ctx.res.$initValue, { common: {
-            hasBanner: false
-        } }));
+    const { current, isPage } = getPage(ctx);
+    const articleData = yield articleModel.getArticles(current, 15, null, null, null, null, ctx.req.headers['user-agent'].toLowerCase());
+    yield renderArticle(isPage, ctx, articleData);
 });
 // 获得分类页
 exports.getCategory = (ctx) => __awaiter(this, void 0, void 0, function* () {
-    const articleData = yield articleModel.getArticles(1, 15, null, ctx.params.id, null, null, ctx.req.headers['user-agent'].toLowerCase());
-    yield ctx.render('article.art', Object.assign({}, articleData, ctx.res.$initValue, { common: {
-            hasBanner: false
-        } }));
+    const { current, isPage } = getPage(ctx);
+    const articleData = yield articleModel.getArticles(current, 15, null, ctx.params.id, null, null, ctx.req.headers['user-agent'].toLowerCase());
+    yield renderArticle(isPage, ctx, articleData);
 });
 // 获得标签
 exports.getTag = (ctx) => __awaiter(this, void 0, void 0, function* () {
-    const articleData = yield articleModel.getArticles(1, 15, null, null, null, ctx.params.tag, ctx.req.headers['user-agent'].toLowerCase());
-    yield ctx.render('article.art', Object.assign({}, articleData, ctx.res.$initValue, { common: {
-            hasBanner: false
-        } }));
+    const { current, isPage } = getPage(ctx);
+    const articleData = yield articleModel.getArticles(current, 15, null, null, null, ctx.params.tag, ctx.req.headers['user-agent'].toLowerCase());
+    yield renderArticle(isPage, ctx, articleData);
 });
 // 获得文章详细
 exports.getArticleDetail = (ctx) => __awaiter(this, void 0, void 0, function* () {
@@ -51,8 +48,23 @@ exports.getArticleDetail = (ctx) => __awaiter(this, void 0, void 0, function* ()
 });
 // 检索功能
 exports.getSearch = (ctx) => __awaiter(this, void 0, void 0, function* () {
-    const articleData = yield articleModel.getArticles(1, 15, null, null, ctx.params.keyword, null, ctx.req.headers['user-agent'].toLowerCase());
-    yield ctx.render('article.art', Object.assign({}, articleData, ctx.res.$initValue, { common: {
-            hasBanner: false
-        } }));
+    const { current, isPage } = getPage(ctx);
+    const articleData = yield articleModel.getArticles(current, 15, null, null, ctx.params.keyword, null, ctx.req.headers['user-agent'].toLowerCase());
+    yield renderArticle(isPage, ctx, articleData);
 });
+const renderArticle = (isPage, ctx, articleData) => __awaiter(this, void 0, void 0, function* () {
+    if (isPage) {
+        yield ctx.render('article-page.art', Object.assign({}, articleData.info));
+    }
+    else {
+        yield ctx.render('article.art', Object.assign({}, articleData.info, ctx.res.$initValue, { common: {
+                hasBanner: false
+            } }));
+    }
+});
+const getPage = (ctx) => {
+    return {
+        current: ctx.query.current ? ctx.query.current : 1,
+        isPage: ctx.query.current ? true : false
+    };
+};

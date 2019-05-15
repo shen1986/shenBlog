@@ -32,7 +32,16 @@ exports.getGather = (ctx, next) => __awaiter(this, void 0, void 0, function* () 
         element.disDetail = Str.escape2Html(element.detail).replace(/<\/?[^>]+(>|$)/g, '');
     });
     delete notes.status;
-    ctx.render('gather.art', Object.assign({}, ctx.res.$initValue, notes, { common: {
+    yield ctx.render('gather.art', Object.assign({}, ctx.res.$initValue, notes, { common: {
             hasBanner: false
         } }));
+});
+exports.getNote = (ctx, next) => __awaiter(this, void 0, void 0, function* () {
+    const { current = 1, count = 15 } = ctx.query;
+    const notes = yield gatherModel.getNotes(current, count);
+    notes.notes.forEach((element) => {
+        element.disDetail = Str.escape2Html(element.detail).replace(/<\/?[^>]+(>|$)/g, '');
+    });
+    delete notes.status;
+    yield ctx.render('gather-page.art', Object.assign({}, notes));
 });

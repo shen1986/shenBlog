@@ -22,7 +22,7 @@ app.use(kStatic(
 // 这是处理前端跨域的配置
 app.use(cors({
     origin: function (ctx: any) {
-        if (ctx.url === '/login') {
+        if (ctx.url === '/toLogin') {
             return '*'; // 允许来自所有域名请求
         }
         return '*';

@@ -8,102 +8,143 @@ var webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const tsImportPluginFactory = require("ts-import-plugin"); // 按需加载antd用
+// 抽离css样式
+let MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// 用来压缩分离出来的css样式
+let OptimizeCss =  require('optimize-css-assets-webpack-plugin');
+// 用来压缩js
+let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.ts",
-  output: {
-    path: path.resolve(__dirname, "./dist"),
-    publicPath: "/vue/",
-    filename: "build.js" // .[hash:8] 指定后 webpack-dev-server 就跑不起来了
-  },
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: "vue-loader",
-        options: {
-          loaders: {
-            // 用来分析less用的。
-            less: "vue-style-loader!css-loader!less-loader"
-          }
-          // other vue-loader options go here
-        }
-      },
-      {
-        test: /\.(jsx|tsx|js|ts)$/,
-        loader: "ts-loader",
-        options: {
-          transpileOnly: true,
-          getCustomTransformers: () => ({
-            before: [
-              tsImportPluginFactory({
-                libraryName: "ant-design-vue", // module 的路劲
-                libraryDirectory: "es", // 引用那个版本有 lib es
-                style: "css" // 是引用 .css文件呢 还是 （true）.less 这里引less会报错，不知道原因
-              })
-            ]
-          }),
-          compilerOptions: {
-            module: "es2015"
-          },
-          appendTsSuffixTo: [/\.vue$/]
+    optimization: {
+        // 优化项
+        minimizer: [
+            new OptimizeCss(),
+            new UglifyJsPlugin({
+                cache: true, // 是否用缓存
+                parallel: true, // 并发打包
+                sourceMap: false, // es6 -> es5 转换时会用到
+            }),
+        ],
+    },
+    entry: './src/index.ts',
+    output: {
+        path: path.resolve(__dirname, './dist'),
+        publicPath: '/vue2/',
+        filename: 'js/[name].js', // .[hash:8] 指定后 webpack-dev-server 就跑不起来了
+    },
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        // 用来分析less用的。
+                        less: 'vue-style-loader!css-loader!less-loader',
+                    },
+                    // other vue-loader options go here
+                },
+            },
+            {
+                test: /\.html$/, // 用来解析在html中的图片
+                use: 'html-withimg-loader',
+            },
+            {
+                test: /\.(png|jpg|gif)$/, // 用来解析图片
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 1, // 200k大小限制
+                        outputPath: '/img/', // 输出的路径
+                    },
+                },
+            },
+            {
+                test: /\.(jsx|tsx|js|ts)$/,
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true,
+                    getCustomTransformers: () => ({
+                        before: [
+                            tsImportPluginFactory({
+                                libraryName: 'ant-design-vue', // module 的路劲
+                                libraryDirectory: 'es', // 引用那个版本有 lib es
+                                style: 'css', // 是引用 .css文件呢 还是 （true）.less 这里引less会报错，不知道原因
+                            }),
+                        ],
+                    }),
+                    compilerOptions: {
+                        module: 'es2015',
+                    },
+                    appendTsSuffixTo: [/\.vue$/],
+                },
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader, // 创建link标签
+                    'css-loader',
+                ],
+            }, // 处理 CSS 文件的 loader
+            {
+                test: /\.less$/,
+                use: [
+                    MiniCssExtractPlugin.loader, // 创建link标签
+                    'css-loader',
+                    'less-loader',
+                ],
+            }, // 处理 less 文件的 loader
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]?[hash]', // 图片的取名规则 名字后面加hash
+                },
+            },
+        ],
+    },
+    plugins: [
+        // make sure to include the plugin for the magic
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, './index.html'), // 指定模板文件路径
+            filename: 'index.html', // 设置生成的内存页面的名称
+            favicon: './favicon.ico',
+            minify: {
+                // 配置Html压缩
+                removeAttributeQuotes: true, // 删除html中的双引号
+                collapseWhitespace: true, // 变成一行去除space
+            },
+            hash: true, //引用时加上hash挫
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css', // 抽离出来样式的名字
+        }),
+    ],
+    resolve: {
+        extensions: ['.ts', '.js', '.vue', '.json'],
+        alias: {
+            vue$: 'vue/dist/vue.esm.js',
         },
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }, // 处理 CSS 文件的 loader
-      {
-        test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"]
-      }, // 处理 less 文件的 loader
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: "file-loader",
-        options: {
-          name: "[name].[ext]?[hash]" // 图片的取名规则 名字后面加hash
-        }
-      }
-    ]
-  },
-  plugins: [
-    // make sure to include the plugin for the magic
-    new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, "./index.html"), // 指定模板文件路径
-      filename: "index.html", // 设置生成的内存页面的名称
-      favicon: "./favicon.ico",
-      minify: {
-        // 配置Html压缩
-        removeAttributeQuotes: true, // 删除html中的双引号
-        collapseWhitespace: true // 变成一行去除space
-      },
-      hash: true //引用时加上hash挫
-    })
-  ],
-  resolve: {
-    extensions: [".ts", ".js", ".vue", ".json"],
-    alias: {
-      vue$: "vue/dist/vue.esm.js"
-    }
-  },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: false, // 控制要不要显示信息到控制台
-    port: 3000, // 指定服务运行的端口号
-    progress: true, // 打开进度条
-    contentBase: "./dist", // 指定启动时参照的目录
-    compress: true // 指定进行压缩
-  },
-  performance: {
-    hints: false
-  },
-  devtool: "#eval-source-map"
+    },
+    devServer: {
+        historyApiFallback: true,
+        noInfo: false, // 控制要不要显示信息到控制台
+        port: 3000, // 指定服务运行的端口号
+        progress: true, // 打开进度条
+        contentBase: './dist', // 指定启动时参照的目录
+        compress: true, // 指定进行压缩
+    },
+    performance: {
+        hints: false,
+    },
+    // devtool: '#eval-source-map',
 };
 
 if (process.env.NODE_ENV === 'production') {
-    module.exports.devtool = '#source-map'
+    // module.exports.devtool = '#source-map'
     // http://vue-loader.vuejs.org/en/workflow/production.html
     module.exports.plugins = (module.exports.plugins || []).concat([
         new webpack.DefinePlugin({
@@ -111,11 +152,13 @@ if (process.env.NODE_ENV === 'production') {
                 NODE_ENV: '"production"'
             }
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
+        new UglifyJsPlugin({
+            sourceMap: false,
             compress: {
                 warnings: false
-            }
+            },
+            cache: true, // 是否用缓存
+            parallel: true, // 并发打包
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true

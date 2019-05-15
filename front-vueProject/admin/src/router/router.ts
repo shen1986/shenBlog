@@ -100,5 +100,15 @@ router.beforeEach((to, from, next) => {
     }
 });
 
+router.onError((error) => {
+    const pattern = /Loading chunk (\d)+ failed/g;
+    const isChunkLoadFailed = error.message.match(pattern);
+    const tmpRouter: any = router;
+    const targetPath = tmpRouter.history.pending.fullPath;
+    if (isChunkLoadFailed) {
+        router.replace(targetPath);
+    }
+});
+
 // 把路由对象暴露出去
 export default router;

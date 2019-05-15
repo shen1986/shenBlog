@@ -20,8 +20,6 @@ $(function () {
         });
 
     $(".dropdown-menu>li").on("click", function (e) {
-        // console.log(e);
-        // // // alert(1);
         $("#dropdownText").html(
             $(this).find("a").html()
         );
@@ -34,19 +32,6 @@ $(function () {
     let pageSize = 30;
     let totalPage = $("#totalPage").val();
     totalPage = totalPage || 0;
-
-    // 如果数据存在
-    if (totalPage !== 0) {
-        // 调用分页函数.参数:当前所在页, 总页数(用总条数 除以 每页显示多少条,在向上取整), ajax函数
-        setPage(currentPage, Math.ceil(totalPage / pageSize), render);
-    }
-
-    // 翻页函数
-    var render = function(page) {
-        console.log(page);
-        // ajax请求
-
-    }
 
     /**
      * 设置翻页属性
@@ -93,6 +78,27 @@ $(function () {
                 }
                 return result;
             }
+        });
+    }
+
+    // 如果数据存在
+    if (totalPage !== 0) {
+        // 调用分页函数.参数:当前所在页, 总页数(用总条数 除以 每页显示多少条,在向上取整), ajax函数
+        setPage(currentPage, Math.ceil(totalPage / pageSize), pageClicked);
+    }
+
+    // 翻页函数
+    var pageClicked = function(current) {
+        $.ajax({
+            url: 'get-timeline',
+            data: {
+                current: current,
+                count: 30,
+            },
+            type: 'get',
+            success: function(data) {
+                $(".timeline-body").html(data);
+            },
         });
     }
 });

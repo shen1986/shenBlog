@@ -8,11 +8,37 @@ $(function () {
     let pageSize = 15;
     let totalPage = $("#totalPage").val();
     totalPage = totalPage || 0;
-    // 调用分页函数.参数:当前所在页, 总页数(用总条数 除以 每页显示多少条,在向上取整), ajax函数
-    setPage(currentPage, Math.ceil(totalPage / pageSize), render);
 
-    function render() {
-        console.log('翻页被点击');
+    // 如果数据存在
+    if (totalPage !== 0) {
+        // 调用分页函数.参数:当前所在页, 总页数(用总条数 除以 每页显示多少条,在向上取整), ajax函数
+        setPage(currentPage, Math.ceil(totalPage / pageSize), pageClicked);
+    }
+
+    function pageClicked(current) {
+
+        // 取得最新文章情报
+        getArticle(location.pathname, current, function(err, data) {
+            $('.article-list').html(data);
+        });
+    }
+
+    function getArticle(geturl, current, callback) {
+        try {
+            $.ajax({
+                url: geturl,
+                data: {
+                    current: current,
+                    count: 15,
+                },
+                type: 'get',
+                success: function(data) {
+                    callback && callback(null, data);
+                },
+            });
+        } catch (error) {
+            callback && callback(error);
+        }
     }
 
     /**
@@ -35,7 +61,7 @@ $(function () {
             onPageClicked: function (event, originalEvent, type, page) {
                 // 把当前点击的页码赋值给currentPage, 调用ajax,渲染页面
                 currentPage = page;
-                callback && callback();
+                callback && callback(currentPage);
             },
             shouldShowPage: function (type, page, current) {
                 var result = true;
