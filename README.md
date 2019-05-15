@@ -16,7 +16,7 @@
 1. 前台画面 www.shenxf.com:3002
 ![前台画面](./images/微信图片_20190514154521.png)
 
-2. 后台画面 www.shenxf.com:3000/vue2/
+2. 后台画面 www.shenxf.com:3000/vue2/  账号：admin 密码：123456
 ![后台画面](./images/微信图片_20190514154834.png)
 
 ### 使用
