@@ -23,3 +23,5 @@ npm run build
     + `docker exec -it staticweb service nginx reload`
 - nginx 开启 gzip 的坑
     + https://blog.csdn.net/hl_java/article/details/81946228
+- koa 开启 gzip 
+    + koa-compress
