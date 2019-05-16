@@ -1,11 +1,19 @@
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import { Row, Col, Checkbox } from 'ant-design-vue';
 import ContentEditable from '../contentEditable/contentEditable.vue';
+const hljs = require('highlight.js/lib/highlight');
+const javascript = require('highlight.js/lib/languages/javascript');
+const css = require('highlight.js/lib/languages/css');
+const shell = require('highlight.js/lib/languages/shell');
+import 'highlight.js/styles/atom-one-dark.css';
 // import marked from 'marked';
 const marked = require('marked');
 Vue.use(Row);
 Vue.use(Col);
 Vue.use(Checkbox);
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('shell', shell);
 
 @Component({
     components: {
@@ -20,7 +28,7 @@ export default class Markdown extends Vue {
         // 给Markdown的代码区域设置颜色
         marked.setOptions({
             highlight: (code: any) => {
-                return require('highlight.js').highlightAuto(code).value;
+                return hljs.highlightAuto(code).value;
             },
         });
     }

@@ -19,3 +19,7 @@ npm run build
     + https://www.jianshu.com/p/6c67a456654b
 - webpack 打包优化
     + http://www.cnblogs.com/vvjiang/p/9327903.html
+- docker重新启动docker
+    + `docker exec -it staticweb service nginx reload`
+- nginx 开启 gzip 的坑
+    + https://blog.csdn.net/hl_java/article/details/81946228
