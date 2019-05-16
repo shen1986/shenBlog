@@ -9,8 +9,19 @@ import Koa from 'koa';
 import kStatic from 'koa-static';
 import bodyParser from 'koa-bodyparser';
 import config from './common/config/config';
+import compress from 'koa-compress';
 
 const app = new Koa();
+
+// 开启 Gzip
+app.use(compress({
+  filter: function (content_type: string) {
+    // return /text/i.test(content_type); 我没文化，服务器差，默认开启Gzip。
+    return true;
+  },
+  threshold: 2048,
+  flush: require('zlib').Z_SYNC_FLUSH
+}));
 
 // 配置模板引擎
 const render = require('koa-art-template');

@@ -27,6 +27,7 @@
     "koa": "^2.7.0",
     "koa-art-template": "^1.1.1",
     "koa-bodyparser": "^4.2.1",
+    "koa-compress": "^3.0.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "mysql": "^2.16.0"
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@types/koa": "^2.0.48",
     "@types/koa-bodyparser": "^4.2.2",
+    "@types/koa-compress": "^2.0.9",
     "@types/koa-router": "^7.0.40",
     "@types/koa-static": "^4.0.1",
     "@types/mysql": "^2.15.5",
@@ -43,9 +45,9 @@
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.11",
     "shelljs": "^0.8.3",
+    "tar": ">=4.4.2",
     "ts-node": "^8.1.0",
     "tslint": "^5.15.0",
-    "typescript": "^3.4.3",
-    "tar": ">=4.4.2"
+    "typescript": "^3.4.3"
   }
 }
