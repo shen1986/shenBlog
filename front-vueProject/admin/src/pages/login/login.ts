@@ -4,11 +4,12 @@
  * @Date: 2019-05-05 20:02:52
  */
 import { Vue, Component } from 'vue-property-decorator';
-import { Form, Input, Button, message, Progress } from 'ant-design-vue';
+import { Form, Input, Button, message, Progress, Icon } from 'ant-design-vue';
 Vue.use(Form);
 Vue.use(Input);
 Vue.use(Button);
 Vue.use(Progress);
+Vue.use(Icon);
 
 @Component
 export default class Login extends Vue {
@@ -62,7 +63,7 @@ export default class Login extends Vue {
                         if (redirect) {
                             this.$router.push(redirect);
                         } else {
-                            this.$router.push('/');
+                            this.$router.push('/home');
                         }
                     } else {
                         message.error(res.data.msg);

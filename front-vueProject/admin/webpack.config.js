@@ -16,6 +16,8 @@ let OptimizeCss =  require('optimize-css-assets-webpack-plugin');
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 依赖关系可视化
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// 使用此加载模块其位置在被指定paths的部分 tsconfig.json使用的WebPack时。此包提供tsconfig-paths包的功能，但作为webpack插件
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
     optimization: {
@@ -31,37 +33,39 @@ module.exports = {
         //打包 公共文件
         splitChunks: {
             cacheGroups: {
-                vendor:{//node_modules内的依赖库
-                    chunks:"all",
-                    test: /[\\/]highlight.js[\\/]/,
-                    name:"vendor",
+                vendor: {
+                    //node_modules内的依赖库
+                    chunks: 'all',
+                    test: /[\\/]quill[\\/]/, // 现在暂时先打包富文本 因为文章添加更新页面js太大了
+                    name: 'vendor',
                     minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
                     maxInitialRequests: 5,
                     minSize: 0,
-                    priority:100,
+                    priority: 100,
                     // enforce: true?
                 },
-                common: {// ‘src/js’ 下的js文件
-                    chunks:"all",
-                    test:/[\\/]src[\\/]js[\\/]/,//也可以值文件/[\\/]src[\\/]js[\\/].*\.js/,  
-                    name: "common", //生成文件名，依据output规则
+                common: {
+                    // ‘src/js’ 下的js文件
+                    chunks: 'all',
+                    test: /[\\/]src[\\/]js[\\/]/, //也可以值文件/[\\/]src[\\/]js[\\/].*\.js/,
+                    name: 'common', //生成文件名，依据output规则
                     minChunks: 2,
                     maxInitialRequests: 5,
                     minSize: 0,
-                    priority:1
-                }
-            }
+                    priority: 1,
+                },
+            },
         },
         runtimeChunk: {
-            name: 'manifest'
-        }
+            name: 'manifest',
+        },
     },
     entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/vue2/',
         filename: 'js/[name].js', // .[hash:8] 指定后 webpack-dev-server 就跑不起来了
-        chunkFilename: "js/[name].chunk.js"
+        chunkFilename: 'js/[name].chunk.js',
     },
     module: {
         rules: [
@@ -153,12 +157,20 @@ module.exports = {
             filename: 'css/[name].css', // 抽离出来样式的名字
         }),
         new BundleAnalyzerPlugin({ analyzerPort: 8919 }),
+        new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(zh-cn)$/),
     ],
     resolve: {
+        modules: [path.resolve(__dirname, './src'), 'node_modules'],
         extensions: ['.ts', '.js', '.vue', '.json'],
         alias: {
             vue$: 'vue/dist/vue.esm.js',
+            '@ant-design/icons/lib/dist$': path.resolve(__dirname, './src/tools/antdIcon.ts'),
         },
+        plugins: [
+            new TsconfigPathsPlugin({
+                configFile: path.resolve(__dirname, './tsconfig.json'),
+            }),
+        ],
     },
     devServer: {
         historyApiFallback: true,

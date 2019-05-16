@@ -24,6 +24,11 @@
                             {rules: [{ required: true, message: '请输入用户名' }]}
                         ]"
                     >
+                        <a-icon
+                            slot="prefix"
+                            type="user"
+                            class="icon-color"
+                        />
                     </a-input>
                 </a-form-item>
                 <a-form-item
@@ -38,6 +43,11 @@
                             {rules: [{ required: true, message: '请输入密码' }]}
                         ]"
                     >
+                        <a-icon
+                            slot="prefix"
+                            type="lock"
+                            class="icon-color"
+                        />
                     </a-input>
                 </a-form-item>
                 <a-form-item
