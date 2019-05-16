@@ -33,7 +33,7 @@ module.exports = {
             cacheGroups: {
                 vendor:{//node_modules内的依赖库
                     chunks:"all",
-                    test: /[\\/]node_modules[\\/]/,
+                    test: /[\\/]highlight.js[\\/]/,
                     name:"vendor",
                     minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
                     maxInitialRequests: 5,

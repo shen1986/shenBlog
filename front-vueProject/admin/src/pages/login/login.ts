@@ -4,11 +4,10 @@
  * @Date: 2019-05-05 20:02:52
  */
 import { Vue, Component } from 'vue-property-decorator';
-import { Form, Input, Button, Icon, message, Progress } from 'ant-design-vue';
+import { Form, Input, Button, message, Progress } from 'ant-design-vue';
 Vue.use(Form);
 Vue.use(Input);
 Vue.use(Button);
-Vue.use(Icon);
 Vue.use(Progress);
 
 @Component
