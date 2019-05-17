@@ -36,4 +36,7 @@ npm start
 ```shell
 npm run watch
 ```
-## iPhone手机看不到菜单
+## 测出的问题
+- iPhone手机看不到菜单
+- 检索条件输入后检索结果没什么变化
+- 点右侧tag出来的结果也是全数据

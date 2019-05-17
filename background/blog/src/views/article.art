@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="/css/article.css">
 {{/block}}
 
+<!-- 导航栏高亮 -->
+{{block 'article'}}active{{/block}}
+
 <!-- 标题设定 -->
 {{block 'title'}}文章{{/block}}
 
