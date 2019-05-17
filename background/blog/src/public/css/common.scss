@@ -20,12 +20,6 @@
     color: #fff;
 }
 
-.navbar-collapse-button {
-    margin-top: 25px;
-    margin-right: 15px;
-    text-align: right;
-}
-
 .navbar-toggle .icon-bar {
     background: #fff;
 }
@@ -72,39 +66,6 @@
 .row:before {
     content: " ";
     display: table;
-}
-
-.nav-top {
-    height: 40px;
-    background-color: #444;
-    box-shadow: 0 0 3px #3a3a3a;
-}
-
-.nav-top-item {
-    float: left;
-}
-
-.nav-top-item>a {
-    display: inline-block;
-    height: 40px;
-    padding: 0 26px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 40px;
-}
-
-.nav-top-item>a:hover {
-    color: #56adf9;
-    background-color: #333;
-    border-color: #333;
-}
-
-.nav-top-search {
-    float: right;
-    height: 40px;
-    line-height: 40px;
-    text-align: right;
 }
 
 /* 面包屑 */

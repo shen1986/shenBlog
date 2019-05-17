@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="/css/gather.css">
 {{/block}}
 
+<!-- 导航栏高亮 -->
+{{block 'gather'}}active{{/block}}
+
 <!-- 标题设定 -->
 {{block 'title'}}点滴{{/block}}
 

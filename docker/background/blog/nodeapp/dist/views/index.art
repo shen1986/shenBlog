@@ -12,6 +12,9 @@
 <link rel="stylesheet" href="/css/index.css">
 {{/block}}
 
+<!-- 导航栏高亮 -->
+{{block 'home'}}active{{/block}}
+
 <!-- 标题设定 -->
 {{block 'title'}}首页{{/block}}
 
