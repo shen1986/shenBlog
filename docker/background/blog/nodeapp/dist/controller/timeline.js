@@ -25,7 +25,7 @@ const timelineModel = __importStar(require("../models/timeline"));
 exports.getTimeline = (ctx) => __awaiter(this, void 0, void 0, function* () {
     let timeline = yield timelineModel.getTimeline();
     timeline = PreperTimeline(timeline);
-    yield ctx.render('timeline.art', Object.assign({}, timeline, ctx.res.$initValue, { common: {
+    yield ctx.render('timeline.art', Object.assign({}, ctx.res.$initValue, timeline, { common: {
             hasBanner: false
         } }));
 });

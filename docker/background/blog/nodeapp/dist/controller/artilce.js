@@ -57,7 +57,7 @@ const renderArticle = (isPage, ctx, articleData) => __awaiter(this, void 0, void
         yield ctx.render('article-page.art', Object.assign({}, articleData.info));
     }
     else {
-        yield ctx.render('article.art', Object.assign({}, articleData.info, ctx.res.$initValue, { common: {
+        yield ctx.render('article.art', Object.assign({}, ctx.res.$initValue, articleData.info, { common: {
                 hasBanner: false
             } }));
     }

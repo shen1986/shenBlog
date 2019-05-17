@@ -25,7 +25,7 @@ const gossipModel = __importStar(require("../models/gossip"));
 exports.getGossip = (ctx) => __awaiter(this, void 0, void 0, function* () {
     const gossip = yield gossipModel.getGossip();
     delete gossip.status;
-    yield ctx.render('gossip.art', Object.assign({}, gossip, ctx.res.$initValue, { common: {
+    yield ctx.render('gossip.art', Object.assign({}, ctx.res.$initValue, gossip, { common: {
             hasBanner: false
         } }));
 });

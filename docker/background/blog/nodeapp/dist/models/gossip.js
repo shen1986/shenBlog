@@ -31,7 +31,6 @@ exports.getGossip = (current = 1, count = 30) => __awaiter(this, void 0, void 0,
                 item.url = `data:image/${path_1.default.extname(item.file_name)};base64,${item.base64}`;
             }
         });
-        console.log(rows);
         const t = yield db_1.default.query('select count(*) as total from gossip');
         return {
             'status': 1,
