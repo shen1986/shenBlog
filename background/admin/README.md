@@ -48,3 +48,7 @@ npm run watch
 ## 参照
 - [vue+koa2+token登陆验证](https://www.jianshu.com/p/406301bead0c)
 - [各种验证方式说明](http://www.cnblogs.com/hongdiandian/p/9294970.html)
+
+## 测试出的问题
+- 检索条件输入后检索结果没什么变化
+- 点右侧tag出来的结果也是全数据
