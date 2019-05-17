@@ -22,7 +22,6 @@ export let getGossip = async (current: number = 1, count: number = 30) => {
                 item.url = `data:image/${path.extname(item.file_name)};base64,${item.base64}`;
             }
         });
-        console.log(rows);
 
         const t: any = await db.query('select count(*) as total from gossip');
 
