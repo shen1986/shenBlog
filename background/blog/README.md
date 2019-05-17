@@ -36,3 +36,4 @@ npm start
 ```shell
 npm run watch
 ```
+## iPhone手机看不到菜单
