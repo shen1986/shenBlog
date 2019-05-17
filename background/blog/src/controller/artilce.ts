@@ -63,8 +63,8 @@ const renderArticle = async (isPage: boolean, ctx: any, articleData: any) => {
         });
     } else {
         await ctx.render('article.art', {
-            ...articleData.info,
             ...ctx.res.$initValue,
+            ...articleData.info,
             common: {
                 hasBanner: false
             }

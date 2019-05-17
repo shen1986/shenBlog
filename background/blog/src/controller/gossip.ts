@@ -13,8 +13,8 @@ export let getGossip = async (ctx: any) => {
     delete gossip.status;
 
     await ctx.render('gossip.art', {
-        ...gossip,
         ...ctx.res.$initValue,
+        ...gossip,
         common: {
             hasBanner: false
         }

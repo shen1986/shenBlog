@@ -13,8 +13,8 @@ export let getTimeline = async (ctx: any) => {
     timeline = PreperTimeline(timeline);
 
     await ctx.render('timeline.art', {
-        ...timeline,
         ...ctx.res.$initValue,
+        ...timeline,
         common: {
             hasBanner: false
         }

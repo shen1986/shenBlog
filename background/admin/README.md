@@ -30,8 +30,6 @@ const config = {
     // sessionKey
     sessionKey: 'xxxxxx'
 };
-};
-
 ```
 - 进入admin 执行下面的操作
 ```shell
