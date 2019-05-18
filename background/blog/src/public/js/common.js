@@ -22,6 +22,17 @@ $(function () {
         }
         window.location.href = `/search/${keyword}`;
     });
+    $("#search-input").on("keyup", function(e) {
+        if (e.keyCode === 13) {
+            var keyword =  $("#search-input").val();
+            if (!keyword || keyword === '') {
+                clickFlg = true;
+                $('#search-input').popover('show');
+                return false;
+            }
+            window.location.href = `/search/${keyword}`;
+        }
+    });
 
     $('#search-input').on('show.bs.popover', function () {
         if (clickFlg === false ) {
