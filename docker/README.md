@@ -5,6 +5,9 @@
 - `docker build -t bk/blog .`
 - `docker run -d -p 3000:3000 --name=myblog bk/blog`
 
+- `docker run -d -p 3002:3000 -v /root/myblog/blog/nodeapp:/opt/nodeapp/ --name="myBlog" myblog/blog`
+    + 绑定目录以后预先npm install已经无效，因为会被这个目录覆盖掉，要进入容器重新 npm install
+
 ## 后台后端部署方法
 - `docker build -t bk/admin .`
 - `docker run -d -p 8080:8080 --name=myadmin bk/admin`
