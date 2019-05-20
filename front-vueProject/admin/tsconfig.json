@@ -3,7 +3,7 @@
         "importHelpers": true,
         "esModuleInterop": true,
         "baseUrl": ".",
-        "outDir": "./built/",
+        "outDir": "./dist/",
         "sourceMap": true,
         "strict": true,
         "module": "ESNext",

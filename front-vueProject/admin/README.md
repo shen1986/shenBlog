@@ -25,3 +25,22 @@ npm run build
     + https://blog.csdn.net/hl_java/article/details/81946228
 - koa 开启 gzip 
     + koa-compress
+
+## 测试出的问题
+
+- message里面的Icon图片不显示
+    + 引用错误
+    ```javascript
+    export {
+    default as CloseCircleOutline,
+    } from '@ant-design/icons/lib/outline/CloseCircleOutline';
+
+    export {
+        default as CloseCircleFill,
+    } from '@ant-design/icons/lib/fill/CloseCircleFill';
+
+    // 引用TwoTone好像不行
+    // export {
+    //     default as CloseCircleTwoTone,
+    // } from '@ant-design/icons/lib/twotone/CloseCircleTwoTone';
+    ```

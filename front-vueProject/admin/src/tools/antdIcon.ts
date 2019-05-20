@@ -29,23 +29,43 @@ export {
 
 // message info
 export {
+    default as InfoCircleOutline,
+} from '@ant-design/icons/lib/outline/InfoCircleOutline';
+export {
+    default as InfoCircleFill,
+} from '@ant-design/icons/lib/fill/InfoCircleFill';
+export {
     default as InfoCircleTwoTone,
 } from '@ant-design/icons/lib/twotone/InfoCircleTwoTone';
 
 // message success
+export {
+    default as CheckCircleOutline,
+} from '@ant-design/icons/lib/outline/CheckCircleOutline';
+export {
+    default as CheckCircleFill,
+} from '@ant-design/icons/lib/fill/CheckCircleFill';
 export {
     default as CheckCircleTwoTone,
 } from '@ant-design/icons/lib/twotone/CheckCircleTwoTone';
 
 // message error
 export {
-    default as CloseCircleTwoTone,
-} from '@ant-design/icons/lib/twotone/CloseCircleTwoTone';
+    default as CloseCircleOutline,
+} from '@ant-design/icons/lib/outline/CloseCircleOutline';
+
+export {
+    default as CloseCircleFill,
+} from '@ant-design/icons/lib/fill/CloseCircleFill';
 
 // message warning
 export {
-    default as ExclamationCircleTwoTone,
-} from '@ant-design/icons/lib/twotone/ExclamationCircleTwoTone';
+    default as ExclamationCircleOutline,
+} from '@ant-design/icons/lib/outline/ExclamationCircleOutline';
+
+export {
+    default as ExclamationCircleFill,
+} from '@ant-design/icons/lib/fill/ExclamationCircleFill';
 
 // message loading
 export {

@@ -18,8 +18,6 @@ let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // 使用此加载模块其位置在被指定paths的部分 tsconfig.json使用的WebPack时。此包提供tsconfig-paths包的功能，但作为webpack插件
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-// 开启gzip压缩
-// const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
     optimization: {
@@ -158,18 +156,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/[name].css', // 抽离出来样式的名字
         }),
-        new BundleAnalyzerPlugin({ analyzerPort: 8919 }),
         new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(zh-cn)$/),
-        // new CompressionPlugin({
-        //     // asset: '[path].gz[query]', //目标资源名称。[file] 会被替换成原资源。[path] 会被替换成原资源路径，[query] 替换成原查询字符串
-        //     // algorithm: 'gzip',//算法
-        //     deleteOriginalAssets: true,
-        //     test: new RegExp(
-        //         '\\.(js|css)$'    //压缩 js 与 css
-        //     ),
-        //     threshold: 10240,//只处理比这个值大的资源。按字节计算
-        //     minRatio: 0.8//只有压缩率比这个值小的资源才会被处理
-        // })
     ],
     resolve: {
         modules: [path.resolve(__dirname, './src'), 'node_modules'],
@@ -218,5 +205,6 @@ if (process.env.NODE_ENV === 'production') {
         new webpack.LoaderOptionsPlugin({
             minimize: true
         }),
+        new BundleAnalyzerPlugin({ analyzerPort: 8919 }), // js依赖分析
     ])
 }
