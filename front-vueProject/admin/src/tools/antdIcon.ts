@@ -58,6 +58,10 @@ export {
     default as CloseCircleFill,
 } from '@ant-design/icons/lib/fill/CloseCircleFill';
 
+export {
+    default as CloseCircleTwoTone,
+} from '@ant-design/icons/lib/twotone/CloseCircleTwoTone';
+
 // message warning
 export {
     default as ExclamationCircleOutline,
