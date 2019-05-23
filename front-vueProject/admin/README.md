@@ -27,6 +27,7 @@ npm run build
     + koa-compress
 - 自己的进度条不好看,这个第三方的进度条不错。
     + [nprogress](https://www.npmjs.com/package/nprogress)
+- ts.config 里面的 'importhelpers' 记得要加，防止辅助函数出现在多个文件中
 
 ## 测试出的问题
 
