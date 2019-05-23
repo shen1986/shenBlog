@@ -25,6 +25,8 @@ npm run build
     + https://blog.csdn.net/hl_java/article/details/81946228
 - koa 开启 gzip 
     + koa-compress
+- 自己的进度条不好看,这个第三方的进度条不错。
+    + [nprogress](https://www.npmjs.com/package/nprogress)
 
 ## 测试出的问题
 
@@ -44,3 +46,5 @@ npm run build
     //     default as CloseCircleTwoTone,
     // } from '@ant-design/icons/lib/twotone/CloseCircleTwoTone';
     ```
+
+- 登录画面有一个滚动条

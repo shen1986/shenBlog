@@ -5,7 +5,6 @@
  -->
 <template>
     <div>
-        <a-progress :class="pregress ? '':'progress'" :percent="percent" :showInfo="false" />
         <div class="login" @keyup="handleKeyup">
             <h2 class="title">小沈的个人博客管理系统</h2>
             <a-form

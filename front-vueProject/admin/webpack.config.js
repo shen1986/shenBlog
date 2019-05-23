@@ -157,6 +157,7 @@ module.exports = {
             filename: 'css/[name].css', // 抽离出来样式的名字
         }),
         new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(zh-cn)$/),
+        new BundleAnalyzerPlugin({ analyzerPort: 8919 }), // js依赖分析
     ],
     resolve: {
         modules: [path.resolve(__dirname, './src'), 'node_modules'],
@@ -204,7 +205,6 @@ if (process.env.NODE_ENV === 'production') {
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
-        }),
-        new BundleAnalyzerPlugin({ analyzerPort: 8919 }), // js依赖分析
+        })
     ])
 }
