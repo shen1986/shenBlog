@@ -16,7 +16,7 @@
 1. 前台画面 https://www.shenxf.com:3002
 ![前台画面](./images/微信图片_20190514154521.png)
 
-2. 后台画面 https://www.shenxf.com:3000/vue2/  账号：admin 密码：123456
+2. 后台画面 https://www.shenxf.com/vue2/  账号：admin 密码：123456
 - 由于服务器带宽的原因，第一次加载会比较慢，请耐心等待。
 ![后台画面](./images/微信图片_20190514154834.png)
 
