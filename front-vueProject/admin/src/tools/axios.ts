@@ -9,7 +9,7 @@ import router from '../router/router';
 if (process.env.NODE_ENV === 'development') {
     Axios.defaults.baseURL = 'http://127.0.0.1:8080';
 } else {
-    Axios.defaults.baseURL = 'http://www.shenxf.com:3003';
+    Axios.defaults.baseURL = 'https://www.shenxf.com:3003';
 }
 Axios.defaults.timeout = 20000; // 20秒超时
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';

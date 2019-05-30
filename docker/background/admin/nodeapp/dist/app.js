@@ -24,13 +24,25 @@ const koa2_cors_1 = __importDefault(require("koa2-cors"));
 const koa_static_1 = __importDefault(require("koa-static"));
 const path_1 = __importDefault(require("path"));
 const config_1 = __importDefault(require("./common/config/config"));
+const https_1 = __importDefault(require("https"));
+const koa_sslify_1 = __importDefault(require("koa-sslify"));
+const fs_1 = __importDefault(require("fs"));
 const app = new koa_1.default();
+let options = {};
+if (process.env.NODE_ENV !== 'development') {
+    // 强制开启https
+    app.use(koa_sslify_1.default());
+    options = {
+        key: fs_1.default.readFileSync(path_1.default.join(__dirname, './ssl/2255319_www.shenxf.com.key')),
+        cert: fs_1.default.readFileSync(path_1.default.join(__dirname, './ssl/2255319_www.shenxf.com.pem')) // ssl文件路径
+    };
+}
 // 配置静态资源
 app.use(koa_static_1.default(path_1.default.join(__dirname, './public/')));
 // 这是处理前端跨域的配置
 app.use(koa2_cors_1.default({
     origin: function (ctx) {
-        if (ctx.url === '/login') {
+        if (ctx.url === '/toLogin') {
             return '*'; // 允许来自所有域名请求
         }
         return '*';
@@ -66,6 +78,14 @@ app.on('error', (err, ctx) => __awaiter(this, void 0, void 0, function* () {
 app
     .use(router_1.default.routes())
     .use(router_1.default.allowedMethods());
-app.listen(config_1.default.port, () => {
-    console.log(`服务已经启动！监听端口：${config_1.default.port}`);
-});
+if (process.env.NODE_ENV !== 'development') {
+    // 启动服务
+    https_1.default.createServer(options, app.callback()).listen(config_1.default.port);
+    // 打印成功
+    console.log('https server is running');
+}
+else {
+    app.listen(config_1.default.port, () => {
+        console.log(`服务已经启动！监听端口：${config_1.default.port}`);
+    });
+}

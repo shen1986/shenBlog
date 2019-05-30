@@ -10,8 +10,25 @@ import kStatic from 'koa-static';
 import bodyParser from 'koa-bodyparser';
 import config from './common/config/config';
 import compress from 'koa-compress';
+// https 支持
+import http from 'http';
+import https from 'https';
+import enforceHttps from 'koa-sslify';
+import fs from 'fs';
 
 const app = new Koa();
+
+let options = {};
+
+if (process.env.NODE_ENV !== 'development') {
+    // 强制开启https
+    app.use(enforceHttps());
+
+    options = {
+        key: fs.readFileSync(path.join(__dirname, './ssl/2255319_www.shenxf.com.key')),  // ssl文件路径
+        cert: fs.readFileSync(path.join(__dirname, './ssl/2255319_www.shenxf.com.pem'))  // ssl文件路径
+    };
+}
 
 // 开启 Gzip
 app.use(compress({
@@ -60,6 +77,14 @@ app
     .use(router.routes())
     .use(router.allowedMethods());
 
-app.listen(config.port, () => {
-    console.log(`服务已经启动！监听端口：${config.port}`);
-});
+if (process.env.NODE_ENV !== 'development') {
+    // 启动服务
+    https.createServer(options, app.callback()).listen(config.port);
+
+    // 打印成功
+    console.log('https server is running');
+} else {
+    app.listen(config.port, () => {
+        console.log(`服务已经启动！监听端口：${config.port}`);
+    });
+}
