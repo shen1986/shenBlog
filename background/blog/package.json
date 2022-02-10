@@ -44,7 +44,7 @@
     "@types/node": "^11.13.4",
     "@types/shelljs": "^0.8.5",
     "concurrently": "^4.1.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.18.11",
     "shelljs": "^0.8.3",
     "tar": ">=4.4.2",
